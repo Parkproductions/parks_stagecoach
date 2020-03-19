@@ -60,6 +60,7 @@ Citizen.CreateThread(function()
         if npc_spawned == false then    
     		
     		for _, zone in pairs(Config.Coords) do
+    			print(zone)
             	local IsZone, IdZone = IsNearZone( zone )
  			end
 
