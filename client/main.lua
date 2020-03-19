@@ -53,7 +53,7 @@ Citizen.CreateThread(function()
     
     local npc_spawned = false
     local player = PlayerPedId()
-    
+    print(npc_spawned)
     while true do
     Wait(10)
     
