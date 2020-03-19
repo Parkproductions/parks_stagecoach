@@ -7,11 +7,11 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (pos)
 
     model = GetHashKey( "S_M_M_BankClerk_01" )
                 
-                RequestModel( model )
+                --[[RequestModel( model )
 
                     while not HasModelLoaded( model ) do
                         Wait(500)
-                    end
+                    end--]]
                 
                 npc = CreatePed( model, 1254.05, -1327.07, 76.89, 272.0, 1, 1 )
                 print(npc)
