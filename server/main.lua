@@ -5,7 +5,7 @@ RegisterServerEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (pos)
     print('stage_coach triggered')
 
-    local model = GetHashKey( "S_M_M_BankClerk_01" )
+    model = GetHashKey( "S_M_M_BankClerk_01" )
                 
                 RequestModel( model )
 
