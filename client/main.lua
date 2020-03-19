@@ -62,7 +62,9 @@ Citizen.CreateThread(function()
     		for _, zone in pairs(Config.Coords) do
 
             	local IsZone, IdZone = IsNearZone( zone )
-            	print(IsZone)
+            	if IsZone == true then
+            		print(IsZone)
+            	end
  			end
 
             if IsZone then
