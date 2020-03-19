@@ -13,7 +13,7 @@ end)
 
 -- Generate Job Giver NPC's
 
-RegisterServerEvent("parks_stagecoach:CreateNPC")
+RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (pos)
     print('stage_coach triggered')
 
