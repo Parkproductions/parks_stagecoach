@@ -16,6 +16,7 @@ Config.JobName = "stage_coach_driver" -- Job name to set
 
 Config.Coords = {
 	
-	vector3(2683.95, -1441.86, 46.16),
-	vector3(1254.05, -1327.07, 76.89)
+	vector3(1254.05, -1327.07, 76.89),
+	vector3(2683.95, -1441.86, 46.16)
+	
 }
