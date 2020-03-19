@@ -15,6 +15,6 @@ Config.SetJob = true -- Set job after Start working
 Config.JobName = "stage_coach_driver" -- Job name to set
 
 Config.Coords = {
-	vector3(-214.41, 646.37, 112.95),
-	vector3(-807.41, -1385.16, 43.49)
+	vector3(2683.95, -1441.86, 46.16),
+	vector3(1254.05, -1327.07, 76.89)
 }
