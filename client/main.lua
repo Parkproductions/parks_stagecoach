@@ -4,7 +4,7 @@ Citizen.CreateThread(function()
     for _, marker in pairs(Config.Marker) do
     	print(marker.x)
         local blip = N_0x554d9d53f696d002(1664425300, marker.x, marker.y, marker.z)
-        SetBlipSprite(blip, Config.StagecoachJobSprite, 1)
+        SetBlipSprite(blip, marker.prite, 1)
         SetBlipScale(blip, 0.2)
         Citizen.InvokeNative(0x9CB1A1623062F402, blip, marker.name)
     end  
