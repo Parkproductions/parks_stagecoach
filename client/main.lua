@@ -63,17 +63,18 @@ Citizen.CreateThread(function()
 
             	local IsZone, IdZone = IsNearZone( zone )
             	print(IsZone)
- 			end
+ 			
 
-            if IsZone then
-
-            	print('in_zone')
-                TriggerEvent("parks_stagecoach:CreateNPC", Config.Marker)
-        
-            
-
-            npc_spawned = true
-
+            	if IsZone then
+	
+	            		print('in_zone')
+	            	    TriggerEvent("parks_stagecoach:CreateNPC", Config.Marker)
+	        	
+	        	    	
+	
+	            	npc_spawned = true
+	
+            	end
             end
 
         end
