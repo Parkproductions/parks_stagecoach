@@ -60,8 +60,11 @@ Citizen.CreateThread(function()
     Wait(10)
     
     	for _, zone in pairs(Config.Coords) do
-    		if GetDistanceBetweenCoords(zone,GetEntityCoords(PlayerPedId()),false)<10 then
-    			TriggerEvent("parks_stagecoach:CreateNPC", Config.Marker)
+    		if npc_spawned == false then
+    			if GetDistanceBetweenCoords(zone,GetEntityCoords(PlayerPedId()),false)<10 then
+    				TriggerEvent("parks_stagecoach:CreateNPC", Config.Marker)
+    				local npc_spawned = true
+    			end
     		end
     	end
     end
