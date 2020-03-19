@@ -2,7 +2,7 @@ coach = false
 
 Citizen.CreateThread(function()
     for _, marker in pairs(Config.Marker) do
-    	print(Marker)
+    	print(marker)
         local blip = N_0x554d9d53f696d002(1664425300, marker.x, marker.y, marker.z)
         SetBlipSprite(blip, Config.StagecoachJobSprite, 1)
         SetBlipScale(blip, 0.2)
