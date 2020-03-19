@@ -27,3 +27,8 @@ local function IsNearZone ( location )
     end
 end
 
+RegisterNetEvent("parks_stagecoach:CreateNPC")
+AddEventHandler("parks_stagecoach:CreateNPC", function (pos, state)
+    print(state)
+    Fighters[pos] = state
+end)
