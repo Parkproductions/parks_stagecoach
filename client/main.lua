@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
  
             if IsZone then
 
-
+            	print('in_zone')
                 TriggerEvent("parks_stagecoach:CreateNPC", Config.Marker)
         
             
