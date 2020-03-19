@@ -56,7 +56,7 @@ Citizen.CreateThread(function()
     
     while true do
     Wait(10)
-    print(npc_spawned)
+    print(Config.Coords)
         if npc_spawned == false then    
     
             local IsZone, IdZone = IsNearZone( Config.Coords )
