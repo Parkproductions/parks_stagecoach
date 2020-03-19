@@ -5,8 +5,8 @@ Config.MarkerColor   = {r = 204, g = 204, b = 0}
 Config.Blip          = {sprite = 311, color = 1}
 
 Config.Marker = {
-  ["saint_dennis"] = {name = 'Saint Dennis', sprite = 1560611276, x = 2683.95, y = -1441.86, z = 46.16},
-  ["rhodes"] = {name = 'Rhodes', sprite = 1560611276, x = -807.41, y = -1385.16, z = 43.49}
+  ["saint_dennis"] = {name = 'Saint Dennis', sprite = 1664425300, x = 2683.95, y = -1441.86, z = 46.16},
+  ["rhodes"] = {name = 'Rhodes', sprite = 1664425300, x = 1254.05, y = -1327.07, z = 76.89}
 }
 
 Config.StagecoachJobSprite = 1560611276 -- Stage Coach Job Blip sprite
