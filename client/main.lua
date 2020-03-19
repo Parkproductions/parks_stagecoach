@@ -54,34 +54,15 @@ Citizen.CreateThread(function()
     local npc_spawned = false
     local player = PlayerPedId()
     
+
+
     while true do
     Wait(10)
     
-        if npc_spawned == false then    
-    		
-    		for _, zone in pairs(Config.Coords) do
-
-            	local IsZone, IdZone = IsNearZone( zone )
-            	if IsZone == true then
-            		print(IsZone)
-            	end
- 			end
-
-            if IsZone then
-
-            	print('in_zone')
-                TriggerEvent("parks_stagecoach:CreateNPC", Config.Marker)
-        
-            
-
-            npc_spawned = true
-
-            end
-
-        end
-        if npc_spawned == true then
-            break
-        end
+    	for _, zone in pairs(Config.Coords) do
+    		if GetDistanceBetweenCoords(zone,GetEntityCoords(PlayerPedId()),false)<10 then
+    		TriggerEvent("parks_stagecoach:CreateNPC", Config.Marker)
+    	end
     end
 
 end)              
