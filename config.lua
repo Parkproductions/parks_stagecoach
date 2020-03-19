@@ -2,7 +2,7 @@ Config               = {}
 
 Config.DrawDistance  = 10.0
 Config.MarkerColor   = {r = 204, g = 204, b = 0}
-Config.Blip          = {sprite = 311, color = 1}
+Config.Blip          = {sprite = 311, color = 0}
 
 Config.Marker = {
   ["saint_dennis"] = {name = 'Saint Dennis', x = 2683.95, y = -1441.86, z = 46.16},
