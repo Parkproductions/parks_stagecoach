@@ -56,7 +56,7 @@ Citizen.CreateThread(function()
     
     while true do
     Wait(10)
-    print(Config.Coords)
+    
         if npc_spawned == false then    
     		
     		for _, zone in pairs(Config.Coords) do
