@@ -60,14 +60,15 @@ Citizen.CreateThread(function()
     
     	for _, zone in pairs(Config.Marker) do
     		if npc_spawned[zone.name] == false then
-                print(zone.x)
+                
     			if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then
     				TriggerEvent("parks_stagecoach:CreateNPC", zone)
-    				npc_spawned[zone.name] = true
+    				print(zone.name)
+                    npc_spawned[zone.name] = true
     			end
     		end
     	end
-    	if npc_spawned[zone.name] == true then
+    	if npc_spawned == true then
             break
         end
     end
