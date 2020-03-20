@@ -14,7 +14,7 @@ end)
 -- Generate Job Giver NPC's
 
 RegisterNetEvent("parks_stagecoach:CreateNPC")
-AddEventHandler("parks_stagecoach:CreateNPC", function (pos)
+AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
     print('stage_coach triggered')
 
     local model = GetHashKey( "S_M_M_BankClerk_01" )
@@ -25,7 +25,7 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (pos)
                         Wait(500)
                     end
                 
-                npc = CreatePed( model, 1254.05, -1327.07, 76.89, 272.0, 1, 1 )
+                npc = CreatePed( model, zone, 272.0, 1, 1 )
                 print(npc)
                 Citizen.InvokeNative( 0x283978A15512B2FE , npc, true )
     
@@ -61,8 +61,8 @@ Citizen.CreateThread(function()
     
     	for _, zone in pairs(Config.Coords) do
     		if npc_spawned == false then
-    			if GetDistanceBetweenCoords(zone,GetEntityCoords(PlayerPedId()),false)<10 then
-    				TriggerEvent("parks_stagecoach:CreateNPC", Config.Marker)
+    			if GetDistanceBetweenCoords(zone,GetEntityCoords(PlayerPedId()),false)<500 then
+    				TriggerEvent("parks_stagecoach:CreateNPC", zone)
     				npc_spawned = true
     			end
     		end
