@@ -31,6 +31,24 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
     
 end)
 
+-- Prompt Menu
+
+function AddGang()
+    Citizen.CreateThread(function()
+        local str = 'Add to gang'
+        AddGangPrompt = PromptRegisterBegin()
+        PromptSetControlAction(AddGangPrompt, 0xC7B5340A)
+        str = CreateVarString(10, 'LITERAL_STRING', str)
+        PromptSetText(AddGangPrompt, str)
+        PromptSetEnabled(AddGangPrompt, true)
+        PromptSetVisible(AddGangPrompt, true)
+        PromptSetHoldMode(AddGangPrompt, true)
+        PromptSetGroup(AddGangPrompt, group)
+        PromptRegisterEnd(AddGangPrompt)
+ 
+    end)
+end
+
 -- Check if Player is close to Marker/NPC
 
 local function IsNearZone ( location )
@@ -64,6 +82,7 @@ Citizen.CreateThread(function()
     			if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then
     				TriggerEvent("parks_stagecoach:CreateNPC", zone)
                     npc_spawned[zone.name] = true                   
+                    AddGang()
     			end
     		end
     	end
