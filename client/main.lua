@@ -25,7 +25,7 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
                         Wait(500)
                     end
                 
-                npc = CreatePed( model, zone, 272.0, 1, 1 )
+                npc = CreatePed( model, zone.x, zone.y, zone.z, 272.0, 1, 1 )
                 print(npc)
                 Citizen.InvokeNative( 0x283978A15512B2FE , npc, true )
     
