@@ -51,8 +51,7 @@ end
 
 Citizen.CreateThread(function()
     
-    local npc_spawned[SaintDennis] = false
-    local npc_spawned[Rhodes] = false
+    local npc_spawned = { ["Saint Dennis"] = false, ["Rhodes"] = false,}
 
     local player = PlayerPedId()
 
