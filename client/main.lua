@@ -32,6 +32,7 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 end)
 
 -- Prompt Menu
+
 local StageCoachPrompt
 
 function StageCoach()
@@ -50,23 +51,24 @@ function StageCoach()
     end)
 end
 
--- Check if Player is close to Marker/NPC
-
-local function IsNearZone ( location )
-
-    local player = PlayerPedId()
-    local playerloc = GetEntityCoords(player, 0)
-
-    for i = 1, #location do
-        if #(playerloc - location[i]) < 10.0 then
-            
-            return true, i
-        else
-            return false, i
-        end
-
+Citizen.CreateThread(function()
+    while true do
+    Wait(10)
+    for _, zone in pairs(Config.Marker) do
+            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<1 then
+                StageCoach()
+                local menu_trigger_loc = zone.name
+            end
     end
-end
+
+    for _, zone in pairs(Config.Marker) do
+            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>2 and zone.name == menu_trigger_loc then
+                StageCoach()
+            end
+    end
+    end
+end)
+
 
 Citizen.CreateThread(function()
     
@@ -78,17 +80,6 @@ Citizen.CreateThread(function()
     Wait(10)
     
     	for _, zone in pairs(Config.Marker) do
-
-            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<1 then
-                StageCoach()
-                local menu_trigger_loc = zone.name
-            end
-
-            if zone.name == menu_trigger_loc then
-                Wait(200)
-                PromptDelete(StageCoachPrompt)
-            end
-
     		if npc_spawned[zone.name] == false then
                 
     			if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then
@@ -97,14 +88,11 @@ Citizen.CreateThread(function()
     			end
     		end
     	end
-    	if npc_spawned == true then
+        if npc_spawned == true then
             break
         end
     end
-
-    
-
 end)              
 
 
-
+        
