@@ -8,7 +8,7 @@ end)
 RegisterServerEvent("parks_stagecoach:buy_small_stagecoach")
 AddEventHandler("parks_stagecoach:buy_small_stagecoach", function ()
 	local _source = source
-	TriggerEvent('redemrp:getPlayerFromId', _source function(user)
+	TriggerEvent('redemrp:getPlayerFromId', _source, function(user)
 	user.removeMoney(100)
 	end)
 end)
