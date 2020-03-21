@@ -34,6 +34,7 @@ end)
 -- Prompt Menu
 
 local StageCoachPrompt
+local active = false
 
 function StageCoach()
     Citizen.CreateThread(function()
@@ -56,12 +57,18 @@ Citizen.CreateThread(function()
     Wait(10)
     for _, zone in pairs(Config.Marker) do
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<1 then
-                StageCoach()
-                menu_trigger_loc = zone.name
+                if active == false then
+                    StageCoach()
+                    menu_trigger_loc = zone.name
+                    active = true
+                end
             elseif GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>2 and zone.name == menu_trigger_loc then
-                Wait(200)
-                PromptDelete(StageCoachPrompt)
-                print(zone.name)
+                if active == true then
+                    Wait(200)
+                    PromptDelete(StageCoachPrompt)
+                    print(zone.name)
+                    active = false
+                end
             end
     end
 end
