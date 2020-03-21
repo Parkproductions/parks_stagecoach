@@ -33,11 +33,7 @@ end)
 
 -- Prompt Menu
 
-
-
-Citizen.CreateThread(function()
-
-    local StageCoachPrompt
+local StageCoachPrompt
 
 function StageCoach()
     Citizen.CreateThread(function()
@@ -55,6 +51,7 @@ function StageCoach()
     end)
 end
 
+Citizen.CreateThread(function()
     while true do
     Wait(10)
     for _, zone in pairs(Config.Marker) do
@@ -63,7 +60,10 @@ end
                 menu_trigger_loc = zone.name
             end
     end
+    end
 
+    while true do
+    Wait(10)
     for _, zone in pairs(Config.Marker) do
             
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>2 and zone.name == menu_trigger_loc  then
@@ -75,6 +75,7 @@ end
             end
     end
     end
+    
 end)
 
 
