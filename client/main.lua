@@ -121,6 +121,7 @@ Citizen.CreateThread(function()
                         print('true_bra')
                         OpenStageCoachMenu()
                         active = true
+                        break
     end
 end
 end)
