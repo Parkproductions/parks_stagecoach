@@ -112,16 +112,15 @@ Citizen.CreateThread(function()
                 if active == true then
                     Wait(200)
                     PromptDelete(StageCoachPrompt)
-                    print(zone.name)
+                    
                     active = false
                 end
             end
     end
     if PromptHasHoldModeCompleted(StageCoachPrompt) then
-                        print('true_bra')
                         OpenStageCoachMenu()
                         active = true
-                        break
+                        PromptDelete(StageCoachPrompt)
     end
 end
 end)
