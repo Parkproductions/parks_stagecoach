@@ -39,28 +39,28 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('Stagecoach') then
             WarMenu.Display()
-            if WarMenu.Button("Borrow Coach") then
-                TriggerServerEvent("parks_stagecoach:borrow_stagecoach", 5)
+            if WarMenu.Button("Borrow Coach - $0 ") then
+                TriggerServerEvent("parks_stagecoach:borrow_stagecoach", 0)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
-            elseif WarMenu.Button("Buy Small Stage Coach") then
-                TriggerServerEvent("parks_stagecoach:buy_small_stagecoach", 10)
+            elseif WarMenu.Button("Buy Small Stage Coach - $100") then
+                TriggerServerEvent("parks_stagecoach:buy_small_stagecoach", 100)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
-            elseif WarMenu.Button("Buy Medium Stage Coach") then
-                TriggerServerEvent("parks_stagecoach:buy_medium_stagecoach", 25)
+            elseif WarMenu.Button("Buy Medium Stage Coach - $500") then
+                TriggerServerEvent("parks_stagecoach:buy_medium_stagecoach", 500)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
-            elseif WarMenu.Button("Buy Large Stage Coach") then
-                TriggerServerEvent("parks_stagecoach:buy_large_stagecoach", 50)
+            elseif WarMenu.Button("Buy Large Stage Coach - $850") then
+                TriggerServerEvent("parks_stagecoach:buy_large_stagecoach", 850)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
-            elseif WarMenu.Button("Buy Deluxe Stage Coach") then
-                TriggerServerEvent("parks_stagecoach:buy_deluxe_stagecoach", 100)
+            elseif WarMenu.Button("Buy Deluxe Stage Coach - $1000") then
+                TriggerServerEvent("parks_stagecoach:buy_deluxe_stagecoach", 1000)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
