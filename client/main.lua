@@ -81,7 +81,7 @@ Citizen.CreateThread(function()
 
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<1 then
                 StageCoach()
-            else
+            elseif GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>2 then
                 Wait(200)
                 PromptDelete(StageCoachPrompt)
             end
