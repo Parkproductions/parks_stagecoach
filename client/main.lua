@@ -56,7 +56,7 @@ Citizen.CreateThread(function()
     Wait(10)
     for _, zone in pairs(Config.Marker) do
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<1 then
-                StageCoach()
+                PromptDelete(StageCoachPrompt)
                 menu_trigger_loc = zone.name
             end
     end
@@ -66,7 +66,7 @@ Citizen.CreateThread(function()
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>2 and zone.name == menu_trigger_loc  then
                 
                     Wait(200)
-                    PromptDelete(StageCoachPrompt)
+                    
                     print(zone.name)
                 
             end
