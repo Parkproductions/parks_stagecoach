@@ -107,6 +107,7 @@ Citizen.CreateThread(function()
                     menu_trigger_loc = zone.name
                     active = true
                     if PromptHasHoldModeCompleted(StageCoachPrompt) then
+                        print('true_bra')
                         OpenStageCoachMenu()
                     end
                 end
