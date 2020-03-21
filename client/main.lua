@@ -80,6 +80,7 @@ end
 
 local StageCoachPrompt
 local active = false
+print(active)
 
 function StageCoach()
     Citizen.CreateThread(function()
@@ -119,8 +120,8 @@ Citizen.CreateThread(function()
     end
     if PromptHasHoldModeCompleted(StageCoachPrompt) then
                         OpenStageCoachMenu()
-                        active = true
                         PromptDelete(StageCoachPrompt)
+                        active = true
     end
 end
 end)
