@@ -32,6 +32,7 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 end)
 
 -- Prompt Menu
+local StageCoachPrompt
 
 function StageCoach()
     Citizen.CreateThread(function()
