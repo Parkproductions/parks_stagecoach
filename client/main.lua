@@ -33,18 +33,18 @@ end)
 
 -- Prompt Menu
 
-function AddGang()
+function StageCoach()
     Citizen.CreateThread(function()
-        local str = 'Add to gang'
-        AddGangPrompt = PromptRegisterBegin()
-        PromptSetControlAction(AddGangPrompt, 0xC7B5340A)
+        local str = 'Stage Coach Co.'
+        StageCoachPrompt = PromptRegisterBegin()
+        PromptSetControlAction(StageCoachPrompt, 0xC7B5340A)
         str = CreateVarString(10, 'LITERAL_STRING', str)
-        PromptSetText(AddGangPrompt, str)
-        PromptSetEnabled(AddGangPrompt, true)
-        PromptSetVisible(AddGangPrompt, true)
-        PromptSetHoldMode(AddGangPrompt, true)
-        PromptSetGroup(AddGangPrompt, group)
-        PromptRegisterEnd(AddGangPrompt)
+        PromptSetText(StageCoachPrompt, str)
+        PromptSetEnabled(StageCoachPrompt, true)
+        PromptSetVisible(StageCoachPrompt, true)
+        PromptSetHoldMode(StageCoachPrompt, true)
+        PromptSetGroup(StageCoachPrompt, group)
+        PromptRegisterEnd(StageCoachPrompt)
  
     end)
 end
@@ -77,12 +77,16 @@ Citizen.CreateThread(function()
     Wait(10)
     
     	for _, zone in pairs(Config.Marker) do
+
+            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<1 then
+                StageCoach()
+            end
+
     		if npc_spawned[zone.name] == false then
                 
     			if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then
     				TriggerEvent("parks_stagecoach:CreateNPC", zone)
                     npc_spawned[zone.name] = true                   
-                    AddGang()
     			end
     		end
     	end
