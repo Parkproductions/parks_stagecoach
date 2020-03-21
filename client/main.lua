@@ -33,7 +33,11 @@ end)
 
 -- Prompt Menu
 
-StageCoachPrompt
+
+
+Citizen.CreateThread(function()
+
+    local StageCoachPrompt
 
 function StageCoach()
     Citizen.CreateThread(function()
@@ -51,7 +55,6 @@ function StageCoach()
     end)
 end
 
-Citizen.CreateThread(function()
     while true do
     Wait(10)
     for _, zone in pairs(Config.Marker) do
