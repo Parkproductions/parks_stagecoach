@@ -82,7 +82,7 @@ Citizen.CreateThread(function()
                 StageCoach()
             else
                 Wait(200)
-                PromptDelete(StageCoach)
+                PromptDelete(StageCoachPrompt)
             end
 
     		if npc_spawned[zone.name] == false then
