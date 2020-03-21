@@ -82,11 +82,11 @@ Citizen.CreateThread(function()
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<1 then
                 StageCoach()
                 local menu_trigger_loc = zone.name
-                print(menu_trigger_loc)
-            --[[elseif GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>2 then
+                
+            elseif (GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>2 and zone.name == menu_trigger_loc) then
                 Wait(200)
                 PromptDelete(StageCoachPrompt)
-            --]]end
+            end
 
     		if npc_spawned[zone.name] == false then
                 
