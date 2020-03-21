@@ -106,10 +106,7 @@ Citizen.CreateThread(function()
                     StageCoach()
                     menu_trigger_loc = zone.name
                     active = true
-                    if PromptHasHoldModeCompleted(StageCoachPrompt) then
-                        print('true_bra')
-                        OpenStageCoachMenu()
-                    end
+
                 end
             elseif GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>1.5 and zone.name == menu_trigger_loc then
                 if active == true then
@@ -120,6 +117,10 @@ Citizen.CreateThread(function()
                 end
             end
     end
+    if PromptHasHoldModeCompleted(StageCoachPrompt) then
+                        print('true_bra')
+                        OpenStageCoachMenu()
+                    end
 end
 end)
 
