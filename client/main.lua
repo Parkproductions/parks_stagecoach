@@ -67,6 +67,7 @@ Citizen.CreateThread(function()
                 if zone.name == menu_trigger_loc then
                     Wait(200)
                     PromptDelete(StageCoachPrompt)
+                    print(zone.name)
                 end
             end
     end
