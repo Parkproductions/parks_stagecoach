@@ -120,7 +120,8 @@ Citizen.CreateThread(function()
     if PromptHasHoldModeCompleted(StageCoachPrompt) then
                         print('true_bra')
                         OpenStageCoachMenu()
-                    end
+                        active = true
+    end
 end
 end)
 
