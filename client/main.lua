@@ -45,7 +45,7 @@ Citizen.CreateThread(function()
                 Wait(600)
                 WarMenu.Display()
             elseif WarMenu.Button("Buy Small Stage Coach - $100") then
-                TriggerServerEvent("parks_stagecoach:buy_small_stagecoach", 100)
+                TriggerServerEvent("parks_stagecoach:buy_small_stagecoach", -100)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
