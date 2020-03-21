@@ -31,6 +31,51 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
     
 end)
 
+-- Warmenu Stage Coach
+
+Citizen.CreateThread(function()
+    WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
+    while true do
+        Citizen.Wait(0)
+        if WarMenu.IsMenuOpened('Stagecoach') then
+            WarMenu.Display()
+            if WarMenu.Button("Borrow Coach") then
+                TriggerServerEvent("parks_stagecoach:borrow_stagecoach", 5)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            elseif WarMenu.Button("Buy Small Stage Coach") then
+                TriggerServerEvent("parks_stagecoach:buy_small_stagecoach", 10)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            elseif WarMenu.Button("Buy Medium Stage Coach") then
+                TriggerServerEvent("parks_stagecoach:buy_medium_stagecoach", 25)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            elseif WarMenu.Button("Buy Large Stage Coach") then
+                TriggerServerEvent("parks_stagecoach:buy_large_stagecoach", 50)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            elseif WarMenu.Button("Buy Deluxe Stage Coach") then
+                TriggerServerEvent("parks_stagecoach:buy_deluxe_stagecoach", 100)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            end
+
+        end
+    end
+end)
+
+
+
+function OpenStageCoachMenu()
+    WarMenu.OpenMenu('Stagecoach')
+end
+
 -- Prompt Menu
 
 local StageCoachPrompt
@@ -61,6 +106,9 @@ Citizen.CreateThread(function()
                     StageCoach()
                     menu_trigger_loc = zone.name
                     active = true
+                    if PromptHasHoldModeCompleted(StageCoachPrompt) then
+                        OpenStageCoachMenu()
+                    end
                 end
             elseif GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>1.5 and zone.name == menu_trigger_loc then
                 if active == true then
