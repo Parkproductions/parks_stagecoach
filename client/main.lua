@@ -80,6 +80,9 @@ Citizen.CreateThread(function()
 
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<1 then
                 StageCoach()
+            else
+                Wait(200)
+                PromptDelete(StageCoach)
             end
 
     		if npc_spawned[zone.name] == false then
