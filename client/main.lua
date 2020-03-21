@@ -33,7 +33,7 @@ end)
 
 -- Prompt Menu
 
-local StageCoachPrompt
+StageCoachPrompt
 
 function StageCoach()
     Citizen.CreateThread(function()
