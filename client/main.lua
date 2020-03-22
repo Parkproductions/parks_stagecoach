@@ -31,6 +31,20 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
     
 end)
 
+-- StartCoachJob
+
+RegisterNetEvent("parks_stagecoach:StartCoachJob")
+AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
+    StartGpsMultiRoute(6, false, true)
+    AddPointToGpsMultiRoute(1269.4, -1315.75, 79.4, 38.42),
+    AddPointToGpsMultiRoute(1369.4, -1115.75, 79.4, 38.42),
+    SetGpsMultiRouteRender(true)
+
+
+end)
+
+
+
 -- Warmenu Stage Coach
 
 Citizen.CreateThread(function()
@@ -221,7 +235,8 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     Wait(3000)
 
     EndStageCoachCam()
-
+    TriggerEvent("parks_stagecoach:StartCoachJob")
+    
 end)
 
 
