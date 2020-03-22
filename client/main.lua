@@ -198,6 +198,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     SetPedIntoVehicle(player, spawn_coach, -1)
     Wait(500)
     DoScreenFadeIn(500)
+    SetCinematicModeActive(true)
     SetCamActiveWithInterp(cam_a, cam_b, 1000, 1, 1)
     RenderScriptCams(1, 0, cam_a,  true,  true)
     
