@@ -193,7 +193,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     SetCamRot(cam_a, 0.0, 0.0, 38.42,  true)
 
     cam_b = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
-    SetCamCoord(cam_b,  1269.4, -1313.75, 79.4)
+    SetCamCoord(cam_b,  1269.4, -1311.75, 79.4)
     SetCamRot(cam_b, 0.0, 0.0, 38.42,  true)
 
     
