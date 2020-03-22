@@ -14,6 +14,20 @@ Config.StageCoachSpawn = {
   ["Rhodes"] = { x = 1269.4, y = -1315.75, z = 76.4, h = 38.42}
 }
 
+Config.Cams = {
+	["Saint Dennis"] = {
+		["cam_a"] = {x = 2684.95, y = -1437.48, z = 45.73, h = 112.89},
+		["cam_b"] = {x = 2684.95, y = -1436.48, z = 45.73, h = 112.89}
+	},
+
+	["Rhodes"] = { 
+		["cam_a"] = {x = 1269.4, y = -1315.75, z = 79.4, h = 38.42},
+		["cam_b"] = {x = 1269.4, y = -1314.75, z = 79.4, h = 38.42}
+
+	}
+
+}
+
 Config.StagecoachJobSprite = 1560611276 -- Stage Coach Job Blip sprite
 
 Config.SetJob = true -- Set job after Start working
