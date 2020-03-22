@@ -153,9 +153,13 @@ end)
 
 -- Client Event for Wagon Spawn
 
-RegisterNetEvent("parks_stagecoach:SpawnWagon")
-AddEventHandler("parks_stagecoach:SpawnWagon", function (stagecoach_cost)
-    print(stagecoach_cost)
+RegisterNetEvent("parks_stagecoach:SpawnBorrowedWagon")
+AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost)
+    
+    
+    local stage_coach =  GetHashKey("BUGGY01")
+    spawn_coach = CreateVehicle(stage_coach, 1262.9, -1321.06, 76.89, 316.94, 0, 0, 0, false, false, 0, 0)
+    SetEntityAsMissionEntity(spawn_coach, true, true)
 
 end)
 
