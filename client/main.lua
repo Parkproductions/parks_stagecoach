@@ -80,7 +80,7 @@ end
 
 local StageCoachPrompt
 local active = false
-print(active)
+
 
 function StageCoach()
     Citizen.CreateThread(function()
@@ -160,6 +160,9 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     local stage_coach =  GetHashKey("BUGGY01")
     print(stage_coach)
     RequestModel(stage_coach)
+    while not HasModelLoaded(stage_coach) do
+        Citizen.Wait(0)
+    end
     spawn_coach = CreateVehicle(stage_coach, 1262.9, -1321.06, 76.89, 316.94, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
 
