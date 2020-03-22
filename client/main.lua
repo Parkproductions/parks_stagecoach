@@ -154,9 +154,7 @@ end)
 -- Client Event for Wagon Spawn
 
 RegisterNetEvent("parks_stagecoach:SpawnWagon")
-AddEventHandler("parks_stagecoach:SpawnWagon", function (user, stagecoach_cost)
-    print(user)
-    print(stagecoach_cost)
+AddEventHandler("parks_stagecoach:SpawnWagon", function ()
     print('fart')
 
 end)
