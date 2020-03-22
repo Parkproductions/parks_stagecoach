@@ -41,7 +41,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
     AddPointToGpsMultiRoute(1738.37, -1373.53, 43.51)
     SetGpsMultiRouteRender(true)
 
-    p1 = N_0x554d9d53f696d002(4083961149, 1738.37, -1373.53, 43.51)
+    p1 = N_0x554d9d53f696d002(1664425300, 1738.37, -1373.53, 43.51)
                     SetBlipSprite(p1, Config.DeliverySprite, 1)
                     Citizen.InvokeNative(0x9CB1A1623062F402, p1, "Delivery")
                 isDelivering = true
