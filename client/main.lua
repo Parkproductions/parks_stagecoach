@@ -168,7 +168,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     SetModelAsNoLongerNeeded(stage_coach)
     print(spawn_coach)
 
-    SetPedIntoVehicle(PlayerPedId(), stage_coach, 1,)
+    SetPedIntoVehicle(PlayerPedId(), stage_coach, 1)
 
     
     
