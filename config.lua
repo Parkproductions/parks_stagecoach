@@ -10,7 +10,7 @@ Config.Marker = {
 }
 
 Config.StageCoachSpawn = {
-  ["Saint Dennis"] = {x = 2683.95, y = -1441.86, z = 46.16, h = 21.54},
+  ["Saint Dennis"] = {x = 2684.93, y = -1436.46, z = 46.07, h = 112.89},
   ["Rhodes"] = { x = 1269.4, y = -1315.75, z = 76.4, h = 38.42}
 }
 
