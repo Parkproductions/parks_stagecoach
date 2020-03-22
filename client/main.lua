@@ -151,5 +151,14 @@ Citizen.CreateThread(function()
     end
 end)              
 
+-- Client Event for Wagon Spawn
+
+RegisterNetEvent("parks_stagecoach:SpawnWagon")
+AddEventHandler("parks_stagecoach:SpawnWagon", function (user, stagecoach_cost)
+    print(user)
+    pring(stage_coach)
+end)
+
+
 
         
