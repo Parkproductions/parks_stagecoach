@@ -202,12 +202,12 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     cam_b = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1279.4, -1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)--]]
 
     cam_a = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
-    SetCamCoord(cam_a,  Config.Cam[zone.name]["cam_a"].x, Config.Cam[zone.name]["cam_a"].y, Config.Cam[zone.name]["cam_a"].z)  
-    SetCamRot(cam_a, 0.0, 0.0, Config.Cam[zone.name]["cam_a"].h,  true)
+    SetCamCoord(cam_a,  Config.Cam[zone_name]["cam_a"].x, Config.Cam[zone_name]["cam_a"].y, Config.Cam[zone_name]["cam_a"].z)  
+    SetCamRot(cam_a, 0.0, 0.0, Config.Cam[zone_name]["cam_a"].h,  true)
 
     cam_b = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
-    SetCamCoord(cam_b,  Config.Cam[zone.name]["cam_b"].x, Config.Cam[zone.name]["cam_b"].y, Config.Cam[zone.name]["cam_b"].z)
-    SetCamRot(cam_b, 0.0, 0.0, Config.Cam[zone.name]["cam_b"].h,  true)
+    SetCamCoord(cam_b,  Config.Cam[zone_name]["cam_b"].x, Config.Cam[zone_name]["cam_b"].y, Config.Cam[zone_name]["cam_b"].z)
+    SetCamRot(cam_b, 0.0, 0.0, Config.Cam[zone_name]["cam_b"].h,  true)
 
     
     Wait(500)
