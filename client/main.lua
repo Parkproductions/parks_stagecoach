@@ -156,7 +156,9 @@ end)
 RegisterNetEvent("parks_stagecoach:SpawnWagon")
 AddEventHandler("parks_stagecoach:SpawnWagon", function (user, stagecoach_cost)
     print(user)
-    pring(stage_coach)
+    print(stagecoach_cost)
+    print('fart')
+
 end)
 
 
