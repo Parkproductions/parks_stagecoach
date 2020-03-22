@@ -163,9 +163,9 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     while not HasModelLoaded(stage_coach) do
         Citizen.Wait(0)
     end
-    spawn_coach = CreateVehicle(stage_coach, 1262.9, -1321.06, 76.89, 316.94, true, false)
+    spawn_coach = CreateVehicle(stage_coach, 1269.4, -1315.75, 76.4, 38.42, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
-
+    SetModelAsNoLongerNeeded(stage_coach)
     print(spawn_coach)
     
     
