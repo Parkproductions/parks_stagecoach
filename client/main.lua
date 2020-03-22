@@ -170,10 +170,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     local player = PlayerPedId()
     DoScreenFadeOut(500)
 
---[[    local overhead_a = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1269.4, -1315.75, 86.4, 0, 0, 0, 90, true, 0)
-    local overhead_b = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1279.4, -1315.75, 86.4, 0, 0, 0, 90, true, 0)
-    SetCamActive(overhead_a, true)--]]
-    --[[SetCamActiveWithInterp(overhead_a, overhead_b, 10, 1, 0)--]]
+
 
     --[[cam_a = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1269.4,-1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)
     cam_b = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1279.4, -1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)--]]
@@ -186,13 +183,6 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     SetCamCoord(cam_b,  1279.4, -1315.75, 86.4)
     SetCamRot(cam_b, 0.0, 0.0, 38.42,  true)
 
-                                        
-                                            
-    --[[SetCamActive(cam, true)--]]
-
-   
-    --[[RenderScriptCams(true, false, 1, true, true)--]]
-
     
     Wait(500)
     SetPedIntoVehicle(player, spawn_coach, -1)
@@ -203,7 +193,8 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     IsCinematicCamRendering(true)
     RenderScriptCams(1, 0, cam_a,  true,  true)
     
-
+    DestroyCam(cam_b, false)
+    
 end)
 
 
