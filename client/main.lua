@@ -200,8 +200,8 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     DoScreenFadeIn(500)
 
     SetCamActiveWithInterp(cam_a, cam_b, 1000, 1, 1)
-    SetCinematicModeActive(1)
-    RenderScriptCams(1, 0, cam_a,  true,  true)
+    
+    RenderScriptCams(1, 1, cam_a,  true,  true)
     
 
 end)
