@@ -190,7 +190,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
                                             
     --[[SetCamActive(cam, true)--]]
 
-    SetCamActiveWithInterp(cam_a, cam_b, 500, 1, 1)
+    SetCamActiveWithInterp(cam_a, cam_b, 1000, 1, 1)
     RenderScriptCams(1, 0, cam_a,  true,  true)
     --[[RenderScriptCams(true, false, 1, true, true)--]]
 
