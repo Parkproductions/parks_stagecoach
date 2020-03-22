@@ -35,13 +35,13 @@ end)
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
-    StartGpsMultiRoute(6, false, true)
-    AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)
-    AddPointToGpsMultiRoute(1738.37, -1373.53, 43.51)
-    AddPointToGpsMultiRoute(1876.06, -1348.19, 42.04)
+    StartGpsCustomRoute(6, false, true)
+    AddPointToGpsCustomRoute(1300.97, -1161.06, 81.08)
+    AddPointToGpsCustomRoute(1738.37, -1373.53, 43.51)
+    --[[AddPointToGpsMultiRoute(1876.06, -1348.19, 42.04)
     AddPointToGpsMultiRoute(1832.48, -1253.81, 42.61)
-    AddPointToGpsMultiRoute(1953.65, -1208.98, 41.47)
-    SetGpsMultiRouteRender(true)
+    AddPointToGpsMultiRoute(1953.65, -1208.98, 41.47)--]]
+    SetGpsCustomRouteRender(true)
 
 
 end)
