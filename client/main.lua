@@ -178,11 +178,11 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     --[[cam_a = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1269.4,-1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)
     cam_b = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1279.4, -1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)--]]
 
-    cam_a = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA", 1)
+    cam_a = CreateCam("DEFAULT_ANIMATED_CAMERA", 1)
     SetCamCoord(cam_a,  1269.4,-1315.75, 86.4)
     SetCamRot(cam_a, 0.0, 0.0, 38.42,  true)
 
-    cam_b = CreateCam("DEFAULT_SCRIPTED_FLY_CAMERA", 1)
+    cam_b = CreateCam("DEFAULT_ANIMATED_CAMERA", 1)
     SetCamCoord(cam_b,  1279.4, -1315.75, 86.4)
     SetCamRot(cam_b, 0.0, 0.0, 38.42,  true)
 
