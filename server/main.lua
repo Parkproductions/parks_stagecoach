@@ -6,6 +6,6 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function (stagecoach_cost)
 	TriggerEvent('redemrp:getPlayerFromId', _source, function(user)
 	user.removeMoney(stagecoach_cost)
 	end)
-	TriggerClientEvent("parks_stagecoach:SpawnWagon", stagecoach_cost, true)
+	TriggerClientEvent("parks_stagecoach:SpawnWagon", 1000, true)
 	
 end)
