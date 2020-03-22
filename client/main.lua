@@ -151,6 +151,19 @@ Citizen.CreateThread(function()
     end
 end)              
 
+-- Destroy Cams
+
+function EndStageCoachCam()
+    ClearFocus()
+
+    RenderScriptCams(false, false, 0, true, false)
+    DestroyCam(cam_a, false)
+    DestroyCam(cam_b, false)
+
+    cam_a = nil
+    cam_b = nil
+end
+
 -- Client Event for Wagon Spawn
 
 RegisterNetEvent("parks_stagecoach:SpawnBorrowedWagon")
@@ -193,7 +206,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     IsCinematicCamRendering(true)
     RenderScriptCams(1, 0, cam_a,  true,  true)
     
-    
+    EndStageCoachCam()
 
 end)
 
