@@ -158,7 +158,10 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     
     
     local stage_coach =  GetHashKey("BUGGY01")
-    spawn_coach = CreateVehicle(stage_coach, 1262.9, -1321.06, 76.89, 316.94, 0, 0, 0, false, false, 0, 0)
+    print(stage_coach)
+    RequestVehicleAsset(stage_coach)
+    spawn_coach = CreateVehicle(stage_coach, 1262.9, -1321.06, 76.89, 316.94)
+    Citizen.InvokeNative( 0x283978A15512B2FE , spawn_coach, true )
     SetEntityAsMissionEntity(spawn_coach, true, true)
 
 end)
