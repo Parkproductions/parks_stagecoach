@@ -179,9 +179,9 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     cam_b = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1279.4, -1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)
     --[[SetCamActive(cam, true)--]]
     SetCamActiveWithInterp(cam_a, cam_b, 10, 1, 0)
-    RenderScriptCams(true, false, 1, true, true)
+    --[[RenderScriptCams(true, false, 1, true, true)--]]
 
-    print(overhead_a)
+    
     Wait(500)
     SetPedIntoVehicle(player, spawn_coach, -1)
     Wait(500)
