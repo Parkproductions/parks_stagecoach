@@ -167,7 +167,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     SetVehicleOnGroundProperly(spawn_coach)
     SetModelAsNoLongerNeeded(stage_coach)
     print(spawn_coach)
-    
+    SetEntityCoords(PlayerPedId(), 1269.4, -1315.75, 76.4)
     
 
 end)
