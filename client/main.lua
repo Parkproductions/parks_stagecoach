@@ -172,7 +172,8 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
 
     local overhead_a = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1269.4, -1315.75, 86.4, 0, 0, 0, 90, true, 0)
     local overhead_b = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1279.4, -1315.75, 86.4, 0, 0, 0, 90, true, 0)
-    SetCamActiveWithInterp(overhead_a, overhead_b, 10, 1, 0)
+    SetCamActive(overhead_a, true)
+    --[[SetCamActiveWithInterp(overhead_a, overhead_b, 10, 1, 0)--]]
 
     print(overhead_a)
     Wait(500)
