@@ -36,8 +36,8 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
     StartGpsMultiRoute(6, false, true)
-    AddPointToGpsMultiRoute(1269.4, -1315.75, 79.4, 38.42),
-    AddPointToGpsMultiRoute(1369.4, -1115.75, 79.4, 38.42),
+    AddPointToGpsMultiRoute(1269.4, -1315.75, 79.4, 38.42)
+    AddPointToGpsMultiRoute(1369.4, -1115.75, 79.4, 38.42)
     SetGpsMultiRouteRender(true)
 
 
@@ -236,7 +236,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
 
     EndStageCoachCam()
     TriggerEvent("parks_stagecoach:StartCoachJob")
-    
+
 end)
 
 
