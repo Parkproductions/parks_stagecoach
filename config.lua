@@ -9,6 +9,11 @@ Config.Marker = {
   ["rhodes"] = {name = 'Rhodes', sprite = 0x3C5469D5, x = 1262.9, y = -1321.06, z = 76.89, h = 316.94}
 }
 
+Config.StageCoachSpawn = {
+  ["saint_dennis"] = {x = 2683.95, y = -1441.86, z = 46.16, h = 21.54},
+  ["rhodes"] = { x = 1269.4, y = -1315.75, z = 76.4, h = 38.42}
+}
+
 Config.StagecoachJobSprite = 1560611276 -- Stage Coach Job Blip sprite
 
 Config.SetJob = true -- Set job after Start working

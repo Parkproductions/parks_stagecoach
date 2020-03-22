@@ -102,7 +102,7 @@ Citizen.CreateThread(function()
     while true do
     Wait(10)
     for _, zone in pairs(Config.Marker) do
-            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<1 then
+            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
                 if active == false then
                     StageCoach()
                     menu_trigger_loc = zone.name
@@ -176,7 +176,20 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     while not HasModelLoaded(stage_coach) do
         Citizen.Wait(0)
     end
-    spawn_coach = CreateVehicle(stage_coach, 1269.4, -1315.75, 76.4, 38.42, true, false)
+
+    while true do
+        for _, zone in pairs(Config.Marker) do
+            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
+                zone_name = zone.name
+            end
+        end
+        if zone_name then
+            break
+        end
+    end
+
+
+    spawn_coach = CreateVehicle(stage_coach, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
     SetModelAsNoLongerNeeded(stage_coach)
     print(spawn_coach)
@@ -193,7 +206,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     SetCamRot(cam_a, 0.0, 0.0, 38.42,  true)
 
     cam_b = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
-    SetCamCoord(cam_b,  1269.4, -1311.75, 79.4)
+    SetCamCoord(cam_b,  1269.4, -1314.75, 79.4)
     SetCamRot(cam_b, 0.0, 0.0, 38.42,  true)
 
     
