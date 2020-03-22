@@ -170,10 +170,14 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     local player = PlayerPedId()
     DoScreenFadeOut(500)
 
-    local overhead_a = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1269.4, -1315.75, 86.4, 0, 0, 0, 90, true, 0)
+--[[    local overhead_a = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1269.4, -1315.75, 86.4, 0, 0, 0, 90, true, 0)
     local overhead_b = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1279.4, -1315.75, 86.4, 0, 0, 0, 90, true, 0)
-    SetCamActive(overhead_a, true)
+    SetCamActive(overhead_a, true)--]]
     --[[SetCamActiveWithInterp(overhead_a, overhead_b, 10, 1, 0)--]]
+
+    cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1269.4,-1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)
+    SetCamActive(cam, true)
+    RenderScriptCams(true, false, 1, true, true)
 
     print(overhead_a)
     Wait(500)
