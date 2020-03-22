@@ -168,8 +168,11 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     SetModelAsNoLongerNeeded(stage_coach)
     print(spawn_coach)
     local player = PlayerPedId()
+    DoScreenFadeOut(500)
+    Wait(50)
     SetPedIntoVehicle(player, spawn_coach, -1)
-
+    Wait(50)
+    DoScreenFadeIn(500)
     
     
 
