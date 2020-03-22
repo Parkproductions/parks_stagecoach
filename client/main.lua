@@ -193,7 +193,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     IsCinematicCamRendering(true)
     RenderScriptCams(1, 0, cam_a,  true,  true)
     
-    DestroyCam(cam_a, false)
+    
 
 end)
 
