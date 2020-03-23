@@ -34,9 +34,9 @@ end)
 -- Fare
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
 AddEventHandler("parks_stagecoach:successful_dropoff", function (zone, spawn_coach)
-    Wait(1000)
+
     TriggerServerEvent("parks_stagecoach:pay_fare", 10)
-    Wait(10000)
+
 end)
 
 -- -- PassengerOnboard
@@ -56,12 +56,14 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
         if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<5 then
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
-            TriggerEvent("parks_stagecoach:successful_dropoff")
+            
             local passenger_onboard = false
             
         end
     
         if passenger_onboard == false then
+            TriggerEvent("parks_stagecoach:successful_dropoff")
+            Wait(10000)
             break
         end
     end
