@@ -45,7 +45,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
     while true do
     Wait(10)
         
-        if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<1 then
+        if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<5 then
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
             local passenger_onboard = false
@@ -117,12 +117,12 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 0, 2.0, 1, 0)
 
             local passenger_onboard = true
-
+            TriggerEvent("parks_stagecoach:PassengerOnboard", zone)
 
         end
 
         if passenger_onboard == true then
-            TriggerEvent("parks_stagecoach:PassengerOnboard", zone)
+            
             break
         end
     end
