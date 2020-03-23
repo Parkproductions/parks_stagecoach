@@ -86,7 +86,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             print(npc_group)
 
             Wait(1000)       
-            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 1, 2.0, 1, 0)
+            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 0, 1.5, 1, 0)
 
             local passenger_onboard = true
 
@@ -242,7 +242,7 @@ RegisterNetEvent("parks_stagecoach:SpawnBorrowedWagon")
 AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost)
     
     
-    local stage_coach =  GetHashKey("STAGECOACH006X")
+    local stage_coach =  GetHashKey("BUGGY01")
     print(stage_coach)
     RequestModel(stage_coach)
     while not HasModelLoaded(stage_coach) do
