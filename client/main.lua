@@ -228,7 +228,7 @@ RegisterNetEvent("parks_stagecoach:SpawnBorrowedWagon")
 AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost)
     
     
-    local stage_coach =  GetHashKey("BUGGY01")
+    local stage_coach =  GetHashKey("STAGECOACH003X")
     print(stage_coach)
     RequestModel(stage_coach)
     while not HasModelLoaded(stage_coach) do
