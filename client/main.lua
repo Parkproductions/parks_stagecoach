@@ -43,7 +43,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
 
     local p1 = BlipAddForCoord(1664425300, Config.Destination.x, Config.Destination.y, Config.Destination.z)
 
-    SetBlipSprite(p1, Config.Destination.sprite, 1)
+    SetBlipSprite(p1, Config.Destination.sprite, 5)
     SetBlipScale(p1, 0.2)
     SetBlipColour(p1, 5)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination.name)
