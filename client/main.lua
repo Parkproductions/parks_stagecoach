@@ -34,8 +34,13 @@ end)
 -- Fare
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
 AddEventHandler("parks_stagecoach:successful_dropoff", function (zone, spawn_coach)
-
+    while true do
     TriggerServerEvent("parks_stagecoach:pay_fare", 10)
+    local fare_paid = true
+    if fare_paid == true then
+        break
+    end
+    end
 
 end)
 
@@ -62,8 +67,6 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
         end
     
         if passenger_onboard == false then
-            TriggerEvent("parks_stagecoach:successful_dropoff")
-            Wait(10000)
             break
         end
     end
