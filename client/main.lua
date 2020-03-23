@@ -80,9 +80,9 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             
             TaskEnterVehicle(passenger_1_female, spawn_wagon, -1, 0, 1.0, 1, 0)
             
-            local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
+            --[[local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
             SetRelationshipBetweenGroups(0 , GetHashKey("PLAYER") , npc_group)
-            Wait(1000)
+            Wait(1000)--]]
             print(npc_group)
             print(GetHashKey("PLAYER"))
             local passenger_onboard = true
