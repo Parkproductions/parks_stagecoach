@@ -75,7 +75,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
     Wait(10)
         if GetDistanceBetweenCoords(Config.Destination.x, Config.Destination.y, Config.Destination.z,GetEntityCoords(PlayerPedId()),false)<5 then
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
-            TaskEnterVehicle(passenger_1_female, spawn_coach, 20000, 1, 2, 1, 1)
+            TaskEnterVehicle(passenger_1_female, spawn_coach, 20000, 0, 2, 1, 0)
             print(spawn_coach)
             passenger_onboard = true
         end
