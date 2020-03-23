@@ -44,7 +44,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
     local p1 = N_0x554d9d53f696d002(1664425300, Config.Destination.x, Config.Destination.y, Config.Destination.z)
     SetBlipSprite(p1, Config.Destination.sprite, 1)
     SetBlipScale(p1, 0.2)
-    SetBlipColour(p1, 4)
+    SetBlipColour(p1.blip, 4)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination.name)
     isTransfering = true
 
