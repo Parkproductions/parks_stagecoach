@@ -94,7 +94,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
         end
 
         if passenger_onboard == true then
-            TriggerEvent("parks_stagecoach:CreateNPC", zone)
+            TriggerEvent("parks_stagecoach:PassengerOnboard", zone)
             break
         end
     end
