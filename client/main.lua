@@ -36,6 +36,7 @@ RegisterNetEvent("parks_stagecoach:successful_dropoff")
 AddEventHandler("parks_stagecoach:successful_dropoff", function (zone, spawn_coach)
     Wait(1000)
     TriggerServerEvent("parks_stagecoach:pay_fare", 10)
+    Wait(10000)
 end)
 
 -- -- PassengerOnboard
