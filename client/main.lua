@@ -78,7 +78,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false) 
             local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
-            SetVehicleUndriveable(spawn_coach, true)
+            
             SetRelationshipBetweenGroups(0 , GetHashKey("PLAYER") , npc_group)
             print(npc_group)
             Wait(1000)       
