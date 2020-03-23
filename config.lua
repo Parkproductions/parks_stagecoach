@@ -39,4 +39,7 @@ Config.Coords = {
 }
 
 --[[Config.Destination = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 1738.37, y = -1373.53, z = 44.05} --]]
-Config.Destination = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 1733.89, y = -1317.13, z = 122.41} 
+Config.Destination = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 1373.89, y = -1317.13, z = 122.41} 
+
+
+ 
