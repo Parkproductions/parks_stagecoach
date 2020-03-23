@@ -62,7 +62,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
                     end
                 
                 passenger_1_female = CreatePed( model, 1748.56, -1371.16, 44.04, 108.51, 1, 1 )
-                print(passenger_1_female)
+              
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_spawned = true
             end
@@ -75,8 +75,10 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
     Wait(10)
         if GetDistanceBetweenCoords(Config.Destination.x, Config.Destination.y, Config.Destination.z,GetEntityCoords(PlayerPedId()),false)<5 then
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
-            TaskEnterVehicle(passenger_1_female, spawn_coach, 20000, 0, 2, 1, 0)
-            print(spawn_coach)
+            local seat = AreAnyVehicleSeatsFree(spawn_coach)
+            print(seat)
+            TaskEnterVehicle(passenger_1_female, spawn_coach, 20000, 1, 2, 1, 0)
+            
             passenger_onboard = true
         end
         if passenger_onboard == true then
