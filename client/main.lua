@@ -41,7 +41,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
     AddPointToGpsMultiRoute(1738.37, -1373.53, 43.51)
     SetGpsMultiRouteRender(true)
 
-    local p1 = BlipAddForCoord(1664425300, Config.Destination.x, Config.Destination.y, Config.Destination.z)
+    local p1 = N_0x554d9d53f696d002(1664425300, Config.Destination.x, Config.Destination.y, Config.Destination.z)
 
     SetBlipSprite(p1, Config.Destination.sprite, 5)
     SetBlipScale(p1, 0.2)
