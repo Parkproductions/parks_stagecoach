@@ -34,7 +34,7 @@ end)
 -- StartCoachJob
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
-AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
+AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
     
     StartGpsMultiRoute(1, false, true)
     AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)
