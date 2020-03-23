@@ -88,7 +88,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
 
         end
 
-        local Ped = GetPedInVehicleSeat(spawn_coach , 1)
+        local Ped = GetPedInVehicleSeat(spawn_coach, -1)
         print('seat')
         print(Ped)
 
