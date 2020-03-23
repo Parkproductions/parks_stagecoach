@@ -106,8 +106,9 @@ end)
 
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
 AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach)
-    ClearGpsMultiRoute()
     
+    print('passenger_onboard')
+    ClearGpsMultiRoute()
     StartGpsMultiRoute(1, false, true)
     AddPointToGpsMultiRoute(1373.89, -1317.13, 77.37)
     AddPointToGpsMultiRoute(1738.37, -1373.53, 44.05)
