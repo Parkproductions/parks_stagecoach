@@ -78,7 +78,9 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             SetEntityAsMissionEntity(spawn_coach)
-            SetEntityAsMissionEntity(passenger_1_female) 
+            SetEntityAsMissionEntity(passenger_1_female)
+            print('vehicle_max')
+            print(GetVehicleMaxNumberOfPassengers(spawn_coach))
             local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
             
             SetRelationshipBetweenGroups(0 , GetHashKey("PLAYER") , npc_group)
