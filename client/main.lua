@@ -77,8 +77,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
         if GetDistanceBetweenCoords(Config.Destination.x, Config.Destination.y, Config.Destination.z,GetEntityCoords(PlayerPedId()),false)<5 then
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
-            SetEntityAsMissionEntity(spawn_coach)
-            SetEntityAsMissionEntity(passenger_1_female)
+            SetEntityAsMissionEntity(spawn_coach, false, false)
+            SetEntityAsMissionEntity(passenger_1_female, false, false)
             print('vehicle_max')
             print(GetVehicleMaxNumberOfPassengers(spawn_coach))
             local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
