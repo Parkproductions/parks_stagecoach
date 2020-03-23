@@ -82,7 +82,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             SetEntityAsMissionEntity(passenger_1_female, false, false)
             
             local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
-            SetRelationshipBetweenGroups(0 , GetHashKey("PLAYER") , npc_group)
+            SetRelationshipBetweenGroups(1 , GetHashKey("PLAYER") , npc_group)
             print(npc_group)
 
             Wait(1000)       
