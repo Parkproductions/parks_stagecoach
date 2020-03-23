@@ -19,4 +19,5 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function (fare)
 	local _source = source
 	TriggerEvent('redemrp:getPlayerFromId', _source, function(user)
 		user.AddMoney(fare)
+	end)
 end)
