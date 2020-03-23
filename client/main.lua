@@ -31,6 +31,34 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
     
 end)
 
+-- -- PassengerOnboard
+
+RegisterNetEvent("parks_stagecoach:PassengerOnboard")
+AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach)
+    
+    print('passenger_onboard')
+    ClearGpsMultiRoute()
+    StartGpsMultiRoute(1, false, true)
+    AddPointToGpsMultiRoute(1373.89, -1317.13, 77.37)
+    AddPointToGpsMultiRoute(1738.37, -1373.53, 44.05)
+    SetGpsMultiRouteRender(true)
+    while true do
+    Wait(10)
+        
+        if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<1 then
+            local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
+            TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
+            local passenger_onboard = false
+        end
+    
+        if passenger_onboard == false then
+
+            break
+        end
+    end
+
+end)
+
 -- StartCoachJob
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
@@ -102,33 +130,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
 
 end)
 
--- -- StartCoachJob
 
-RegisterNetEvent("parks_stagecoach:PassengerOnboard")
-AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach)
-    
-    print('passenger_onboard')
-    ClearGpsMultiRoute()
-    StartGpsMultiRoute(1, false, true)
-    AddPointToGpsMultiRoute(1373.89, -1317.13, 77.37)
-    AddPointToGpsMultiRoute(1738.37, -1373.53, 44.05)
-    SetGpsMultiRouteRender(true)
-    while true do
-    Wait(10)
-        
-        if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<1 then
-            local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
-            TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
-            local passenger_onboard = false
-        end
-    
-        if passenger_onboard == false then
-
-            break
-        end
-    end
-
-end)
 
 
 
