@@ -74,7 +74,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
     while true do
     Wait(10)
         if GetDistanceBetweenCoords(Config.Destination.x, Config.Destination.y, Config.Destination.z,GetEntityCoords(PlayerPedId()),false)<5 then
-            TaskEnterVehicle(passenger_1_female, spawn_coach, 20000, 0, 1.5, 1, 0)
+            TaskEnterVehicle(passenger_1_female, spawn_coach, 20000, 1, 1.5, 1, 0)
             print('close_enough')
             passenger_onboard = true
         end
@@ -228,7 +228,7 @@ RegisterNetEvent("parks_stagecoach:SpawnBorrowedWagon")
 AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost)
     
     
-    local stage_coach =  GetHashKey("STAGECOACH003X")
+    local stage_coach =  GetHashKey("BUGGY01")
     print(stage_coach)
     RequestModel(stage_coach)
     while not HasModelLoaded(stage_coach) do
