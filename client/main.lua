@@ -38,7 +38,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
     
     StartGpsMultiRoute(1, false, true)
     AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)
-    AddPointToGpsMultiRoute(1738.37, -1373.53, 43.51)
+    AddPointToGpsMultiRoute(1373.89, -1317.13, 77.37)
     SetGpsMultiRouteRender(true)
 
     local p1 = N_0x554d9d53f696d002(1664425300, Config.Destination.x, Config.Destination.y, Config.Destination.z)
