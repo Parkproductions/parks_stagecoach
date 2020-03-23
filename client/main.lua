@@ -89,6 +89,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
         end
 
         local Ped = GetPedInVehicleSeat(spawn_wagon , 1)
+        print('seat')
         print(Ped)
 
         if passenger_onboard == true then
