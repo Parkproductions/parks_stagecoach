@@ -48,7 +48,9 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
         if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<5 then
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
+
             local passenger_onboard = false
+            TriggerServerEvent("parks_stagecoach:successful_dropoff", 10)
         end
     
         if passenger_onboard == false then
