@@ -14,8 +14,8 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function (stagecoach_cost)
 end)
 
 
-RegisterServerEvent("parks_stagecoach:successful_dropoff")
-AddEventHandler("parks_stagecoach:successful_dropoff", function (fare)
+RegisterServerEvent("parks_stagecoach:pay_fare")
+AddEventHandler("parks_stagecoach:pay_fare", function (fare)
 	local _source = source
 	TriggerEvent('redemrp:getPlayerFromId', _source, function(user)
 		user.addMoney(fare)
