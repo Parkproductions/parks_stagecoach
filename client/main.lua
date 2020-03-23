@@ -62,6 +62,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
             TriggerEvent("parks_stagecoach:successful_dropoff", 10)
+            Wait(5000)
             local passenger_onboard = false
             
         end
