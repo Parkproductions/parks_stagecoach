@@ -38,4 +38,4 @@ Config.Coords = {
 	vector3(2683.95, -1441.86, 46.16)
 }
 
-Config.Destination = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 1738.37, y = -1373.53, z = 43.51} 
+Config.Destination = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 1738.37, y = -1373.53, z = 44.05} 

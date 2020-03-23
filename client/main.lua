@@ -60,11 +60,11 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
                 
                 RequestModel( model )
 
-                    while not HasModelLoaded( mdoel ) do
+                    while not HasModelLoaded( model ) do
                         Wait(500)
                     end
                 
-                passenger_1_female = CreatePed( passenger_1_female, Config.Destination.x, Config.Destination.y, Config.Destination.z, 112.89, 1, 1 )
+                passenger_1_female = CreatePed( model, 1748.56, -1371.16, 44.04, 108.51, 1, 1 )
                 print(passenger_1_female)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_spawned = true
