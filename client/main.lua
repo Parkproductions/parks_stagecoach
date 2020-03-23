@@ -50,7 +50,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
 
             local passenger_onboard = false
-            TriggerServerEvent("parks_stagecoach:successful_dropoff", 10)
+            
         end
     
         if passenger_onboard == false then
@@ -58,7 +58,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
             break
         end
     end
-
+    TriggerServerEvent("parks_stagecoach:successful_dropoff", 10)
 end)
 
 -- StartCoachJob

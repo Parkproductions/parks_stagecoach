@@ -16,7 +16,6 @@ end)
 
 RegisterServerEvent("parks_stagecoach:successful_dropoff")
 AddEventHandler("parks_stagecoach:successful_dropoff", function (fare)
-	Wait(2000)
 	local _source = source
 	TriggerEvent('redemrp:getPlayerFromId', _source, function(user)
 		user.addMoney(fare)
