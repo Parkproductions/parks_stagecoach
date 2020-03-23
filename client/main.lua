@@ -75,19 +75,11 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
     Wait(10)
         
         if GetDistanceBetweenCoords(Config.Destination.x, Config.Destination.y, Config.Destination.z,GetEntityCoords(PlayerPedId()),false)<5 then
-        
-            local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             
-            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 0, 1.0, 1, 0)
-            
-            --[[local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
-            SetRelationshipBetweenGroups(0 , GetHashKey("PLAYER") , npc_group)
-            Wait(1000)--]]
-            print(npc_group)
-            print(GetHashKey("PLAYER"))
+            local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)        
+            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 0, 2.0, 1, 0)
             local passenger_onboard = true
-            local stage_coach =  GetHashKey("STAGECOACH003X")
-            print(GetVehicleModelNumberOfSeats(stage_coach))
+            print(passenger_1_female)
 
         end
 
