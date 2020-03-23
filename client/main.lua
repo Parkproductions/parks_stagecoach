@@ -78,7 +78,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             SetVehicleUndriveable(spawn_coach, true)
             TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 0, 1.0, 1, 0)
             Wait(1000)
-            SetVehicleUndriveable(spawn_coach, false)
+            
             passenger_onboard = true
         end
         if passenger_onboard == true then
