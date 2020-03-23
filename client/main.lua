@@ -15,7 +15,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
-    
+    print('stage_coach triggered')
 
     local model = GetHashKey( "S_M_M_BankClerk_01" )
                 local coord = GetEntityCoords(PlayerPedId())
@@ -26,7 +26,7 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
                     end
                 
                 npc = CreatePed( model, zone.x, zone.y, zone.z, zone.h, 1, 1 )
-                
+                print(npc)
                 Citizen.InvokeNative( 0x283978A15512B2FE , npc, true )
     
 end)
@@ -61,9 +61,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
                         Wait(500)
                     end
                 
-                --[[passenger_1_female = CreatePed( model, 1748.56, -1371.16, 44.04, 108.51, 1, 1 )--]]
                 passenger_1_female = CreatePed( model, 1373.89, -1317.13, 77.37, 122.41, 1, 1 )
-              
+                print(passenger_1_female)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_spawned = true
             end
@@ -79,12 +78,16 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
         
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             
-            TaskEnterVehicle(passenger_1_female, spawn_wagon, 2000, 0, 2.0, 1, 0)
-            print(passenger_1_female)
+            TaskEnterVehicle(passenger_1_female, spawn_wagon, -1, 0, 1.0, 1, 0)
+            
             local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
             SetRelationshipBetweenGroups(0 , GetHashKey("PLAYER") , npc_group)
             Wait(1000)
+            print(npc_group)
+            print(GetHashKey("PLAYER"))
             local passenger_onboard = true
+            local stage_coach =  GetHashKey("STAGECOACH003X")
+            print(GetVehicleModelNumberOfSeats(stage_coach))
 
         end
 
@@ -238,7 +241,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     
     
     local stage_coach =  GetHashKey("STAGECOACH003X")
-    
+    print(stage_coach)
     RequestModel(stage_coach)
     while not HasModelLoaded(stage_coach) do
         Citizen.Wait(0)
@@ -259,7 +262,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     spawn_coach = CreateVehicle(stage_coach, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
     SetModelAsNoLongerNeeded(stage_coach)
-    
+    print(spawn_coach)
     local player = PlayerPedId()
     DoScreenFadeOut(500)
 
