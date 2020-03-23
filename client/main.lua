@@ -86,7 +86,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             print(npc_group)
 
             Wait(1000)       
-            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 1, 2.0, 1, 0)
+            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 0, 2.0, 1, 0)
 
             local passenger_onboard = true
 
