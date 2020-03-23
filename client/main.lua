@@ -35,7 +35,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
 AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach)
-    
+    i = 1
     print('passenger_onboard')
     ClearGpsMultiRoute()
     StartGpsMultiRoute(1, false, true)
@@ -48,7 +48,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
         if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<5 then
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
-            TriggerServerEvent("parks_stagecoach:successful_dropoff", 10)
+            
             local passenger_onboard = false
             
         end
@@ -59,7 +59,10 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
             break
         end
     end
-
+    while i > 0 do
+        TriggerServerEvent("parks_stagecoach:successful_dropoff", 10)
+        i = i - 1
+    end
 end)
 
 -- StartCoachJob
