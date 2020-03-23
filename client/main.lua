@@ -47,7 +47,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination.name)
     isTransfering = true
 
-    
+    print(p1)
 
 end)
 
