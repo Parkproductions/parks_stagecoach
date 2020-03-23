@@ -78,6 +78,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false) 
             local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
+            SetVehicleUndriveable(spawn_coach,true)
             SetRelationshipBetweenGroups(0 , GetHashKey("PLAYER") , npc_group)
             print(npc_group)
             Wait(1000)       
@@ -241,7 +242,7 @@ RegisterNetEvent("parks_stagecoach:SpawnBorrowedWagon")
 AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost)
     
     
-    local stage_coach =  GetHashKey("STAGECOACH003X")
+    local stage_coach =  GetHashKey("STAGECOACH006X")
     print(stage_coach)
     RequestModel(stage_coach)
     while not HasModelLoaded(stage_coach) do
