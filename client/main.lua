@@ -48,12 +48,9 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination.name)
     isTransfering = true
 
-                
-
-
     while true do
     Wait(10)
-        for _, zone in pairs(Config.Marker) do
+        
             if GetDistanceBetweenCoords(Config.Destination.x, Config.Destination.y, Config.Destination.z,GetEntityCoords(PlayerPedId()),false)<500 then
 
                 local model = GetHashKey("A_F_M_BlWUpperClass_01")
@@ -69,11 +66,24 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_spawned = true
             end
-        end
         if passenger_spawned == true then
             break
         end
     end
+
+    while true do
+    Wait(10)
+        if GetDistanceBetweenCoords(Config.Destination.x, Config.Destination.y, Config.Destination.z,GetEntityCoords(PlayerPedId()),false)<500 then
+            TaskEnterVehicle(passenger_1_female, spawn_coach, 20000, 0, 1.5, 1, 0)
+            passenger_onboard = true
+        end
+        if passenger_onboard == true then
+            break
+        end
+    end
+
+
+
 end)
 
 
