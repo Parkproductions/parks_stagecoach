@@ -54,11 +54,12 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
         end
     
         if passenger_onboard == false then
-
+            TriggerServerEvent("parks_stagecoach:successful_dropoff", 10)
+            Wait(100)
             break
         end
     end
-    TriggerServerEvent("parks_stagecoach:successful_dropoff", 10)
+
 end)
 
 -- StartCoachJob
