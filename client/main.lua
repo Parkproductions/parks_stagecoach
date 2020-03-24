@@ -99,14 +99,15 @@ RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
 
     local route = math.random(3)
+    local player_loc = GetEntityCoords(PlayerPedId())
 
     StartGpsMultiRoute(1, false, true)
-    --[[AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)--]]
+    AddPointToGpsMultiRoute(player_loc)
     AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     SetGpsMultiRouteRender(true)
 
     local p1 = N_0x554d9d53f696d002(1664425300, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
-    SetBlipSprite(p1, Config.PickUp.sprite, 5)
+    SetBlipSprite(p1, Config.PickUp[zone_name][route].sprite, 5)
     SetBlipScale(p1, 0.2)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
 
