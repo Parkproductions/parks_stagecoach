@@ -135,7 +135,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                 print(passenger_1_female)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_spawned = true
-                Wait(5000)
+                Wait(10000)
                 RemoveBlip(p1)
             end
         if passenger_spawned == true then
