@@ -69,7 +69,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     local p1 = N_0x554d9d53f696d002(1664425300, 1738.37, -1373.53, 44.05)
     SetBlipSprite(p1, Config.Destination.sprite, 5)
     SetBlipScale(p1, 0.2)
-    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination[zone_name][route])
+    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination[zone_name][route].sprite)
     
     while true do
     Wait(10)
@@ -101,7 +101,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     local route = math.random(3)
 
     StartGpsMultiRoute(1, false, true)
-    AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)
+    --[[AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)--]]
     AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     SetGpsMultiRouteRender(true)
 
