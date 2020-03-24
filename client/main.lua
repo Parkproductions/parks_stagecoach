@@ -228,7 +228,7 @@ function StageCoach()
     Citizen.CreateThread(function()
         local str = 'Stage Coach Co.'
         StageCoachPrompt = PromptRegisterBegin()
-        PromptSetControlAction(StageCoachPrompt, 0xC7B5340A)
+        PromptSetControlAction(StageCoachPrompt, 0xDFF812F9)
         str = CreateVarString(10, 'LITERAL_STRING', str)
         PromptSetText(StageCoachPrompt, str)
         PromptSetEnabled(StageCoachPrompt, true)
