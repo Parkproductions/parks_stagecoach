@@ -42,7 +42,9 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function ()
     
         TriggerServerEvent("parks_stagecoach:pay_fare", 10)
         local fare_paid = true
-
+        RemoveBlip(p1)
+        ClearGpsMultiRoute()
+        TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach)
         if fare_paid == true then
             break
         end
@@ -62,8 +64,8 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     ClearGpsMultiRoute()
 
     StartGpsMultiRoute(1, false, true)
-    AddPointToGpsMultiRoute(1373.89, -1317.13, 77.37)
-    AddPointToGpsMultiRoute(1738.37, -1373.53, 44.05)
+    AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
+    AddPointToGpsMultiRoute(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z)
     SetGpsMultiRouteRender(true)
 
     local p1 = N_0x554d9d53f696d002(1664425300, 1738.37, -1373.53, 44.05)
