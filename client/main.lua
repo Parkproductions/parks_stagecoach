@@ -70,11 +70,12 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     AddPointToGpsMultiRoute(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z)
     SetGpsMultiRouteRender(true)
 
-    local p1 = N_0x554d9d53f696d002(1664425300, 1738.37, -1373.53, 44.05)
+    p1 = N_0x554d9d53f696d002(1664425300, 1738.37, -1373.53, 44.05)
     SetBlipSprite(p1, Config.Destination.sprite, 5)
     SetBlipScale(p1, 0.2)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination[zone_name][route].sprite)
-    
+    passenger_onboard = true
+
     while true do
     Wait(10)
         
@@ -85,7 +86,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
 
             Wait(3000)
             TriggerEvent("parks_stagecoach:successful_dropoff", 10)
-            local passenger_onboard = false
+            passenger_onboard = false
             
         end
     
@@ -102,16 +103,16 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
 
-    local passenger_despawned = true
-    local route = math.random(3)
-    local player_loc = GetEntityCoords(PlayerPedId())
+    passenger_despawned = true
+    route = math.random(3)
+    player_loc = GetEntityCoords(PlayerPedId())
 
     StartGpsMultiRoute(1, false, true)
     AddPointToGpsMultiRoute(player_loc)
     AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     SetGpsMultiRouteRender(true)
 
-    local p1 = N_0x554d9d53f696d002(1664425300, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
+    p1 = N_0x554d9d53f696d002(1664425300, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     SetBlipSprite(p1, Config.PickUp[zone_name][route].sprite, 5)
     SetBlipScale(p1, 0.2)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
@@ -134,11 +135,13 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                 passenger_1_female = CreatePed( model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, 1, 1)
                 print(passenger_1_female)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
-                RemoveBlip(p1)
-                local passenger_despawned = false
+                passenger_despawned = false
                 Wait(10000)
-                
+                RemoveBlip(p1)
             end
+        if passenger_despawned == false then
+            break
+        end
     end
 
     while true do
@@ -146,19 +149,19 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
         
         if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, GetEntityCoords(PlayerPedId()),false)<5 then
             
-            local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
+            spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             
             SetEntityAsMissionEntity(spawn_coach, false, false)
             SetEntityAsMissionEntity(passenger_1_female, false, false)
             
-            local npc_group = GetPedRelationshipGroupHash(passenger_1_female)
+            npc_group = GetPedRelationshipGroupHash(passenger_1_female)
             SetRelationshipBetweenGroups(1 , GetHashKey("PLAYER") , npc_group)
             print(npc_group)
 
             Wait(1000)       
             TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 1, 2.0, 1, 0)
 
-            local passenger_onboard = true
+            passenger_onboard = true
             TriggerEvent("parks_stagecoach:PassengerOnboard", zone_name, route)
 
         end
