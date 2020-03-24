@@ -98,6 +98,9 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
     
+    local route = math.random(3)
+    print(route)
+
     StartGpsMultiRoute(1, false, true)
     AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)
     AddPointToGpsMultiRoute(Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z)
