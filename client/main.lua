@@ -74,7 +74,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
     while true do
     Wait(10)
         
-        if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<5 then
+        if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<5 and passenger_onboard ~= false then
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
@@ -127,6 +127,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
                 print(passenger_1_female)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_spawned = true
+                RemoveBlip(p1)
             end
         if passenger_spawned == true then
             break
