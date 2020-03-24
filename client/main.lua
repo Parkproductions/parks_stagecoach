@@ -76,7 +76,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     while true do
     Wait(10)
         
-        if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<5 and passenger_onboard ~= false then
+        if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(PlayerPedId()),false)<5 and passenger_onboard ~= false then
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
