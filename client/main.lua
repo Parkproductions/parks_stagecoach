@@ -96,10 +96,9 @@ end)
 -- StartCoachJob
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
-AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
-    
+AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
+    print(zone_name)
     local route = math.random(3)
-    print(route)
 
     StartGpsMultiRoute(1, false, true)
     AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)
@@ -355,7 +354,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     Wait(3000)
 
     EndStageCoachCam()
-    TriggerEvent("parks_stagecoach:StartCoachJob", spawn_coach)
+    TriggerEvent("parks_stagecoach:StartCoachJob", spawn_coach, zone_name)
 
 end)
 
