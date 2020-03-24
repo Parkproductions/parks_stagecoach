@@ -11,6 +11,7 @@ Citizen.CreateThread(function()
     end  
 end)
 
+
 -- Generate Job Giver NPC's
 
 RegisterNetEvent("parks_stagecoach:CreateNPC")
@@ -31,39 +32,54 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
     
 end)
 
--- Fare
+
+-- Successful Drop Off / Pay Fare
+
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
 AddEventHandler("parks_stagecoach:successful_dropoff", function (zone, spawn_coach)
+    
     while true do
-    TriggerServerEvent("parks_stagecoach:pay_fare", 10)
-    local fare_paid = true
-    if fare_paid == true then
-        break
-    end
+    
+        TriggerServerEvent("parks_stagecoach:pay_fare", 10)
+        local fare_paid = true
+
+        if fare_paid == true then
+            break
+        end
+    
     end
 
 end)
 
--- -- PassengerOnboard
+
+-- PassengerOnboard
 
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
 AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach)
     
     print('passenger_onboard')
+    RemoveBlip(p1)
     ClearGpsMultiRoute()
+
     StartGpsMultiRoute(1, false, true)
     AddPointToGpsMultiRoute(1373.89, -1317.13, 77.37)
     AddPointToGpsMultiRoute(1738.37, -1373.53, 44.05)
     SetGpsMultiRouteRender(true)
+
+    local p1 = N_0x554d9d53f696d002(1664425300, 1738.37, -1373.53, 44.05)
+    SetBlipSprite(p1, Config.Destination.sprite, 5)
+    SetBlipScale(p1, 0.2)
+    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination.name)
+    
     while true do
     Wait(10)
         
         if GetDistanceBetweenCoords(1738.37, -1373.53, 44.05, GetEntityCoords(PlayerPedId()),false)<5 then
+            
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
-            Wait(5000)
+            Wait(3000)
             TriggerEvent("parks_stagecoach:successful_dropoff", 10)
-
             local passenger_onboard = false
             
         end
@@ -74,6 +90,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
     end
 
 end)
+
 
 -- StartCoachJob
 
@@ -86,10 +103,10 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
     SetGpsMultiRouteRender(true)
 
     local p1 = N_0x554d9d53f696d002(1664425300, Config.Destination.x, Config.Destination.y, Config.Destination.z)
-
     SetBlipSprite(p1, Config.Destination.sprite, 5)
     SetBlipScale(p1, 0.2)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination.name)
+
     isTransfering = true
 
     while true do
@@ -142,11 +159,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
             break
         end
     end
-
-
 end)
-
-
 
 
 
@@ -188,7 +201,6 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
 
 
 function OpenStageCoachMenu()
@@ -314,8 +326,6 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     print(spawn_coach)
     local player = PlayerPedId()
     DoScreenFadeOut(500)
-
-
 
     --[[cam_a = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1269.4,-1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)
     cam_b = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1279.4, -1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)--]]
