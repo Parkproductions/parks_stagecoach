@@ -36,7 +36,7 @@ end)
 -- Successful Drop Off / Pay Fare
 
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
-AddEventHandler("parks_stagecoach:successful_dropoff", function (zone, spawn_coach)
+AddEventHandler("parks_stagecoach:successful_dropoff", function ()
     
     while true do
     
@@ -55,7 +55,7 @@ end)
 -- PassengerOnboard
 
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
-AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach)
+AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     
     print('passenger_onboard')
     RemoveBlip(p1)
@@ -69,7 +69,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone, spawn_coach
     local p1 = N_0x554d9d53f696d002(1664425300, 1738.37, -1373.53, 44.05)
     SetBlipSprite(p1, Config.Destination.sprite, 5)
     SetBlipScale(p1, 0.2)
-    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination.name)
+    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination[zone_name][route])
     
     while true do
     Wait(10)
@@ -97,25 +97,25 @@ end)
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
-    print(zone_name)
+
     local route = math.random(3)
 
     StartGpsMultiRoute(1, false, true)
     AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)
-    AddPointToGpsMultiRoute(Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z)
+    AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     SetGpsMultiRouteRender(true)
 
-    local p1 = N_0x554d9d53f696d002(1664425300, Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z)
+    local p1 = N_0x554d9d53f696d002(1664425300, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     SetBlipSprite(p1, Config.PickUp.sprite, 5)
     SetBlipScale(p1, 0.2)
-    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone][route].name)
+    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
 
     isTransfering = true
 
     while true do
     Wait(10)
         
-            if GetDistanceBetweenCoords(Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z,GetEntityCoords(PlayerPedId()),false)<500 then
+            if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z,GetEntityCoords(PlayerPedId()),false)<500 then
 
                 local model = GetHashKey("A_F_M_BlWUpperClass_01")
                 
@@ -125,7 +125,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                         Wait(500)
                     end
                 
-                passenger_1_female = CreatePed( model, Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z, Config.PickUp[zone][route].h, 1, 1)
+                passenger_1_female = CreatePed( model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, 1, 1)
                 print(passenger_1_female)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_spawned = true
@@ -139,7 +139,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     while true do
     Wait(10)
         
-        if GetDistanceBetweenCoords(Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z, GetEntityCoords(PlayerPedId()),false)<5 then
+        if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, GetEntityCoords(PlayerPedId()),false)<5 then
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             
@@ -154,7 +154,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 1, 2.0, 1, 0)
 
             local passenger_onboard = true
-            TriggerEvent("parks_stagecoach:PassengerOnboard", zone)
+            TriggerEvent("parks_stagecoach:PassengerOnboard", zone_name, route)
 
         end
 
