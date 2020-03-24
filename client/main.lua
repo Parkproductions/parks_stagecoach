@@ -102,7 +102,7 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, passenger_spawned)
 
-    passenger_spawned = false
+    local passenger_despawned = true
     local route = math.random(3)
     local player_loc = GetEntityCoords(PlayerPedId())
 
@@ -118,7 +118,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
 
     isTransfering = true
 
-    while true do
+    while passenger_despawned do
     Wait(10)
         
             if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z,GetEntityCoords(PlayerPedId()),false)<500 then
@@ -134,11 +134,11 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                 passenger_1_female = CreatePed( model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, 1, 1)
                 print(passenger_1_female)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
-                passenger_spawned = true
+                passenger_despawned = false
                 Wait(10000)
                 RemoveBlip(p1)
             end
-        if passenger_spawned == true then
+        if passenger_despawned == false then
             break
         end
     end
