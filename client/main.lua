@@ -354,8 +354,8 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     Wait(3000)
 
     EndStageCoachCam()
-    print(zone_name)
-    TriggerEvent("parks_stagecoach:StartCoachJob", spawn_coach, zone_name)
+
+    TriggerEvent("parks_stagecoach:StartCoachJob", -1, spawn_coach, zone_name)
 
 end)
 
