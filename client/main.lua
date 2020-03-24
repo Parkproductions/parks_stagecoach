@@ -256,8 +256,7 @@ Citizen.CreateThread(function()
                         PromptDelete(StageCoachPrompt)
                         active = true
     end
-        return active
-    end
+end
 end)
 
 
