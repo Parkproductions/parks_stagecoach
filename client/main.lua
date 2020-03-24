@@ -44,7 +44,9 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function ()
         local fare_paid = true
         RemoveBlip(p1)
         ClearGpsMultiRoute()
-        TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach)
+        passenger_spawned = false
+        TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)
+
         if fare_paid == true then
             break
         end
@@ -98,7 +100,7 @@ end)
 -- StartCoachJob
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
-AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
+AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, passenger_spawned)
 
     local route = math.random(3)
     local player_loc = GetEntityCoords(PlayerPedId())
