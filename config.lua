@@ -1,7 +1,9 @@
 Config               = {}
 
 Config.DrawDistance  = 10.0
+
 Config.MarkerColor   = {r = 204, g = 204, b = 0}
+
 Config.Blip          = {sprite = 311, color = 1}
 
 Config.Marker = {
@@ -23,7 +25,6 @@ Config.Cams = {
 	["Rhodes"] = { 
 		["cam_a"] = {x = 1269.4, y = -1315.75, z = 79.4, h = 38.42},
 		["cam_b"] = {x = 1269.4, y = -1314.75, z = 79.4, h = 38.42}
-
 	}
 
 }
@@ -31,6 +32,7 @@ Config.Cams = {
 Config.StagecoachJobSprite = 1560611276 -- Stage Coach Job Blip sprite
 
 Config.SetJob = true -- Set job after Start working
+
 Config.JobName = "stage_coach_driver" -- Job name to set
 
 Config.Coords = {
@@ -38,8 +40,29 @@ Config.Coords = {
 	vector3(2683.95, -1441.86, 46.16)
 }
 
---[[Config.Destination = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 1738.37, y = -1373.53, z = 44.05} --]]
-Config.Destination = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 1373.89, y = -1317.13, z = 122.41} 
+Config.PickUp = {
+	["Saint Dennis"] = {
 
+	},
+
+	["Rhodes"] = {
+		[1] = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 1373.89, y = -1317.13, z = 77.37, h =  122.41},
+		[2] = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 1875.4, y = -1853.53, z = 42.64, h = 61.03},
+		[3] = {name = 'Pick Up Point', sprite = 0xDDFBA6AB, x = 184.28, y = 1225.67, z= 42.02, h = 244.96}
+	}
+
+}
+
+Config.Destination = {
+	["Saint Dennis"] = {
+
+	},
+
+	["Rhodes"] = {
+		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1738.37, y = -1373.53, z = 44.05},
+		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 2491.48, y = -1392.52, z = 45.69},
+		[3] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1010.56, y = 1735.45, z = 45.69}
+	},
+}
 
  

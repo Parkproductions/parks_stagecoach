@@ -100,20 +100,20 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
     
     StartGpsMultiRoute(1, false, true)
     AddPointToGpsMultiRoute(1300.97, -1161.06, 81.08)
-    AddPointToGpsMultiRoute(1373.89, -1317.13, 77.37)
+    AddPointToGpsMultiRoute(Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z)
     SetGpsMultiRouteRender(true)
 
-    local p1 = N_0x554d9d53f696d002(1664425300, Config.Destination.x, Config.Destination.y, Config.Destination.z)
-    SetBlipSprite(p1, Config.Destination.sprite, 5)
+    local p1 = N_0x554d9d53f696d002(1664425300, Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z)
+    SetBlipSprite(p1, Config.PickUp.sprite, 5)
     SetBlipScale(p1, 0.2)
-    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination.name)
+    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone][route].name)
 
     isTransfering = true
 
     while true do
     Wait(10)
         
-            if GetDistanceBetweenCoords(Config.Destination.x, Config.Destination.y, Config.Destination.z,GetEntityCoords(PlayerPedId()),false)<500 then
+            if GetDistanceBetweenCoords(Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z,GetEntityCoords(PlayerPedId()),false)<500 then
 
                 local model = GetHashKey("A_F_M_BlWUpperClass_01")
                 
@@ -123,7 +123,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
                         Wait(500)
                     end
                 
-                passenger_1_female = CreatePed( model, 1373.89, -1317.13, 77.37, 122.41, 1, 1 )
+                passenger_1_female = CreatePed( model, Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z, Config.PickUp[zone][route].h, 1, 1)
                 print(passenger_1_female)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_spawned = true
@@ -137,7 +137,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone, spawn_coach)
     while true do
     Wait(10)
         
-        if GetDistanceBetweenCoords(Config.Destination.x, Config.Destination.y, Config.Destination.z,GetEntityCoords(PlayerPedId()),false)<5 then
+        if GetDistanceBetweenCoords(Config.PickUp[zone][route].x, Config.PickUp[zone][route].y, Config.PickUp[zone][route].z, GetEntityCoords(PlayerPedId()),false)<5 then
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             
@@ -256,7 +256,8 @@ Citizen.CreateThread(function()
                         PromptDelete(StageCoachPrompt)
                         active = true
     end
-end
+        return active
+    end
 end)
 
 
