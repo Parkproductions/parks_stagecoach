@@ -47,6 +47,7 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
         passenger_spawned = false
         TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)
         Wait(10000)
+        print(npc_id)
         DeleteEntity(npc_id)
         if fare_paid == true then
             break
