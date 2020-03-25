@@ -46,6 +46,7 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
         ClearGpsMultiRoute()
         passenger_spawned = false
         TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)
+        TaskWalkAway(npc_id, 0)
         Wait(10000)
         print(npc_id)
         DeleteEntity(npc_id)
@@ -160,7 +161,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             print(npc_group)
 
             Wait(1000)       
-            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, -2, 1.0, 1, 0)
+            TaskBoardVehicle(passenger_1_female, spawn_coach, -1, -2, 1.0, 1, 0)
 
             passenger_onboard = true
             TriggerEvent("parks_stagecoach:PassengerOnboard", zone_name, route)
