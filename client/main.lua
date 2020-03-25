@@ -137,7 +137,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_despawned = false
                 Wait(10000)
-                RemoveBlip(p1)
+                
             end
         if passenger_despawned == false then
             break
