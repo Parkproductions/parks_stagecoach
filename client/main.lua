@@ -161,7 +161,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             print(npc_group)
 
             Wait(1000)       
-            TaskBoardVehicle(passenger_1_female, spawn_coach, -1, -2, 1.0, 1, 0)
+            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, -2, 1.0, 1, 0)
 
             passenger_onboard = true
             TriggerEvent("parks_stagecoach:PassengerOnboard", zone_name, route)
