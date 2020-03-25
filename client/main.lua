@@ -112,13 +112,15 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     SetGpsMultiRouteRender(true)
 
+    --
+
     p1 = N_0x554d9d53f696d002(1664425300, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
-    SetBlipSprite(p1, Config.Destination.sprite, 5)
+    SetBlipSprite(p1, Config.PickUp[zone_name][route].sprite, 1)
     SetBlipScale(p1, 0.2)
-    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].sprite)
+    Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
 
     isTransfering = true
-    print('Start Coach Job Sprite', p1)
+    print('Start Coach Job Sprite', Config.PickUp[zone_name][route].sprite)
     while (passenger_despawned == true) do
     Wait(10)
         
