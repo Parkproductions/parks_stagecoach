@@ -103,7 +103,7 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
 
-    passenger_despawned = true
+    local passenger_despawned = true
     route = math.random(3)
     player_loc = GetEntityCoords(PlayerPedId())
 
