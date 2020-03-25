@@ -75,7 +75,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     SetBlipScale(p1, 0.2)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.Destination[zone_name][route].sprite)
     passenger_onboard = true
-
+    print('Passenger Onboard Sprite', p1)
     while true do
     Wait(10)
         
@@ -118,7 +118,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].sprite)
 
     isTransfering = true
-
+    print('Start Coach Job Sprite', p1)
     while (passenger_despawned == true) do
     Wait(10)
         
