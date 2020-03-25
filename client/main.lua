@@ -65,7 +65,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
 
-    StartGpsMultiRoute(1, false, true)
+    StartGpsMultiRoute(1, true, true)
     AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     AddPointToGpsMultiRoute(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z)
     SetGpsMultiRouteRender(true)
@@ -119,7 +119,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
 
     isTransfering = true
 
-    while passenger_despawned do
+    while (passenger_despawned == true) do
     Wait(10)
         
             if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z,GetEntityCoords(PlayerPedId()),false)<500 and passenger_despawned == true then
@@ -147,7 +147,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     while true do
     Wait(10)
         
-        if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, GetEntityCoords(PlayerPedId()),false)<5 then
+        if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, GetEntityCoords(PlayerPedId()),false)<10 then
             
             spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             
@@ -159,7 +159,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             print(npc_group)
 
             Wait(1000)       
-            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 1, 2.0, 1, 0)
+            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 1, 1.0, 1, 0)
 
             passenger_onboard = true
             TriggerEvent("parks_stagecoach:PassengerOnboard", zone_name, route)
