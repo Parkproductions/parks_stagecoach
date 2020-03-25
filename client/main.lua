@@ -36,7 +36,7 @@ end)
 -- Successful Drop Off / Pay Fare
 
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
-AddEventHandler("parks_stagecoach:successful_dropoff", function ()
+AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
     
     while true do
     
@@ -46,7 +46,8 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function ()
         ClearGpsMultiRoute()
         passenger_spawned = false
         TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)
-
+        Wait(10000)
+        DeleteEntity(npc_id)
         if fare_paid == true then
             break
         end
@@ -83,9 +84,9 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
-
+            npc_id = GetPedIndexFromEntityIndex(passenger_1_female)
             Wait(3000)
-            TriggerEvent("parks_stagecoach:successful_dropoff", 10)
+            TriggerEvent("parks_stagecoach:successful_dropoff", 10, npc_id)
             passenger_onboard = false
             
         end
@@ -312,7 +313,7 @@ RegisterNetEvent("parks_stagecoach:SpawnBorrowedWagon")
 AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost)
     
     
-    local stage_coach =  GetHashKey("COACH3")
+    local stage_coach =  GetHashKey("BUGGY01")
     print(stage_coach)
     RequestModel(stage_coach)
     while not HasModelLoaded(stage_coach) do
