@@ -107,7 +107,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     route = math.random(3)
     player_loc = GetEntityCoords(PlayerPedId())
 
-    StartGpsMultiRoute(2, false, true)
+    StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
     AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     SetGpsMultiRouteRender(true)
