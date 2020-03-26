@@ -436,13 +436,15 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
     while driving do
         
         Wait(5)
-        if IsControlJustPressed(0, keys['SPACE']) then 
-            if active == false then
-                OpenDrivingStatusMenu()
-                active = true
-            elseif active == true then
-                WarMenu.CloseMenu()
-                active = false
+        if driving == true then
+            if IsControlJustPressed(0, keys['SPACE']) then 
+                if active == false then
+                    OpenDrivingStatusMenu()
+                    active = true
+                elseif active == true then
+                    WarMenu.CloseMenu()
+                    active = false
+                end
             end
         end
         if not driving then
