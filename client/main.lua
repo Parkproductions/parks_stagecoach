@@ -371,7 +371,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     driving = true
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
     TriggerEvent("parks_stagecoach:DrivingStatus")
-    return driving
+    
 end)
 
 -- Driving Status Menu
