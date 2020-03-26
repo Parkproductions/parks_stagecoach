@@ -430,12 +430,13 @@ end
 
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
-    print(driving)
+    
     local active = false
 
     while driving do
         
         Wait(5)
+        print(driving)
         if driving == true then
             if IsControlJustPressed(0, keys['SPACE']) then 
                 if active == false then
