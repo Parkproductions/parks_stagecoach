@@ -112,7 +112,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     while driving do
         Wait(10)
         DrivingStatus()
-    
+        print(driving)
     end
 
     local passenger_despawned = true
