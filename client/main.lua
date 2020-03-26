@@ -10,7 +10,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
         
         Wait(5)
         if IsControlJustPressed(0, keys['SPACE']) then 
-        print('SPACEBAR!')
+        OpenStageCoachMenu()
         end
     end
 
