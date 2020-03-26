@@ -416,6 +416,7 @@ function StageCoachStatus()
 end
 
 while (driving == true) do
+    print('driving is active')
     Wait(10)
     StageCoachStatus()
     if PromptHasHoldModeCompleted(StageCoachStatusPrompt) then
