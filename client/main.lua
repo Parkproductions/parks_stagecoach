@@ -7,8 +7,8 @@ RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
 
     while driving do
-        Wait(1000)
-        print('driving = true')
+        
+        
         if IsControlJustPressed(0, keys['SPACE']) then 
         print('SPACEBAR!')
         end
