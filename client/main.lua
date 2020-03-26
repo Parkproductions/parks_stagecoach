@@ -2,9 +2,6 @@ coach = false
 driving = false
 local keys = { ['SPACE'] = 0xD9D0E1C0 }
     
-
-
-
 -- Create Wagon Wheel Map Marker
 
 Citizen.CreateThread(function()
@@ -379,6 +376,22 @@ end)
 
 -- Driving Status Menu
 
+RegisterNetEvent("parks_stagecoach:stop_driving")
+AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
+    
+    local player = PlayerPedId()
+    TaskLeaveVehicle(player, spawn_coach, 0)
+    RemoveBlip(p1)
+    ClearGpsMultiRoute()
+    passenger_spawned = false
+    
+end)
+
+RegisterNetEvent("parks_stagecoach:replace_stagecoach")
+AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
+
+end)
+
 -- Warmenu Stage Coach
 
 Citizen.CreateThread(function()
@@ -388,17 +401,16 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('DrivingStatus') then
             WarMenu.Display()
             if WarMenu.Button("Stop Driving") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 0)
+                TriggerServerEvent("parks_stagecoach:stop_driving", 0)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
-            elseif WarMenu.Button("Replacem Wagon") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 500)
+            elseif WarMenu.Button("Replace Wagon") then
+                TriggerServerEvent("parks_stagecoach:replace_stagecoach", 500)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
             elseif WarMenu.Button("Exit") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 1000)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
