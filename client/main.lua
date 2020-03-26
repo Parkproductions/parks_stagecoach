@@ -386,6 +386,7 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     ClearGpsMultiRoute()
     passenger_spawned = false
     driving = false
+    TriggerEvent("parks_stagecoach:DrivingStatus", driving)
     
 end)
 
