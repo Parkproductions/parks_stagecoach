@@ -1,7 +1,19 @@
 coach = false
 driving = false
 
+RegisterNetEvent("parks_stagecoach:DrivingStatus")
+AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
 
+    while driving do
+        wait(1000)
+        print('driving = true')
+        if IsControlJustPressed(22, keys['SPACE']) then
+        print('SPACEBAR!')
+        end
+    end
+
+
+end)
 
 -- Create Wagon Wheel Map Marker
 
@@ -109,11 +121,6 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
 
-    while driving do
-        Wait(10)
-        DrivingStatus()
-        print(driving)
-    end
 
     local passenger_despawned = true
     route = math.random(3)
@@ -252,27 +259,6 @@ function StageCoach()
     end)
 end
 
--- Driving Status Prompt Menu
-
-local DrivingStatusPrompt
-
-
-function DrivingStatus()
-    Citizen.CreateThread(function()
-        local status_str = 'Stop Driving'
-        DrivingStatusPrompt = PromptRegisterBegin()
-        PromptSetControlAction(DrivingStatusPrompt, 0xC7B5340A)
-        status_str = CreateVarString(10, 'LITERAL_STRING', status_str)
-        PromptSetText(DrivingStatusPrompt, str)
-        PromptSetEnabled(DrivingStatusPrompt, true)
-        PromptSetVisible(DrivingStatusPrompt, true)
-        PromptSetHoldMode(DrivingStatusPrompt, true)
-        PromptSetGroup(DrivingStatusPrompt, statusgroup)
-        PromptRegisterEnd(DrivingStatusPrompt)
- 
-    end)
-end
-
 
 Citizen.CreateThread(function()
     while true do
@@ -397,8 +383,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     EndStageCoachCam()
     driving = true
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
-
+    TriggerEvent("parks_stagecoach:DrivingStatus", driving)
     return driving
 end)
 
-        
