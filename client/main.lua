@@ -433,7 +433,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
     
     local active = false
 
-    if(driving = true) then
+    if(driving == true) then
         while driving do
         
         Wait(5)
@@ -450,7 +450,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
             break
         end
         end
-    elseif(driving = false)
+    elseif(driving == false)
     end
 
 end)
