@@ -398,7 +398,7 @@ local StageCoachStatusPrompt
 local status_active = false
 
 
-function StageCoach()
+function StageCoachStatus()
     Citizen.CreateThread(function()
         local str = 'Stage Coach'
         StageCoachStatusPrompt = PromptRegisterBegin()
@@ -415,6 +415,7 @@ function StageCoach()
 end
 
 while (driving == true) do
+    StageCoachStatus()
     if PromptHasHoldModeCompleted(StageCoachStatusPrompt) then
                         OpenStageCoachStatusMenu()
                         PromptDelete(StageCoachStatusPrompt)
