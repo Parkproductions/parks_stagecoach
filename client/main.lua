@@ -419,8 +419,8 @@ Citizen.CreateThread(function()
 end)
 
 
-function OpenStageCoachMenu()
-    WarMenu.OpenMenu('Stagecoach')
+function OpenDrivingStatusMenu()
+    WarMenu.OpenMenu('DrivingStatus')
 end
 
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
