@@ -109,6 +109,11 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
 
+    while driving do
+        Wait(10)
+        print('driving is active bottom')
+    
+    end
     
     local passenger_despawned = true
     route = math.random(3)
@@ -368,17 +373,10 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     Wait(3000)
 
     EndStageCoachCam()
-
-    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach)
     driving = true
+    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
+
     return driving
 end)
 
-Citizen.CreateThread(function()
-    while driving do
-        Wait(10)
-        print('driving is active bottom')
-    
-    end
-end)
         
