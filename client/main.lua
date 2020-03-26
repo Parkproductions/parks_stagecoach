@@ -3,19 +3,7 @@ driving = false
 local keys = { ['SPACE'] = 0xD9D0E1C0 }
     
 
-RegisterNetEvent("parks_stagecoach:DrivingStatus")
-AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
 
-    while driving do
-        
-        Wait(5)
-        if IsControlJustPressed(0, keys['SPACE']) then 
-        OpenStageCoachMenu()
-        end
-    end
-
-
-end)
 
 -- Create Wagon Wheel Map Marker
 
@@ -389,3 +377,25 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     return driving
 end)
 
+RegisterNetEvent("parks_stagecoach:DrivingStatus")
+AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
+    
+    local active = false
+
+    while driving do
+        
+        Wait(5)
+        if IsControlJustPressed(0, keys['SPACE']) then 
+            if active == false then
+                OpenStageCoachMenu()
+                active = true
+            end
+            elseif active == true then
+                WarMenu.CloseMenu()
+                active = false
+            end
+        end
+    end
+
+
+end)
