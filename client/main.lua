@@ -107,8 +107,7 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
 
-    driving = true
-    print(driving)
+    
     local passenger_despawned = true
     route = math.random(3)
     player_loc = GetEntityCoords(PlayerPedId())
@@ -369,7 +368,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     EndStageCoachCam()
 
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach)
-
+    driving = true
 end)
 
 
