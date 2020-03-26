@@ -371,6 +371,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
 
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach)
     driving = true
+    return driving
 end)
 
 Citizen.CreateThread(function()
