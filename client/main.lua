@@ -107,6 +107,7 @@ RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
 
     driving = true
+    print(driving)
     local passenger_despawned = true
     route = math.random(3)
     player_loc = GetEntityCoords(PlayerPedId())
@@ -415,6 +416,7 @@ function StageCoachStatus()
 end
 
 while (driving == true) do
+    Wait(10)
     StageCoachStatus()
     if PromptHasHoldModeCompleted(StageCoachStatusPrompt) then
                         OpenStageCoachStatusMenu()
