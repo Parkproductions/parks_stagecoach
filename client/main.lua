@@ -107,14 +107,14 @@ end)
 -- StartCoachJob
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
-AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
+AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
 
     while driving do
         Wait(10)
         print('driving is active bottom')
     
     end
-    
+
     local passenger_despawned = true
     route = math.random(3)
     player_loc = GetEntityCoords(PlayerPedId())
