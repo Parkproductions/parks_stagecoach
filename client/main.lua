@@ -372,10 +372,9 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
 end)
 
 
-while (driving == true) do
+while driving do
     Wait(10)
     print('driving is active')
-    
     
 end
 
