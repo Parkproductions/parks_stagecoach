@@ -433,7 +433,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
     
     local active = false
 
-    while driving do
+    while (driving = true) do
         
         Wait(5)
         print(driving)
@@ -448,7 +448,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
                 end
             end
         end
-        if not driving then
+        if driving == false then
             break
         end
     end
