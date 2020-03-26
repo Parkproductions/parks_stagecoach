@@ -47,7 +47,7 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
         passenger_spawned = false
         TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)
 
-        Wait(10000)
+        Wait(30000)
         print(npc_id)
         DeleteEntity(npc_id)
         if fare_paid == true then
@@ -86,7 +86,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger_1_female, spawn_coach, 0)
-            TaskGoToCoordAnyMeans(passenger_1_female, Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y +40, Config.Destination[zone_name][route].z, 1.0, 0, 0, 786603, 0xbf800000)
+            TaskGoToCoordAnyMeans(passenger_1_female, Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y +50, Config.Destination[zone_name][route].z, 1.0, 0, 0, 786603, 0xbf800000)
             npc_id = GetPedIndexFromEntityIndex(passenger_1_female)
             TriggerEvent("parks_stagecoach:successful_dropoff", 10, npc_id)
             passenger_onboard = false
