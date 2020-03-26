@@ -377,6 +377,52 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     return driving
 end)
 
+-- Driving Status Menu
+
+-- Warmenu Stage Coach
+
+Citizen.CreateThread(function()
+    WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
+    while true do
+        Citizen.Wait(0)
+        if WarMenu.IsMenuOpened('DrivingStatus') then
+            WarMenu.Display()
+            if WarMenu.Button("Stop Driving") then
+                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 0)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            elseif WarMenu.Button("Eject Passenger") then
+                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 100)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            elseif WarMenu.Button("Order Replacement Wagon") then
+                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 500)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            elseif WarMenu.Button("Restart Fare") then
+                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 850)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            elseif WarMenu.Button("Exit") then
+                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 1000)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            end
+
+        end
+    end
+end)
+
+
+function OpenStageCoachMenu()
+    WarMenu.OpenMenu('Stagecoach')
+end
+
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
     
