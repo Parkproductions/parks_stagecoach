@@ -450,7 +450,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
             break
         end
         end
-    elseif(driving == false)
+    elseif(driving == false) then
     end
 
 end)
