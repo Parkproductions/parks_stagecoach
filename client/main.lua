@@ -385,6 +385,7 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
     passenger_spawned = false
+    driving = false
     
 end)
 
