@@ -8,7 +8,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
 
     while driving do
         
-        
+        Wait(5)
         if IsControlJustPressed(0, keys['SPACE']) then 
         print('SPACEBAR!')
         end
