@@ -370,7 +370,7 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     EndStageCoachCam()
     driving = true
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
-    TriggerEvent("parks_stagecoach:DrivingStatus", driving)
+    TriggerEvent("parks_stagecoach:DrivingStatus")
     return driving
 end)
 
@@ -385,8 +385,8 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
     passenger_spawned = false
-    local driving = false
-    TriggerEvent("parks_stagecoach:DrivingStatus", driving)
+    driving = false
+  --  TriggerEvent("parks_stagecoach:DrivingStatus", driving)
     
 end)
 
@@ -434,7 +434,7 @@ function OpenDrivingStatusMenu()
 end
 
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
-AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
+AddEventHandler("parks_stagecoach:DrivingStatus", function ()   
     
     local active = false
     print(driving)
@@ -449,9 +449,9 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
                 WarMenu.CloseMenu()
                 active = false
             end
-        end  
+        end
+       
         end
 
-     return driving
 
 end)
