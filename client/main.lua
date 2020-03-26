@@ -402,7 +402,7 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('DrivingStatus') then
             WarMenu.Display()
             if WarMenu.Button("Stop Driving") then
-                TriggerServerEvent("parks_stagecoach:stop_driving", 0)
+                TriggerEvent("parks_stagecoach:stop_driving", 0)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
