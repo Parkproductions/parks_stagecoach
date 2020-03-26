@@ -430,7 +430,7 @@ end
 
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
-    
+    print(driving)
     local active = false
 
     while driving do
