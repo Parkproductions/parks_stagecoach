@@ -106,7 +106,7 @@ end)
 -- StartCoachJob
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
-AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
+AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
 
 
     local passenger_despawned = true
@@ -369,9 +369,9 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
 
     EndStageCoachCam()
     driving = true
-    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach)
+    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
     TriggerEvent("parks_stagecoach:DrivingStatus", driving)
-    
+    return driving
 end)
 
 -- Driving Status Menu
@@ -431,33 +431,24 @@ end
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
     
+    local active = false
     
-
-    print(driving)
-
-
-
-
-end)
-
-local driving_active = false
-while (driving == true) do
+    while driving do
         
-        Wait(100)
-        print(drivin)
-
-            if IsControlJustPressed(0, keys['SPACE']) then 
-                if driving_active == false then
-                    OpenDrivingStatusMenu()
-                    driving_active = true
-                elseif active == true then
-                    WarMenu.CloseMenu()
-                    driving_active = false
-                end
+        Wait(5)
+        if IsControlJustPressed(0, keys['SPACE']) then 
+            if active == false then
+                OpenDrivingStatusMenu()
+                active = true
+            elseif active == true then
+                WarMenu.CloseMenu()
+                active = false
             end
-        
+        end
         if driving == false then
             break
         end
-        
     end
+
+
+end)
