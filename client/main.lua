@@ -380,6 +380,7 @@ RegisterNetEvent("parks_stagecoach:stop_driving")
 AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     
     local player = PlayerPedId()
+    local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
     TaskLeaveVehicle(player, spawn_coach, 0)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
