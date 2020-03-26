@@ -449,10 +449,11 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
                     active = false
                 end
             end
-        return driving_status
+        
         if driving_status == false then
             break
         end
+        return driving_status
     end
 
 
