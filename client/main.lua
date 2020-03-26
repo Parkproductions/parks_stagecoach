@@ -254,19 +254,20 @@ end
 
 -- Driving Status Prompt Menu
 
-DrivingStatusPrompt
+local DrivingStatusPrompt
+
 
 function DrivingStatus()
     Citizen.CreateThread(function()
-        local str = 'Stop Driving'
+        local status_str = 'Stop Driving'
         DrivingStatusPrompt = PromptRegisterBegin()
         PromptSetControlAction(DrivingStatusPrompt, 0xC7B5340A)
-        str = CreateVarString(10, 'LITERAL_STRING', str)
+        status_str = CreateVarString(10, 'LITERAL_STRING', status_str)
         PromptSetText(DrivingStatusPrompt, str)
         PromptSetEnabled(DrivingStatusPrompt, true)
         PromptSetVisible(DrivingStatusPrompt, true)
         PromptSetHoldMode(DrivingStatusPrompt, true)
-        PromptSetGroup(DrivingStatusPrompt, group)
+        PromptSetGroup(DrivingStatusPrompt, statusgroup)
         PromptRegisterEnd(DrivingStatusPrompt)
  
     end)
