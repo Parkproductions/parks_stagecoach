@@ -432,13 +432,13 @@ RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
     
     local active = false
-    local driving = driving
-    
-    while (driving == true) do
+    local driving_status = driving
+
+    while (driving_status == true) do
         
         Wait(5)
-        print(driving)
-        if driving == true then
+        print(driving_status)
+
             if IsControlJustPressed(0, keys['SPACE']) then 
                 if active == false then
                     OpenDrivingStatusMenu()
@@ -448,8 +448,8 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
                     active = false
                 end
             end
-        end
-        if driving == false then
+        
+        if driving_status == false then
             break
         end
     end
