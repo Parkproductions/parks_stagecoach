@@ -1,5 +1,11 @@
 coach = false
-driving = false
+driving = true
+
+while driving do
+    Wait(10)
+    print('driving is active')
+    
+end
 
 -- Create Wagon Wheel Map Marker
 
@@ -372,10 +378,6 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
 end)
 
 
-while driving do
-    Wait(10)
-    print('driving is active')
-    
-end
+
 
         
