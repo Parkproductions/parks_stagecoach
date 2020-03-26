@@ -1,11 +1,13 @@
 coach = false
 driving = true
 
-while driving do
-    Wait(10)
-    print('driving is active')
+Citizen.CreateThread(function()
+    while driving do
+        Wait(10)
+        print('driving is active')
     
-end
+    end
+end)
 
 -- Create Wagon Wheel Map Marker
 
@@ -376,8 +378,6 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach)
     driving = true
 end)
-
-
 
 
         
