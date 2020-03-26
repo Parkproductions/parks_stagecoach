@@ -106,6 +106,7 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach)
 
+    driving = true
     local passenger_despawned = true
     route = math.random(3)
     player_loc = GetEntityCoords(PlayerPedId())
@@ -369,6 +370,56 @@ AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost
 
 end)
 
+-- Warmenu Stage Coach
 
+Citizen.CreateThread(function()
+    WarMenu.CreateMenu('Stagecoachstatus', 'Stagecoachstatus')
+    while true do
+        Citizen.Wait(0)
+        if WarMenu.IsMenuOpened('Stagecoach') then
+            WarMenu.Display()
+            if WarMenu.Button("Stop Driving") then
+                driving = false
+                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 0)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            end
+        end
+    end
+end)
+
+
+function OpenStageCoachStatusMenu()
+    WarMenu.OpenMenu('Stagecoachstatus')
+end
+
+local StageCoachStatusPrompt
+local status_active = false
+
+
+function StageCoach()
+    Citizen.CreateThread(function()
+        local str = 'Stage Coach'
+        StageCoachStatusPrompt = PromptRegisterBegin()
+        PromptSetControlAction(StageCoachStatusPrompt, 0xC7B5340A)
+        str = CreateVarString(10, 'LITERAL_STRING', str)
+        PromptSetText(StageCoachStatusPrompt, str)
+        PromptSetEnabled(StageCoachStatusPrompt, true)
+        PromptSetVisible(StageCoachStatusPrompt, true)
+        PromptSetHoldMode(StageCoachStatusPrompt, true)
+        PromptSetGroup(StageCoachStatusPrompt, group)
+        PromptRegisterEnd(StageCoachStatusPrompt)
+ 
+    end)
+end
+
+while (driving == true) do
+    if PromptHasHoldModeCompleted(StageCoachStatusPrompt) then
+                        OpenStageCoachStatusMenu()
+                        PromptDelete(StageCoachStatusPrompt)
+                        status_active = true
+    end
+end
 
         
