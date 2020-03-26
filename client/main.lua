@@ -111,7 +111,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
 
     while driving do
         Wait(10)
-        print('driving is active bottom')
+        DrivingStatus()
     
     end
 
@@ -230,7 +230,7 @@ function OpenStageCoachMenu()
     WarMenu.OpenMenu('Stagecoach')
 end
 
--- Prompt Menu
+-- Buy Stage Coach Prompt Menu
 
 local StageCoachPrompt
 local active = false
@@ -251,6 +251,27 @@ function StageCoach()
  
     end)
 end
+
+-- Driving Status Prompt Menu
+
+local DrivingStatusPrompt
+
+function DrivingStatus()
+    Citizen.CreateThread(function()
+        local str = 'Stage Coach Co.'
+        DrivingStatusPrompt = PromptRegisterBegin()
+        PromptSetControlAction(DrivingStatusPrompt, 0xDFF812F9)
+        str = CreateVarString(10, 'LITERAL_STRING', str)
+        PromptSetText(DrivingStatusPrompt, str)
+        PromptSetEnabled(DrivingStatusPrompt, true)
+        PromptSetVisible(DrivingStatusPrompt, true)
+        PromptSetHoldMode(DrivingStatusPrompt, true)
+        PromptSetGroup(DrivingStatusPrompt, group)
+        PromptRegisterEnd(DrivingStatusPrompt)
+ 
+    end)
+end
+
 
 Citizen.CreateThread(function()
     while true do
