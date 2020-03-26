@@ -403,7 +403,12 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('DrivingStatus') then
             WarMenu.Display()
-            if WarMenu.Button("Stop Driving") then
+            if WarMenu.Button("Start Driving") then
+                TriggerEvent("parks_stagecoach:StartCoachJob", 0)
+                WarMenu.CloseMenu()
+                Wait(600)
+                WarMenu.Display()
+            elseif WarMenu.Button("Stop Driving") then
                 TriggerEvent("parks_stagecoach:stop_driving", 0)
                 WarMenu.CloseMenu()
                 Wait(600)
@@ -448,7 +453,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
         end
        
         end
-        
+
      return driving
 
 end)
