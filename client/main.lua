@@ -385,7 +385,7 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
     passenger_spawned = false
-    driving = false
+    local driving = false
     TriggerEvent("parks_stagecoach:DrivingStatus", driving)
     
 end)
@@ -432,7 +432,7 @@ RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
     
     local active = false
-    
+
     while driving do
         
         Wait(5)
