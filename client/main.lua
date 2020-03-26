@@ -381,7 +381,7 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('Stagecoachstatus') then
             WarMenu.Display()
             if WarMenu.Button("Stop Driving") then
-                driving = false
+               
                 TriggerServerEvent("parks_stagecoach:buy_stagecoach", 0)
                 WarMenu.CloseMenu()
                 Wait(600)
