@@ -389,7 +389,6 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
             if active == false then
                 OpenStageCoachMenu()
                 active = true
-            end
             elseif active == true then
                 WarMenu.CloseMenu()
                 active = false
