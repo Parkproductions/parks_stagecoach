@@ -1,4 +1,5 @@
 coach = false
+driving = false
 
 -- Create Wagon Wheel Map Marker
 
