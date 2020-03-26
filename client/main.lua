@@ -376,7 +376,7 @@ Citizen.CreateThread(function()
     WarMenu.CreateMenu('Stagecoachstatus', 'Stagecoachstatus')
     while true do
         Citizen.Wait(0)
-        if WarMenu.IsMenuOpened('Stagecoach') then
+        if WarMenu.IsMenuOpened('Stagecoachstatus') then
             WarMenu.Display()
             if WarMenu.Button("Stop Driving") then
                 driving = false
