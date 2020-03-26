@@ -392,18 +392,8 @@ Citizen.CreateThread(function()
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
-            elseif WarMenu.Button("Eject Passenger") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 100)
-                WarMenu.CloseMenu()
-                Wait(600)
-                WarMenu.Display()
-            elseif WarMenu.Button("Order Replacement Wagon") then
+            elseif WarMenu.Button("Replacem Wagon") then
                 TriggerServerEvent("parks_stagecoach:buy_stagecoach", 500)
-                WarMenu.CloseMenu()
-                Wait(600)
-                WarMenu.Display()
-            elseif WarMenu.Button("Restart Fare") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 850)
                 WarMenu.CloseMenu()
                 Wait(600)
                 WarMenu.Display()
