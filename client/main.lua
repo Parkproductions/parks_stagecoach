@@ -437,7 +437,6 @@ RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
     
     local active = false
-    local driving = driving
     print(driving)
     
         while driving do
@@ -450,8 +449,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
                 WarMenu.CloseMenu()
                 active = false
             end
-        end
-       
+        end  
         end
 
      return driving
