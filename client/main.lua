@@ -432,7 +432,8 @@ RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
     
     local active = false
-
+    local driving = driving
+    
     while (driving == true) do
         
         Wait(5)
