@@ -433,7 +433,8 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
     
     local active = false
 
-    while driving do
+    if(driving = true) then
+        while driving do
         
         Wait(5)
         if IsControlJustPressed(0, keys['SPACE']) then 
@@ -448,7 +449,8 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)
         if driving == false then
             break
         end
+        end
+    elseif(driving = false)
     end
-
 
 end)
