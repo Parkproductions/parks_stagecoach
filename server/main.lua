@@ -27,10 +27,12 @@ local function GetAmmoutStagecoaches( Player_ID, Character_ID )
         ['identifier'] = Player_ID,
         ['charid'] = Character_ID
     } )
+
+    print(HasStagecoaches)
+
     if #HasStagecoaches > 0 then return true end
     return false
-    print(HasStagecoaches)
-end
+    end
 
 RegisterServerEvent("parks_stagecoach:buy_stagecoach")
 AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
