@@ -47,7 +47,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
     end)
 
     local _resul = GetAmmoutStagecoaches( u_identifier, u_charid )
-    
+
     if u_money <= _price then
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, Config.NoMoney )--]]
         return
@@ -71,9 +71,11 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model }
         MySQL.Async.execute("INSERT INTO stagecoaches ( `identifier`, `charid`, `stagecoach` ) VALUES ( @identifier, @charid, @stagecoach )", Parameters)
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You got a new Stagecoach !' )--]]
+        print('New Stagecoach')
     else
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model }
         MySQL.Async.execute(" UPDATE stagecoaches SET stagecoach = @stagecoach WHERE identifier = @identifier AND charid = @charid ", Parameters)
+        print('Updated Stagecoach')
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You update the Stagecoach !' )--]]
     end
 
