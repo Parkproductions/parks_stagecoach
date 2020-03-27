@@ -46,7 +46,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
         u_money = user.getMoney()
     end)
 
-    local _resul = GetAmmoutHorses( u_identifier, u_charid )
+    local _resul = GetAmmoutStagecoaches( u_identifier, u_charid )
 
     if u_money <= _price then
         TriggerClientEvent( 'UI:DrawNotification', _src, Config.NoMoney )
