@@ -52,15 +52,15 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
 
     local _resul = GetAmmoutStagecoaches( u_identifier, u_charid )
 
-    if u_money <= _price then
-        --[[TriggerClientEvent( 'UI:DrawNotification', _src, Config.NoMoney )--]]
+   --[[ if u_money <= _price then
+        TriggerClientEvent( 'UI:DrawNotification', _src, Config.NoMoney )
         return
     end
 
     if u_level <= _level then
-        --[[TriggerClientEvent( 'UI:DrawNotification', _src, Config.LevelMissing )--]]
+        TriggerClientEvent( 'UI:DrawNotification', _src, Config.LevelMissing )
         return
-    end
+    end--]]
 
 	TriggerEvent('redemrp:getPlayerFromId', _src, function(user)
         user.removeMoney(_price)
