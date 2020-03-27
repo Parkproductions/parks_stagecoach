@@ -54,7 +54,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
     end
 
     if u_level <= _level then
-        TriggerClientEvent( 'UI:DrawNotification', _src, Config.LevelMissing )
+        --[[TriggerClientEvent( 'UI:DrawNotification', _src, Config.LevelMissing )--]]
         return
     end
 
@@ -70,11 +70,11 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
     if _resul ~= true then
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model }
         MySQL.Async.execute("INSERT INTO stagecoaches ( `identifier`, `charid`, `stagecoach` ) VALUES ( @identifier, @charid, @stagecoach )", Parameters)
-        TriggerClientEvent( 'UI:DrawNotification', _src, 'You got a new Stagecoach !' )
+        --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You got a new Stagecoach !' )--]]
     else
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model }
         MySQL.Async.execute(" UPDATE stagecoaches SET stagecoach = @stagecoach WHERE identifier = @identifier AND charid = @charid ", Parameters)
-        TriggerClientEvent( 'UI:DrawNotification', _src, 'You update the Stagecoach !' )
+        --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You update the Stagecoach !' )--]]
     end
 
 end)
