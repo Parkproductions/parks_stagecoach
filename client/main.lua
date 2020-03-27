@@ -319,15 +319,15 @@ RegisterNetEvent("parks_stagecoach:SpawnWagon")
 AddEventHandler("parks_stagecoach:SpawnWagon", function (stagecoach_cost)
     
     if stagecoach_cost == 0 then
-        stage_coach = GetHashKey("WAGON06X")
+        stage_coach = GetHashKey("BUGGY01")
     elseif stagecoach_cost == 100 then
-        stage_coach = GetHashKey("COACH4")
+        stage_coach = GetHashKey("BUGGY02")
     elseif stagecoach_cost == 500 then 
-        stage_coach = GetHashKey("COACH5")
+        stage_coach = GetHashKey("BUGGY03")
     elseif stagecoach_cost == 850 then
-        stage_coach = GetHashKey("COACH6")
+        stage_coach = GetHashKey("STAGECOACH001X")
     elseif stagecoach_cost == 1000 then
-        stage_coach = GetHashKey("COACH3")
+        stage_coach = GetHashKey("STAGECOACH002X")
     else
         stage_coach = GetHashKey("STAGECOACH004X")
     end
