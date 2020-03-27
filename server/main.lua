@@ -22,13 +22,14 @@ end)
 --- DATA BASE QUERIES
 
 local function GetAmmoutStagecoaches( Player_ID, Character_ID )
-	print(Player_ID, Character_ID)
+
     local HasStagecoaches = MySQL.Sync.fetchAll( "SELECT * FROM stagecoaches WHERE identifier = @identifier AND charid = @charid ", {
         ['identifier'] = Player_ID,
         ['charid'] = Character_ID
     } )
     if #HasStagecoaches > 0 then return true end
     return false
+    print(HasStagecoaches)
 end
 
 RegisterServerEvent("parks_stagecoach:buy_stagecoach")
