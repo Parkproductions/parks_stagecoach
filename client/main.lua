@@ -178,11 +178,52 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     end
 end)
 
+-- COACHES ARRAY DATA
 
+local Coaches = {
+    {
+        ['Text'] = "Borrow Coach - $0.",
+        ['SubText'] = "",
+        ['Desc'] = "Level Require : ~pa~0",
+        ['Param'] = {
+            ['Price'] = 0,
+            ['Model'] = "WAGON06X",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Buy Small Coach - $100",
+        ['SubText'] = "",
+        ['Desc'] = "Level Require : ~pa~0",
+        ['Param'] = {
+            ['Price'] = 100,
+            ['Model'] = "COACH5",
+            ['Level'] = 0
+        }
+    }
+}
+
+-- Warmenu with Coach with Params 
+
+Citizen.CreateThread( function()
+    WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
+    repeat
+        if WarMenu.IsMenuOpened('Stagecoach') then
+            for i = 1, #Coaches do
+                if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
+                    TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
+                    WarMenu.CloseMenu()
+                end
+            end
+            WarMenu.Display()
+        end
+        Citizen.Wait(0)
+    until false
+end)
 
 -- Warmenu Stage Coach
 
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
     WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
     while true do
         Citizen.Wait(0)
@@ -217,7 +258,7 @@ Citizen.CreateThread(function()
 
         end
     end
-end)
+end)--]]
 
 
 function OpenStageCoachMenu()

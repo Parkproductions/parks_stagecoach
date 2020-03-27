@@ -1,13 +1,13 @@
 
 
-RegisterServerEvent("parks_stagecoach:buy_stagecoach")
+--[[RegisterServerEvent("parks_stagecoach:buy_stagecoach")
 AddEventHandler("parks_stagecoach:buy_stagecoach", function (stagecoach_cost)
 	local _source = source
 	TriggerEvent('redemrp:getPlayerFromId', _source, function(user)
 	user.removeMoney(stagecoach_cost)	
 		TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, stagecoach_cost)		
 	end)	
-end)
+end)--]]
 
 
 RegisterServerEvent("parks_stagecoach:pay_fare")
@@ -30,8 +30,8 @@ local function GetAmmoutStagecoaches( Player_ID, Character_ID )
     return false
 end
 
-RegisterServerEvent('elrp:buyhorse')
-AddEventHandler( 'elrp:buyhorse', function ( args )
+RegisterServerEvent("parks_stagecoach:buy_stagecoach")
+AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
 
     local _src   = source
     local _price = args['Price']
@@ -62,7 +62,9 @@ AddEventHandler( 'elrp:buyhorse', function ( args )
         user.removeMoney(_price)
     end)
 
-    TriggerClientEvent('elrp:spawnHorse', _src, _model, true)
+    TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, stagecoach_cost)
+
+    --[[TriggerClientEvent('elrp:spawnHorse', _src, _model, true)--]]
 
 
     if _resul ~= true then
