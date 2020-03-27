@@ -321,15 +321,15 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (stagecoach_cost)
     if stagecoach_cost == 0 then
         stage_coach = GetHashKey("WAGON06X")
     elseif stagecoach_cost == 100 then
-        stage_coach = GetHashKey("STAGECOACH001X")
+        stage_coach = GetHashKey("STAGECOACH005X")
     elseif stagecoach_cost == 500 then 
-        stage_coach = GetHashKey("STAGECOACH002X")
+        stage_coach = GetHashKey("STAGECOACH006X")
     elseif stagecoach_cost == 850 then
-        stage_coach = GetHashKey("STAGECOACH003X")
+        stage_coach = GetHashKey("COACH2")
     elseif stagecoach_cost == 1000 then
-        stage_coach = GetHashKey("STAGECOACH004X")
+        stage_coach = GetHashKey("COACH3")
     else
-        stage_coach = GetHashKey("BUGGY02")
+        stage_coach = GetHashKey("STAGECOACH004X")
     end
 
     print('cost', stagecoach_cost)
