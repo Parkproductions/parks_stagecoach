@@ -330,8 +330,8 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (stagecoach_cost)
         local stage_coach = GetHashKey("WAGON06X")
     end
 
-    print('cost' stagecoach_cost)
-    print('wagon' stage_coach)
+    print('cost', stagecoach_cost)
+    print('wagon', stage_coach)
     RequestModel(stage_coach)
     while not HasModelLoaded(stage_coach) do
         Citizen.Wait(0)
