@@ -319,7 +319,7 @@ RegisterNetEvent("parks_stagecoach:SpawnWagon")
 AddEventHandler("parks_stagecoach:SpawnWagon", function (stagecoach_cost)
     
     if stagecoach_cost == 0 then
-        local stage_coach = GetHashKey("WAGON02X")
+        stage_coach = GetHashKey("WAGON02X")
     end
 
     print('cost', stagecoach_cost)
