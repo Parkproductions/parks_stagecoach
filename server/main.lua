@@ -47,9 +47,9 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
     end)
 
     local _resul = GetAmmoutStagecoaches( u_identifier, u_charid )
-    print(u_charid)
+    
     if u_money <= _price then
-        TriggerClientEvent( 'UI:DrawNotification', _src, Config.NoMoney )
+        --[[TriggerClientEvent( 'UI:DrawNotification', _src, Config.NoMoney )--]]
         return
     end
 
@@ -62,7 +62,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
         user.removeMoney(_price)
     end)
 
-    TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, stagecoach_cost)
+    --[[TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, stagecoach_cost)--]]
 
     --[[TriggerClientEvent('elrp:spawnHorse', _src, _model, true)--]]
 
