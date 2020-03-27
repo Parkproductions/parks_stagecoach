@@ -315,11 +315,21 @@ end
 
 -- Client Event for Wagon Spawn
 
-RegisterNetEvent("parks_stagecoach:SpawnBorrowedWagon")
-AddEventHandler("parks_stagecoach:SpawnBorrowedWagon", function (stagecoach_cost)
+RegisterNetEvent("parks_stagecoach:SpawnWagon")
+AddEventHandler("parks_stagecoach:SpawnWagon", function (stagecoach_cost)
     
-    
-    local stage_coach =  GetHashKey("BUGGY01")
+    if stagecoach_cost == 0 then
+        local stage_coach = GetHashKey("WAGON02X")
+    else if stagecoach_cost == 100 then
+        local stage_coach = GetHashKey("WAGON04X")
+    else if stagecoach_cost == 500 then 
+        local stage_coach = GetHashKey("WAGON03X")
+    else if stagecoach_cost == 850 then
+        local stage_coach = GetHashKey("WAGON05X")
+    else if stagecoach_cost == 1000 then
+        local stage_coach = GetHashKey("WAGON06X")
+    end
+
     print(stage_coach)
     RequestModel(stage_coach)
     while not HasModelLoaded(stage_coach) do
