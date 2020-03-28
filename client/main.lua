@@ -385,7 +385,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     while not HasModelLoaded(_model) do
         Citizen.Wait(0)
     end
-    print(zone_name)
+    print(HasModelLoaded(_model))
     while true do
         for _, zone in pairs(Config.Marker) do
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
