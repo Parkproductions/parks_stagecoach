@@ -1,6 +1,6 @@
 coach = false
 driving = false
-local keys = { ['SPACE'] = 0xD9D0E1C0 }
+local keys = { ['HOME'] = 0x064D1698 }
     
 -- Create Wagon Wheel Map Marker
 
@@ -495,7 +495,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()
     
         while true do
         Wait(5)
-            if IsControlJustPressed(0, keys['SPACE']) then 
+            if IsControlJustPressed(0, keys['HOME']) then 
             if active == false then
                 OpenDrivingStatusMenu()
                 active = true
