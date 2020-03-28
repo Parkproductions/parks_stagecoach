@@ -357,7 +357,7 @@ end
 -- Client Event for Wagon Spawn
 
 RegisterNetEvent("parks_stagecoach:SpawnWagon")
-AddEventHandler("parks_stagecoach:SpawnWagon", function (id, stage_coach)
+AddEventHandler("parks_stagecoach:SpawnWagon", function (source, stage_coach)
 
     print('wagon', stage_coach)
     RequestModel(stage_coach)

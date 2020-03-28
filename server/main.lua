@@ -69,7 +69,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
     --[[TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, stagecoach_cost)--]]
 
     --[[TriggerClientEvent('elrp:spawnHorse', _src, _model, true)--]]
-
+	TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, model, true)
 
     if _resul ~= true then
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model }
@@ -82,7 +82,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
         print('Updated Stagecoach')
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You update the Stagecoach !' )--]]
     end
-    TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, model, true)
+
 end)
 
 RegisterServerEvent( 'parks_stagecoach:loadstagecoach' )
