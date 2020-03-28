@@ -118,7 +118,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end
-    
+
     driving = true
     local passenger_despawned = true
     route = math.random(3)
@@ -397,6 +397,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
         end
     end
 
+    print(zone_name)
 
     spawn_coach = CreateVehicle(_model, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
