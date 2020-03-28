@@ -20,7 +20,7 @@ RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
     print('stage_coach triggered')
 
-    local model = GetHashKey( "S_M_M_BankClerk_01" )
+    local model = GetHashKey( "A_M_M_BiVFancyDRIVERS_01" )
                 local coord = GetEntityCoords(PlayerPedId())
                 RequestModel( model )
 
@@ -129,7 +129,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
         
             if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z,GetEntityCoords(PlayerPedId()),false)<500 and passenger_despawned == true then
 
-                local model = GetHashKey("A_F_M_BlWUpperClass_01")
+                local model = GetHashKey(Config.PickUp[zone_name][route].model)
                 
                 RequestModel( model )
 
