@@ -86,8 +86,8 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
 
 end)
 
-RegisterServerEvent( 'parks_stagecoach:loadstagecoach' )
-AddEventHandler( 'parks_stagecoach:loadstagecoach', function ( )
+RegisterServerEvent("parks_stagecoach:loadstagecoach")
+AddEventHandler("parks_stagecoach:loadstagecoach", function ( )
 
     local _src = source
 
@@ -100,9 +100,9 @@ AddEventHandler( 'parks_stagecoach:loadstagecoach', function ( )
     local HasStagecoaches = MySQL.Sync.fetchAll( "SELECT * FROM stagecoaches WHERE identifier = @identifier AND charid = @charid ", Parameters )
 
     if HasStagecoaches[1] then
-        local horse = HasStagecoaches[1].stagecoach
+        local stagecoach = HasStagecoaches[1].stagecoach
         print(stagecoach)
-        TriggerClientEvent("elrp:spawnHorse", _src, stagecoach, false)
+        TriggerClientEvent("parks_stagecoach:SpawnWagon", _src, stagecoach, false)
     end
 
 end )
