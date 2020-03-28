@@ -184,7 +184,7 @@ local Coaches = {
     {
         ['Text'] = "Borrow Coach - $0.",
         ['SubText'] = "",
-        ['Desc'] = "Level Require : ~pa~0",
+        ['Desc'] = "It's nothing special, but try to bring it back in one piece!",
         ['Param'] = {
             ['Price'] = 0,
             ['Model'] = "WAGON06X",
@@ -192,15 +192,25 @@ local Coaches = {
         }
     },
     {
-        ['Text'] = "Buy Small Coach - $100",
+        ['Text'] = "Small Coach - $100",
         ['SubText'] = "",
-        ['Desc'] = "Level Require : ~pa~0",
+        ['Desc'] = "It's got a roof and 2 seats, what more could you want?",
         ['Param'] = {
             ['Price'] = 100,
             ['Model'] = "COACH5",
             ['Level'] = 0
         }
-    }
+    },
+    {
+        ['Text'] = "Fancy Small Coach - $500",
+        ['SubText'] = "",
+        ['Desc'] = "The nicest small coach we sell, gets a higher price per fare.",
+        ['Param'] = {
+            ['Price'] = 200,
+            ['Model'] = "COACH4",
+            ['Level'] = 0
+        }
+    },
 }
 
 -- Warmenu with Coach with Params 
