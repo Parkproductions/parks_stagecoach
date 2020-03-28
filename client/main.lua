@@ -357,11 +357,11 @@ end
 -- Client Event for Wagon Spawn
 
 RegisterNetEvent("parks_stagecoach:SpawnWagon")
-AddEventHandler("parks_stagecoach:SpawnWagon", function (source, stage_coach)
+AddEventHandler("parks_stagecoach:SpawnWagon", function (model)
 
-    print('wagon', stage_coach)
-    RequestModel(stage_coach)
-    while not HasModelLoaded(stage_coach) do
+    print('wagon', model)
+    RequestModel(model)
+    while not HasModelLoaded(model) do
         Citizen.Wait(0)
     end
 
@@ -377,9 +377,9 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (source, stage_coach)
     end
 
 
-    spawn_coach = CreateVehicle(stage_coach, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
+    spawn_coach = CreateVehicle(model, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
-    SetModelAsNoLongerNeeded(stage_coach)
+    SetModelAsNoLongerNeeded(model)
     print(spawn_coach)
     local player = PlayerPedId()
     DoScreenFadeOut(500)

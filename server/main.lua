@@ -69,7 +69,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
     --[[TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, stagecoach_cost)--]]
 
     --[[TriggerClientEvent('elrp:spawnHorse', _src, _model, true)--]]
-	TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, model, true)
+	TriggerClientEvent("parks_stagecoach:SpawnWagon", model)
 
     if _resul ~= true then
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model }
