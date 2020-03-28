@@ -69,6 +69,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
     --[[TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, stagecoach_cost)--]]
 
     --[[TriggerClientEvent('elrp:spawnHorse', _src, _model, true)--]]
+    print('server model return' _model)
 	TriggerClientEvent("parks_stagecoach:SpawnWagon", _model)
 
     if _resul ~= true then
