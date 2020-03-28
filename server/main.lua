@@ -82,7 +82,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
         print('Updated Stagecoach')
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You update the Stagecoach !' )--]]
     end
-
+    TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, model)
 end)
 
 RegisterServerEvent( 'parks_stagecoach:loadstagecoach' )
