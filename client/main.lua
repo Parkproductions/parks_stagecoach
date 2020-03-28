@@ -385,7 +385,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     while not HasModelLoaded(_model) do
         Citizen.Wait(0)
     end
-    print(HasModelLoaded(_model))
+
     while true do
         for _, zone in pairs(Config.Marker) do
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
@@ -397,7 +397,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
         end
     end
 
-    
+    print('farts')
 
     spawn_coach = CreateVehicle(_model, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
