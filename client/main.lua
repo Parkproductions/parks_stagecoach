@@ -108,6 +108,16 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
 
+    while true do
+        for _, zone in pairs(Config.Marker) do
+            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
+                zone_name = zone.name
+            end
+        end
+        if zone_name then
+            break
+        end
+    end
 
     local passenger_despawned = true
     route = math.random(3)
