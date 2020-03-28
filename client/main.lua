@@ -36,8 +36,7 @@ end)
 
 -- Get Closest Zone
 RegisterCommand("zone", function(source, args)
-RegisterNetEvent("parks_stagecoach:GetClosestZone")
-AddEventHandler("parks_stagecoach:GetClosestZone", function ()
+                    Citizen.CreateThread(function()
 
     local player = GetEntityCoords(PlayerPedId())
     while true do
@@ -47,7 +46,8 @@ AddEventHandler("parks_stagecoach:GetClosestZone", function ()
     end
     print(zone_d)
 end)
-end)
+                end)
+
 
 -- Successful Drop Off / Pay Fare
 
