@@ -34,6 +34,20 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
     
 end)
 
+-- Get Closest Zone
+RegisterCommand("zone", function(source, args)
+RegisterNetEvent("parks_stagecoach:GetClosestZone")
+AddEventHandler("parks_stagecoach:GetClosestZone", function ()
+
+    local player = GetEntityCoords(PlayerPedId())
+    while true do
+        for _, zone in pairs(Config.Marker) do
+            zone_d = GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)
+        end
+    end
+    print(zone_d)
+end)
+end)
 
 -- Successful Drop Off / Pay Fare
 
@@ -107,17 +121,6 @@ end)
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
-
-    while true do
-        for _, zone in pairs(Config.Marker) do
-            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
-                zone_name = zone.name
-            end
-        end
-        if zone_name then
-            break
-        end
-    end
 
     driving = true
     local passenger_despawned = true
@@ -242,45 +245,6 @@ Citizen.CreateThread( function()
     until false
 end)
 
--- Warmenu Stage Coach
-
---[[Citizen.CreateThread(function()
-    WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
-    while true do
-        Citizen.Wait(0)
-        if WarMenu.IsMenuOpened('Stagecoach') then
-            WarMenu.Display()
-            if WarMenu.Button("Borrow Coach - $0 ") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 0)
-                WarMenu.CloseMenu()
-                Wait(600)
-                WarMenu.Display()
-            elseif WarMenu.Button("Buy Small Stage Coach - $100") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 100)
-                WarMenu.CloseMenu()
-                Wait(600)
-                WarMenu.Display()
-            elseif WarMenu.Button("Buy Medium Stage Coach - $500") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 500)
-                WarMenu.CloseMenu()
-                Wait(600)
-                WarMenu.Display()
-            elseif WarMenu.Button("Buy Large Stage Coach - $850") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 850)
-                WarMenu.CloseMenu()
-                Wait(600)
-                WarMenu.Display()
-            elseif WarMenu.Button("Buy Deluxe Stage Coach - $1000") then
-                TriggerServerEvent("parks_stagecoach:buy_stagecoach", 1000)
-                WarMenu.CloseMenu()
-                Wait(600)
-                WarMenu.Display()
-            end
-
-        end
-    end
-end)--]]
-
 
 function OpenStageCoachMenu()
     WarMenu.OpenMenu('Stagecoach')
@@ -397,7 +361,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
         end
     end
 
-    print('farts')
+
 
     spawn_coach = CreateVehicle(_model, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
