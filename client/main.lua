@@ -452,7 +452,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('DrivingStatus') then
             WarMenu.Display()
-            if driving = false then 
+            if driving == false then 
                 if WarMenu.Button("Start Driving") then
                     TriggerEvent("parks_stagecoach:StartCoachJob", 0)
                     WarMenu.CloseMenu()
