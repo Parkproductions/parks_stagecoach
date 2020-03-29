@@ -40,14 +40,17 @@ RegisterCommand("zone", function(source, args)
 
     local player = GetEntityCoords(PlayerPedId())
     while true do
-        Wait(10)
+        Citizen.Wait(10)
         for _, zone in pairs(Config.Marker) do
             zone_d = GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)
+        end
+        if zone_d == true then
+            break
         end
     end
     print(zone_d)
 end)
-                end)
+end)
 
 
 -- Successful Drop Off / Pay Fare
