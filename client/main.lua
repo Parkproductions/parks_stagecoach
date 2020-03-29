@@ -461,7 +461,6 @@ end)
 
 -- Warmenu Stage Coach
 
-if (driving == true) then
 Citizen.CreateThread(function()
     WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
     while true do
@@ -486,9 +485,9 @@ Citizen.CreateThread(function()
         end
     end
 end)
-else
+
 Citizen.CreateThread(function()
-    WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
+    WarMenu.CreateMenu('DrivingStatusFalse', 'DrivingStatusFalse')
     while true do
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('DrivingStatus') then
@@ -506,11 +505,15 @@ Citizen.CreateThread(function()
         end
     end
 end)
-end
 
 
-function OpenDrivingStatusMenu(driving)
+
+function OpenDrivingStatusMenu()
+    if(driving == true) then
     WarMenu.OpenMenu('DrivingStatus')
+    else
+    WarMenu.OpenMenu('DrivingStatusFalse')
+    end
 end
 
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
