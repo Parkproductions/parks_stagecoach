@@ -1,5 +1,6 @@
 coach = false
 driving = false
+print('Global Driving', driving)
 local keys = { ['O'] = 0xF1301666 }
     
 -- Create Wagon Wheel Map Marker
@@ -18,7 +19,8 @@ end)
 
 RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
-    print('stage_coach triggered')
+    print('stage_coach triggered', driving)
+
 
     local model = GetHashKey( "A_M_M_BiVFancyDRIVERS_01" )
                 local coord = GetEntityCoords(PlayerPedId())
@@ -97,7 +99,7 @@ end
 
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
 AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
-    
+    print('successful_dropoff', driving)
     while true do
     
         TriggerServerEvent("parks_stagecoach:pay_fare", 10)
@@ -123,8 +125,8 @@ end)
 
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
 AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
-    
-    print('PassengerOnBoard', 'Zone Name:', zone_name, 'Driving Stats:', driving)
+ 
+    print('PassengerOnBoard', driving)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
 
@@ -165,7 +167,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
-
+    print('parks_stagecoach:StartCoachJob', driving)
     zone_name = GetCurentTownName()
     driving = true
 
@@ -173,7 +175,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
 
-    print('parks_stagecoach:StartCoachJob','Driving Stats:', driving)
+    
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
@@ -392,7 +394,7 @@ end
 
 RegisterNetEvent("parks_stagecoach:SpawnWagon")
 AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
-
+ print('parks_stagecoach:SpawnWagon',driving)
     
     RequestModel(_model)
 
@@ -443,7 +445,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:stop_driving")
 AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
-    
+    print('parks_stagecoach:stop_driving',driving)
     local player = PlayerPedId()
     zone_name = GetCurentTownName()
     local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
@@ -453,7 +455,6 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     passenger_spawned = false
     driving = false
     print('stop_driving', 'Zone Name:', zone_name, 'Driving Stats:', driving)
-    --[[TriggerEvent("parks_stagecoach:DrivingStatus")--]]
     DrivingStatus()
 end)
 
@@ -512,7 +513,7 @@ end)
 
 
 function OpenDrivingStatusMenu(driving)
-    print(driving)
+    print('OpenDrivingStatusMenu',driving)
     if driving == true then
     WarMenu.OpenMenu('DrivingStatus')
     else
@@ -524,7 +525,7 @@ end
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
     
     function DrivingStatus(driving)
-    
+    print('DrivingStatus',driving)
     local active = false
     
     
