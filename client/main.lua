@@ -528,7 +528,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
     local active = false
     
     
-        while true do
+        while (driving == tru) do
         Wait(5)
         print(driving)
             if IsControlJustPressed(0, keys['O']) then 
