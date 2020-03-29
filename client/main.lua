@@ -509,6 +509,7 @@ end)
 
 
 function OpenDrivingStatusMenu()
+    print(driving)
     if(driving == true) then
     WarMenu.OpenMenu('DrivingStatus')
     else
