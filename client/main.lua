@@ -475,6 +475,11 @@ Citizen.CreateThread(function()
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
+            elseif WarMenu.Button("Start Driving") then
+                    TriggerServerEvent("parks_stagecoach:StartCoachJob", 500)
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
             elseif WarMenu.Button("Replace Wagon") then
                     TriggerServerEvent("parks_stagecoach:replace_stagecoach", 500)
                     WarMenu.CloseMenu()
@@ -532,13 +537,8 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
         
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
-                if driving == true then
                 print('driving true')
                 OpenDrivingStatusMenu()
-                else
-                print('driving false')
-                OpenDrivingStatusMenuFalse()
-                end
                 active = true
             elseif active == true then
                 WarMenu.CloseMenu()
