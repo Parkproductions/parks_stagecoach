@@ -172,7 +172,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     route = math.random(3)
     player_loc = GetEntityCoords(PlayerPedId())
 
-    print('StartCoachJob', 'Zone Name:' zone_name, 'Driving Stats:', driving)
+    print('StartCoachJob', 'Zone Name:', zone_name, 'Driving Stats:', driving)
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
