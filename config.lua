@@ -24,7 +24,7 @@ Config.Cams = {
 
 	["Rhodes"] = { 
 		["cam_a"] = {x = 1269.4, y = -1315.75, z = 79.4, h = 38.42},
-		["cam_b"] = {x = 1269.4, y = -1313.75, z = 79.4, h = 38.42}
+		["cam_b"] = {x = 1269.4, y = -1305.75, z = 79.4, h = 38.42}
 	}
 
 }
@@ -45,10 +45,10 @@ Config.PickUp = {
 		[1] = {name = 'Pick Up Point', model = "U_M_O_MaPWiseOldMan_01", sprite = 0xDDFBA6AB, x = 1875.4, y = -1853.53, z = 42.64, h = 61.03},
 	},
 	["Caliga"] = {
-		[1] = {name = 'Pick Up Point', model = "A_M_M_RANCHER_01", sprite = 0xDDFBA6AB, x = 1845.28, y = -1225.67, z= 42.02, h = 244.96}
+		[1] = {name = 'Pick Up Point', model = "A_M_M_RANCHER_01", sprite = 0xDDFBA6AB, x = 1845.28, y = -1225.67, z= 42.02, h = 244.96},
 	},
 	["Saint Denis"] = {
-
+		[1] = {name = 'Pick Up Point', model = "A_F_M_RhdProstitute_01", sprite = 0xDDFBA6AB, x = 2503.32, y = -1185.51, z = 49.22, h = 80.69},
 	},
 
 	["Rhodes"] = {
@@ -62,10 +62,10 @@ Config.Destination = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 2491.48, y = -1392.52, z = 45.69},
 	},
 	["Caliga"] = {
-		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1010.56, y = -1735.45, z = 45.69}
+		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1010.56, y = -1735.45, z = 45.69},
 	},
 	["Saint Denis"] = {
-
+		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1396.99, y = -1161.1, z = 343.83},
 	},
 	["Rhodes"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1738.37, y = -1373.53, z = 44.05},
