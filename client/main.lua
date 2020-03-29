@@ -35,17 +35,17 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 end)
 
 -- Get Closest Zone
-RegisterCommand("zone", function(source, args)
-                    Citizen.CreateThread(function()
+RegisterCommand("zone", function()
+    Citizen.CreateThread(function()
 
     local player = GetEntityCoords(PlayerPedId())
     
-        Citizen.Wait(10)
+        --[[Citizen.Wait(10)
         for _, zone in pairs(Config.Marker) do
             zone_d = GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)
-        end
+        end--]]
     
-    print(zone_d)
+    print(player)
 end)
 end)
 
