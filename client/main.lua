@@ -242,8 +242,9 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end
-    print('StartCoachJob', driving, 'Passenger Despawned:', passenger_despawned)
     driving = true
+    print('StartCoachJob', driving, 'Passenger Despawned:', passenger_despawned)
+
     DrivingStatus()
 end)
 
