@@ -532,7 +532,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
         
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
-                if driving == true then
+                if (driving == true) then
                 print('driving status true')
                 OpenDrivingStatusMenu()
                 else
