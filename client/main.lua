@@ -166,6 +166,7 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
 
+    zone_name = GetCurentTownName()
     driving = true
     local passenger_despawned = true
     route = math.random(3)
@@ -396,18 +397,6 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     end
 
     zone_name = GetCurentTownName()
-    --[[while true do
-        for _, zone in pairs(Config.Marker) do
-            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
-                zone_name = zone.name
-            end
-        end
-        if zone_name then
-            break
-        end
-    end--]]
-
-
 
     spawn_coach = CreateVehicle(_model, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
