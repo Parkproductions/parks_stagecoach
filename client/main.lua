@@ -184,7 +184,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     SetBlipSprite(p1, Config.PickUp[zone_name][route].sprite, 1)
     SetBlipScale(p1, 1)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
-    test = 123
+    local test = 123
     --[[TriggerEvent("parks_stagecoach:DrivingStatus", driving)--]]
     DrivingStatus(test)
     while (passenger_despawned == true) do
