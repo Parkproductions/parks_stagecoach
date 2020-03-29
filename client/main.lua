@@ -461,42 +461,52 @@ end)
 
 -- Warmenu Stage Coach
 
-Citizen.CreateThread(function(driving)
-    print('driving =', driving)
+if (driving == true) then
+Citizen.CreateThread(function()
     WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
     while true do
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('DrivingStatus') then
             WarMenu.Display()
-            if (driving == false) then 
-                if WarMenu.Button("Start Driving") then
-                    TriggerEvent("parks_stagecoach:StartCoachJob", 0)
-                    WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
-                end
-            elseif (driving == true) then 
-                if WarMenu.Button("Stop Driving") then
+            if WarMenu.Button("Stop Driving") then
                     TriggerEvent("parks_stagecoach:stop_driving", 0)
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
-                end
-            end
-            if WarMenu.Button("Replace Wagon") then
-                TriggerServerEvent("parks_stagecoach:replace_stagecoach", 500)
-                WarMenu.CloseMenu()
-                Wait(600)
-                WarMenu.Display()
+            elseif WarMenu.Button("Replace Wagon") then
+                    TriggerServerEvent("parks_stagecoach:replace_stagecoach", 500)
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
             elseif WarMenu.Button("Exit") then
-                WarMenu.CloseMenu()
-                Wait(600)
-                WarMenu.Display()
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
             end
-
         end
     end
 end)
+else
+Citizen.CreateThread(function()
+    WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
+    while true do
+        Citizen.Wait(0)
+        if WarMenu.IsMenuOpened('DrivingStatus') then
+            WarMenu.Display()
+            if WarMenu.Button("Start Driving") then
+                    TriggerEvent("parks_stagecoach:StartCoachJob", 0)
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
+            elseif WarMenu.Button("Exit") then
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
+            end
+        end
+    end
+end)
+end
 
 
 function OpenDrivingStatusMenu(driving)
@@ -519,8 +529,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()
                 WarMenu.CloseMenu()
                 active = false
             end
-        end
-       
+        end  
         end
 
 
