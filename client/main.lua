@@ -245,7 +245,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     driving = true
     print('StartCoachJob', driving, 'Passenger Despawned:', passenger_despawned)
 
-    DrivingStatus()
+    DrivingStatus(driving)
 end)
 
 -- COACHES ARRAY DATA
