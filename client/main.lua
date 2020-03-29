@@ -462,7 +462,7 @@ end)
 -- Warmenu Stage Coach
 
 Citizen.CreateThread(function(driving)
-    print(driving)
+    print('driving =', driving)
     WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
     while true do
         Citizen.Wait(0)
@@ -507,7 +507,7 @@ RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()   
     
     local active = false
-    print(driving)
+    
     
         while true do
         Wait(5)
