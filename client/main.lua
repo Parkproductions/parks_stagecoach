@@ -520,7 +520,7 @@ end
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()   
     
-    Print('parks_stagecoach:DrivingStatus:', driving)
+    print('parks_stagecoach:DrivingStatus:', driving)
     local active = false
     
     
