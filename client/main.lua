@@ -242,7 +242,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end
-    DrivingStatus(driving)
+    DrivingStatus()
 end)
 
 -- COACHES ARRAY DATA
