@@ -124,7 +124,7 @@ end)
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
 AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     
-    print('passenger_onboard')
+    print('PassengerOnBoard', 'Zone Name:' zone_name, 'Driving Stats:' driving)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
 
@@ -171,6 +171,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     local passenger_despawned = true
     route = math.random(3)
     player_loc = GetEntityCoords(PlayerPedId())
+
+    print('StartCoachJob', 'Zone Name:' zone_name, 'Driving Stats:' driving)
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
