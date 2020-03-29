@@ -451,7 +451,7 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     driving = false
     print('stop_driving', 'Zone Name:', zone_name, 'Driving Stats:', driving)
   --  TriggerEvent("parks_stagecoach:DrivingStatus", driving)
-    
+    TriggerEvent("parks_stagecoach:DrivingStatus")
 end)
 
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
