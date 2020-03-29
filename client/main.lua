@@ -168,12 +168,12 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
 
     zone_name = GetCurentTownName()
     driving = true
-    DrivingStatus()
+
     local passenger_despawned = true
     route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
 
-    print('parks_stagecoach:start_driving', driving)
+    print('StartCoachJob', 'Zone Name:', zone_name, 'Driving Stats:', driving)
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
@@ -186,7 +186,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     isTransfering = true
     --[[TriggerEvent("parks_stagecoach:DrivingStatus", driving)--]]
-    
+    DrivingStatus()
     while (passenger_despawned == true) do
     Wait(10)
         
@@ -452,7 +452,7 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     ClearGpsMultiRoute()
     passenger_spawned = false
     driving = false
-    print('parks_stagecoach:stop_driving', driving)
+    print('stop_driving', 'Zone Name:', zone_name, 'Driving Stats:', driving)
     --[[TriggerEvent("parks_stagecoach:DrivingStatus")--]]
     DrivingStatus()
 end)
@@ -472,11 +472,6 @@ Citizen.CreateThread(function()
             WarMenu.Display()
             if WarMenu.Button("Stop Driving") then
                     TriggerEvent("parks_stagecoach:stop_driving", 0)
-                    WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
-            elseif WarMenu.Button("Start Driving") then
-                    TriggerServerEvent("parks_stagecoach:StartCoachJob", 500)
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
@@ -501,7 +496,7 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('DrivingStatusFalse') then
             WarMenu.Display()
             if WarMenu.Button("Start Driving") then
-                    TriggerEvent("parks_stagecoach:SpawnWagon")
+                    TriggerEvent("parks_stagecoach:StartCoachJob")
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
@@ -528,6 +523,7 @@ end
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
     
     function DrivingStatus()
+    print('parks_stagecoach:DrivingStatus:', driving)
     local active = false
     
     
@@ -536,7 +532,13 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
         
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
+                if driving == true then
+                print('driving true')
                 OpenDrivingStatusMenu()
+                else
+                print('driving false')
+                OpenDrivingStatusMenuFalse()
+                end
                 active = true
             elseif active == true then
                 WarMenu.CloseMenu()
