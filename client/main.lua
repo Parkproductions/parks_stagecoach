@@ -509,7 +509,7 @@ end)
 
 
 function OpenDrivingStatusMenu()
-    print(driving)
+    print("OpenDrivingStatusMenu:", driving)
     if(driving == true) then
     WarMenu.OpenMenu('DrivingStatus')
     else
@@ -518,8 +518,9 @@ function OpenDrivingStatusMenu()
 end
 
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
-AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
+AddEventHandler("parks_stagecoach:DrivingStatus", function ()   
     
+    Print('parks_stagecoach:DrivingStatus:', driving)
     local active = false
     
     
