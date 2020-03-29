@@ -187,8 +187,9 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     SetBlipScale(p1, 1)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     
-    print('StartCoachJob', driving)
+
     DrivingStatus(driving)
+    print('StartCoachJob', driving)
     while (passenger_despawned == true) do
     Wait(10)
         
