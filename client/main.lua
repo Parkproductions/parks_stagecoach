@@ -391,7 +391,7 @@ end
 RegisterNetEvent("parks_stagecoach:SpawnWagon")
 AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
 
-    print('wagon', _model)
+    
     RequestModel(_model)
 
     while not HasModelLoaded(_model) do
@@ -442,12 +442,14 @@ RegisterNetEvent("parks_stagecoach:stop_driving")
 AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     
     local player = PlayerPedId()
+    zone_name = GetCurentTownName()
     local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
     TaskLeaveVehicle(player, spawn_coach, 0)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
     passenger_spawned = false
     driving = false
+    print('stop_driving', 'Zone Name:', zone_name, 'Driving Stats:', driving)
   --  TriggerEvent("parks_stagecoach:DrivingStatus", driving)
     
 end)
