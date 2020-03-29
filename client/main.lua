@@ -535,7 +535,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
                 if (driving == true) then
                 print('driving status true')
                 OpenDrivingStatusMenu()
-                else
+                elseif (driving == false) then
                 print('driving status false')
                 OpenDrivingStatusMenuFalse()
                 end
