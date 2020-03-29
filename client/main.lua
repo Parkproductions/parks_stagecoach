@@ -245,7 +245,7 @@ local Coaches = {
     {
         ['Text'] = "Borrow Coach - $0.",
         ['SubText'] = "",
-        ['Desc'] = "It's nothing special, but try to bring it back in one piece!",
+        ['Desc'] = "It's for a reason.",
         ['Param'] = {
             ['Price'] = 0,
             ['Model'] = "WAGON06X",
@@ -255,7 +255,7 @@ local Coaches = {
     {
         ['Text'] = "Small Coach - $100",
         ['SubText'] = "",
-        ['Desc'] = "It's got a roof and 2 seats, what more could you want?",
+        ['Desc'] = "It's got a roof and 2 seats.",
         ['Param'] = {
             ['Price'] = 100,
             ['Model'] = "COACH5",
@@ -265,7 +265,7 @@ local Coaches = {
     {
         ['Text'] = "Fancy Small Coach - $500",
         ['SubText'] = "",
-        ['Desc'] = "The nicest small coach we sell, gets a higher price per fare.",
+        ['Desc'] = "The nicest small coach we sell.",
         ['Param'] = {
             ['Price'] = 200,
             ['Model'] = "COACH4",
