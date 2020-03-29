@@ -214,8 +214,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end
-    print('StartCoachJob', driving, 'Passenger Despawned:', passenger_despawned)
-    while true do
+    
+    while (passenger_onboard == false) do
     Wait(10)
         
         if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, GetEntityCoords(PlayerPedId()),false)<10 then
@@ -242,7 +242,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end
-
+    print('StartCoachJob', driving, 'Passenger Despawned:', passenger_despawned)
     DrivingStatus()
 end)
 
