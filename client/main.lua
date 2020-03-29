@@ -462,6 +462,7 @@ end)
 -- Warmenu Stage Coach
 
 Citizen.CreateThread(function(driving)
+    print(driving)
     WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
     while true do
         Citizen.Wait(0)
