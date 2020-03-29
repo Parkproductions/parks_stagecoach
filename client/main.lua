@@ -498,7 +498,7 @@ Citizen.CreateThread(function(driving)
 end)
 
 
-function OpenDrivingStatusMenu()
+function OpenDrivingStatusMenu(driving)
     WarMenu.OpenMenu('DrivingStatus')
 end
 
@@ -512,7 +512,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()
         Wait(5)
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
-                OpenDrivingStatusMenu(driving)
+                OpenDrivingStatusMenu()
                 active = true
             elseif active == true then
                 WarMenu.CloseMenu()
