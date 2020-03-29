@@ -512,12 +512,11 @@ end)
 
 
 function OpenDrivingStatusMenu()
-    print("OpenDrivingStatusMenu:", driving)
-    if(driving == true) then
     WarMenu.OpenMenu('DrivingStatus')
-    else
+end
+
+function OpenDrivingStatusMenuFalse()
     WarMenu.OpenMenu('DrivingStatusFalse')
-    end
 end
 
 --[[RegisterNetEvent("parks_stagecoach:DrivingStatus")
@@ -528,12 +527,16 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
     local active = false
     
     
-        while (driving == true) do
+        while true do
         Wait(5)
-        print(driving)
+        
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
+                if driving == true then
                 OpenDrivingStatusMenu()
+                else
+                OpenDrivingStatusMenuFalse()
+                end
                 active = true
             elseif active == true then
                 WarMenu.CloseMenu()
