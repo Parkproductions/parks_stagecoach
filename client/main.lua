@@ -47,7 +47,7 @@ RegisterCommand("testzone", function()
     end
     
     table.sort (zone_arr, function (a, b) return a < b end)
-    table.foreachi (zone_arr, print)
+    table.foreach (zone_arr, print)
 
 end)
 
