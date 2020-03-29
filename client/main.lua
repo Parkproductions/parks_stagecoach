@@ -461,7 +461,7 @@ end)
 
 -- Warmenu Stage Coach
 
-Citizen.CreateThread(function()
+Citizen.CreateThread(function(driving)
     WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
     while true do
         Citizen.Wait(0)
@@ -512,7 +512,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()
         Wait(5)
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
-                OpenDrivingStatusMenu()
+                OpenDrivingStatusMenu(driving)
                 active = true
             elseif active == true then
                 WarMenu.CloseMenu()
