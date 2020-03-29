@@ -47,7 +47,7 @@ RegisterCommand("testzone", function()
     end
     
     table.sort (zone_arr, function (a, b) return a < b end)
-    print(zone_arr[1])
+    print(zone_arr)
 
 end)
 
