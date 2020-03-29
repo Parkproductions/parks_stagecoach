@@ -173,7 +173,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
 
-    print('StartCoachJob', 'Zone Name:', zone_name, 'Driving Stats:', driving)
+    print('parks_stagecoach:start_driving', driving)
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
@@ -452,7 +452,7 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     ClearGpsMultiRoute()
     passenger_spawned = false
     driving = false
-    print('stop_driving', 'Zone Name:', zone_name, 'Driving Stats:', driving)
+    print('parks_stagecoach:stop_driving', driving)
     --[[TriggerEvent("parks_stagecoach:DrivingStatus")--]]
     DrivingStatus()
 end)
@@ -528,7 +528,6 @@ end
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
     
     function DrivingStatus()
-    print('parks_stagecoach:DrivingStatus:', driving)
     local active = false
     
     
@@ -537,7 +536,6 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
         
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
-                print('driving true')
                 OpenDrivingStatusMenu()
                 active = true
             elseif active == true then
