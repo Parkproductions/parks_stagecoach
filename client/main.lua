@@ -175,7 +175,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
 
-    
+    driving = true
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
@@ -188,7 +188,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     
 
-    DrivingStatus(driving)
+    
     print('StartCoachJob', driving)
     while (passenger_despawned == true) do
     Wait(10)
@@ -242,6 +242,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end
+    DrivingStatus(driving)
 end)
 
 -- COACHES ARRAY DATA
