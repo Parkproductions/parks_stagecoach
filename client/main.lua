@@ -169,7 +169,7 @@ RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
     
     zone_name = GetCurentTownName()
-    driving = true
+    
 
     local passenger_despawned = true
     route = math.random(1)
@@ -187,8 +187,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     SetBlipScale(p1, 1)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     
-    --[[TriggerEvent("parks_stagecoach:DrivingStatus", driving)--]]
-    print('parks_stagecoach:StartCoachJob', driving)
+
     DrivingStatus(driving)
     while (passenger_despawned == true) do
     Wait(10)
@@ -525,24 +524,23 @@ end
 --[[RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
     
-    function DrivingStatus()
+function DrivingStatus()
     print('DrivingStatus',driving)
-    local active = false
-    
+    local active = false    
     
         while true do
         Wait(5)
         
             if IsControlJustPressed(0, keys['O']) then 
-            if active == false then
-                OpenDrivingStatusMenu(driving)
-                active = true
-            elseif active == true then
-                WarMenu.CloseMenu()
-                active = false
-            end
-        end  
+                if active == false then
+                    OpenDrivingStatusMenu(driving)
+                    active = true
+                elseif active == true then
+                    WarMenu.CloseMenu()
+                    active = false
+                end
+            end  
         end
-    end
+end
 
 --[[end)--]]
