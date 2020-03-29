@@ -169,7 +169,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     zone_name = GetCurentTownName()
     driving = true
     local passenger_despawned = true
-    route = math.random(3)
+    route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
 
     print('StartCoachJob', 'Zone Name:', zone_name, 'Driving Stats:', driving)
