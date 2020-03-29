@@ -186,7 +186,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     isTransfering = true
     --[[TriggerEvent("parks_stagecoach:DrivingStatus", driving)--]]
-    DrivingStatus(driving)
+    DrivingStatus()
     while (passenger_despawned == true) do
     Wait(10)
         
@@ -528,7 +528,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
     local active = false
     
     
-        while (driving == tru) do
+        while (driving == true) do
         Wait(5)
         print(driving)
             if IsControlJustPressed(0, keys['O']) then 
