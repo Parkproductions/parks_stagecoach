@@ -45,7 +45,11 @@ RegisterCommand("testzone", function()
             zone_d = GetDistanceBetweenCoords(zone.x, zone.y, zone.z,player,false)
             zone_arr[zone] = zone_d
     end
-    print(zone_arr)
+    for _, zone_dump in pairs(zone_arr) do
+        print(zone_dump)
+    end
+  --[[  table.sort (zone_arr, function (k1, k2) return k1.str < k2.str end )--]]
+  
 
 end)
 
