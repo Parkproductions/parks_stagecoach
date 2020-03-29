@@ -38,11 +38,14 @@ end)
 RegisterCommand("testzone", function()
    Citizen.CreateThread( function()
 
+
     local player = GetEntityCoords(PlayerPedId())
+    local zone_arr = {}
     for _, zone in pairs(Config.Marker) do
-            zone_d[] = GetDistanceBetweenCoords(zone.x, zone.y, zone.z,player,false)
+            zone_d = GetDistanceBetweenCoords(zone.x, zone.y, zone.z,player,false)
+            zone_arr[zpme] = zone_d
     end
-    print(zone_d)
+    print(zone_arr)
 
 end)
 
