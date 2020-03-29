@@ -185,7 +185,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     SetBlipScale(p1, 1)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     isTransfering = true
-    TriggerEvent("parks_stagecoach:DrivingStatus", driving)
+    --[[TriggerEvent("parks_stagecoach:DrivingStatus", driving)--]]
+    DrivingStatus()
     while (passenger_despawned == true) do
     Wait(10)
         
@@ -433,7 +434,8 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     EndStageCoachCam()
     driving = true
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
-    TriggerEvent("parks_stagecoach:DrivingStatus")
+    --[[TriggerEvent("parks_stagecoach:DrivingStatus")--]]
+    DrivingStatus()
     
 end)
 
@@ -451,7 +453,8 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     passenger_spawned = false
     driving = false
     print('stop_driving', 'Zone Name:', zone_name, 'Driving Stats:', driving)
-    TriggerEvent("parks_stagecoach:DrivingStatus")
+    --[[TriggerEvent("parks_stagecoach:DrivingStatus")--]]
+    DrivingStatus()
 end)
 
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
@@ -517,15 +520,17 @@ function OpenDrivingStatusMenu()
     end
 end
 
-RegisterNetEvent("parks_stagecoach:DrivingStatus")
-AddEventHandler("parks_stagecoach:DrivingStatus", function ()   
+--[[RegisterNetEvent("parks_stagecoach:DrivingStatus")
+AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
     
+    function DrivingStatus()
     print('parks_stagecoach:DrivingStatus:', driving)
     local active = false
     
     
         while true do
         Wait(5)
+        print('looping')
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
                 OpenDrivingStatusMenu()
@@ -536,6 +541,6 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()
             end
         end  
         end
+    end
 
-
-end)
+--[[end)--]]
