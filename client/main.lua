@@ -518,7 +518,7 @@ function OpenDrivingStatusMenu()
 end
 
 RegisterNetEvent("parks_stagecoach:DrivingStatus")
-AddEventHandler("parks_stagecoach:DrivingStatus", function ()   
+AddEventHandler("parks_stagecoach:DrivingStatus", function (driving)   
     
     local active = false
     
