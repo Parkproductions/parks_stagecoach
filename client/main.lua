@@ -43,7 +43,7 @@ RegisterCommand("testzone", function()
     local zone_arr = {}
     for _, zone in pairs(Config.Marker) do
             zone_d = GetDistanceBetweenCoords(zone.x, zone.y, zone.z,player,false)
-            zone_arr[zpme] = zone_d
+            zone_arr[zone] = zone_d
     end
     print(zone_arr)
 
