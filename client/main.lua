@@ -186,7 +186,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     
     --[[TriggerEvent("parks_stagecoach:DrivingStatus", driving)--]]
-    DrivingStatus(driving)
+    DrivingStatus(test)
     while (passenger_despawned == true) do
     Wait(10)
         
@@ -511,12 +511,12 @@ end)
 
 
 
-function OpenDrivingStatusMenu()
+function OpenDrivingStatusMenu(driving)
+    if driving == true then
     WarMenu.OpenMenu('DrivingStatus')
-end
-
-function OpenDrivingStatusMenuFalse()
+    else
     WarMenu.OpenMenu('DrivingStatusFalse')
+    end    
 end
 
 --[[RegisterNetEvent("parks_stagecoach:DrivingStatus")
@@ -532,13 +532,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
         
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
-                if (driving == true) then
-                print('driving status true')
-                OpenDrivingStatusMenu()
-                elseif (driving == false) then
-                print('driving status false')
-                OpenDrivingStatusMenuFalse()
-                end
+                OpenDrivingStatusMenu(driving)
                 active = true
             elseif active == true then
                 WarMenu.CloseMenu()
