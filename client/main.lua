@@ -508,7 +508,7 @@ end)
 
 
 
-function OpenDrivingStatusMenu(driving)
+function OpenDrivingStatusMenu()
     print("OpenDrivingStatusMenu:", driving)
     if(driving == true) then
     WarMenu.OpenMenu('DrivingStatus')
@@ -528,7 +528,7 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()
         Wait(5)
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
-                OpenDrivingStatusMenu(driving)
+                OpenDrivingStatusMenu()
                 active = true
             elseif active == true then
                 WarMenu.CloseMenu()
