@@ -189,7 +189,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     
 
     
-    print('StartCoachJob', driving)
+    
     while (passenger_despawned == true) do
     Wait(10)
         
@@ -242,6 +242,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end
+    print('StartCoachJob', driving)
     DrivingStatus()
 end)
 
