@@ -167,7 +167,7 @@ RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
 
     zone_name = GetCurentTownName()
-    driving = true
+    --[[driving = true--]]
 
     local passenger_despawned = true
     route = math.random(1)
