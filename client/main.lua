@@ -167,7 +167,7 @@ RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
 
     zone_name = GetCurentTownName()
-    --[[driving = true--]]
+    driving = true
 
     local passenger_despawned = true
     route = math.random(1)
@@ -496,7 +496,7 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('DrivingStatusFalse') then
             WarMenu.Display()
             if WarMenu.Button("Start Driving") then
-                    TriggerEvent("parks_stagecoach:StartCoachJob", 0)
+                    TriggerEvent("parks_stagecoach:StartCoachJob")
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
