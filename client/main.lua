@@ -173,7 +173,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
 
-    print('StartCoachJob', 'Zone Name:', zone_name, 'Driving Stats:', driving)
+    print('parks_stagecoach:StartCoachJob','Driving Stats:', driving)
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
@@ -184,7 +184,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     SetBlipSprite(p1, Config.PickUp[zone_name][route].sprite, 1)
     SetBlipScale(p1, 1)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
-    isTransfering = true
+
     --[[TriggerEvent("parks_stagecoach:DrivingStatus", driving)--]]
     DrivingStatus()
     while (passenger_despawned == true) do
@@ -496,7 +496,7 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('DrivingStatusFalse') then
             WarMenu.Display()
             if WarMenu.Button("Start Driving") then
-                    TriggerEvent("parks_stagecoach:SpawnWagon")
+                    TriggerEvent("parks_stagecoach:StartCoachJob")
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
@@ -523,7 +523,7 @@ end
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
     
     function DrivingStatus()
-    print('parks_stagecoach:DrivingStatus:', driving)
+    
     local active = false
     
     
@@ -533,10 +533,10 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
             if IsControlJustPressed(0, keys['O']) then 
             if active == false then
                 if driving == true then
-                print('driving true')
+                print('driving status true')
                 OpenDrivingStatusMenu()
                 else
-                print('driving false')
+                print('driving status false')
                 OpenDrivingStatusMenuFalse()
                 end
                 active = true
