@@ -522,7 +522,7 @@ end
 --[[RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
     
-    function DrivingStatus()
+    function DrivingStatus(test)
     
     local active = false
     print(test)
