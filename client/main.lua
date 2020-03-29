@@ -168,11 +168,11 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
 
     zone_name = GetCurentTownName()
     driving = true
-    
+
     local passenger_despawned = true
     route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
-    
+
     print('StartCoachJob', 'Zone Name:', zone_name, 'Driving Stats:', driving)
 
     StartGpsMultiRoute(012, false, true)
@@ -185,7 +185,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     SetBlipScale(p1, 1)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     isTransfering = true
-    TriggerEvent("parks_stagecoach:DrivingStatus")
+    TriggerEvent("parks_stagecoach:DrivingStatus", driving)
     while (passenger_despawned == true) do
     Wait(10)
         
