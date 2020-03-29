@@ -390,12 +390,13 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
 
     print('wagon', _model)
     RequestModel(_model)
-    print(GetCurentTownName())
+
     while not HasModelLoaded(_model) do
         Citizen.Wait(0)
     end
 
-    while true do
+    zone_name = GetCurentTownName()
+    --[[while true do
         for _, zone in pairs(Config.Marker) do
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
                 zone_name = zone.name
@@ -404,7 +405,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
         if zone_name then
             break
         end
-    end
+    end--]]
 
 
 
