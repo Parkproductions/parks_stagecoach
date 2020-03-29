@@ -36,13 +36,12 @@ end)
 
 -- Get Closest Zone
 RegisterCommand("testzone", function()
-   
+   Citizen.CreateThread( function()
 
     local player = GetEntityCoords(PlayerPedId())
-    
-       
-    
     print(player)
+    
+end)
 
 end)
 
