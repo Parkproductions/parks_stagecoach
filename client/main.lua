@@ -158,7 +158,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     
     while true do
     Wait(10)
-        print(GetVehicleBodyHealth(spawn_coach))
+        
 
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
@@ -173,8 +173,13 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         
 
         if IsEntityDead(passenger) then
-            TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 10, npc_id)
+            TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id)
             passenger_onboard = false
+        end
+
+        if GetVehicleBodyHealth(spawn_coach) == 0 then
+            TaskLeaveVehicle(passenger, spawn_coach, 0)
+            TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id)
         end
     
         if passenger_onboard == false then
@@ -498,7 +503,7 @@ Citizen.CreateThread(function()
                     Wait(600)
                     WarMenu.Display()
             elseif WarMenu.Button("Replace Wagon") then
-                    TriggerServerEvent("parks_stagecoach:replace_stagecoach", 500)
+                    TriggerServerEvent("parks_stagecoach:loadstagecoach", 500)
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
