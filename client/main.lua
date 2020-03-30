@@ -543,7 +543,7 @@ function DrivingStatus()
     local active = false    
     
         while true do
-        Wait(5)
+        Wait(100)
         print('Driving Status:', driving)
             if IsControlJustPressed(0, keys['O']) then 
                 if active == false then
