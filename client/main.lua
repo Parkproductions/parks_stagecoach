@@ -247,7 +247,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
 
     DrivingStatus(driving)
 end)
-
+print('Pre Coaches Array Data', driving)
 -- COACHES ARRAY DATA
 
 local Coaches = {
@@ -282,7 +282,7 @@ local Coaches = {
         }
     },
 }
-
+print('Post Coaches Array Data', driving)
 -- Warmenu with Coach with Params 
 
 Citizen.CreateThread( function()
@@ -301,11 +301,13 @@ Citizen.CreateThread( function()
     until false
 end)
 
+print('Post War Menu StageCoach ', driving)
 
 function OpenStageCoachMenu()
     WarMenu.OpenMenu('Stagecoach')
 end
 
+print('Post OpenStageCoachMenu', driving)
 -- Buy Stage Coach Prompt Menu
 
 local StageCoachPrompt
@@ -328,6 +330,7 @@ function StageCoach()
     end)
 end
 
+print('Post StageCoach Prompt Menu', driving)
 
 Citizen.CreateThread(function()
     while true do
@@ -357,6 +360,7 @@ Citizen.CreateThread(function()
 end
 end)
 
+print('Post StageCoach Prompt COORDS CHECK Menu', driving)
 
 Citizen.CreateThread(function()
     
@@ -382,6 +386,7 @@ Citizen.CreateThread(function()
     end
 end)              
 
+print('Post NPC SPAWN MENU', driving)
 -- Destroy Cams
 
 function EndStageCoachCam()
@@ -394,6 +399,8 @@ function EndStageCoachCam()
     cam_a = nil
     cam_b = nil
 end
+
+print('Post Destroy Cams', driving)
 
 -- Client Event for Wagon Spawn
 
@@ -446,6 +453,8 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     
 end)
 
+print('Post SpawnWagon Event', driving)
+
 -- Driving Status Menu
 
 RegisterNetEvent("parks_stagecoach:stop_driving")
@@ -463,10 +472,14 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     DrivingStatus()
 end)
 
+print('Post Stop Driving Event', driving)
+
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
 AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
 
 end)
+
+print('Post Replace Wagon Event', driving)
 
 -- Warmenu Stage Coach
 
@@ -495,6 +508,8 @@ Citizen.CreateThread(function()
     end
 end)
 
+print('Post Create Menu Driving Status', driving)
+
 Citizen.CreateThread(function()
     WarMenu.CreateMenu('DrivingStatusFalse', 'DrivingStatusFalse')
     while true do
@@ -515,7 +530,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-
+print('Post Create Menu DrivingStatusFalse', driving)
 
 function OpenDrivingStatusMenu()
     print('OpenDrivingStatusMenu',driving)
