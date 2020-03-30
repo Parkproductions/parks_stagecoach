@@ -158,12 +158,13 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     
     while true do
     Wait(10)
-        
+        print(GetVehicleBodyHealth(spawn_coach))
+
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger, spawn_coach, 0)
-            TaskGoToCoordAnyMeans(passenger, Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y +50, Config.Destination[zone_name][route].z, 1.0, 0, 0, 786603, 0xbf800000)
+            TaskGoToCoordAnyMeans(passenger, Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y +40, Config.Destination[zone_name][route].z, 1.0, 0, 0, 786603, 0xbf800000)
             npc_id = GetPedIndexFromEntityIndex(passenger)
             TriggerEvent("parks_stagecoach:successful_dropoff", 10, npc_id)
             passenger_onboard = false
