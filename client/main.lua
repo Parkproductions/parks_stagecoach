@@ -148,6 +148,11 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
             passenger_onboard = false
             
         end
+
+        if IsEntityDead(passenger_1_female) == true then
+            TriggerEvent("parks_stagecoach:successful_dropoff", 10, npc_id)
+            passenger_onboard = false
+        end
     
         if passenger_onboard == false then
             break
