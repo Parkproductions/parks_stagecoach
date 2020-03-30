@@ -528,7 +528,7 @@ function DrivingStatus()
     
         while true do
         Wait(5)
-        
+        print('Driving Status:', driving)
             if IsControlJustPressed(0, keys['O']) then 
                 if active == false then
                     OpenDrivingStatusMenu()
