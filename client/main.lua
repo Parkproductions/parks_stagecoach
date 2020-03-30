@@ -459,7 +459,7 @@ end)
 -- Warmenu Stop Driving Options
 
 Citizen.CreateThread(function()
-    WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
+    WarMenu.CreateMenu('DrivingStatus', 'Coach Menu')
     while true do
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('DrivingStatus') then
@@ -487,7 +487,7 @@ end)
 -- Warmenu Start Driving Options
 
 Citizen.CreateThread(function()
-    WarMenu.CreateMenu('DrivingStatusFalse', 'DrivingStatusF')
+    WarMenu.CreateMenu('DrivingStatusFalse', 'Coach Menu')
     while true do
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('DrivingStatusFalse') then
@@ -543,7 +543,7 @@ function DrivingStatus()
     local active = false    
     
         while true do
-        Wait(100)
+        Wait(10)
         print('Driving Status:', driving)
             if IsControlJustPressed(0, keys['O']) then 
                 if active == false then
