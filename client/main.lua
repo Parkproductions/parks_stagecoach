@@ -1,6 +1,9 @@
-coach = false
-driving = false
+local coach = false
+local driving = false
+local pressTime = 0
+local pressLeft = 0
 local keys = { ['O'] = 0xF1301666, ['G'] = 0x5415BE48 }
+
     
 -- Create Wagon Wheel Map Marker
 
