@@ -521,6 +521,22 @@ end
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
 
 -- Update Driving Status Function
+
+RegisterCommand("drivingtrue", function()
+
+    driving = true
+    DrivingStatus()
+
+end)
+
+RegisterCommand("drivingfalse", function()
+
+    driving = false
+    DrivingStatus()
+
+end)
+
+
     
 function DrivingStatus()
     
