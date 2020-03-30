@@ -158,7 +158,7 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
     
-    print(zone_name, spawn_coach, driving)
+    
 
    --[[ driving = true
     zone_name = GetCurentTownName()--]]
@@ -233,7 +233,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     end
     
     DrivingStatus()
-    
+    print(zone_name, spawn_coach, driving)
 end)
 
 -- COACHES ARRAY DATA
