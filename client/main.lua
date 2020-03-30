@@ -232,7 +232,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end--]]
-    
+    print('startcoachjob Driving', driving)
     DrivingStatus()
     
 end)
