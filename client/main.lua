@@ -430,7 +430,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     EndStageCoachCam()
     driving = true
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
-    DrivingStatus()
+    --[[DrivingStatus()--]]
 
 end)
 
@@ -448,7 +448,7 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     ClearGpsMultiRoute()
     passenger_spawned = false
     driving = false
-    DrivingStatus()
+    --[[DrivingStatus()--]]
 end)
 
 
