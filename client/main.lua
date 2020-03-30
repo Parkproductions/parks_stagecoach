@@ -196,9 +196,9 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                         Wait(500)
                     end
                 
-                passenger_1_female = CreatePed( model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, 1, 1)
-                print(passenger_1_female)
-                Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
+                passenger = CreatePed( model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, 1, 1)
+                print(passenger)
+                Citizen.InvokeNative( 0x283978A15512B2FE , passenger, true )
                 passenger_despawned = false
                 Wait(10)
                 
@@ -217,14 +217,14 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             
             SetEntityAsMissionEntity(spawn_coach, false, false)
-            SetEntityAsMissionEntity(passenger_1_female, false, false)
+            SetEntityAsMissionEntity(passenger, false, false)
             
-            npc_group = GetPedRelationshipGroupHash(passenger_1_female)
+            npc_group = GetPedRelationshipGroupHash(passenger)
             SetRelationshipBetweenGroups(1 , GetHashKey("PLAYER") , npc_group)
             print(npc_group)
 
-            Wait(1000)       
-            TaskEnterVehicle(passenger_1_female, spawn_coach, -1, 1, 1.0, 1, 0)
+            Wait(500)       
+            TaskEnterVehicle(passenger, spawn_coach, -1, 1, 1.0, 1, 0)
 
             passenger_onboard = true
             TriggerEvent("parks_stagecoach:PassengerOnboard", zone_name, route)
@@ -444,7 +444,7 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     local player = PlayerPedId()
     zone_name = GetCurentTownName()
     local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
-    --[[TaskLeaveVehicle(player, spawn_coach, 0)--]]
+    TaskLeaveVehicle(passenger, spawn_coach, 0)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
     passenger_spawned = false
