@@ -232,9 +232,9 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end
-    
-    DrivingStatus()
     print(zone_name, spawn_coach, driving)
+    DrivingStatus()
+    
 end)
 
 -- COACHES ARRAY DATA
