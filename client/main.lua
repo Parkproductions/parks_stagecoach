@@ -116,6 +116,27 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
     end
 end)
 
+-- Successful Drop Off / Pay Fare
+
+RegisterNetEvent("parks_stagecoach:unsuccessful_dropoff")
+AddEventHandler("parks_stagecoach:unsuccessful_dropoff", function (fare, npc_id)
+
+    while true do
+    
+        local fare_paid = true
+        RemoveBlip(p1)
+        ClearGpsMultiRoute()
+        passenger_spawned = false
+        TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)
+        Wait(30000)
+        DeleteEntity(npc_id)
+        
+        if fare_paid == true then
+            break
+        end
+    end
+end)
+
 -- PassengerOnboard
 
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
@@ -138,7 +159,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     while true do
     Wait(10)
         
-        if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(PlayerPedId()),false)<5 and passenger_onboard ~= false then
+        if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger, spawn_coach, 0)
@@ -151,7 +172,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         
 
         if IsEntityDead(passenger) then
-            TriggerEvent("parks_stagecoach:successful_dropoff", 10, npc_id)
+            TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 10, npc_id)
             passenger_onboard = false
         end
     
