@@ -538,7 +538,7 @@ end)
 
 
     
-function DrivingStatus()
+--[[function DrivingStatus()
     
     local active = false    
     
@@ -558,6 +558,35 @@ function DrivingStatus()
                 break 
             end  
         end
-end
+end--]]
+
+Citizen.CreateThread(function()
+    while true do
+
+        if IsControlJustReleased(0, keys['O']) then
+                OpenDrivingStatusMenu()
+        end
+        
+
+        if IsControlJustReleased( 0, keys['H'] ) then
+            pressLeft = GetGameTimer()
+            pressTime = pressTime + 1
+        end
+
+        if pressLeft ~= nil and (pressLeft + 500) < GetGameTimer() and pressTime > 0 and pressTime < 1 then
+            pressTime = 0
+        end
+
+        if pressTime == 1 then
+            if recentlySpawned <= 0 then
+                recentlySpawned = 10
+                TriggerServerEvent('parks_stagecoach:loadstagecoach')
+            end
+            pressTime = 0
+        end
+
+        Citizen.Wait(0)
+    end
+end)
 
 --[[end)--]]
