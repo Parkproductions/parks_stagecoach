@@ -167,6 +167,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     local passenger_despawned = true
     route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
+    passenger_onboard = false
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
