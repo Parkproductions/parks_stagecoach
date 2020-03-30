@@ -200,7 +200,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                 print(passenger_1_female)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger_1_female, true )
                 passenger_despawned = false
-                Wait(10000)
+                Wait(10)
                 
             end
         if passenger_despawned == false then
@@ -529,14 +529,14 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
 RegisterNetEvent("drivingtrue")
 AddEventHandler("drivingtrue", function()
     driving = true
-    DrivingStatus()
+    --[[DrivingStatus()--]]
 
 end)
 
 RegisterCommand("drivingfalse", function()
 
     driving = false
-    DrivingStatus()
+    --[[DrivingStatus()--]]
 
 end)
 
