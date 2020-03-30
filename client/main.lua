@@ -149,9 +149,8 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
             
         end
         
-        deadcheck = IsEntityDead(passenger_1_female)
-        print(deadcheck)
-        if deadcheck == true then
+        
+        if IsEntityDead(passenger_1_female) then
             TriggerEvent("parks_stagecoach:successful_dropoff", 10, npc_id)
             passenger_onboard = false
         end
