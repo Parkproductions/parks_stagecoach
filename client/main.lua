@@ -179,7 +179,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     SetBlipScale(p1, 1)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     
-    while (passenger_despawned == true) do
+--[[    while (passenger_despawned == true) do
     Wait(10)
 
             if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z,GetEntityCoords(PlayerPedId()),false)<500 and passenger_despawned == true then
@@ -231,7 +231,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             
             break
         end
-    end
+    end--]]
     
     DrivingStatus()
     
