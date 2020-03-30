@@ -1,6 +1,6 @@
 coach = false
 driving = false
-print('Global Driving', driving)
+
 local keys = { ['O'] = 0xF1301666 }
     
 -- Create Wagon Wheel Map Marker
@@ -19,8 +19,6 @@ end)
 
 RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
-    print('stage_coach triggered', driving)
-
 
     local model = GetHashKey( "A_M_M_BiVFancyDRIVERS_01" )
                 local coord = GetEntityCoords(PlayerPedId())
@@ -99,7 +97,7 @@ end
 
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
 AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
-    print('successful_dropoff', driving)
+
     while true do
     
         TriggerServerEvent("parks_stagecoach:pay_fare", 10)
@@ -126,7 +124,6 @@ end)
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
 AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
  
-    print('PassengerOnBoard', driving)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
 
@@ -243,8 +240,6 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
         end
     end
     driving = true
-    print('StartCoachJob', driving, 'Passenger Despawned:', passenger_despawned)
-    print('Pre Coaches Array Data', driving)
     DrivingStatus(driving)
     
 end)
@@ -300,14 +295,13 @@ Citizen.CreateThread( function()
         end
         Citizen.Wait(0)
     until false
-    print('Post War Menu StageCoach ', driving)
 end)
 
 
 
 function OpenStageCoachMenu()
     WarMenu.OpenMenu('Stagecoach')
-    print('Post OpenStageCoachMenu', driving)
+
 end
 
 
@@ -331,7 +325,7 @@ function StageCoach()
         PromptRegisterEnd(StageCoachPrompt)
  
     end)
-    print('Post StageCoach Prompt Menu', driving)
+
 end
 
 
@@ -362,7 +356,7 @@ Citizen.CreateThread(function()
                         active = true
     end
 end
-print('Post StageCoach Prompt COORDS CHECK Menu', driving)
+
 end)
 
 
@@ -391,7 +385,7 @@ Citizen.CreateThread(function()
     end
 end)              
 
-print('Post NPC SPAWN MENU', driving)
+
 -- Destroy Cams
 
 function EndStageCoachCam()
@@ -403,7 +397,7 @@ function EndStageCoachCam()
 
     cam_a = nil
     cam_b = nil
-    print('Post Destroy Cams', driving)
+
 end
 
 
@@ -412,7 +406,6 @@ end
 
 RegisterNetEvent("parks_stagecoach:SpawnWagon")
 AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
- print('parks_stagecoach:SpawnWagon',driving)
     
     RequestModel(_model)
 
@@ -456,7 +449,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
     --[[TriggerEvent("parks_stagecoach:DrivingStatus")--]]
     DrivingStatus()
-    print('Post SpawnWagon Event', driving)
+
 end)
 
 
@@ -483,7 +476,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
 AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
-print('Post Replace Wagon Event', driving)
+
 end)
 
 
@@ -513,7 +506,7 @@ Citizen.CreateThread(function()
             end
         end
     end
-    print('Post Create Menu Driving Status', driving)
+    
 end)
 
 
@@ -536,13 +529,13 @@ Citizen.CreateThread(function()
             end
         end
     end
-    print('Post Create Menu DrivingStatusFalse', driving)
+    
 end)
 
 
 
 function OpenDrivingStatusMenu()
-    print('OpenDrivingStatusMenu',driving)
+   
     if driving == true then
     WarMenu.OpenMenu('DrivingStatus')
     else
@@ -554,7 +547,7 @@ end
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
     
 function DrivingStatus()
-    print('DrivingStatus',driving)
+    
     local active = false    
     
         while true do
