@@ -2,6 +2,7 @@ local coach = false
 local driving = false
 local pressTime = 0
 local pressLeft = 0
+local recentlySpawned = 0
 local keys = { ['O'] = 0xF1301666, ['G'] = 0x5415BE48 }
 
     
@@ -571,7 +572,7 @@ Citizen.CreateThread(function()
         end
         
 
-        if IsControlJustReleased( 0, keys['G'] ) then
+        if IsControlJustReleased(0, keys['G'] ) then
             pressLeft = GetGameTimer()
             pressTime = pressTime + 1
         end
