@@ -164,7 +164,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
-    
+    driving = true
     zone_name = GetCurentTownName()
     
 
@@ -239,8 +239,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             break
         end
     end
-    driving = true
-    DrivingStatus(driving)
+    
+    DrivingStatus()
     
 end)
 
@@ -447,7 +447,6 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     EndStageCoachCam()
     driving = true
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
-    --[[TriggerEvent("parks_stagecoach:DrivingStatus")--]]
     DrivingStatus()
 
 end)
@@ -467,9 +466,7 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     ClearGpsMultiRoute()
     passenger_spawned = false
     driving = false
-    print('stop_driving', 'Zone Name:', zone_name, 'Driving Stats:', driving)
     DrivingStatus()
-    print('Post Stop Driving Event', driving)
 end)
 
 
