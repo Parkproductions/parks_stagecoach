@@ -558,24 +558,6 @@ function DrivingStatus()
                 break 
             end  
         end
-        
-        while (driving == false) do
-            Wait(10)
-            print('Driving Status:', driving)
-            if IsControlJustPressed(0, keys['O']) then 
-                if active == false then
-                    OpenDrivingStatusMenu()
-                    active = true
-                elseif active == true then
-                    WarMenu.CloseMenu()
-                    active = false
-                end
-            end
-            if (driving == true) then 
-                break 
-            end  
-        end
-
 end
 
 --[[end)--]]
