@@ -233,8 +233,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
         end
     end--]]
     print('startcoachjob Driving', driving)
-    Wait(100)
-    DrivingStatus()
+    
+    TriggerEvent("drivingtrue")
     
 end)
 
@@ -523,8 +523,8 @@ AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]]
 
 -- Update Driving Status Function
 
-RegisterCommand("drivingtrue", function()
-
+RegisterNetEvent("drivingtrue")
+AddEventHandler("drivingtrue", function()
     driving = true
     DrivingStatus()
 
