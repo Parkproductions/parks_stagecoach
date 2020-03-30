@@ -562,7 +562,7 @@ function DrivingStatus()
         
             if IsControlJustPressed(0, keys['O']) then 
                 if active == false then
-                    OpenDrivingStatusMenu(driving)
+                    OpenDrivingStatusMenu()
                     active = true
                 elseif active == true then
                     WarMenu.CloseMenu()
