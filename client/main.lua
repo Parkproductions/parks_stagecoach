@@ -565,10 +565,17 @@ end)
 end--]]
 
 Citizen.CreateThread(function()
+    local active = false
     while true do
 
         if IsControlJustReleased(0, keys['O']) then
+            if active == false then
                 OpenDrivingStatusMenu()
+                active = true
+            elseif active == true then
+                    WarMenu.CloseMenu()
+                    active = false
+            end
         end
         
 
