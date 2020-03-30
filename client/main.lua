@@ -1,6 +1,5 @@
 coach = false
 driving = false
-
 local keys = { ['O'] = 0xF1301666 }
     
 -- Create Wagon Wheel Map Marker
@@ -14,24 +13,23 @@ Citizen.CreateThread(function()
     end  
 end)
 
-
 -- Generate Job Giver NPC's
 
 RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 
     local model = GetHashKey( "A_M_M_BiVFancyDRIVERS_01" )
-                local coord = GetEntityCoords(PlayerPedId())
-                RequestModel( model )
+    local coord = GetEntityCoords(PlayerPedId())
+    RequestModel( model )
 
-                    while not HasModelLoaded( model ) do
-                        Wait(500)
-                    end
+        while not HasModelLoaded( model ) do
+            Wait(500)
+        end
                 
-                npc = CreatePed( model, zone.x, zone.y, zone.z, zone.h, 1, 1 )
-                print(npc)
-                Citizen.InvokeNative( 0x283978A15512B2FE , npc, true )
-    
+    npc = CreatePed( model, zone.x, zone.y, zone.z, zone.h, 1, 1 )
+    print(npc)
+    Citizen.InvokeNative( 0x283978A15512B2FE , npc, true )
+
 end)
 
 -- Get Current Town Name
@@ -92,7 +90,6 @@ function GetCurentTownName()
     end
 end
 
-
 -- Successful Drop Off / Pay Fare
 
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
@@ -106,18 +103,14 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
         ClearGpsMultiRoute()
         passenger_spawned = false
         TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)
-
         Wait(30000)
-        print(npc_id)
         DeleteEntity(npc_id)
+        
         if fare_paid == true then
             break
         end
-    
     end
-
 end)
-
 
 -- PassengerOnboard
 
@@ -128,7 +121,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     ClearGpsMultiRoute()
 
     StartGpsMultiRoute(5, true, true)
-    AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
+    AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x + 5, Config.PickUp[zone_name][route].y + 5, Config.PickUp[zone_name][route].z)
     AddPointToGpsMultiRoute(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z)
     SetGpsMultiRouteRender(true)
 
@@ -164,15 +157,16 @@ end)
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
-    driving = true
-    zone_name = GetCurentTownName()
+    
+    print(zone_name, spawn_coach, driving)
+
+   --[[ driving = true
+    zone_name = GetCurentTownName()--]]
     
 
     local passenger_despawned = true
     route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
-
-    
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
@@ -184,12 +178,9 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     SetBlipScale(p1, 1)
     Citizen.InvokeNative(0x9CB1A1623062F402, p1, Config.PickUp[zone_name][route].name)
     
-
-    
-    
     while (passenger_despawned == true) do
     Wait(10)
-        
+
             if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z,GetEntityCoords(PlayerPedId()),false)<500 and passenger_despawned == true then
 
                 local model = GetHashKey(Config.PickUp[zone_name][route].model)
@@ -212,6 +203,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
         end
     end
     
+    print('Passenger onboard', passenger_onboard)
     while (passenger_onboard == false) do
     Wait(10)
         
@@ -272,7 +264,7 @@ local Coaches = {
         ['SubText'] = "",
         ['Desc'] = "The nicest small coach we sell.",
         ['Param'] = {
-            ['Price'] = 200,
+            ['Price'] = 500,
             ['Model'] = "COACH4",
             ['Level'] = 0
         }
@@ -301,7 +293,6 @@ end)
 
 function OpenStageCoachMenu()
     WarMenu.OpenMenu('Stagecoach')
-
 end
 
 
@@ -309,7 +300,6 @@ end
 
 local StageCoachPrompt
 local active = false
-
 
 function StageCoach()
     Citizen.CreateThread(function()
@@ -323,17 +313,15 @@ function StageCoach()
         PromptSetHoldMode(StageCoachPrompt, true)
         PromptSetGroup(StageCoachPrompt, group)
         PromptRegisterEnd(StageCoachPrompt)
- 
     end)
-
 end
 
-
+-- Buy Stage Coach Prompt Location Trigger
 
 Citizen.CreateThread(function()
     while true do
     Wait(10)
-    for _, zone in pairs(Config.Marker) do
+        for _, zone in pairs(Config.Marker) do
             if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
                 if active == false then
                     StageCoach()
@@ -345,21 +333,19 @@ Citizen.CreateThread(function()
                 if active == true then
                     Wait(200)
                     PromptDelete(StageCoachPrompt)
-                    
                     active = false
                 end
             end
-    end
-    if PromptHasHoldModeCompleted(StageCoachPrompt) then
+        end
+        if PromptHasHoldModeCompleted(StageCoachPrompt) then
                         OpenStageCoachMenu()
                         PromptDelete(StageCoachPrompt)
                         active = true
+        end
     end
-end
-
 end)
 
-
+-- Spawn Buy Stage Coach NPC Location Trigger
 
 Citizen.CreateThread(function()
     
@@ -385,7 +371,6 @@ Citizen.CreateThread(function()
     end
 end)              
 
-
 -- Destroy Cams
 
 function EndStageCoachCam()
@@ -399,8 +384,6 @@ function EndStageCoachCam()
     cam_b = nil
 
 end
-
-
 
 -- Client Event for Wagon Spawn
 
@@ -422,9 +405,6 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     local player = PlayerPedId()
     DoScreenFadeOut(500)
 
-    --[[cam_a = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1269.4,-1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)
-    cam_b = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1279.4, -1315.75, 86.4, 300.00,0.00,0.00, 100.00, false, 0)--]]
-
     cam_a = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
     SetCamCoord(cam_a,  Config.Cams[zone_name]["cam_a"].x, Config.Cams[zone_name]["cam_a"].y, Config.Cams[zone_name]["cam_a"].z)  
     SetCamRot(cam_a, 0.0, 0.0, Config.Cams[zone_name]["cam_a"].h,  true)
@@ -433,7 +413,6 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     SetCamCoord(cam_b,  Config.Cams[zone_name]["cam_b"].x, Config.Cams[zone_name]["cam_b"].y, Config.Cams[zone_name]["cam_b"].z)
     SetCamRot(cam_b, 0.0, 0.0, Config.Cams[zone_name]["cam_b"].h,  true)
 
-    
     Wait(500)
     SetPedIntoVehicle(player, spawn_coach, -1)
     Wait(500)
@@ -451,13 +430,12 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
 
 end)
 
-
-
 -- Driving Status Menu
 
 RegisterNetEvent("parks_stagecoach:stop_driving")
 AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
-    print('parks_stagecoach:stop_driving',driving)
+    print('spawn_coach', spawn_coach)
+    print('parks_stagecoach:stop_driving', driving)
     local player = PlayerPedId()
     zone_name = GetCurentTownName()
     local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
@@ -470,15 +448,14 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
 end)
 
 
+-- Replace Wagon If Damaged
 
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
 AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
 
 end)
 
-
-
--- Warmenu Stage Coach
+-- Warmenu Stop Driving Options
 
 Citizen.CreateThread(function()
     WarMenu.CreateMenu('DrivingStatus', 'DrivingStatus')
@@ -487,7 +464,7 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('DrivingStatus') then
             WarMenu.Display()
             if WarMenu.Button("Stop Driving") then
-                    TriggerEvent("parks_stagecoach:stop_driving", 0)
+                    TriggerEvent("parks_stagecoach:stop_driving", 990)
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
@@ -506,7 +483,7 @@ Citizen.CreateThread(function()
     
 end)
 
-
+-- Warmenu Start Driving Options
 
 Citizen.CreateThread(function()
     WarMenu.CreateMenu('DrivingStatusFalse', 'DrivingStatusFalse')
@@ -526,10 +503,9 @@ Citizen.CreateThread(function()
             end
         end
     end
-    
 end)
 
-
+-- Warmenu Driving Status Menu Options Switch
 
 function OpenDrivingStatusMenu()
    
@@ -542,6 +518,8 @@ end
 
 --[[RegisterNetEvent("parks_stagecoach:DrivingStatus")
 AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
+
+-- Update Driving Status Function
     
 function DrivingStatus()
     
