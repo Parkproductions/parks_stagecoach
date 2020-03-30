@@ -542,7 +542,7 @@ function DrivingStatus()
     
     local active = false    
     
-        while true do
+        while (driving == true) do
         Wait(10)
         print('Driving Status:', driving)
             if IsControlJustPressed(0, keys['O']) then 
@@ -553,6 +553,9 @@ function DrivingStatus()
                     WarMenu.CloseMenu()
                     active = false
                 end
+            end
+            if (driving == false) then 
+                break 
             end  
         end
 end
