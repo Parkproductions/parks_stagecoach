@@ -1,6 +1,6 @@
 coach = false
 driving = false
-local keys = { ['O'] = 0xF1301666 }
+local keys = { ['O'] = 0xF1301666, ['G'] = 0x5415BE48 }
     
 -- Create Wagon Wheel Map Marker
 
@@ -568,7 +568,7 @@ Citizen.CreateThread(function()
         end
         
 
-        if IsControlJustReleased( 0, keys['H'] ) then
+        if IsControlJustReleased( 0, keys['G'] ) then
             pressLeft = GetGameTimer()
             pressTime = pressTime + 1
         end
