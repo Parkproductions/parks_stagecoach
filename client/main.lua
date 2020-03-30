@@ -189,12 +189,8 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
     
-    
-
-   --[[ driving = true
-    zone_name = GetCurentTownName()--]]
-    
     TriggerEvent("drivingtrue")
+    zone_name = GetCurentTownName()
     local passenger_despawned = true
     route = math.random(1)
     player_loc = GetEntityCoords(PlayerPedId())
