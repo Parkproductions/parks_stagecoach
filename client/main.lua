@@ -577,7 +577,7 @@ AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 for key,value in pairs(HasStagecoaches) do --actualcode
    for ckey, cvalue in pairs(value) do
-    print(cvalue)
+    print(ckey)
    end
 end
 
