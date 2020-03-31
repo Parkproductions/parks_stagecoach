@@ -588,6 +588,7 @@ end)
 -- List Coaches Menu
 
 Citizen.CreateThread( function(HasStagecoaches)
+    print(HasStagecoaches)
     WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
