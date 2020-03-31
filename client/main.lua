@@ -539,6 +539,33 @@ Citizen.CreateThread(function()
     end
 end)
 
+-- Warmenu Start Driving Options
+
+Citizen.CreateThread(function()
+    WarMenu.CreateMenu('Coach Menu', 'Coach Menu')
+    while true do
+        Citizen.Wait(0)
+        if WarMenu.IsMenuOpened('DrivingStatusFalse') then
+            WarMenu.Display()
+            if WarMenu.Button("My Coaches") then
+                    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, true)
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
+            elseif WarMenu.Button("Buy Coach") then
+                    OpenStageCoachMenu()
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
+            elseif WarMenu.Button("Exit") then
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
+            end
+        end
+    end
+end)
+
 -- Warmenu Driving Status Menu Options Switch
 
 function OpenDrivingStatusMenu()
@@ -549,9 +576,6 @@ function OpenDrivingStatusMenu()
     WarMenu.OpenMenu('DrivingStatusFalse')
     end    
 end
-
---[[RegisterNetEvent("parks_stagecoach:DrivingStatus")
-AddEventHandler("parks_stagecoach:DrivingStatus", function ()  --]] 
 
 -- Update Driving Status Function
 
