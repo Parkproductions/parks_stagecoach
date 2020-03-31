@@ -22,7 +22,7 @@ end)
 RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 
-    local model = GetHashKey( "A_M_M_BiVFancyDRIVERS_01" )
+    local model = GetHashKey( "S_M_M_TrainStationWorker_01" )
     local coord = GetEntityCoords(PlayerPedId())
     RequestModel( model )
 
