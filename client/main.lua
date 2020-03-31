@@ -326,7 +326,7 @@ end)
 
 
 function OpenStageCoachMenu()
-    WarMenu.OpenMenu('Stagecoach')
+    WarMenu.OpenMenu('Coach Menu')
 end
 
 
@@ -545,7 +545,7 @@ Citizen.CreateThread(function()
     WarMenu.CreateMenu('Coach Menu', 'Coach Menu')
     while true do
         Citizen.Wait(0)
-        if WarMenu.IsMenuOpened('DrivingStatusFalse') then
+        if WarMenu.IsMenuOpened('Coach Menu') then
             WarMenu.Display()
             if WarMenu.Button("My Coaches") then
                     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, true)
