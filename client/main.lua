@@ -3,7 +3,7 @@ local driving = false
 local pressTime = 0
 local pressLeft = 0
 local recentlySpawned = 0
-local keys = { ['O'] = 0xF1301666, ['G'] = 0x5415BE48 }
+local keys = { ['G'] = 0x5415BE48, ['O'] = 0xF1301666 }
 
     
 -- Create Wagon Wheel Map Marker
