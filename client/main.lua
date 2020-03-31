@@ -576,6 +576,7 @@ RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 while HasStagecoaches do
+    Wait(50)
     print(string.format("Id: %s, Coach: %s", HasStagecoaches.charid, HasStagecoaches.stagecoach))
 end
 
