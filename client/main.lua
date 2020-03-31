@@ -578,7 +578,7 @@ AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 print(HasStagecoaches)
 
 
-OpenListStageCoachMenu()
+OpenListStageCoachMenu(HasStagecoaches)
 
 
 end)
