@@ -655,10 +655,9 @@ Citizen.CreateThread(function()
         end
 
         if pressTime == 1 then
-            if recentlySpawned <= 0 then
-                recentlySpawned = 10
-                TriggerServerEvent('parks_stagecoach:loadstagecoach')
-            end
+                OpenDrivingStatusMenu()
+                --[[TriggerServerEvent('parks_stagecoach:loadstagecoach')--]]
+            
             pressTime = 0
         end
 
