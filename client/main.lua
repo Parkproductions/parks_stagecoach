@@ -625,43 +625,9 @@ end)
 
 
 
-    
---[[function DrivingStatus()
-    
-    local active = false    
-    
-        while (driving == true) do
-        Wait(10)
-        print('Driving Status:', driving)
-            if IsControlJustPressed(0, keys['O']) then 
-                if active == false then
-                    OpenDrivingStatusMenu()
-                    active = true
-                elseif active == true then
-                    WarMenu.CloseMenu()
-                    active = false
-                end
-            end
-            if (driving == false) then 
-                break 
-            end  
-        end
-end--]]
-
 Citizen.CreateThread(function()
     local active = false
     while true do
-
-        if IsControlJustReleased(0, keys['O']) then
-            print('O Key')
-            --[[if active == false then
-                OpenDrivingStatusMenu()
-                active = true
-            elseif active == true then
-                    WarMenu.CloseMenu()
-                    active = false
-            end--]]
-        end
         
 
         if IsControlJustReleased(0, keys['O'] ) then
@@ -686,4 +652,4 @@ Citizen.CreateThread(function()
     end
 end)
 
---[[end)--]]
+
