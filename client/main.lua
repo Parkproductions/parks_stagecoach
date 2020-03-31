@@ -3,7 +3,7 @@ local driving = false
 local pressTime = 0
 local pressLeft = 0
 local recentlySpawned = 0
-local keys = { ['O'] = 0xF1301666 }
+local keys = { ['O'] = 0xF1301666, ['G'] = 0x5415BE48 }
 
     
 -- Create Wagon Wheel Map Marker
@@ -632,7 +632,7 @@ Citizen.CreateThread(function()
     local active = false
     while true do
 
-        --[[if IsControlJustReleased(0, keys['O']) then
+        if IsControlJustReleased(0, keys['O']) then
             print('O Key')
             if active == false then
                 OpenDrivingStatusMenu()
@@ -641,10 +641,10 @@ Citizen.CreateThread(function()
                     WarMenu.CloseMenu()
                     active = false
             end
-        end--]]
+        end
         
 
-        if IsControlJustReleased(0, keys['O'] ) then
+--[[        if IsControlJustReleased(0, keys['O'] ) then
             print('G Key')
             pressLeft = GetGameTimer()
             pressTime = pressTime + 1
@@ -657,11 +657,10 @@ Citizen.CreateThread(function()
         if pressTime == 1 then
             if recentlySpawned <= 0 then
                 recentlySpawned = 10
-                OpenDrivingStatusMenu()
-                --[[TriggerServerEvent('parks_stagecoach:loadstagecoach')--]]
+                TriggerServerEvent('parks_stagecoach:loadstagecoach')
             end
             pressTime = 0
-        end
+        end--]]
 
         Citizen.Wait(0)
     end
