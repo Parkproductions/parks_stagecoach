@@ -1,15 +1,4 @@
 
-
---[[RegisterServerEvent("parks_stagecoach:buy_stagecoach")
-AddEventHandler("parks_stagecoach:buy_stagecoach", function (stagecoach_cost)
-	local _source = source
-	TriggerEvent('redemrp:getPlayerFromId', _source, function(user)
-	user.removeMoney(stagecoach_cost)	
-		TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, stagecoach_cost)		
-	end)	
-end)--]]
-
-
 RegisterServerEvent("parks_stagecoach:pay_fare")
 AddEventHandler("parks_stagecoach:pay_fare", function (fare)
 	local _source = source
@@ -101,8 +90,8 @@ AddEventHandler("parks_stagecoach:loadstagecoach", function ( )
 
     if HasStagecoaches[1] then
         local stagecoach = HasStagecoaches[1].stagecoach
-        print(stagecoach)
-        TriggerClientEvent("parks_stagecoach:SpawnWagon", _src, stagecoach, false)
+        print(HasStagecoaches[1])
+        --[[TriggerClientEvent("parks_stagecoach:SpawnWagon", _src, stagecoach, false)--]]
     end
-
+    return HasStagecoaches
 end )

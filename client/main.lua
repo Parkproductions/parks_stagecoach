@@ -550,7 +550,7 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('Coach Menu') then
             WarMenu.Display()
             if WarMenu.Button("My Coaches") then
-                    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, true)
+                    TriggerServerEvent('parks_stagecoach:loadstagecoach')
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
