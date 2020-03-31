@@ -52,7 +52,8 @@ Config.PickUp = {
 	},
 
 	["Rhodes"] = {
-		[1] = {name = 'Pick Up Point', model = "A_F_M_BlWUpperClass_01", sprite = 0xDDFBA6AB, x = 1373.89, y = -1317.13, z = 77.37, h =  122.41},	
+		[1] = {name = 'Pick Up Point', model = "A_F_M_BlWUpperClass_01", sprite = 0xDDFBA6AB, x = 1373.89, y = -1317.13, z = 77.37, h =  122.41},
+		[2] = {name = 'Pick Up Point', model = "A_F_M_BlWUpperClass_01", sprite = 0xDDFBA6AB, x = 1059.16, y = -1130.54, z = 67.55, h =  126.78},	
 	}
 
 }
@@ -69,6 +70,7 @@ Config.Destination = {
 	},
 	["Rhodes"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1738.37, y = -1373.53, z = 44.05},
+		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -330.78, y = -375.38, z = 87.1},
 	},
 }
 
