@@ -587,7 +587,7 @@ end)
 
 -- List Coaches Menu
 
-Citizen.CreateThread( function()
+Citizen.CreateThread( function(HasStagecoaches)
     WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
