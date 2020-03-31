@@ -43,20 +43,20 @@ Config.Coords = {
 Config.PickUp = {
 	["Braithwaite"] = {
 		[1] = {name = 'Pick Up Point', model = "U_M_O_MaPWiseOldMan_01", sprite = 0xDDFBA6AB, x = 1875.4, y = -1853.53, z = 42.64, h = 61.03},
-		[2]	= {name = 'Pick Up Point', model = "BUM", sprite = 0xDDFBA6AB, x = 859.95, y = -1905.35, z = 44.17, h = 299.76},
+		[2]	= {name = 'Pick Up Point', model = "U_M_M_ISLBUM_01", sprite = 0xDDFBA6AB, x = 859.95, y = -1905.35, z = 44.17, h = 299.76},
 	},
 	["Caliga"] = {
 		[1] = {name = 'Pick Up Point', model = "A_M_M_RANCHER_01", sprite = 0xDDFBA6AB, x = 1845.28, y = -1225.67, z= 42.02, h = 244.96},
-		[2] = {name = 'Pick Up Point', model = "A_M_M_RANCHER_01", sprite = 0xDDFBA6AB, x = 1896.25, y = -1335.6, z= 42.75, h = 303.37},
+		[2] = {name = 'Pick Up Point', model = "CS_braithwaitemaid", sprite = 0xDDFBA6AB, x = 1896.25, y = -1335.6, z= 42.75, h = 303.37},
 	},
 	["Saint Denis"] = {
 		[1] = {name = 'Pick Up Point', model = "A_F_M_RhdProstitute_01", sprite = 0xDDFBA6AB, x = 2503.32, y = -1185.51, z = 49.22, h = 80.69},
-		[2] = {name = 'Pick Up Point', model = "A_F_M_RhdProstitute_01", sprite = 0xDDFBA6AB, x = 2716.17, y = -1137.19, z = 50.24, h = 156.52},
+		[2] = {name = 'Pick Up Point', model = "A_F_M_BTCObeseWomen_01", sprite = 0xDDFBA6AB, x = 2716.17, y = -1137.19, z = 50.24, h = 156.52},
 	},
 
 	["Rhodes"] = {
 		[1] = {name = 'Pick Up Point', model = "A_F_M_BlWUpperClass_01", sprite = 0xDDFBA6AB, x = 1373.89, y = -1317.13, z = 77.37, h =  122.41},
-		[2] = {name = 'Pick Up Point', model = "A_F_M_BlWUpperClass_01", sprite = 0xDDFBA6AB, x = 1059.16, y = -1130.54, z = 67.55, h =  126.78},	
+		[2] = {name = 'Pick Up Point', model = "A_M_M_RhdTownfolk_02", sprite = 0xDDFBA6AB, x = 1059.16, y = -1130.54, z = 67.55, h =  126.78},	
 	}
 
 }
