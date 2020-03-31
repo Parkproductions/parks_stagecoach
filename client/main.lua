@@ -594,7 +594,7 @@ Citizen.CreateThread( function(HasStagecoaches)
             for _, stagecoach in pairs(HasStagecoaches) do
                 print(stagecoach['stagecoach'])
                 if WarMenu.Button(stagecoach['stagecoach']) then
-                    WarMenu.CloseMenu()
+                    
                 end
             end
             WarMenu.Display()
