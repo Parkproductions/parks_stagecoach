@@ -570,7 +570,7 @@ end)
 -- Load Coaches From DB 
 
 RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
-AddEventHandler("parks_stagecoach:SpawnWagon", function (HasStagecoaches)
+AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 Citizen.CreateThread( function()
     WarMenu.CreateMenu('ListStagecoaches', 'Stagecoach')
