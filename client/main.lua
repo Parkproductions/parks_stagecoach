@@ -625,12 +625,26 @@ end)
 
 
 
+    
+
+
 Citizen.CreateThread(function()
     local active = false
     while true do
+
+        if IsControlJustReleased(0, keys['O']) then
+            print('O Key')
+            if active == false then
+                OpenDrivingStatusMenu()
+                active = true
+            elseif active == true then
+                    WarMenu.CloseMenu()
+                    active = false
+            end
+        end
         
 
-        if IsControlJustReleased(0, keys['O'] ) then
+        if IsControlJustReleased(0, keys['G'] ) then
             print('G Key')
             pressLeft = GetGameTimer()
             pressTime = pressTime + 1
