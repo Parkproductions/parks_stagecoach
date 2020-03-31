@@ -554,7 +554,6 @@ Citizen.CreateThread(function()
                     WarMenu.Display()
             elseif WarMenu.Button("Buy Coach") then
                     OpenStageCoachMenu()
-                    WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
             elseif WarMenu.Button("Exit") then
