@@ -581,7 +581,31 @@ end
 OpenListStageCoachMenu()
 
 
-Citizen.CreateThread( function()
+Citizen.CreateThread(function()
+    WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
+    while true do
+        Citizen.Wait(0)
+        if WarMenu.IsMenuOpened('ListStagecoaches') then
+            WarMenu.Display()
+            if WarMenu.Button("My Coaches") then
+                    TriggerServerEvent('parks_stagecoach:loadstagecoach')
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
+            elseif WarMenu.Button("Buy Coach") then
+                    OpenBuyStageCoachMenu()
+                    Wait(600)
+                    
+            elseif WarMenu.Button("Exit") then
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
+            end
+        end
+    end
+end)
+
+--[[Citizen.CreateThread( function()
     WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
@@ -595,7 +619,7 @@ Citizen.CreateThread( function()
         end
         Citizen.Wait(0)
     until false
-end)
+end)--]]
 
 
 
