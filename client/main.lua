@@ -572,7 +572,7 @@ end)
 RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
-print('Load Coaches Menu True')
+print(HasStagecoaches[i]['stagecoach'])
 
 function OpenListStageCoachMenu()
     WarMenu.OpenMenu('ListStagecoaches')
@@ -582,7 +582,7 @@ OpenListStageCoachMenu()
 
 
 Citizen.CreateThread( function()
-    WarMenu.CreateMenu('ListStagecoaches', 'Stagecoach')
+    WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
             for i = 1, #HasStagecoaches do
