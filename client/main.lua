@@ -571,7 +571,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
-
+print(HasStagecoaches)
 print('Load Coaches Menu True')
 Citizen.CreateThread( function()
     WarMenu.CreateMenu('ListStagecoaches', 'Stagecoach')
