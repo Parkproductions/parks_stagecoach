@@ -586,6 +586,7 @@ Citizen.CreateThread( function()
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
             for _, stagecoach in pairs(HasStagecoaches) do
+                print(stagecoach['stagecoach'])
                 if WarMenu.Button(stagecoach['stagecoach']) then
                     WarMenu.CloseMenu()
                 end
