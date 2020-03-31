@@ -307,6 +307,9 @@ local Coaches = {
 
 -- Warmenu with Coach with Params 
 function OpenBuyStageCoachMenu()
+    WarMenu.OpenMenu('Stagecoach')
+end
+
 Citizen.CreateThread( function()
     WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
     repeat
@@ -322,8 +325,6 @@ Citizen.CreateThread( function()
         Citizen.Wait(0)
     until false
 end)
-end
-
 
 
 function OpenStageCoachMenu()
