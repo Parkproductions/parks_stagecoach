@@ -654,13 +654,13 @@ Citizen.CreateThread(function()
 
         if IsControlJustReleased(0, keys['O']) then
             print('O Key')
-            if active == false then
+            --[[if active == false then
                 OpenDrivingStatusMenu()
                 active = true
             elseif active == true then
                     WarMenu.CloseMenu()
                     active = false
-            end
+            end--]]
         end
         
 
