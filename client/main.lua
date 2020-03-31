@@ -572,7 +572,7 @@ end)
 RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
-print(HasStagecoaches[0]['stagecoach'])
+print(HasStagecoaches)
 
 function OpenListStageCoachMenu()
     WarMenu.OpenMenu('ListStagecoaches')
