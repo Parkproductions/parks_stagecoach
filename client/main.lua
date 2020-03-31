@@ -587,7 +587,7 @@ Citizen.CreateThread( function()
         Citizen.Wait(0)
     until false
 end)
-
+WarMenu.OpenMenu('ListStagecoaches')
 end)
 
 -- Warmenu Driving Status Menu Options Switch
