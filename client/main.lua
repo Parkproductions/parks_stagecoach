@@ -576,7 +576,9 @@ RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 for key,value in pairs(HasStagecoaches) do --actualcode
-   print(value)
+   for ckey, cvalue in pairs(value) do
+    print(cvalue.stagecoach)
+   end
 end
 
 OpenListStageCoachMenu(HasStagecoaches)
