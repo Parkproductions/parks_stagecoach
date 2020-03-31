@@ -90,7 +90,7 @@ AddEventHandler("parks_stagecoach:loadstagecoach", function ( )
 
     if HasStagecoaches[1] then
         local stagecoach = HasStagecoaches[1].stagecoach
-        print(HasStagecoaches[1])
+        
         TriggerClientEvent("parks_stagecoach:LoadCoachesMenu", _src, HasStagecoaches, false)
     end
     
