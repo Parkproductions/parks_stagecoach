@@ -568,44 +568,26 @@ Citizen.CreateThread(function()
 end)
 
 -- Load Coaches From DB 
+function OpenListStageCoachMenu()
+    WarMenu.OpenMenu('ListStagecoaches')
+end
 
 RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 print(HasStagecoaches)
 
-function OpenListStageCoachMenu()
-    WarMenu.OpenMenu('ListStagecoaches')
-end
 
 OpenListStageCoachMenu()
 
 
-Citizen.CreateThread(function()
-    WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
-    while true do
-        Citizen.Wait(0)
-        if WarMenu.IsMenuOpened('ListStagecoaches') then
-            WarMenu.Display()
-            if WarMenu.Button("My Coaches") then
-                    TriggerServerEvent('parks_stagecoach:loadstagecoach')
-                    WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
-            elseif WarMenu.Button("Buy Coach") then
-                    OpenBuyStageCoachMenu()
-                    Wait(600)
-                    
-            elseif WarMenu.Button("Exit") then
-                    WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
-            end
-        end
-    end
 end)
 
---[[Citizen.CreateThread( function()
+
+
+-- List Coaches Menu
+
+Citizen.CreateThread( function()
     WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
@@ -619,10 +601,6 @@ end)
         end
         Citizen.Wait(0)
     until false
-end)--]]
-
-
-
 end)
 
 -- Warmenu Driving Status Menu Options Switch
