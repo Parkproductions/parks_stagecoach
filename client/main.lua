@@ -632,7 +632,7 @@ Citizen.CreateThread(function()
     local active = false
     while true do
 
-        if IsControlJustReleased(0, keys['O']) then
+        --[[if IsControlJustReleased(0, keys['O']) then
             print('O Key')
             if active == false then
                 OpenDrivingStatusMenu()
@@ -641,7 +641,7 @@ Citizen.CreateThread(function()
                     WarMenu.CloseMenu()
                     active = false
             end
-        end
+        end--]]
         
 
         if IsControlJustReleased(0, keys['G'] ) then
