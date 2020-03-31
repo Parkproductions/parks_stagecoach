@@ -575,7 +575,6 @@ end
 RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
-print(HasStagecoaches)
 
 
 OpenListStageCoachMenu(HasStagecoaches)
