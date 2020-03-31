@@ -91,7 +91,7 @@ AddEventHandler("parks_stagecoach:loadstagecoach", function ( )
     if HasStagecoaches[1] then
         local stagecoach = HasStagecoaches[1].stagecoach
         print(HasStagecoaches[1])
-        --[[TriggerClientEvent("parks_stagecoach:SpawnWagon", _src, stagecoach, false)--]]
+        TriggerClientEvent("parks_stagecoach:LoadCoachesMenu", _src, HasStagecoaches, false)
     end
-    return HasStagecoaches
+    
 end )

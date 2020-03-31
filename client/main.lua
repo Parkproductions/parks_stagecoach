@@ -541,7 +541,7 @@ Citizen.CreateThread(function()
     end
 end)
 
--- Warmenu Start Driving Options
+-- Warmenu View / Buy Coaches Options
 
 Citizen.CreateThread(function()
     WarMenu.CreateMenu('Coach Menu', 'Coach Menu')
@@ -565,6 +565,28 @@ Citizen.CreateThread(function()
             end
         end
     end
+end)
+
+-- Load Coaches From DB 
+
+RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
+AddEventHandler("parks_stagecoach:SpawnWagon", function (HasStagecoaches)
+
+Citizen.CreateThread( function()
+    WarMenu.CreateMenu('ListStagecoaches', 'Stagecoach')
+    repeat
+        if WarMenu.IsMenuOpened('ListStagecoaches') then
+            for i = 1, #HasStagecoaches do
+                if WarMenu.Button(HasStagecoaches[i]['stagecoach'] then
+                    WarMenu.CloseMenu()
+                end
+            end
+            WarMenu.Display()
+        end
+        Citizen.Wait(0)
+    until false
+end)
+
 end)
 
 -- Warmenu Driving Status Menu Options Switch
