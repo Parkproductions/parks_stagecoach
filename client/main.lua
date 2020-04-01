@@ -569,7 +569,7 @@ end)
 
 -- Load Coaches From DB 
 function OpenListStageCoachMenu(HasStagecoaches)
-    print(HasStagecoaches)
+    
     WarMenu.OpenMenu('ListStagecoaches')
 end
 
@@ -580,20 +580,13 @@ HasStagecoaches = HasStagecoaches
 
 OpenListStageCoachMenu()
 
-
-end)
-
-
-
--- List Coaches Menu
-
 Citizen.CreateThread( function(HasStagecoaches)
-    print(HasStagecoaches)
-    --[[WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
+   
+    WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
             for key, value in pairs(HasStagecoaches) do 
-                
+                 print(value['stagecoach'])
                 if WarMenu.Button(value['stagecoach']) then
                     
                 end
@@ -601,8 +594,16 @@ Citizen.CreateThread( function(HasStagecoaches)
             WarMenu.Display()
         end
         Citizen.Wait(0)
-    until false--]]
+    until false
 end)
+
+end)
+
+
+
+-- List Coaches Menu
+
+
 
 -- Warmenu Driving Status Menu Options Switch
 
