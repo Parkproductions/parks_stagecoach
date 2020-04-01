@@ -37,7 +37,7 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 
 end)
 
--- Get Current Town Name
+-- Get Current Town Name, Some Towns missing
 
 function GetCurentTownName()
     local pedCoords = GetEntityCoords(PlayerPedId())
@@ -117,7 +117,7 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
     end
 end)
 
--- Successful Drop Off / Pay Fare
+-- Unuccessful Drop Off / No Fare Payment
 
 RegisterNetEvent("parks_stagecoach:unsuccessful_dropoff")
 AddEventHandler("parks_stagecoach:unsuccessful_dropoff", function (fare, npc_id)
@@ -158,8 +158,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     passenger_onboard = true
     
     while true do
-    Wait(10)
-        
+    Wait(10)   
 
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
@@ -170,8 +169,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
             TriggerEvent("parks_stagecoach:successful_dropoff", 10, npc_id)
             passenger_onboard = false
             
-        end
-        
+        end       
 
         if IsEntityDead(passenger) then
             TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id)
@@ -195,7 +193,6 @@ end)
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
-    
     
     TriggerEvent("drivingtrue")
     zone_name = GetCurentTownName()
@@ -268,119 +265,6 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
         end
     end
     
-    
-    
-end)
-
--- COACHES ARRAY DATA
-
-local Coaches = {
-    {
-        ['Text'] = "Borrow Coach - $0.",
-        ['SubText'] = "",
-        ['Desc'] = "It's for a reason.",
-        ['Param'] = {
-            ['Price'] = 0,
-            ['Model'] = "WAGON06X",
-            ['Level'] = 0
-        }
-    },
-    {
-        ['Text'] = "Small Coach - $100",
-        ['SubText'] = "",
-        ['Desc'] = "It's got a roof and 2 seats.",
-        ['Param'] = {
-            ['Price'] = 100,
-            ['Model'] = "COACH5",
-            ['Level'] = 0
-        }
-    },
-    {
-        ['Text'] = "Fancy Small Coach - $500",
-        ['SubText'] = "",
-        ['Desc'] = "The nicest small coach we sell.",
-        ['Param'] = {
-            ['Price'] = 500,
-            ['Model'] = "COACH4",
-            ['Level'] = 0
-        }
-    },
-}
-
--- Warmenu with Coach with Params 
-function OpenBuyStageCoachMenu()
-    WarMenu.OpenMenu('Stagecoach')
-end
-
-Citizen.CreateThread( function()
-    WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
-    repeat
-        if WarMenu.IsMenuOpened('Stagecoach') then
-            for i = 1, #Coaches do
-                if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
-                    TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
-                    WarMenu.CloseMenu()
-                end
-            end
-            WarMenu.Display()
-        end
-        Citizen.Wait(0)
-    until false
-end)
-
-
-function OpenStageCoachMenu()
-    WarMenu.OpenMenu('Coach Menu')
-end
-
-
--- Buy Stage Coach Prompt Menu
-
-local StageCoachPrompt
-local active = false
-
-function StageCoach()
-    Citizen.CreateThread(function()
-        local str = 'Stage Coach Co.'
-        StageCoachPrompt = PromptRegisterBegin()
-        PromptSetControlAction(StageCoachPrompt, 0xDFF812F9)
-        str = CreateVarString(10, 'LITERAL_STRING', str)
-        PromptSetText(StageCoachPrompt, str)
-        PromptSetEnabled(StageCoachPrompt, true)
-        PromptSetVisible(StageCoachPrompt, true)
-        PromptSetHoldMode(StageCoachPrompt, true)
-        PromptSetGroup(StageCoachPrompt, group)
-        PromptRegisterEnd(StageCoachPrompt)
-    end)
-end
-
--- Buy Stage Coach Prompt Location Trigger
-
-Citizen.CreateThread(function()
-    while true do
-    Wait(10)
-        for _, zone in pairs(Config.Marker) do
-            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
-                if active == false then
-                    StageCoach()
-                    menu_trigger_loc = zone.name
-                    active = true
-
-                end
-            elseif GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>1.5 and zone.name == menu_trigger_loc then
-                if active == true then
-                    Wait(200)
-                    PromptDelete(StageCoachPrompt)
-                    active = false
-                end
-            end
-        end
-        if PromptHasHoldModeCompleted(StageCoachPrompt) then
-                        OpenStageCoachMenu()
-                        PromptDelete(StageCoachPrompt)
-                        active = true
-        end
-    end
 end)
 
 -- Spawn Buy Stage Coach NPC Location Trigger
@@ -393,14 +277,14 @@ Citizen.CreateThread(function()
     while true do
     Wait(10)
     
-    	for _, zone in pairs(Config.Marker) do
-    		if npc_spawned[zone.name] == false then
-    			if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then
-    				TriggerEvent("parks_stagecoach:CreateNPC", zone)
+        for _, zone in pairs(Config.Marker) do
+            if npc_spawned[zone.name] == false then
+                if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then
+                    TriggerEvent("parks_stagecoach:CreateNPC", zone)
                     npc_spawned[zone.name] = true                   
-    			end
-    		end
-    	end
+                end
+            end
+        end
         if npc_spawned == true then
             break
         end
@@ -466,8 +350,6 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
 
 end)
 
--- Driving Status Menu
-
 RegisterNetEvent("parks_stagecoach:stop_driving")
 AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     
@@ -484,13 +366,125 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
 
 end)
 
-
 -- Replace Wagon If Damaged
 
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
 AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
 
 end)
+
+-- COACHES ARRAY DATA
+
+local Coaches = {
+    {
+        ['Text'] = "Borrow Coach - $0.",
+        ['SubText'] = "",
+        ['Desc'] = "It's for a reason.",
+        ['Param'] = {
+            ['Price'] = 0,
+            ['Model'] = "WAGON06X",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Small Coach - $100",
+        ['SubText'] = "",
+        ['Desc'] = "It's got a roof and 2 seats.",
+        ['Param'] = {
+            ['Price'] = 100,
+            ['Model'] = "COACH5",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Fancy Small Coach - $500",
+        ['SubText'] = "",
+        ['Desc'] = "The nicest small coach we sell.",
+        ['Param'] = {
+            ['Price'] = 500,
+            ['Model'] = "COACH4",
+            ['Level'] = 0
+        }
+    },
+}
+
+-- Warmenu with Coach with Params 
+
+function OpenBuyStageCoachMenu()
+    WarMenu.OpenMenu('Stagecoach')
+end
+
+Citizen.CreateThread( function()
+    WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
+    repeat
+        if WarMenu.IsMenuOpened('Stagecoach') then
+            for i = 1, #Coaches do
+                if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
+                    TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
+                    WarMenu.CloseMenu()
+                end
+            end
+            WarMenu.Display()
+        end
+        Citizen.Wait(0)
+    until false
+end)
+
+
+function OpenStageCoachMenu()
+    WarMenu.OpenMenu('Coach Menu')
+end
+
+-- Buy Stage Coach Prompt Menu
+
+local StageCoachPrompt
+local active = false
+
+function StageCoach()
+    Citizen.CreateThread(function()
+        local str = 'Stage Coach Co.'
+        StageCoachPrompt = PromptRegisterBegin()
+        PromptSetControlAction(StageCoachPrompt, 0xDFF812F9)
+        str = CreateVarString(10, 'LITERAL_STRING', str)
+        PromptSetText(StageCoachPrompt, str)
+        PromptSetEnabled(StageCoachPrompt, true)
+        PromptSetVisible(StageCoachPrompt, true)
+        PromptSetHoldMode(StageCoachPrompt, true)
+        PromptSetGroup(StageCoachPrompt, group)
+        PromptRegisterEnd(StageCoachPrompt)
+    end)
+end
+
+-- Buy Stage Coach Prompt Location Trigger
+
+Citizen.CreateThread(function()
+    while true do
+    Wait(10)
+        for _, zone in pairs(Config.Marker) do
+            if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<2 then
+                if active == false then
+                    StageCoach()
+                    menu_trigger_loc = zone.name
+                    active = true
+
+                end
+            elseif GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)>1.5 and zone.name == menu_trigger_loc then
+                if active == true then
+                    Wait(200)
+                    PromptDelete(StageCoachPrompt)
+                    active = false
+                end
+            end
+        end
+        if PromptHasHoldModeCompleted(StageCoachPrompt) then
+                        OpenStageCoachMenu()
+                        PromptDelete(StageCoachPrompt)
+                        active = true
+        end
+    end
+end)
+
+
 
 -- Warmenu Stop Driving Options
 
@@ -501,12 +495,12 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('DrivingStatus') then
             WarMenu.Display()
             if WarMenu.Button("Stop Driving") then
-                    TriggerEvent("parks_stagecoach:stop_driving", 990)
+                    TriggerEvent("parks_stagecoach:stop_driving")
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
             elseif WarMenu.Button("Replace Wagon") then
-                    TriggerServerEvent("parks_stagecoach:loadstagecoach", 500)
+                    TriggerServerEvent("parks_stagecoach:loadstagecoach")
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
@@ -517,7 +511,6 @@ Citizen.CreateThread(function()
             end
         end
     end
-    
 end)
 
 -- Warmenu Start Driving Options
@@ -550,7 +543,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('Coach Menu') then
             WarMenu.Display()
-            if WarMenu.Button("My Coaches") then
+            if WarMenu.Button("Owned Coaches") then
                     TriggerServerEvent('parks_stagecoach:loadstagecoach')
                     WarMenu.CloseMenu()
                     Wait(600)
@@ -568,21 +561,20 @@ Citizen.CreateThread(function()
     end
 end)
 
--- Load Coaches From DB 
-function OpenListStageCoachMenu(HasStagecoaches)
-    
+-- List Coaches Menu Function
+
+function OpenListStageCoachMenu(HasStagecoaches)    
     WarMenu.OpenMenu('ListStagecoaches')
 end
+
+-- List Coaches Menu Event
 
 RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
-
-
-
 Citizen.CreateThread( function()
    
-    WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
+    WarMenu.CreateMenu('ListStagecoaches', 'Coaches')
     WarMenu.OpenMenu('ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
@@ -600,16 +592,8 @@ Citizen.CreateThread( function()
         end
         Citizen.Wait(0)
     until false
+end)    
 end)
-    
-    
-end)
-
-
-
--- List Coaches Menu
-
-
 
 -- Warmenu Driving Status Menu Options Switch
 
@@ -627,9 +611,29 @@ end
 RegisterNetEvent("drivingtrue")
 AddEventHandler("drivingtrue", function()
     driving = true
-    --[[DrivingStatus()--]]
-
 end)
+    
+-- Check For Button Press Menu Open
+
+Citizen.CreateThread(function()
+    local active = false
+    while true do
+
+        if IsControlJustReleased(0, keys['O']) then
+            print('O Key')
+            if active == false then
+                OpenDrivingStatusMenu()
+                active = true
+            elseif active == true then
+                    WarMenu.CloseMenu()
+                    active = false
+            end
+        end
+        Citizen.Wait(0)
+    end
+end)
+
+-- Command to check current town /intown
 
 RegisterCommand("intown", function()
 function GetCurentTownName()
@@ -691,48 +695,3 @@ end
 intown = GetCurentTownName()
 print(intown)
 end)
-
-
-
-    
-
-
-Citizen.CreateThread(function()
-    local active = false
-    while true do
-
-        if IsControlJustReleased(0, keys['O']) then
-            print('O Key')
-            if active == false then
-                OpenDrivingStatusMenu()
-                active = true
-            elseif active == true then
-                    WarMenu.CloseMenu()
-                    active = false
-            end
-        end
-        
-
---[[        if IsControlJustReleased(0, keys['O'] ) then
-            print('G Key')
-            pressLeft = GetGameTimer()
-            pressTime = pressTime + 1
-        end
-
-        if pressLeft ~= nil and (pressLeft + 500) < GetGameTimer() and pressTime > 0 and pressTime < 1 then
-            pressTime = 0
-        end
-
-        if pressTime == 1 then
-            if recentlySpawned <= 0 then
-                recentlySpawned = 10
-                TriggerServerEvent('parks_stagecoach:loadstagecoach')
-            end
-            pressTime = 0
-        end--]]
-
-        Citizen.Wait(0)
-    end
-end)
-
-
