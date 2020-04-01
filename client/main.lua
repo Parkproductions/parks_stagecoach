@@ -595,9 +595,9 @@ Citizen.CreateThread( function(HasStagecoaches)
     WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
-            for _, stagecoach in pairs(HasStagecoaches) do
-                print(stagecoach['stagecoach'])
-                if WarMenu.Button(stagecoach['stagecoach']) then
+            for key, value in pairs(HasStagecoaches) do 
+                print(value['stagecoach'])
+                if WarMenu.Button(value['stagecoach']) then
                     
                 end
             end
