@@ -579,7 +579,7 @@ AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 
 
-Citizen.CreateThread( function(HasStagecoaches)
+Citizen.CreateThread( function()
    
     WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
     WarMenu.OpenMenu('ListStagecoaches')
