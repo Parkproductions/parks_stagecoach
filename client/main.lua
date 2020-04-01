@@ -196,7 +196,7 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
     
-    DeleteEntity(passenger)
+    
     TriggerEvent("drivingtrue")
     zone_name = GetCurentTownName()
     local passenger_despawned = true
