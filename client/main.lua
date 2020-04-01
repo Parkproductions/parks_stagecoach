@@ -592,7 +592,7 @@ end)
 
 Citizen.CreateThread( function(HasStagecoaches)
     print(HasStagecoaches)
-    WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
+    --[[WarMenu.CreateMenu('ListStagecoaches', 'ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
             for key, value in pairs(HasStagecoaches) do 
@@ -604,7 +604,7 @@ Citizen.CreateThread( function(HasStagecoaches)
             WarMenu.Display()
         end
         Citizen.Wait(0)
-    until false
+    until false--]]
 end)
 
 -- Warmenu Driving Status Menu Options Switch
