@@ -22,6 +22,7 @@ end)
 RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 
+    DeleteEntity(npc)
     local model = GetHashKey( "S_M_M_TrainStationWorker_01" )
     local coord = GetEntityCoords(PlayerPedId())
     RequestModel( model )
@@ -195,6 +196,7 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
     
+    DeleteEntity(passenger)
     TriggerEvent("drivingtrue")
     zone_name = GetCurentTownName()
     local passenger_despawned = true
@@ -386,7 +388,6 @@ end)
 Citizen.CreateThread(function()
     
     local npc_spawned = { ["Saint Denis"] = false, ["Rhodes"] = false,}
-
     local player = PlayerPedId()
 
     while true do
@@ -394,7 +395,6 @@ Citizen.CreateThread(function()
     
     	for _, zone in pairs(Config.Marker) do
     		if npc_spawned[zone.name] == false then
-                
     			if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then
     				TriggerEvent("parks_stagecoach:CreateNPC", zone)
                     npc_spawned[zone.name] = true                   
@@ -405,6 +405,7 @@ Citizen.CreateThread(function()
             break
         end
     end
+
 end)              
 
 -- Destroy Cams
@@ -426,6 +427,7 @@ end
 RegisterNetEvent("parks_stagecoach:SpawnWagon")
 AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     
+    DeleteVehicle(spawn_coach)
     RequestModel(_model)
 
     while not HasModelLoaded(_model) do
@@ -437,7 +439,6 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     spawn_coach = CreateVehicle(_model, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
     SetModelAsNoLongerNeeded(_model)
-    print(spawn_coach)
     local player = PlayerPedId()
     DoScreenFadeOut(500)
 
@@ -462,7 +463,6 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     EndStageCoachCam()
     driving = true
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
-    --[[DrivingStatus()--]]
 
 end)
 
@@ -470,17 +470,18 @@ end)
 
 RegisterNetEvent("parks_stagecoach:stop_driving")
 AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
-    print('spawn_coach', spawn_coach)
-    print('parks_stagecoach:stop_driving', driving)
+    
     local player = PlayerPedId()
-    zone_name = GetCurentTownName()
     local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
+    zone_name = GetCurentTownName()
+    
     TaskLeaveVehicle(passenger, spawn_coach, 0)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
+    
     passenger_spawned = false
     driving = false
-    --[[DrivingStatus()--]]
+
 end)
 
 
