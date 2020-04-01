@@ -568,7 +568,7 @@ Citizen.CreateThread(function()
 end)
 
 -- Load Coaches From DB 
-function OpenListStageCoachMenu()
+function OpenListStageCoachMenu(HasStagecoaches)
     print(HasStagecoaches)
     WarMenu.OpenMenu('ListStagecoaches')
 end
