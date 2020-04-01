@@ -589,7 +589,7 @@ Citizen.CreateThread( function()
             for key, value in pairs(HasStagecoaches) do 
                  print(value['stagecoach'])
                 if WarMenu.Button(value['stagecoach']) then
-                    TriggerServerEvent('parks_stagecoach:loadstagecoach', value['stagecoach'])
+                    TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
