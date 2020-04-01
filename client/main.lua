@@ -569,17 +569,14 @@ end)
 
 -- Load Coaches From DB 
 function OpenListStageCoachMenu()
+    print(HasStagecoaches)
     WarMenu.OpenMenu('ListStagecoaches')
 end
 
 RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
-for key,value in pairs(HasStagecoaches) do 
-   
-    
-  
-end
+
 
 OpenListStageCoachMenu(HasStagecoaches)
 
