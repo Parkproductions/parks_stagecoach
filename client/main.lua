@@ -540,6 +540,7 @@ end)
 Citizen.CreateThread(function()
     WarMenu.CreateMenu('Stagecoach_MainMenu', 'Coach Menu')
         WarMenu.CreateSubMenu('Stagecoach', 'Stagecoach_MainMenu', 'Buy a Stage Coach')
+        WarMenu.CreateSubMenu('ListStagecoaches', 'Stagecoach_MainMenu', 'Owned Stage Coaches')
         
 
         while true do
@@ -547,11 +548,11 @@ Citizen.CreateThread(function()
             if WarMenu.IsMenuOpened('Stagecoach_MainMenu') then
 
                 if WarMenu.MenuButton('Buy Coach', 'Stagecoach') then end
+                if WarMenu.MenuButton('Owned Coaches', 'ListStagecoaches') then end
 
                 WarMenu.Display()
                     if WarMenu.IsMenuOpened('Stagecoach') then
-                    repeat
-                        
+                        repeat
                             for i = 1, #Coaches do
                                 if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
                                     TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
@@ -560,7 +561,18 @@ Citizen.CreateThread(function()
                             end
                             WarMenu.Display()
                             Citizen.Wait(0)
-                    until false
+                        until false
+                    elseif WarMenu.IsMenuOpened('ListStagecoaches') then
+                        repeat
+                            for key, value in pairs(HasStagecoaches) do 
+                                if WarMenu.Button(value['stagecoach']) then
+                                    TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
+                                    WarMenu.CloseMenu()
+                                end
+                            end
+                            WarMenu.Display()
+                            Citizen.Wait(0)
+                        until false
                     end
                     
                     --[[if WarMenu.Button("Owned Coaches") then
