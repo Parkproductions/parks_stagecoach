@@ -563,7 +563,7 @@ Citizen.CreateThread(function(HasStagecoaches)
                             WarMenu.Display()
                             Citizen.Wait(0)
                         until false
-                    
+                    end
                     --[[if WarMenu.Button("Owned Coaches") then
                             TriggerServerEvent('parks_stagecoach:loadstagecoach')
                             WarMenu.CloseMenu()
