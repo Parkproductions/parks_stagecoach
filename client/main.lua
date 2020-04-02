@@ -549,6 +549,7 @@ Citizen.CreateThread(function(HasStagecoaches)
 
                 if WarMenu.MenuButton('Buy Coach', 'Stagecoach') then end
                 if WarMenu.MenuButton('Owned Coaches', 'ListStagecoaches') then TriggerServerEvent('parks_stagecoach:loadstagecoach') end
+                if WarMenu.MenuButton('Exit', 'Exit') then WarMenu.CloseMenu() Wait(600) end
 
                 WarMenu.Display()
                     if WarMenu.IsMenuOpened('Stagecoach') then
@@ -572,12 +573,6 @@ Citizen.CreateThread(function(HasStagecoaches)
                             OpenBuyStageCoachMenu()
                             Wait(600)
                        --]]     
-                    elseif WarMenu.Button("Exit") then
-                            WarMenu.CloseMenu()
-                            Wait(600)
-                            WarMenu.Display()
-                    end
-
             end
         end
 end)
