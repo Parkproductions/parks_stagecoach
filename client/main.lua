@@ -255,6 +255,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
             TaskEnterVehicle(passenger, spawn_coach, -1, 1, 1.0, 1, 0)
 
             passenger_onboard = true
+            RemoveBlip(p1)
             TriggerEvent("parks_stagecoach:PassengerOnboard", zone_name, route)
 
         end
