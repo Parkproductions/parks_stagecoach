@@ -541,7 +541,7 @@ Citizen.CreateThread(function(HasStagecoaches)
     WarMenu.CreateMenu('Stagecoach_MainMenu', 'Coach Menu')
         WarMenu.CreateSubMenu('Stagecoach', 'Stagecoach_MainMenu', 'Buy a Stage Coach')
         WarMenu.CreateSubMenu('ListStagecoaches', 'Stagecoach_MainMenu', 'Owned Stage Coaches')
-        
+        WarMenu.CreateSubMenu('Exit', 'Stagecoach_MainMenu', 'Exit Coach Menu')
 
         while true do
             Citizen.Wait(0)
