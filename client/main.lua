@@ -327,12 +327,12 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     DoScreenFadeOut(500)
 
     cam_a = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
-    SetCamCoord(cam_a,  Config.Cams[zone_name]["cam_a"].x, Config.Cams[zone_name]["cam_a"].y, Config.Cams[zone_name]["cam_a"].z)  
-    SetCamRot(cam_a, 0.0, 0.0, Config.Cams[zone_name]["cam_a"].h,  true)
+            SetCamCoord(cam_a,  Config.Cams[zone_name]["cam_a"].x, Config.Cams[zone_name]["cam_a"].y, Config.Cams[zone_name]["cam_a"].z)  
+            SetCamRot(cam_a, 0.0, 0.0, Config.Cams[zone_name]["cam_a"].h,  true)
 
     cam_b = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
-    SetCamCoord(cam_b,  Config.Cams[zone_name]["cam_b"].x, Config.Cams[zone_name]["cam_b"].y, Config.Cams[zone_name]["cam_b"].z)
-    SetCamRot(cam_b, 0.0, 0.0, Config.Cams[zone_name]["cam_b"].h,  true)
+            SetCamCoord(cam_b,  Config.Cams[zone_name]["cam_b"].x, Config.Cams[zone_name]["cam_b"].y, Config.Cams[zone_name]["cam_b"].z)
+            SetCamRot(cam_b, 0.0, 0.0, Config.Cams[zone_name]["cam_b"].h,  true)
 
     Wait(500)
     SetPedIntoVehicle(player, spawn_coach, -1)
@@ -410,7 +410,7 @@ local Coaches = {
 
 -- Warmenu with Coach with Params 
 
-function OpenBuyStageCoachMenu()
+--[[function OpenBuyStageCoachMenu()
     WarMenu.OpenMenu('Stagecoach')
 end
 
@@ -428,11 +428,11 @@ Citizen.CreateThread( function()
         end
         Citizen.Wait(0)
     until false
-end)
+end)--]]
 
 
 function OpenStageCoachMenu()
-    WarMenu.OpenMenu('Coach Menu')
+    WarMenu.OpenMenu('Stagecoach_MainMenu')
 end
 
 -- Buy Stage Coach Prompt Menu
@@ -455,7 +455,7 @@ function StageCoach()
     end)
 end
 
--- Buy Stage Coach Prompt Location Trigger
+-- Main Stage Coach Menu Prompt Location Trigger
 
 Citizen.CreateThread(function()
     while true do
@@ -535,30 +535,46 @@ Citizen.CreateThread(function()
     end
 end)
 
--- Warmenu View / Buy Coaches Options
+-- Warmenu Main Menu 
 
 Citizen.CreateThread(function()
-    WarMenu.CreateMenu('Coach Menu', 'Coach Menu')
-    while true do
-        Citizen.Wait(0)
-        if WarMenu.IsMenuOpened('Coach Menu') then
-            WarMenu.Display()
-            if WarMenu.Button("Owned Coaches") then
-                    TriggerServerEvent('parks_stagecoach:loadstagecoach')
-                    WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
-            elseif WarMenu.Button("Buy Coach") then
-                    OpenBuyStageCoachMenu()
-                    Wait(600)
+    WarMenu.CreateMenu('Stagecoach_MainMenu', 'Coach Menu')
+        WarMenu.CreateSubMenu('Stagecoach', 'Stagecoach_MainMenu', 'Buy a Stage Coach')
+        
+
+        while true do
+            Citizen.Wait(0)
+            if WarMenu.IsMenuOpened('Stagecoach_MainMenu') then
+
+                if WarMenu.MenuButton('Stagecoach', 'Buy Coach') then end
+
+                WarMenu.Display()
+
+                    if WarMenu.Button("Owned Coaches") then
+                            TriggerServerEvent('parks_stagecoach:loadstagecoach')
+                            WarMenu.CloseMenu()
+                            Wait(600)
+                            WarMenu.Display()
+                    elseif WarMenu.IsMenuOpened('Stagecoach') then
+                        for i = 1, #Coaches do
+                            if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
+                                TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
+                                WarMenu.CloseMenu()
+                            end
+                        end
+                        WarMenu.Display()
+                    elseif WarMenu.Button("Buy Coach") then
+                            OpenBuyStageCoachMenu()
+                            Wait(600)
+                            
+                    elseif WarMenu.Button("Exit") then
+                            WarMenu.CloseMenu()
+                            Wait(600)
+                            WarMenu.Display()
+                    end
                     
-            elseif WarMenu.Button("Exit") then
-                    WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
             end
         end
-    end
 end)
 
 -- List Coaches Menu Function
