@@ -546,7 +546,7 @@ Citizen.CreateThread(function()
             Citizen.Wait(0)
             if WarMenu.IsMenuOpened('Stagecoach_MainMenu') then
 
-                if WarMenu.MenuButton('Stagecoach', 'Buy Coach') then end
+                if WarMenu.MenuButton('Buy Coach', 'Stagecoach') then end
 
                 WarMenu.Display()
                     if WarMenu.IsMenuOpened('Stagecoach') then
