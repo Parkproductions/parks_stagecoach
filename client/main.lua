@@ -499,11 +499,6 @@ Citizen.CreateThread(function()
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
-            elseif WarMenu.Button("Replace Wagon") then
-                    TriggerServerEvent("parks_stagecoach:loadstagecoach")
-                    WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
             elseif WarMenu.Button("Exit") then
                     WarMenu.CloseMenu()
                     Wait(600)
@@ -543,38 +538,29 @@ Citizen.CreateThread(function(HasStagecoaches)
         WarMenu.CreateSubMenu('ListStagecoaches', 'Stagecoach_MainMenu', 'Owned Stage Coaches')
         WarMenu.CreateSubMenu('Exit', 'Stagecoach_MainMenu', 'Exit Coach Menu')
 
-        while true do
-            Citizen.Wait(0)
-            if WarMenu.IsMenuOpened('Stagecoach_MainMenu') then
+    while true do
+        Citizen.Wait(0)
+        if WarMenu.IsMenuOpened('Stagecoach_MainMenu') then
 
-                if WarMenu.MenuButton('Buy Coach', 'Stagecoach') then end
-                if WarMenu.MenuButton('Owned Coaches', 'ListStagecoaches') then TriggerServerEvent('parks_stagecoach:loadstagecoach') end
-                if WarMenu.MenuButton('Exit', 'Exit') then WarMenu.CloseMenu() Wait(600) end
+            if WarMenu.MenuButton('Buy Coach', 'Stagecoach') then end
+            if WarMenu.MenuButton('Owned Coaches', 'ListStagecoaches') then TriggerServerEvent('parks_stagecoach:loadstagecoach') end
+            if WarMenu.MenuButton('Exit', 'Exit') then WarMenu.CloseMenu() Wait(600) end
 
-                WarMenu.Display()
-                    if WarMenu.IsMenuOpened('Stagecoach') then
-                        repeat
-                            for i = 1, #Coaches do
-                                if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
-                                    TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
-                                    WarMenu.CloseMenu()
-                                end
-                            end
-                            WarMenu.Display()
-                            Citizen.Wait(0)
-                        until false
-                    end
-                    --[[if WarMenu.Button("Owned Coaches") then
-                            TriggerServerEvent('parks_stagecoach:loadstagecoach')
+            WarMenu.Display()
+            if WarMenu.IsMenuOpened('Stagecoach') then
+                repeat
+                    for i = 1, #Coaches do
+                        if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
+                            TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
                             WarMenu.CloseMenu()
-                            Wait(600)
-                            WarMenu.Display()
-                    elseif WarMenu.Button("Buy Coach") then
-                            OpenBuyStageCoachMenu()
-                            Wait(600)
-                       --]]     
-            end
+                        end
+                    end
+                    WarMenu.Display()
+                    Citizen.Wait(0)
+                until false
+            end   
         end
+    end
 end)
 
 -- List Coaches Menu Function
@@ -647,6 +633,12 @@ Citizen.CreateThread(function()
         end
         Citizen.Wait(0)
     end
+end)
+
+-- Set Vehicle Body Health 
+
+RegisterCommand("killvehicle", function()
+    SetVehicleBodyHealth(spawn_coach, 0.0)
 end)
 
 -- Command to check current town /intown
