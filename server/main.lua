@@ -30,6 +30,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
     local _price = args['Price']
     local _level = args['Level']
     local _model = args['Model']
+    local _name  = args['Name']
 
 
 	TriggerEvent('redemrp:getPlayerFromId', _src, function(user)
@@ -62,12 +63,12 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
 	TriggerClientEvent("parks_stagecoach:SpawnWagon", _src, _model)
 
     if _resul == true then
-        local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model }
+        local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model, ['name'] = _name }
         MySQL.Async.execute("INSERT INTO stagecoaches ( `identifier`, `charid`, `stagecoach` ) VALUES ( @identifier, @charid, @stagecoach )", Parameters)
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You got a new Stagecoach !' )--]]
         print('New Stagecoach')
     else
-        local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model }
+        local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model, ['name'] = _name }
         MySQL.Async.execute(" UPDATE stagecoaches SET stagecoach = @stagecoach WHERE identifier = @identifier AND charid = @charid ", Parameters)
         print('Updated Stagecoach')
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You update the Stagecoach !' )--]]
