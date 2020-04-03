@@ -551,18 +551,6 @@ Citizen.CreateThread(function(HasStagecoaches)
             if WarMenu.MenuButton('Exit', 'Exit') then WarMenu.CloseMenu() Wait(600) end
 
             WarMenu.Display()
-            --[[if WarMenu.IsMenuOpened('Stagecoach') then
-                repeat
-                    for i = 1, #Coaches do
-                        if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
-                            TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
-                            WarMenu.CloseMenu()
-                        end
-                    end
-                    WarMenu.Display()
-                    Citizen.Wait(0)
-                until false
-            end   --]]
         end
     end
 end)
@@ -586,8 +574,8 @@ Citizen.CreateThread( function()
         if WarMenu.IsMenuOpened('ListStagecoaches') then
             
             for key, value in pairs(HasStagecoaches) do 
-                 print(value['stagecoach'])
-                if WarMenu.Button(value['stagecoach']) then
+                 print(value['name'])
+                if WarMenu.Button(value['name']) then
                     TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
                     WarMenu.CloseMenu()
                     Wait(600)
