@@ -556,11 +556,12 @@ Citizen.CreateThread(function(HasStagecoaches)
                     for i = 1, #Coaches do
                         if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
                             TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
-                            WarMenu.CloseMenu()
+                            
                         end
                     end
+                    WarMenu.CloseMenu()
+                    Wait(600)
                     WarMenu.Display()
-                    Citizen.Wait(0)
                 until false
             end   
         end
