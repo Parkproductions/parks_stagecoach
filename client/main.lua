@@ -412,6 +412,28 @@ local Coaches = {
     },
 }
 
+-- Warmenu with Coach with Params 
+
+--[[function OpenBuyStageCoachMenu()
+    WarMenu.OpenMenu('Stagecoach')
+end
+
+Citizen.CreateThread( function()
+    WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
+    repeat
+        if WarMenu.IsMenuOpened('Stagecoach') then
+            for i = 1, #Coaches do
+                if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
+                    TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
+                    WarMenu.CloseMenu()
+                end
+            end
+            WarMenu.Display()
+        end
+        Citizen.Wait(0)
+    until false
+end)--]]
+
 
 function OpenStageCoachMenu()
     WarMenu.OpenMenu('Stagecoach_MainMenu')
@@ -565,8 +587,8 @@ Citizen.CreateThread( function()
             
             for key, value in pairs(HasStagecoaches) do 
                  print(value['stagecoach'])
-                if WarMenu.Button(value['name']) then
-                    TriggerEvent('parks_stagecoach:SpawnWagon', value['name'])
+                if WarMenu.Button(value['stagecoach']) then
+                    TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
