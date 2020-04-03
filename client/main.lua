@@ -414,7 +414,7 @@ local Coaches = {
 
 -- Warmenu with Coach with Params 
 
---[[function OpenBuyStageCoachMenu()
+function OpenBuyStageCoachMenu()
     WarMenu.OpenMenu('Stagecoach')
 end
 
@@ -432,7 +432,7 @@ Citizen.CreateThread( function()
         end
         Citizen.Wait(0)
     until false
-end)--]]
+end)
 
 
 function OpenStageCoachMenu()
@@ -546,25 +546,23 @@ Citizen.CreateThread(function(HasStagecoaches)
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('Stagecoach_MainMenu') then
 
-            if WarMenu.MenuButton('Buy Coach', 'Stagecoach') then end
+            if WarMenu.MenuButton('Buy Coach', 'Stagecoach') then OpenBuyStageCoachMenu() end
             if WarMenu.MenuButton('Owned Coaches', 'ListStagecoaches') then TriggerServerEvent('parks_stagecoach:loadstagecoach') end
             if WarMenu.MenuButton('Exit', 'Exit') then WarMenu.CloseMenu() Wait(600) end
 
             WarMenu.Display()
-            repeat
-                if WarMenu.IsMenuOpened('Stagecoach') then  
+            --[[if WarMenu.IsMenuOpened('Stagecoach') then
+                repeat
                     for i = 1, #Coaches do
                         if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
                             TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
                             WarMenu.CloseMenu()
-                            Wait(600)
-                            WarMenu.Display() 
                         end
                     end
-                    WarMenu.Display()           
-                end
-                Citizen.Wait(0)
-            until false   
+                    WarMenu.Display()
+                    Citizen.Wait(0)
+                until false
+            end   --]]
         end
     end
 end)
