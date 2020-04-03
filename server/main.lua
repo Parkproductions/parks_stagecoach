@@ -70,7 +70,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
     else
 
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model, ['name'] = _name }
-        MySQL.Async.execute(" UPDATE stagecoaches SET stagecoach = @stagecoach AND name = @name WHERE identifier = @identifier AND charid = @charid ", Parameters)
+        MySQL.Async.execute(" UPDATE stagecoaches SET stagecoach = @stagecoach, name = @name WHERE identifier = @identifier AND charid = @charid ", Parameters)
         print('Updated Stagecoach')
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You update the Stagecoach !' )--]]
     end
