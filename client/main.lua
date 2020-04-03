@@ -361,9 +361,11 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     TaskLeaveVehicle(passenger, spawn_coach, 0)
     RemoveBlip(p1)
     ClearGpsMultiRoute()
-    
     passenger_spawned = false
     driving = false
+    TaskGoToCoordAnyMeans(passenger, Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y +40, Config.Destination[zone_name][route].z, 1.0, 0, 0, 786603, 0xbf800000)
+    Wait(30000)
+    DeleteEntity(npc_id)
 
 end)
 
