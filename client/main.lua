@@ -200,7 +200,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     route = math.random(2)
     player_loc = GetEntityCoords(PlayerPedId())
     passenger_onboard = false
-    BlipAddForEntity(0x3C5469D5, PlayerPedId())
+    local player = PlayerPedId()
+    BlipAddForEntity("0x3C5469D5", player)
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
