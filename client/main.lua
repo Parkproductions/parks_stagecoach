@@ -204,8 +204,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     
     local player = PlayerPedId()
     local player_blip = N_0x554d9d53f696d002(662885764)
-    print(player_blip)
-    Citizen.InvokeNative(0x23F74C2FDA6E7C61, player_blip, player)
+    
+    
     --[[driving_player = BlipAddForEntity(player_blip, player)--]]
     
 
@@ -251,7 +251,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
         if GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, GetEntityCoords(PlayerPedId()),false)<10 then
             
             spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
-            
+            Citizen.InvokeNative(0x23F74C2FDA6E7C61, player_blip, spawn_coach)
             SetEntityAsMissionEntity(spawn_coach, false, false)
             SetEntityAsMissionEntity(passenger, false, false)
             
