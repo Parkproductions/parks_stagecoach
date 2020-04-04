@@ -203,8 +203,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     passenger_onboard = false
     
     local player = PlayerPedId()
-    local player_blip = Citizen.InvokeNative(0x23f74c2fda6e7c61, 953018525, player)
-    Citizen.InvokeNative(0x9CB1A1623062F402, player_blip, 'Target')
+    local player_blip = Citizen.InvokeNative(0x23f74c2fda6e7c61, 0x3C5469D5, player)
+    Citizen.InvokeNative(0x9CB1A1623062F402, player_blip, 'Stage Coach')
     
     --[[Citizen.InvokeNative(0x23F74C2FDA6E7C61, player_blip, spawn_coach)
     local player_blip = N_0x554d9d53f696d002(662885764)
