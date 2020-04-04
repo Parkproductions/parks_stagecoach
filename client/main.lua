@@ -202,8 +202,10 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     passenger_onboard = false
     local player = PlayerPedId()
     local playerblip = N_0x554d9d53f696d002(1664425300)
+    local new_blip = AddBlipForEntity(player)
     BlipAddForEntity(playerblip, player)
-
+    print(new_blip)
+    
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
     AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
