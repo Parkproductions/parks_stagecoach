@@ -14,6 +14,7 @@ Citizen.CreateThread(function()
         SetBlipSprite(blip, marker.sprite, 1)
         SetBlipScale(blip, 0.2)
         Citizen.InvokeNative(0x9CB1A1623062F402, blip, marker.name)
+
     end  
 end)
 
@@ -204,7 +205,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     local player = PlayerPedId()
     local player_blip = N_0x554d9d53f696d002(662885764)
     print(player_blip)
-    driving_player = BlipAddForEntity(player_blip, player)
+    Citizen.InvokeNative(0x23F74C2FDA6E7C61, player_blip, player)
+    --[[driving_player = BlipAddForEntity(player_blip, player)--]]
     
 
     StartGpsMultiRoute(012, false, true)
