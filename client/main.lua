@@ -752,10 +752,10 @@ function GetPlayersInVehicle()
   end
 
   invehicle = GetPlayersInVehicle()
-  print('Invehicle:', dump(invehicle))
+ 
 
-  for _, player_id in pairs(invehicle) do
-    print(player_id)
+  for i, v in ipairs(invehicle) do
+    print(i,v)
   end
   
 end)
