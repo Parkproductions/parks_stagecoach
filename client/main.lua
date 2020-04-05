@@ -737,11 +737,11 @@ function GetPlayersInVehicle()
   local playerVehicle = GetVehiclePedIsIn(ply)
   print(players)
 
-    if players[0] ~= nil then
+    
         print(players[0])
-    else
+    
         print(players[1])
-    end
+    
 
 
   for index,value in ipairs(players) do
