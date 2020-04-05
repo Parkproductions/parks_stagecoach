@@ -103,7 +103,7 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
 
     while true do
     
-        TriggerServerEvent("parks_stagecoach:pay_fare", 10)
+        TriggerServerEvent("parks_stagecoach:pay_fare", fare)
         local fare_paid = true
         RemoveBlip(p1)
         ClearGpsMultiRoute()
@@ -175,7 +175,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
             TaskLeaveVehicle(passenger, spawn_coach, 0)
             TaskGoToCoordAnyMeans(passenger, Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y +40, Config.Destination[zone_name][route].z, 1.0, 0, 0, 786603, 0xbf800000)
             npc_id = GetPedIndexFromEntityIndex(passenger)
-            TriggerEvent("parks_stagecoach:successful_dropoff", 10, npc_id)
+            TriggerEvent("parks_stagecoach:successful_dropoff", fare_amount, npc_id)
             passenger_onboard = false
             
         end       
