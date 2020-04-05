@@ -7,6 +7,14 @@ AddEventHandler("parks_stagecoach:pay_fare", function (fare)
 	end)
 end)
 
+-- ADD WAGONE BLIP FOR COACHES TO ALL PLAYERS
+
+RegisterServerEvent("parks_stagecoach:SendDriverEntity")
+AddEventHandler("parks_stagecoach:SendDriverEntity", function (coach_driver)
+    print('server_coach_driver', coach_driver)
+    TriggerClientEvent("parks_stagecoach:AddDriverBlip", -1, coach_driver)
+
+end)
 
 --- DATA BASE QUERIES
 

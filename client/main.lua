@@ -189,6 +189,12 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
 
 end)
 
+RegisterNetEvent("parks_stagecoach:AddDriverBlip")
+AddEventHandler("parks_stagecoach:AddDriverBlip", function (coach_driver)
+    print('client_addDriverBlip_coach_driver', coach_driver)
+    Citizen.InvokeNative(0x9CB1A1623062F402, coach_driver_blip, 'Stage Coach')
+
+end)
 
 -- StartCoachJob
 
@@ -202,10 +208,11 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     player_loc = GetEntityCoords(PlayerPedId())
     passenger_onboard = false
     
-    local player = PlayerPedId()
-    local player_blip = Citizen.InvokeNative(0x23f74c2fda6e7c61, 631964804, player)
+    local coach_driver = PlayerPedId()
+    local coach_driver_blip = Citizen.InvokeNative(0x23f74c2fda6e7c61, 631964804, coach_driver)
+    print('client_startcoachjob_coach_driver', coach_driver)
+    TriggerServerEvent('parks_stagecoach:SendDriverEntity', coach_driver)
     
-    Citizen.InvokeNative(0x9CB1A1623062F402, player_blip, 'Stage Coach')
     
     --[[Citizen.InvokeNative(0x23F74C2FDA6E7C61, player_blip, spawn_coach)
     local player_blip = N_0x554d9d53f696d002(662885764)
@@ -427,7 +434,7 @@ local Coaches = {
     },
 }
 
--- Warmenu with Coach with Params 
+-- Warmenu List of Coaches to Buy with Server Event Params, saves to DB
 
 function OpenBuyStageCoachMenu()
     WarMenu.OpenMenu('Stagecoach')
@@ -458,6 +465,7 @@ end
 
 local StageCoachPrompt
 local active = false
+local group = 'Stage Coach Manager'
 
 function StageCoach()
     Citizen.CreateThread(function()
