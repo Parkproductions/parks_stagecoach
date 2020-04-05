@@ -167,6 +167,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
 
         fare_amount = (distance / 1609.34) * 1
         fare_amount = string.format("%.2f", fare_amount)
+        fare_amount = tonumber(fare_amount)
         print(fare_amount)
         Wait(200)
 
