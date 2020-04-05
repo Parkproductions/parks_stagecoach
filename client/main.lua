@@ -161,6 +161,11 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     while true do
     Wait(10)   
 
+        current = GetEntityCoords(passenger)
+        distance = CalculateTravelDistanceBetweenPoints(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current)
+        print(distance)
+        Wait(100)
+
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
