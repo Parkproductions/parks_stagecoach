@@ -168,8 +168,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         fare_amount = (distance / 1609.34) * 50
         fare_amount = string.format("%.2f", fare_amount)
         fare_amount = tonumber(fare_amount)
-        print(fare_amount)
-        Wait(200)
+        Wait(1000)
 
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
@@ -200,7 +199,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
 end)
 
 RegisterNetEvent("parks_stagecoach:AddDriverBlip")
-AddEventHandler("parks_stagecoach:AddDriverBlip", function (coach_driver)
+AddEventHandler("parks_stagecoach:AddDriverBlip", function (coach_driver, coach_driver_blip)
     print('client_addDriverBlip_coach_driver', coach_driver)
     Citizen.InvokeNative(0x9CB1A1623062F402, coach_driver_blip, 'Stage Coach')
 
@@ -211,6 +210,8 @@ end)
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
     
+    -- Set driving status and select route 
+
     TriggerEvent("drivingtrue")
     zone_name = GetCurentTownName()
     local passenger_despawned = true
@@ -218,18 +219,14 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     player_loc = GetEntityCoords(PlayerPedId())
     passenger_onboard = false
     
+    -- Setting Blip for Driving Coaches
+
     local coach_driver = PlayerPedId()
     local coach_driver_blip = Citizen.InvokeNative(0x23f74c2fda6e7c61, 631964804, coach_driver)
     print('client_startcoachjob_coach_driver', coach_driver)
     TriggerServerEvent('parks_stagecoach:SendDriverEntity', coach_driver)
     
-    
-    --[[Citizen.InvokeNative(0x23F74C2FDA6E7C61, player_blip, spawn_coach)
-    local player_blip = N_0x554d9d53f696d002(662885764)
-    --]]
-    
-    --[[driving_player = BlipAddForEntity(player_blip, player)--]]
-    
+    -- Set GPS route positions
 
     StartGpsMultiRoute(012, false, true)
     AddPointToGpsMultiRoute(player_loc)
@@ -727,4 +724,32 @@ end
 
 intown = GetCurentTownName()
 print(intown)
+end)
+
+-- Command to check who is in vehicle
+
+RegisterCommand("invehicle", function()
+function GetPlayersInVehicle()
+
+  local players = GetPlayers()
+  local ply = GetPlayerPed(-1)
+  local returnablePlayers = {}
+  local playerVehicle = GetVehiclePedIsIn(ply)
+
+  for index,value in ipairs(players) do
+    local target = GetPlayerPed(value)
+
+    if(target ~= ply) then
+      local vehicle = GetVehiclePedIsIn(target)
+
+      if playerVehicle == vehicle then
+        table.insert(returnablePlayers, value)
+      end
+    end
+  end
+
+  return returnablePlayers
+
+end
+print(returnablePlayers)
 end)
