@@ -740,9 +740,9 @@ function GetPlayersInVehicle()
 
 
   for index,value in ipairs(players) do
-    print(value)
+    
     local target = GetPlayerPed(value)
-
+    print(target)
     if(target ~= ply) then
       local vehicle = GetVehiclePedIsIn(target)
 
