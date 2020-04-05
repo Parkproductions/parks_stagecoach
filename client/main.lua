@@ -165,7 +165,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         distance = GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current, false)
         
 
-        fare_amount = (distance / 1609.34) * 5
+        fare_amount = (distance / 1609.34) * 50
         fare_amount = string.format("%.2f", fare_amount)
         fare_amount = tonumber(fare_amount)
         print(fare_amount)
