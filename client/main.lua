@@ -735,7 +735,7 @@ function GetPlayersInVehicle()
   local ply = PlayerPedId()
   local returnablePlayers = {}
   local playerVehicle = GetVehiclePedIsIn(ply)
-
+  print(players)
   for index,value in ipairs(players) do
     local target = GetPlayerPed(value)
 
@@ -747,7 +747,7 @@ function GetPlayersInVehicle()
       end
     end
   end
-  print(returnablePlayers)
+
   return returnablePlayers
   end
 
