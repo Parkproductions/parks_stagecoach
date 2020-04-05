@@ -732,7 +732,7 @@ RegisterCommand("invehicle", function()
 function GetPlayersInVehicle()
 
   local players = GetPlayers()
-  local ply = GetPlayerPed(-1)
+  local ply = PlayerPedId()
   local returnablePlayers = {}
   local playerVehicle = GetVehiclePedIsIn(ply)
 
