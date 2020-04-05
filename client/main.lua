@@ -750,7 +750,11 @@ function GetPlayersInVehicle()
 
   return returnablePlayers
   end
+
   invehicle = GetPlayersInVehicle()
-  print(invehicle)
+  for index, player_id in inpairs(invehicle) do
+    print(player_id)
+  end
+  
 end)
 
