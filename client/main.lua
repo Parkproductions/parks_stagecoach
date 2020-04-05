@@ -749,7 +749,6 @@ function GetPlayersInVehicle()
   end
 
   return returnablePlayers
-
+  print(returnablePlayers)
 end
-print(returnablePlayers)
-end)
+
