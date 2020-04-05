@@ -465,7 +465,7 @@ end
 
 local StageCoachPrompt
 local active = false
-local group = 'Stage Coach Manager'
+local group 
 
 function StageCoach()
     Citizen.CreateThread(function()
