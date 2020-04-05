@@ -163,8 +163,11 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
 
         current = GetEntityCoords(passenger)
         distance = GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current, false)
-        print(distance)
-        Wait(100)
+        
+
+        fare_amount = (distance / 1609.34) * 1
+        print(fare_amount)
+        Wait(200)
 
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
