@@ -162,7 +162,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     Wait(10)   
 
         current = GetEntityCoords(passenger)
-        distance = CalculateTravelDistanceBetweenPoints(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current)
+        distance = GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current, false)
         print(distance)
         Wait(100)
 
