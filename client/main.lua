@@ -19,7 +19,7 @@ function DisplayLeftNotification(title, subTitle, iconDict, icon, duration)
 
     --[[string1 = CreateVarString(10, "LITERAL_STRING", title);
     string2 = CreateVarString(10, "LITERAL_STRING", subTitle);--]]
-    struct2 = { GetHashKey(iconDict), GetHashKey(icon)}
+    struct2 =  GetHashKey(iconDict)
 
 --[[    struct2 = new DataView(new ArrayBuffer(48));
     struct2.setBigInt64(8, BigInt(string1), true);
