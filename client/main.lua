@@ -9,13 +9,13 @@ local keys = { ['O'] = 0xF1301666, ['G'] = 0x5415BE48 }
 
 function DisplayLeftNotification(title, subTitle, iconDict, icon, duration)
   
-    const struct1 = new DataView(new ArrayBuffer(4 * 4));
+    struct1 = new DataView(new ArrayBuffer(4 * 4));
     struct1.setInt32(0, duration, true);
   
-    const string1 = CreateVarString(10, "LITERAL_STRING", title);
-    const string2 = CreateVarString(10, "LITERAL_STRING", subTitle);
+    string1 = CreateVarString(10, "LITERAL_STRING", title);
+    string2 = CreateVarString(10, "LITERAL_STRING", subTitle);
   
-    const struct2 = new DataView(new ArrayBuffer(48));
+    struct2 = new DataView(new ArrayBuffer(48));
     struct2.setBigInt64(8, BigInt(string1), true);
     struct2.setBigInt64(16, BigInt(string2), true);
     struct2.setBigInt64(32, BigInt(GetHashKey(iconDict)), true);
