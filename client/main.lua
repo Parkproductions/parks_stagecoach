@@ -15,7 +15,7 @@ function DisplayLeftNotification(title, subTitle, iconDict, icon, duration)
     struct1 = duration
 
     local string1 = CreateVarString(10, "LITERAL_STRING", title, Citizen.ResultAsLong())
-    local string2 = string2 = CreateVarString(10, "LITERAL_STRING", subTitle, Citizen.ResultAsLong())
+    local string2 = CreateVarString(10, "LITERAL_STRING", subTitle, Citizen.ResultAsLong())
 
     --[[string1 = CreateVarString(10, "LITERAL_STRING", title);
     string2 = CreateVarString(10, "LITERAL_STRING", subTitle);--]]
