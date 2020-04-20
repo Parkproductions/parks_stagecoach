@@ -5,6 +5,31 @@ local pressLeft = 0
 local recentlySpawned = 0
 local keys = { ['O'] = 0xF1301666, ['G'] = 0x5415BE48 }
 
+-- Sidebar Notification
+
+function DisplayLeftNotification(title, subTitle, iconDict, icon, duration) {
+  const struct1 = new DataView(new ArrayBuffer(4 * 4));
+  struct1.setInt32(0, duration, true);
+  
+  const string1 = CreateVarString(10, "LITERAL_STRING", title);
+  const string2 = CreateVarString(10, "LITERAL_STRING", subTitle);
+  
+  const struct2 = new DataView(new ArrayBuffer(48));
+  struct2.setBigInt64(8, BigInt(string1), true);
+  struct2.setBigInt64(16, BigInt(string2), true);
+  struct2.setBigInt64(32, BigInt(GetHashKey(iconDict)), true);
+  struct2.setBigInt64(40, BigInt(GetHashKey(icon)), true);
+
+  Citizen.invokeNative("0x26E87218390E6729", struct1, struct2, 1, 1);
+}
+DisplayLeftNotification(
+  'Parks Stagecoach', 
+  '1st Coach Driven', 
+  'HUD_TOASTS',
+  'toast_player_deadeye',
+  10000
+)
+
     
 -- Create Wagon Wheel Map Marker
 
@@ -211,7 +236,7 @@ RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
     
     -- Set driving status and select route 
-
+    DisplayLeftNotification()
     TriggerEvent("drivingtrue")
     zone_name = GetCurentTownName()
     local passenger_despawned = true
@@ -742,7 +767,7 @@ function GetPlayersInVehicle()
   for index,value in ipairs(players) do
     
     local target = GetPlayerPed(value)
-    print(target)
+    
     if(target ~= ply) then
       local vehicle = GetVehiclePedIsIn(target)
 
