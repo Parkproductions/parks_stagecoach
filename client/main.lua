@@ -26,7 +26,7 @@ function DisplayLeftNotification(title, subTitle, iconDict, icon, duration)
     struct2.setBigInt64(16, BigInt(string2), true);
     struct2.setBigInt64(32, BigInt(GetHashKey(iconDict)), true);
     struct2.setBigInt64(40, BigInt(GetHashKey(icon)), true);--]]
-
+    print(struct1, struct2)
     Citizen.invokeNative("0x26E87218390E6729", struct1, struct2, 1, 1);
 
     
