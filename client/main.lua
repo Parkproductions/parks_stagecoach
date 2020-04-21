@@ -239,7 +239,7 @@ RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
     
     -- Set driving status and select route 
-    DisplayLeftNotification('Parks Stagecoach', '1st Coach Driven', 'HUD_TOASTS', 'toast_player_deadeye', 10000)
+    TriggerClientEvent('redem_roleplay:NotifyTop', "1st Coach Driven", 8000)
     TriggerEvent("drivingtrue")
     zone_name = GetCurentTownName()
     local passenger_despawned = true
