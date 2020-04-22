@@ -13,6 +13,7 @@ RegisterServerEvent("parks_stagecoach:SendDriverEntity")
 AddEventHandler("parks_stagecoach:SendDriverEntity", function (coach_driver)
     print('server_coach_driver', coach_driver)
     TriggerClientEvent("parks_stagecoach:AddDriverBlip", -1, coach_driver)
+    TriggerClientEvent('redem_roleplay:NotifyTop', "1st Coach Driven", 8000)
 
 end)
 
