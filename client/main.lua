@@ -197,6 +197,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         fare_amount = string.format("%.2f", fare_amount)
         fare_amount = tonumber(fare_amount)
         Wait(1000)
+        TriggerEvent('redem_roleplay:Tip', fare_amount, 1000)
 
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
@@ -241,7 +242,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     -- Set driving status and select route 
     --[[TriggerEvent('redem_roleplay:NotifyTop', "1st Coach Driven", 8000)--]]
     --[[TriggerEvent('redem_roleplay:NotifyLeft', "first text", "second text", "tick", 8000)--]]
-    TriggerEvent('redem_roleplay:Tip', "your text", -1)
+   
     
     TriggerEvent("drivingtrue")
     zone_name = GetCurentTownName()
