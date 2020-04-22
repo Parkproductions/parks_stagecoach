@@ -240,8 +240,8 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     
     -- Set driving status and select route 
     --[[TriggerEvent('redem_roleplay:NotifyTop', "1st Coach Driven", 8000)--]]
-    TriggerEvent('redem_roleplay:NotifyLeft', "first text", "second text", "tick", 8000)
-    --[[TriggerEvent('redem_roleplay:Tip', "your text", 8000)--]]
+    --[[TriggerEvent('redem_roleplay:NotifyLeft', "first text", "second text", "tick", 8000)--]]
+    TriggerEvent('redem_roleplay:Tip', "your text", 8000)
     
     TriggerEvent("drivingtrue")
     zone_name = GetCurentTownName()
