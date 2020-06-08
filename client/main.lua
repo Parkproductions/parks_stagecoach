@@ -121,6 +121,8 @@ function GetCurentTownName()
         return "Aguasdulces Villa"
     elseif town_hash == GetHashKey("Manicato") then
         return "Manicato"
+    else
+        print(tostring(town_hash))
     end
 end
 
