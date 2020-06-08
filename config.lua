@@ -14,7 +14,8 @@ Config.Marker = {
 
 Config.StageCoachSpawn = {
   ["Saint Denis"] = {x = 2684.93, y = -1436.46, z = 46.07, h = 112.89},
-  ["Rhodes"] = { x = 1269.4, y = -1315.75, z = 76.4, h = 38.42}
+  ["Rhodes"] = { x = 1269.4, y = -1315.75, z = 76.4, h = 38.42},
+  ["Annesburg"] = { x = 2913.53, y = 1263.97, z = 44.74, h = 153.37}
 }
 
 Config.Cams = {
@@ -38,7 +39,8 @@ Config.JobName = "stage_coach_driver" -- Job name to set
 
 Config.Coords = {
 	vector3(1254.05, -1327.07, 76.89),
-	vector3(2683.95, -1441.86, 46.16)
+	vector3(2683.95, -1441.86, 46.16),
+	vector3(2931.1, 1266.37, 1266.37)
 }
 
 Config.PickUp = {
