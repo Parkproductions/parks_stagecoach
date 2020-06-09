@@ -137,7 +137,7 @@ function GetCurentTownName()
     elseif town_hash == GetHashKey("Manicato") then
         return "Manicato"
     else
-        return town_hash
+        return ""
     end
 end
 
@@ -218,7 +218,6 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
 
         town_name = GetCurentTownName()
         district_hash = GetDistrictHash()
-        town_dist_display = town_name .. district_hash
        
         --[[print('Town', town_name, 'District', district_hash)--]]
         --[[TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)--]]
