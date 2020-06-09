@@ -9,13 +9,13 @@ Config.Blip          = {sprite = 311, color = 1}
 Config.Marker = {
   ["saint_denis"] = {name = 'Saint Denis', sprite = 0x3C5469D5, x = 2683.95, y = -1441.86, z = 46.16, h = 21.54},
   ["rhodes"] = {name = 'Rhodes', sprite = 0x3C5469D5, x = 1262.9, y = -1321.06, z = 76.89, h = 316.94},
-  ["annesburg"] = {name = 'Annesburg', sprite = 0x3C5469D5, x = 2931.14, y = 1266.37, h = 155.74},
+  ["roanoke_ridge"] = {name = 'Annesburg', sprite = 0x3C5469D5, x = 2931.14, y = 1266.37, h = 155.74},
 }
 
 Config.StageCoachSpawn = {
   ["Saint Denis"] = {x = 2684.93, y = -1436.46, z = 46.07, h = 112.89},
   ["Rhodes"] = { x = 1269.4, y = -1315.75, z = 76.4, h = 38.42},
-  ["Annesburg"] = { x = 2913.53, y = 1263.97, z = 44.74, h = 153.37}
+  ["Roanoke Ridge"] = { x = 2913.53, y = 1263.97, z = 44.74, h = 153.37}
 }
 
 Config.Cams = {
@@ -28,7 +28,7 @@ Config.Cams = {
 		["cam_a"] = {x = 1271.71, y = -1318.75, z = 79.4, h = 38.42},
 		["cam_b"] = {x = 1269.4, y = -1315.75, z = 79.4, h = 38.42}
 	},
-	["Annesburg"] = {
+	["Roanoke Ridge"] = {
 		["cam_a"] = {x = 2909.55 , y = 1262.1, z = 44.74, h = 245.36},
 		["cam_b"] = {x = 2905.34, y = 1253.29, z = 44.79, h = 294.15},
 	}
@@ -65,7 +65,7 @@ Config.PickUp = {
 		[1] = {name = 'Pick Up Point', model = "A_F_M_BlWUpperClass_01", sprite = 0xDDFBA6AB, x = 1373.89, y = -1317.13, z = 77.37, h =  122.41},
 		[2] = {name = 'Pick Up Point', model = "A_M_M_RhdTownfolk_02", sprite = 0xDDFBA6AB, x = 1059.16, y = -1130.54, z = 67.55, h =  126.78},	
 	},
-	["Annesburg"] = {
+	["Roanoke Ridge"] = {
 		[1] = {name = 'Pick Up Point', model = "U_M_M_BHT_MINEFOREMAN", sprite = 0xDDFBA6AB, x = 2859.54, y = 1354.76, z = 63.8, h = 178.0},
 		[2] = {name = 'Pick Up Point', model = "CS_SOOTHSAYER", sprite = 0xDDFBA6AB, x = 2947.11, y = 1353.7, z = 44.1, h = 70.51},
 	}
@@ -89,7 +89,7 @@ Config.Destination = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1738.37, y = -1373.53, z = 44.05},
 		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1847.77, y = -1409.57, z = 41.41},
 	},
-	["Annesburg"] = {
+	["Roanoke Ridge"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 2510.26, y = 2269.55, z = 176.4},
 		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 2632.28, y = 1719.53, z = 113.11},
 	}
