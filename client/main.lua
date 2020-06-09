@@ -700,10 +700,19 @@ end)
 
 -- Command to check current town /intown
 
+RegisterCommand("indistrict", function()
+function GetCurentDistrictName()
+    local pedCoords = GetEntityCoords(PlayerPedId())
+    local disctrict_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,10)
+    print(disctrict_hash)
+end)
+
+-- Command to check current town /intown
+
 RegisterCommand("intown", function()
 function GetCurentTownName()
     local pedCoords = GetEntityCoords(PlayerPedId())
-    local town_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,10)
+    local town_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,1)
     --[[print(town_hash)--]]
     if town_hash == GetHashKey("Annesburg") then
         return "Annesburg"
