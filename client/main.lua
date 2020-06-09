@@ -704,6 +704,7 @@ RegisterCommand("intown", function()
 function GetCurentTownName()
     local pedCoords = GetEntityCoords(PlayerPedId())
     local town_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,10)
+    print(town_hash)
     if town_hash == GetHashKey("Annesburg") then
         return "Annesburg"
     elseif town_hash == GetHashKey("Annesburg") then
@@ -758,7 +759,7 @@ function GetCurentTownName()
 end
 
 intown = GetCurentTownName()
-print(intown)
+--[[print(intown)--]]
 end)
 
 -- Command to check who is in vehicle
