@@ -712,7 +712,7 @@ function GetCurentDistrictName()
         end
     end
     indistrict = GetCurentDistrictName()
-    print(indistrict)
+    
 end)
 
 -- Command to check current town /intown
