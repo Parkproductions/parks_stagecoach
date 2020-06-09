@@ -194,13 +194,15 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
 
         current = GetEntityCoords(passenger)
         distance = GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current, false)
-        
+        local pedCoords = GetEntityCoords(PlayerPedId())
+        local disctrict_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,10)
 
         fare_amount = (distance / 1609.34) * 50
         fare_amount = string.format("%.2f", fare_amount)
         fare_amount = tonumber(fare_amount)
         Wait(1000)
         TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)
+        print(district_hash)
 
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
