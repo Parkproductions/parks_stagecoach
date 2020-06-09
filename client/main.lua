@@ -74,8 +74,8 @@ function GetCurentTownName()
     print(town_hash)
     if town_hash == GetHashKey("Annesburg") then
         return "Annesburg"
-    elseif town_has == GetHashKey("roanoke") then
-        return "Roanoke"
+    elseif town_hash == GetHashKey("roanoke") then
+        return "Roanoke Ridge"
     elseif town_hash == GetHashKey("Annesburg") then
         return "Annesburg"
     elseif town_hash == GetHashKey("Armadillo") then
