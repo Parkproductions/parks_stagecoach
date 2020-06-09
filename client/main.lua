@@ -705,7 +705,9 @@ function GetCurentDistrictName()
     local pedCoords = GetEntityCoords(PlayerPedId())
     local disctrict_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,10)
     local isthishash = GetHashKey("P_4_RHODES")
-    print(isthishash)
+    
+    print(district_hash, isthishash)
+    
         if district_hash == GetHashKey("P_4_RHODES") then
             print('its rhodes you dodgy malacka')
             return "Rhodes District"
