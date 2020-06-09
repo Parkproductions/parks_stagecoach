@@ -202,8 +202,9 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         fare_amount = tonumber(fare_amount)
         Wait(1000)
         town_name = GetCurentTownName()
-        --[[TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)--]]
-        TriggerEvent('redem_roleplay:Tip', town_name, 2000)
+        print(town_name)
+        TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)
+        
 
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
             
