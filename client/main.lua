@@ -66,6 +66,12 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 
 end)
 
+function GetDistrictHash()
+    local pedCoords = GetEntityCoords(PlayerPedId())
+    local district_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords, 10)
+    return district_hash
+end
+
 -- Get Current Town Name, Some Towns missing
 
 function GetCurentTownName()
@@ -202,7 +208,8 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         fare_amount = tonumber(fare_amount)
         Wait(1000)
         town_name = GetCurentTownName()
-        print(town_name)
+        district_hash = GetDistrictHash()
+        print('Town', town_name, 'District', district_hash)
         TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)
         
 
