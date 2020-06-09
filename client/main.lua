@@ -704,11 +704,12 @@ RegisterCommand("indistrict", function()
 function GetCurentDistrictName()
     local pedCoords = GetEntityCoords(PlayerPedId())
     local disctrict_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,10)
-    if district_hash == GetHashKey("P_4_RHODES") then
-        return "Rhodes District"
+        if district_hash == GetHashKey("P_4_RHODES") then
+            return "Rhodes District"
+        end
     end
     indistrict = GetCurentDistrictName()
-print(indistrict)
+    print(indistrict)
 end)
 
 -- Command to check current town /intown
