@@ -237,7 +237,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         town_name = GetCurentTownName()
         district_hash = GetDistrictHash()
         town_dist_display = town_name .. district_hash
-        DisplayHelp(town_dist_display, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
+        Displaytown(town_dist_display, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
         --[[print('Town', town_name, 'District', district_hash)--]]
         TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)
         
