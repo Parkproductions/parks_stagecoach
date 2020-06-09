@@ -96,7 +96,11 @@ end
 function GetDistrictHash()
     local pedCoords = GetEntityCoords(PlayerPedId())
     local district_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords, 10)
-    return district_hash
+    if district_hash then
+        return district_hash
+    else
+        return ""
+    end
 end
 
 -- Get Current Town Name, Some Towns missing
@@ -240,7 +244,8 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         town_dist_display = town_name .. district_hash
         Displaytown(town_dist_display, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
         --[[print('Town', town_name, 'District', district_hash)--]]
-        TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)
+        --[[TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)--]]
+        TriggerEvent('redem_roleplay:Tip', town_name .. " " .. district_hash, 2000)
         
 
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
