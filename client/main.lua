@@ -70,7 +70,7 @@ end)
 
 function GetCurentTownName()
     local pedCoords = GetEntityCoords(PlayerPedId())
-    local town_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords , 1)
+    local town_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords , -1)
     print(town_hash)
     if town_hash == GetHashKey("Annesburg") then
         return "Annesburg"
