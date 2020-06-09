@@ -160,6 +160,16 @@ function GetCurentTownName()
     end
 end
 
+Citizen.CreateThread(function()
+    while true do
+        Wait(10)
+        town_name = GetCurentTownName()
+        district_hash = GetDistrictHash()
+        town_dist_display = town_name .. district_hash
+        Displaytown(town_dist_display, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
+    end
+end)
+
 -- Successful Drop Off / Pay Fare
 
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
@@ -234,10 +244,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         fare_amount = string.format("%.2f", fare_amount)
         fare_amount = tonumber(fare_amount)
         Wait(1000)
-        town_name = GetCurentTownName()
-        district_hash = GetDistrictHash()
-        town_dist_display = town_name .. district_hash
-        Displaytown(town_dist_display, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
+        
         --[[print('Town', town_name, 'District', district_hash)--]]
         TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)
         
