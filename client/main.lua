@@ -66,31 +66,6 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 
 end)
 
--- Display Town/District
-
-local function Displaytown( _message, x, y, w, h, enableShadow, col1, col2, col3, a, centre )
-
-    local str = CreateVarString(10, "LITERAL_STRING", _message, Citizen.ResultAsLong())
-
-    SetTextScale(w, h)
-    SetTextColor(col1, col2, col3, a)
-
-    SetTextCentre(centre)
-
-    if enableShadow then
-        SetTextDropshadow(1, 0, 0, 0, 255)
-    end
-
-    Citizen.InvokeNative(0xADA9255D, 10);
-
-    if IsPedUsingAnyScenario(PlayerPedId()) then
-
-    else
-        DisplayText(str, x, y)
-    end
-
-end
-
 -- Get District Hash
 
 function GetDistrictHash()
@@ -161,6 +136,8 @@ function GetCurentTownName()
         return "Aguasdulces Villa"
     elseif town_hash == GetHashKey("Manicato") then
         return "Manicato"
+    else
+        return town_hash
     end
 end
 
@@ -242,7 +219,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         town_name = GetCurentTownName()
         district_hash = GetDistrictHash()
         town_dist_display = town_name .. district_hash
-        Displaytown(town_dist_display, 0.50, 0.95, 0.6, 0.6, true, 255, 255, 255, 255, true, 10000)
+       
         --[[print('Town', town_name, 'District', district_hash)--]]
         --[[TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)--]]
         TriggerEvent('redem_roleplay:Tip', town_name .. " " .. district_hash, 2000)
