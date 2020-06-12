@@ -406,7 +406,8 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
         Citizen.Wait(0)
     end
 
-    zone_name = GetCurentTownName()
+    --[[zone_name = GetCurentTownName()--]]
+    zone_name = GetDistrictHash()
 
     spawn_coach = CreateVehicle(_model, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
