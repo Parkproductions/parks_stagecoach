@@ -99,7 +99,7 @@ Config.PickUp = {
 	["Roanoke"] = {
 		[1] = {name = 'Pick Up Point', model = "A_M_M_SDObesemen_01", sprite = 0xDDFBA6AB, x = 2955.73, y = 523.55, z = 44.95, h = 262.07},
 	},
-	["BayouNwa"] = {
+	["Bayou Nwa"] = {
 		[1] = {name = 'Pick Up Point', model = "U_F_O_WtCTownfolk_01", sprite = 0xDDFBA6AB, x = 2068.69, y = -845.95, z = 43.35, h = 353.97},
 	}
 
@@ -129,7 +129,7 @@ Config.Destination = {
 	["Roanoke"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 2106.44, y = -595.35, z = 41.33},
 	},
-	["BayouNwa"] = {
+	["Bayou Nwa"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 2676.03, y = -1442.68, z = 45.98},
 	}
 }
