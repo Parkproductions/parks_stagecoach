@@ -29,13 +29,7 @@ Config.Marker = {
   ["rhodes"] = {name = 'Rhodes', sprite = 0x3C5469D5, x = 1262.9, y = -1321.06, z = 76.89, h = 316.94},
   ["annesburg"] = {name = 'Annesburg', sprite = 0x3C5469D5, x = 2932.0, y = 1266.2, h = 158.51},
   ["bacchus_station"] = {name = 'Bacchus Station', sprite = 0x3C5469D5, x = 588.19, y = 1677.75, z = 187.78, h = 313.7},
-  ["van_horn"] = {name = 'Van Horn', sprit = , x = , y = , z = , h = ,},
-  ["valentine"] = {name = 'Valentine', sprit = , x = , y = , z = , h = ,},
-  ["strawberry"] = {name = 'Strawberry', sprit = , x = , y = , z = , h = ,},
-  ["blackwater"] = {name = 'Blackwater', sprit = , x = , y = , z = , h = ,},
-  ["armadillo"] = {name = 'Armadillo', sprit = , x = , y = , z = , h = ,},
-  ["tumbleweed"] = {name = 'Tumbleweed', sprit = , x = , y = , z = , h = ,},
-  [""] = {name = '', sprit = , x = , y = , z = , h = ,},
+
 }
 
 Config.StageCoachSpawn = {
