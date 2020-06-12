@@ -220,7 +220,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
         Wait(100)
 
         town_name = GetCurentTownName()
-        district_hash = GetDistrictHash()
+        
        
         --[[print('Town', town_name, 'District', district_hash)--]]
         --[[TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)--]]
@@ -273,7 +273,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
    
     
     TriggerEvent("drivingtrue")
-    zone_name = GetCurentTownName()
+    zone_name = GetDistrictHash()
     local passenger_despawned = true
     route = math.random(2)
     player_loc = GetEntityCoords(PlayerPedId())
@@ -406,8 +406,8 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
         Citizen.Wait(0)
     end
 
-    --[[zone_name = GetCurentTownName()--]]
-    zone_name = GetDistrictHash()
+    zone_name = GetCurentTownName()
+    district_name = GetDistrictHash()
 
     spawn_coach = CreateVehicle(_model, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
