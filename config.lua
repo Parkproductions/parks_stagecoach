@@ -10,7 +10,7 @@ Config.Districts = {
 	[178647645] = {name = 'Roanoke'},
 	[1308232528] = {name = 'Bluewater Marsh'},
 	[2025841068] = {name = 'Bayou Nwa'},
-	[-864275692] = {name = 'Scerlett Meadows'},
+	[-864275692] = {name = 'Scarlett Meadows'},
 	[131399519] = {name = 'Heartlands'},
 	[-120156735] = {name = 'GrizzliesEast'},
 	[1835499550] = {name = 'Cumberland'},
@@ -28,7 +28,14 @@ Config.Marker = {
   ["saint_denis"] = {name = 'Saint Denis', sprite = 0x3C5469D5, x = 2683.95, y = -1441.86, z = 46.16, h = 21.54},
   ["rhodes"] = {name = 'Rhodes', sprite = 0x3C5469D5, x = 1262.9, y = -1321.06, z = 76.89, h = 316.94},
   ["annesburg"] = {name = 'Annesburg', sprite = 0x3C5469D5, x = 2932.0, y = 1266.2, h = 158.51},
-  ["bacchus"] = {name = 'Bacchus Station', sprite = 0x3C5469D5, x = 588.19, y = 1677.75, z = 187.78, h = 313.7},
+  ["bacchus_station"] = {name = 'Bacchus Station', sprite = 0x3C5469D5, x = 588.19, y = 1677.75, z = 187.78, h = 313.7},
+  ["van_horn"] = {name = 'Van Horn', sprit = , x = , y = , z = , h = ,},
+  ["valentine"] = {name = 'Valentine', sprit = , x = , y = , z = , h = ,},
+  ["strawberry"] = {name = 'Strawberry', sprit = , x = , y = , z = , h = ,},
+  ["blackwater"] = {name = 'Blackwater', sprit = , x = , y = , z = , h = ,},
+  ["armadillo"] = {name = 'Armadillo', sprit = , x = , y = , z = , h = ,},
+  ["tumbleweed"] = {name = 'Tumbleweed', sprit = , x = , y = , z = , h = ,},
+  [""] = {name = '', sprit = , x = , y = , z = , h = ,},
 }
 
 Config.StageCoachSpawn = {
