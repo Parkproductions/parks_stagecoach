@@ -101,6 +101,7 @@ Config.PickUp = {
 	},
 	["Bayou Nwa"] = {
 		[1] = {name = 'Pick Up Point', model = "U_F_O_WtCTownfolk_01", sprite = 0xDDFBA6AB, x = 2068.69, y = -845.95, z = 43.35, h = 353.97},
+		[2] = {name = 'Pick Up Point', model = "A_M_O_BlWUpperClass_01", sprite = 0xDDFBA6AB, x = 2068.69, y = -845.95, z = 43.35, h = 353.97},
 	}
 
 }
@@ -131,6 +132,7 @@ Config.Destination = {
 	},
 	["Bayou Nwa"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 2676.03, y = -1442.68, z = 45.98},
+		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1429.31, y = 342.87, z = 88.58},
 	}
 }
 
