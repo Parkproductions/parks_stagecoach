@@ -28,6 +28,7 @@ Config.Marker = {
   ["saint_denis"] = {name = 'Saint Denis', sprite = 0x3C5469D5, x = 2683.95, y = -1441.86, z = 46.16, h = 21.54},
   ["rhodes"] = {name = 'Rhodes', sprite = 0x3C5469D5, x = 1262.9, y = -1321.06, z = 76.89, h = 316.94},
   ["annesburg"] = {name = 'Annesburg', sprite = 0x3C5469D5, x = 2916.26, y = 1260.84, z = 44.47, h = 67.27},
+  ["vanhorn"] = {name = 'Vanhorn', sprite = 0x3C5469D5, x = 2970.66, y = 572.16, z = 44.48, h = 81.94},
   
 
 }
@@ -36,7 +37,7 @@ Config.StageCoachSpawn = {
   ["Saint Denis"] = {x = 2684.93, y = -1436.46, z = 46.07, h = 112.89},
   ["Rhodes"] = { x = 1269.4, y = -1315.75, z = 76.4, h = 38.42},
   ["Annesburg"] = { x = 2913.53, y = 1263.97, z = 44.74, h = 153.37},
-  
+  ["Vanhorn"] = { x = 2965.97, y = 572.61, z = 44.33, h = 173.01},
 }
 
 Config.Cams = {
@@ -52,6 +53,10 @@ Config.Cams = {
 	["Annesburg"] = {
 		["cam_a"] = {x = 2909.55 , y = 1262.1, z = 44.74, h = 245.36},
 		["cam_b"] = {x = 2905.34, y = 1253.29, z = 44.79, h = 294.15},
+	},
+	["Vanhorn"] = {
+		["cam_a"] = {x = 2965.25 , y = 566.5, z = 44.33, h = 167.52},
+		["cam_b"] = {x = 2965.97, y = 572.61, z = 44.33, h = 173.01},
 	},
 	
 
