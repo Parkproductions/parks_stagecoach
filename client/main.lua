@@ -72,7 +72,9 @@ function GetDistrictHash()
     local pedCoords = GetEntityCoords(PlayerPedId())
     local district_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords, 10)
     if district_hash then
+        print(district_hash)
         local district_name = Config.Districts[district_hash].name
+        print(district_name)
         return district_name
     else
         return ""

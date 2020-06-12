@@ -7,21 +7,21 @@ Config.MarkerColor   = {r = 204, g = 204, b = 0}
 Config.Blip          = {sprite = 311, color = 1}
 
 Config.Districts = {
-	["178647645"] = {name = 'Roanoke'},
-	["1308232528"] = {name = 'Bluewater Marsh'},
-	["2025841068"] = {name = 'Bayou Nwa'},
-	["-864275692"] = {name = 'Scerlett Meadows'},
-	["131399519"] = {name = 'Heartlands'},
-	["-120156735"] = {name = 'GrizzliesEast'},
-	["1835499550"] = {name = 'Cumberland'},
-	["1645618177"] = {name = 'GrizzliesWest'},
-	["822658194"] = {name = 'bigvalley'},
-	["1684533001"] = {name = 'TallTrees'},
-	["476637847"] = {name = 'greatPlains'},
-	["892930832"] = {name = 'HennigansStead'},
-	["-108848014"] = {name = 'ChollaSprings'},
-	["-2145992129"] = {name = 'RioBravo'},
-	["-2066240242"] = {name = 'GaptoothRidge'},
+	[178647645] = {name = 'Roanoke'},
+	[1308232528] = {name = 'Bluewater Marsh'},
+	[2025841068] = {name = 'Bayou Nwa'},
+	[-864275692] = {name = 'Scerlett Meadows'},
+	[131399519] = {name = 'Heartlands'},
+	[-120156735] = {name = 'GrizzliesEast'},
+	[1835499550] = {name = 'Cumberland'},
+	[1645618177] = {name = 'GrizzliesWest'},
+	[822658194] = {name = 'bigvalley'},
+	[1684533001] = {name = 'TallTrees'},
+	[476637847] = {name = 'greatPlains'},
+	[892930832] = {name = 'HennigansStead'},
+	[-108848014] = {name = 'ChollaSprings'},
+	[-2145992129] = {name = 'RioBravo'},
+	[-2066240242] = {name = 'GaptoothRidge'},
 } 
 
 Config.Marker = {
