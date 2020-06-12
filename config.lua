@@ -6,6 +6,24 @@ Config.MarkerColor   = {r = 204, g = 204, b = 0}
 
 Config.Blip          = {sprite = 311, color = 1}
 
+Config.Districts = {
+	["178647645"] = {name = 'Roanoke'},
+	["1308232528"] = {name = 'Bluewater Marsh'},
+	["2025841068"] = {name = 'Bayou Nwa'},
+	["-864275692"] = {name = 'Scerlett Meadows'},
+	["131399519"] = {name = 'Heartlands'},
+	["-120156735"] = {name = 'GrizzliesEast'},
+	["1835499550"] = {name = 'Cumberland'},
+	["1645618177"] = {name = 'GrizzliesWest'},
+	["822658194"] = {name = 'bigvalley'},
+	["1684533001"] = {name = 'TallTrees'},
+	["476637847"] = {name = 'greatPlains'},
+	["892930832"] = {name = 'HennigansStead'},
+	["-108848014"] = {name = 'ChollaSprings'},
+	["-2145992129"] = {name = 'RioBravo'},
+	["-2066240242"] = {name = 'GaptoothRidge'},
+} 
+
 Config.Marker = {
   ["saint_denis"] = {name = 'Saint Denis', sprite = 0x3C5469D5, x = 2683.95, y = -1441.86, z = 46.16, h = 21.54},
   ["rhodes"] = {name = 'Rhodes', sprite = 0x3C5469D5, x = 1262.9, y = -1321.06, z = 76.89, h = 316.94},
@@ -17,7 +35,7 @@ Config.StageCoachSpawn = {
   ["Saint Denis"] = {x = 2684.93, y = -1436.46, z = 46.07, h = 112.89},
   ["Rhodes"] = { x = 1269.4, y = -1315.75, z = 76.4, h = 38.42},
   ["Annesburg"] = { x = 2913.53, y = 1263.97, z = 44.74, h = 153.37},
-  ["Bacchus Station"] = { x = 579.62, y = 1698.91, z = 187.44, h = 227.75}
+  ["Bacchus Station"] = { x = 579.62, y = 1698.91, z = 187.44, h = 227.75},
 }
 
 Config.Cams = {
