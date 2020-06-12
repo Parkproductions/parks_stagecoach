@@ -28,12 +28,7 @@ Config.Marker = {
   ["saint_denis"] = {name = 'Saint Denis', sprite = 0x3C5469D5, x = 2683.95, y = -1441.86, z = 46.16, h = 21.54},
   ["rhodes"] = {name = 'Rhodes', sprite = 0x3C5469D5, x = 1262.9, y = -1321.06, z = 76.89, h = 316.94},
   ["annesburg"] = {name = 'Annesburg', sprite = 0x3C5469D5, x = 2916.26, y = 1260.84, z = 44.47, h = 67.27},
-  ["van_horn"] = {name = 'Van Horn', sprit = , x = , y = , z = , h = ,},
-  ["valentine"] = {name = 'Valentine', sprit = , x = , y = , z = , h = ,},
-  ["strawberry"] = {name = 'Strawberry', sprit = , x = , y = , z = , h = ,},
-  ["blackwater"] = {name = 'Blackwater', sprit = , x = , y = , z = , h = ,},
-  ["armadillo"] = {name = 'Armadillo', sprit = , x = , y = , z = , h = ,},
-  ["tumbleweed"] = {name = 'Tumbleweed', sprit = , x = , y = , z = , h = ,},
+  
 
 }
 
