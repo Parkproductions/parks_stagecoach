@@ -43,7 +43,7 @@ Config.StageCoachSpawn = {
   ["Vanhorn"] = { x = 2965.97, y = 572.61, z = 44.33, h = 173.01},
   ["Valentine"] = { x = -193.33, y = 639.68, z = 113.12, h = 327.9},
   ["Strawberry"] = { x = -1769.64, y = -393.05, z = 156.43, h = 232.66},
-  ["Blackwater"] = { x = -864.22, y = -133.6.21, z = 43.27, h = 176.63},
+  ["Blackwater"] = { x = -864.22, y = -133.21, z = 43.27, h = 176.63},
 }
 
 Config.Cams = {
@@ -130,7 +130,7 @@ Config.PickUp = {
 	}
 	["greatPlains"] = {
 		[1] = {name = 'Pick Up Point', model = "", sprite = 0xDDFBA6AB, x = -833.01, y = -1395.58, h = 186.92},
-		
+
 	}
 
 }
