@@ -117,9 +117,11 @@ Config.PickUp = {
 	},
 	["Heartlands"] = {
 		[1] = {name = 'Pick Up Point', model = "A_M_M_ValFarmer_01", sprite = 0xDDFBA6AB, x = -289.49, y = 673.03, z = 113.85, h = 135.03},
+		[2] = {name = 'Pick Up Point', model = "A_M_M_VALDEPUTYRESIDENT_01", sprite = 0xDDFBA6AB, x = -292.84, y = 791.11, z = 118.37, h = 99.24},
 	},
 	["bigvalley"] = {
 		[1] = {name = 'Pick Up Point', model = "U_M_M_VALBUTCHER_01", sprite = 0xDDFBA6AB, x = -1778.97, y = -439.08, z = 155.04, h = 31.37},
+		[2] = {name = 'Pick Up Point', model = "A_F_M_MIDDLETRAINPASSENGERS_01" sprite = 0xDDFBA6AB, x = -1290.26, y = 400.48, z = 95.2, h = 241.22}
 	}
 
 }
@@ -154,9 +156,11 @@ Config.Destination = {
 	},
 	["Heartlands"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -2183.13, y = 691.21, z = 121.01},
+		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 364.23, y = 1457.29, z = 178.81},
 	},
 	["bigvalley"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -346.61, y = 766.38, z = 116.17},
+		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -1719.67, y = -67.46, z = 176.84}.
 	}
 }
 
