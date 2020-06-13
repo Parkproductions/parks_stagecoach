@@ -160,7 +160,7 @@ Config.Destination = {
 	},
 	["bigvalley"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -346.61, y = 766.38, z = 116.17},
-		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -1719.67, y = -67.46, z = 176.84}.
+		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -1719.67, y = -67.46, z = 176.84},
 	}
 }
 
