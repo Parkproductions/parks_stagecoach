@@ -129,7 +129,7 @@ Config.PickUp = {
 		[2] = {name = 'Pick Up Point', model = "A_F_M_MIDDLETRAINPASSENGERS_01", sprite = 0xDDFBA6AB, x = -1290.26, y = 400.48, z = 95.2, h = 241.22}
 	},
 	["greatPlains"] = {
-		[1] = {name = 'Pick Up Point', model = "", sprite = 0xDDFBA6AB, x = -833.01, y = -1395.58, h = 186.92},
+		[1] = {name = 'Pick Up Point', model = "U_M_M_BHT_BLACKWATERHUNT", sprite = 0xDDFBA6AB, x = -833.01, y = -1395.58, h = 186.92},
 	}
 
 }
