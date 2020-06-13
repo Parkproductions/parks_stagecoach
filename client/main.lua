@@ -208,7 +208,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
     
     while true do
     Wait(10)   
-
+        print('Spawn Coach', spawn_coach)
         local coach_health = GET_VEHICLE_BODY_HEALTH(spawn_coach);
         current = GetEntityCoords(passenger)
         distance = GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current, false)
@@ -222,7 +222,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
 
         town_name = GetCurentTownName()
         district_hash = GetDistrictHash()
-        print('Spawn Coach', spawn_coach, 'Coach Health', coach_health)
+        
        
         --[[print('Town', town_name, 'District', district_hash)--]]
         --[[TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)--]]
