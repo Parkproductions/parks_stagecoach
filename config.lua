@@ -129,7 +129,7 @@ Config.PickUp = {
 		[2] = {name = 'Pick Up Point', model = "A_F_M_MIDDLETRAINPASSENGERS_01", sprite = 0xDDFBA6AB, x = -1290.26, y = 400.48, z = 95.2, h = 241.22}
 	},
 	["greatPlains"] = {
-		[1] = {name = 'Pick Up Point', model = "U_M_M_BHT_BLACKWATERHUNT", sprite = 0xDDFBA6AB, x = -833.01, y = -1395.58, h = 186.92},
+		[1] = {name = 'Pick Up Point', model = "U_M_M_BHT_BLACKWATERHUNT", sprite = 0xDDFBA6AB, x = -832.59, y = -1395.7, z = 43.55, h = 186.92},
 	}
 
 }
@@ -169,6 +169,9 @@ Config.Destination = {
 	["bigvalley"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -346.61, y = 766.38, z = 116.17},
 		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -1719.67, y = -67.46, z = 176.84},
+	},
+	["greatPlains"] = {
+		[1] = {name = 'Desination',  sprite = 0xDDFBA6AB, x = -1209.75, y = -1935.53, z = 42.82},
 	}
 }
 
