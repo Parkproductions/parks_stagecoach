@@ -30,6 +30,7 @@ Config.Marker = {
   ["annesburg"] = {name = 'Annesburg', sprite = 0x3C5469D5, x = 2916.26, y = 1260.84, z = 44.47, h = 67.27},
   ["vanhorn"] = {name = 'Vanhorn', sprite = 0x3C5469D5, x = 2970.66, y = 572.16, z = 44.48, h = 81.94},
   ["valentine"] = {name = 'Valentine', sprite = 0x3C5469D5, x = -185.67, y = 641.71, z = 113.58, h = 57.98},
+  ["strawberry"] = {name = 'strawberry', sprite = 0x3C5469D5, x = -1763.13, y = -392.98, z = 156.38, h = 148.29},
   
 
 }
@@ -40,6 +41,7 @@ Config.StageCoachSpawn = {
   ["Annesburg"] = { x = 2913.53, y = 1263.97, z = 44.74, h = 153.37},
   ["Vanhorn"] = { x = 2965.97, y = 572.61, z = 44.33, h = 173.01},
   ["Valentine"] = { x = -193.33, y = 639.68, z = 113.12, h = 327.9},
+  ["strawberry"] = { x = -1769.64, y = -393.05, z = 156.43, h = 232.66},
 }
 
 Config.Cams = {
@@ -63,6 +65,10 @@ Config.Cams = {
 	["Valentine"] = {
 		["cam_a"] = {x = -194.2, y = 644.65, z = 115.38, h = 229.64},
 		["cam_b"] = {x = -195.4 , y = 635.94, z = 115.29, h = 326.09},
+	},
+	["Strawberry"] = {
+		["cam_a"] = {x = -1769.8, y = -392.48, z = 157.5, h = 234.31},
+		["cam_b"] = {x = -1766.58 , y = -394.86, z = 157.5, h = 243.83},
 	},
 	
 
@@ -111,6 +117,9 @@ Config.PickUp = {
 	},
 	["Heartlands"] = {
 		[1] = {name = 'Pick Up Point', model = "A_M_M_ValFarmer_01", sprite = 0xDDFBA6AB, x = -289.49, y = 673.03, z = 113.85, h = 135.03},
+	},
+	["bigvalley"] = {
+		[1] = {name = 'Pick Up Point', model = "U_M_M_VALBUTCHER_01", sprite = 0xDDFBA6AB, x = -1778.97, y = -439.08, z = 155.04, h = 31.37},
 	}
 
 }
@@ -145,7 +154,9 @@ Config.Destination = {
 	},
 	["Heartlands"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -2183.13, y = 691.21, z = 121.01},
-	}
+	},
+	["bigvalley"] = {
+		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = , y = , z = },
 }
 
  
