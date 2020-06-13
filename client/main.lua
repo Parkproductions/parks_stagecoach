@@ -209,7 +209,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
     while true do
     Wait(10)   
         print('Spawn Coach', spawn_coach)
-        local coach_health = GET_VEHICLE_BODY_HEALTH(spawn_coach);
+        local coach_health = GetVehicleBodyHealth(spawn_coach);
         current = GetEntityCoords(passenger)
         distance = GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current, false)
         local pedCoords = GetEntityCoords(PlayerPedId())
