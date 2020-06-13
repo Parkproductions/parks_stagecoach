@@ -29,6 +29,7 @@ Config.Marker = {
   ["rhodes"] = {name = 'Rhodes', sprite = 0x3C5469D5, x = 1262.9, y = -1321.06, z = 76.89, h = 316.94},
   ["annesburg"] = {name = 'Annesburg', sprite = 0x3C5469D5, x = 2916.26, y = 1260.84, z = 44.47, h = 67.27},
   ["vanhorn"] = {name = 'Vanhorn', sprite = 0x3C5469D5, x = 2970.66, y = 572.16, z = 44.48, h = 81.94},
+  ["valentine"] = {name = 'Valentine', sprite = 0x3C5469D5, x = -185.67, y = 641.71, z = 113.58, h = 57.98},
   
 
 }
@@ -38,6 +39,7 @@ Config.StageCoachSpawn = {
   ["Rhodes"] = { x = 1269.4, y = -1315.75, z = 76.4, h = 38.42},
   ["Annesburg"] = { x = 2913.53, y = 1263.97, z = 44.74, h = 153.37},
   ["Vanhorn"] = { x = 2965.97, y = 572.61, z = 44.33, h = 173.01},
+  ["Valentine"] = { x = -193.33, y = 639.68, z = 113.12, h = 327.9},
 }
 
 Config.Cams = {
@@ -57,6 +59,10 @@ Config.Cams = {
 	["Vanhorn"] = {
 		["cam_a"] = {x = 2965.97, y = 576.61, z = 46.95, h = 173.01},
 		["cam_b"] = {x = 2965.25 , y = 569.5, z = 46.95, h = 167.52},
+	},
+	["Valentine"] = {
+		["cam_a"] = {x = -194.2, y = 644.65, z = 115.38, h = 229.64},
+		["cam_b"] = {x = -195.4 , y = 635.94, z = 115.29, h = 326.09},
 	},
 	
 
@@ -102,6 +108,9 @@ Config.PickUp = {
 	["Bayou Nwa"] = {
 		[1] = {name = 'Pick Up Point', model = "U_F_O_WtCTownfolk_01", sprite = 0xDDFBA6AB, x = 2068.69, y = -845.95, z = 43.35, h = 353.97},
 		[2] = {name = 'Pick Up Point', model = "A_M_O_BlWUpperClass_01", sprite = 0xDDFBA6AB, x = 2068.69, y = -845.95, z = 43.35, h = 353.97},
+	},
+	["Heartlands"] = {
+		[1] = {name = 'Pick Up Point', model = "A_M_M_ValFarmer_01", sprite = 0xDDFBA6AB, x = -289.49, y = 673.03, z = 113.85, h = 135.03},
 	}
 
 }
@@ -133,6 +142,9 @@ Config.Destination = {
 	["Bayou Nwa"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 2676.03, y = -1442.68, z = 45.98},
 		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1429.31, y = 342.87, z = 88.58},
+	},
+	["Heartlands"] = {
+		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = , y = , z = },
 	}
 }
 
