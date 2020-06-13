@@ -190,7 +190,7 @@ end)
 -- PassengerOnboard
 
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
-AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
+AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route, spawn_coach)
  
     RemoveBlip(p1)
     ClearGpsMultiRoute()
@@ -208,7 +208,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
     
     while true do
     Wait(10)   
-
+        local coach_health = GET_VEHICLE_BODY_HEALTH(spawn_coach);
         current = GetEntityCoords(passenger)
         distance = GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current, false)
         local pedCoords = GetEntityCoords(PlayerPedId())
@@ -221,6 +221,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route)
 
         town_name = GetCurentTownName()
         district_hash = GetDistrictHash()
+        print(coach_health)
        
         --[[print('Town', town_name, 'District', district_hash)--]]
         --[[TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)--]]
@@ -343,7 +344,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
 
             passenger_onboard = true
             RemoveBlip(p1)
-            TriggerEvent("parks_stagecoach:PassengerOnboard", zone_name, route)
+            TriggerEvent("parks_stagecoach:PassengerOnboard", zone_name, route, spawn_coach)
 
         end
 

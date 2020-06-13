@@ -155,9 +155,9 @@ Config.Destination = {
 	["Heartlands"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -2183.13, y = 691.21, z = 121.01},
 	},
-	--[[["bigvalley"] = {
-		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = , y = , z = },
-	}--]]
+	["bigvalley"] = {
+		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -346.61, y = 766.38, z = 116.17},
+	}
 }
 
  
