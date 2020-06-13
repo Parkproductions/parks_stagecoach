@@ -31,6 +31,7 @@ Config.Marker = {
   ["vanhorn"] = {name = 'Vanhorn', sprite = 0x3C5469D5, x = 2970.66, y = 572.16, z = 44.48, h = 81.94},
   ["valentine"] = {name = 'Valentine', sprite = 0x3C5469D5, x = -185.67, y = 641.71, z = 113.58, h = 57.98},
   ["strawberry"] = {name = 'Strawberry', sprite = 0x3C5469D5, x = -1763.13, y = -392.98, z = 156.38, h = 148.29},
+  ["blackwater"] = {name = 'Blackwater',  sprite = 0x3C5469D5, x = -858.3, y = -1337.66, z = 44.49, h = 270.98},
   
 
 }
@@ -42,6 +43,7 @@ Config.StageCoachSpawn = {
   ["Vanhorn"] = { x = 2965.97, y = 572.61, z = 44.33, h = 173.01},
   ["Valentine"] = { x = -193.33, y = 639.68, z = 113.12, h = 327.9},
   ["Strawberry"] = { x = -1769.64, y = -393.05, z = 156.43, h = 232.66},
+  ["Blackwater"] = { x = -864.22, y = -133.6.21, z = 43.27, h = 176.63},
 }
 
 Config.Cams = {
@@ -70,7 +72,10 @@ Config.Cams = {
 		["cam_a"] = {x = -1769.8, y = -392.48, z = 157.5, h = 234.31},
 		["cam_b"] = {x = -1766.58 , y = -394.86, z = 157.5, h = 243.83},
 	},
-	
+	["Blackwater"] = {
+		["cam_a"] = {x = -864.39, y = -1339.25, z = 46.36, h = 176.68},
+		["cam_b"] = {x = -864.0 , y = -1334.54, z = 46.36, h = 176.63},
+	},
 
 }
 
@@ -117,11 +122,15 @@ Config.PickUp = {
 	},
 	["Heartlands"] = {
 		[1] = {name = 'Pick Up Point', model = "A_M_M_ValFarmer_01", sprite = 0xDDFBA6AB, x = -289.49, y = 673.03, z = 113.85, h = 135.03},
-		[2] = {name = 'Pick Up Point', model = "A_M_M_VALDEPUTYRESIDENT_01", sprite = 0xDDFBA6AB, x = -292.84, y = 791.11, z = 118.37, h = 99.24},
+		[2] = {name = 'Pick Up Point', model = "A_M_M_VALDEPUTYRESIDENT_01", sprite = 0xDDFBA6AB, x = -293.99, y = 784.68, z = 119.3, h = 3.64},
 	},
 	["bigvalley"] = {
 		[1] = {name = 'Pick Up Point', model = "U_M_M_VALBUTCHER_01", sprite = 0xDDFBA6AB, x = -1778.97, y = -439.08, z = 155.04, h = 31.37},
 		[2] = {name = 'Pick Up Point', model = "A_F_M_MIDDLETRAINPASSENGERS_01", sprite = 0xDDFBA6AB, x = -1290.26, y = 400.48, z = 95.2, h = 241.22}
+	}
+	["greatPlains"] = {
+		[1] = {name = 'Pick Up Point', model = "", sprite = 0xDDFBA6AB, x = -833.01, y = -1395.58, h = 186.92},
+		
 	}
 
 }
