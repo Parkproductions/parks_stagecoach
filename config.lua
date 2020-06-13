@@ -30,7 +30,7 @@ Config.Marker = {
   ["annesburg"] = {name = 'Annesburg', sprite = 0x3C5469D5, x = 2916.26, y = 1260.84, z = 44.47, h = 67.27},
   ["vanhorn"] = {name = 'Vanhorn', sprite = 0x3C5469D5, x = 2970.66, y = 572.16, z = 44.48, h = 81.94},
   ["valentine"] = {name = 'Valentine', sprite = 0x3C5469D5, x = -185.67, y = 641.71, z = 113.58, h = 57.98},
-  ["strawberry"] = {name = 'strawberry', sprite = 0x3C5469D5, x = -1763.13, y = -392.98, z = 156.38, h = 148.29},
+  ["strawberry"] = {name = 'Strawberry', sprite = 0x3C5469D5, x = -1763.13, y = -392.98, z = 156.38, h = 148.29},
   
 
 }
@@ -41,7 +41,7 @@ Config.StageCoachSpawn = {
   ["Annesburg"] = { x = 2913.53, y = 1263.97, z = 44.74, h = 153.37},
   ["Vanhorn"] = { x = 2965.97, y = 572.61, z = 44.33, h = 173.01},
   ["Valentine"] = { x = -193.33, y = 639.68, z = 113.12, h = 327.9},
-  ["strawberry"] = { x = -1769.64, y = -393.05, z = 156.43, h = 232.66},
+  ["Strawberry"] = { x = -1769.64, y = -393.05, z = 156.43, h = 232.66},
 }
 
 Config.Cams = {
