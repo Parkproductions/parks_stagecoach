@@ -249,6 +249,10 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
             TaskLeaveVehicle(passenger, spawn_coach, 0)
             TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id)
             print(spawn_coach)
+            if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
+            print('Repair Stagecoach')
+            end
+
         end
     
         if passenger_onboard == false then
