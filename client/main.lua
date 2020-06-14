@@ -248,6 +248,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
         if GetVehicleBodyHealth(spawn_coach) == 0 or IsVehicleDriveable(spawn_coach) == false then
             TaskLeaveVehicle(passenger, spawn_coach, 0)
             TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id)
+            print(spawn_coach)
         end
     
         if passenger_onboard == false then
