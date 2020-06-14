@@ -175,7 +175,7 @@ AddEventHandler("parks_stagecoach:unsuccessful_dropoff", function (fare, npc_id)
         RemoveBlip(p1)
         ClearGpsMultiRoute()
         passenger_spawned = false
-        --[[TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)--]]
+        TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)
         Wait(30000)
         DeleteEntity(npc_id)
         
@@ -472,7 +472,7 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
                 PromptDelete(RepairCoachPrompt)
         end
 
-        if PromptHasHoldModeCompleted(StageCoachPrompt) then
+        if PromptHasHoldModeCompleted(RepairCoachPrompt) then
             print('Successful Repair')
         end 
 
