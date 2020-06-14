@@ -248,13 +248,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
         if GetVehicleBodyHealth(spawn_coach) == 0 or IsVehicleDriveable(spawn_coach) == false then
             TaskLeaveVehicle(passenger, spawn_coach, 0)
             TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id)
-            
-            if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
-                RepairCoach()
-            else
-                PromptDelete(StageCoachPrompt)
-            end
-
+            TriggerEvent("parks_stagecoach:replace_stagecoach")
         end
     
         if passenger_onboard == false then
@@ -470,7 +464,19 @@ end)
 
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
 AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
+    while true do
+        
+        if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
+                RepairCoach()
+            else
+                PromptDelete(RepairCoachPrompt)
+        end
 
+        if PromptHasHoldModeCompleted(StageCoachPrompt) then
+            print('Successful Repair')
+        end 
+
+    end
 end)
 
 -- COACHES ARRAY DATA
@@ -567,7 +573,7 @@ local group
 
 function RepairCoach()
     Citizen.CreateThread(function()
-        local str = 'Stage Coach Co.'
+        local str = 'Repair Stagecoach'
         RepairCoachPrompt = PromptRegisterBegin()
         PromptSetControlAction(RepairCoachPrompt, 0xDFF812F9)
         str = CreateVarString(10, 'LITERAL_STRING', str)
