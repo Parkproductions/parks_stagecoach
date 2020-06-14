@@ -248,9 +248,11 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
         if GetVehicleBodyHealth(spawn_coach) == 0 or IsVehicleDriveable(spawn_coach) == false then
             TaskLeaveVehicle(passenger, spawn_coach, 0)
             TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id)
-            print(spawn_coach)
+            
             if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
-            print('Repair Stagecoach')
+                RepairCoach()
+            else
+                PromptDelete(StageCoachPrompt)
             end
 
         end
@@ -554,6 +556,27 @@ function StageCoach()
         PromptSetHoldMode(StageCoachPrompt, true)
         PromptSetGroup(StageCoachPrompt, group)
         PromptRegisterEnd(StageCoachPrompt)
+    end)
+end
+
+-- Repair Stage Coach Prompt Menu
+
+local RepairCoachPrompt
+local active = false
+local group 
+
+function RepairCoach()
+    Citizen.CreateThread(function()
+        local str = 'Stage Coach Co.'
+        RepairCoachPrompt = PromptRegisterBegin()
+        PromptSetControlAction(RepairCoachPrompt, 0xDFF812F9)
+        str = CreateVarString(10, 'LITERAL_STRING', str)
+        PromptSetText(RepairCoachPrompt, str)
+        PromptSetEnabled(RepairCoachPrompt, true)
+        PromptSetVisible(RepairCoachPrompt, true)
+        PromptSetHoldMode(RepairCoachPrompt, true)
+        PromptSetGroup(RepairCoachPrompt, group)
+        PromptRegisterEnd(RepairCoachPrompt)
     end)
 end
 
