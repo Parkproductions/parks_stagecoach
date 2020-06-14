@@ -469,7 +469,7 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
         if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
                 RepairCoach()
         
-        elseif GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))>5 then
+        elseif GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))>6 then
                 PromptDelete(RepairCoachPrompt)
         end
 
