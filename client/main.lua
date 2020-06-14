@@ -209,6 +209,8 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
 
         local coach_health = GetVehicleBodyHealth(spawn_coach);
         print(coach_health)
+        local coach_drivable = IS_VEHICLE_DRIVEABLE(spawn_coach);
+        print(coach_drivable)
         current = GetEntityCoords(passenger)
         distance = GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current, false)
         local pedCoords = GetEntityCoords(PlayerPedId())
