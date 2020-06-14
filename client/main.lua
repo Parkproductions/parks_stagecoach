@@ -464,7 +464,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
 AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
-    while IsVehicleDriveable(spawn_coach) == false do
+    while true do
         Wait(10)
         if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
                 RepairCoach()
@@ -569,7 +569,7 @@ end
 -- Repair Stage Coach Prompt Menu
 
 local RepairCoachPrompt
-
+local repair
 
 function RepairCoach()
     Citizen.CreateThread(function()
@@ -581,7 +581,7 @@ function RepairCoach()
         PromptSetEnabled(RepairCoachPrompt, true)
         PromptSetVisible(RepairCoachPrompt, true)
         PromptSetHoldMode(RepairCoachPrompt, true)
-        PromptSetGroup(RepairCoachPrompt, group)
+        PromptSetGroup(RepairCoachPrompt, repair)
         PromptRegisterEnd(RepairCoachPrompt)
     end)
 end
