@@ -84,7 +84,6 @@ end
 function GetCurentTownName()
     local pedCoords = GetEntityCoords(PlayerPedId())
     local town_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,1)
-    print(town_hash)
     if town_hash == GetHashKey("Annesburg") then
         return "Annesburg"
     elseif town_hash == GetHashKey("roanoke") then
@@ -246,9 +245,10 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
         end
 
         if GetVehicleBodyHealth(spawn_coach) == 0 or IsVehicleDriveable(spawn_coach) == false then
-            TaskLeaveVehicle(passenger, spawn_coach, 0)
-            --[[TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id, spawn_coach)--]]
             TriggerEvent("parks_stagecoach:replace_stagecoach", spawn_coach)
+            TaskLeaveVehicle(passenger, spawn_coach, 0)
+            TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id, spawn_coach)
+            
         end
     
         if passenger_onboard == false then
@@ -286,7 +286,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
 
     local coach_driver = PlayerPedId()
     local coach_driver_blip = Citizen.InvokeNative(0x23f74c2fda6e7c61, 631964804, coach_driver)
-    print('client_startcoachjob_coach_driver', coach_driver)
+    
     TriggerServerEvent('parks_stagecoach:SendDriverEntity', coach_driver)
     
     -- Set GPS route positions
