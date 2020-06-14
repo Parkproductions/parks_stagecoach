@@ -208,9 +208,8 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
     Wait(10)   
 
         local coach_health = GetVehicleBodyHealth(spawn_coach);
-        print(coach_health)
         local coach_drivable = IsVehicleDriveable(spawn_coach);
-        print(coach_drivable)
+        
         current = GetEntityCoords(passenger)
         distance = GetDistanceBetweenCoords(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, current, false)
         local pedCoords = GetEntityCoords(PlayerPedId())
@@ -246,7 +245,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
             passenger_onboard = false
         end
 
-        if GetVehicleBodyHealth(spawn_coach) == 0 then
+        if GetVehicleBodyHealth(spawn_coach) == 0 or IsVehicleDriveable(spawn_coach) == false then
             TaskLeaveVehicle(passenger, spawn_coach, 0)
             TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id)
         end
@@ -603,6 +602,7 @@ Citizen.CreateThread(function()
                     WarMenu.Display()
             end
         end
+
     end
 end)
 
