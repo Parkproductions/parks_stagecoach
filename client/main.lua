@@ -462,7 +462,8 @@ end)
 -- Replace Wagon If Damaged
 
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
-AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
+AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, repair_active)
+    print(repair_active)
     while true do
         Wait(10)
         if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
