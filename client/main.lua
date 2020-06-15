@@ -153,7 +153,7 @@ AddEventHandler("parks_stagecoach:successful_dropoff", function (fare, npc_id)
         RemoveBlip(p1)
         ClearGpsMultiRoute()
         passenger_spawned = false
-        TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)
+       --[[ TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, passenger_spawned)--]]
         Wait(30000)
         DeleteEntity(npc_id)
         
@@ -248,7 +248,6 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
             TriggerEvent("parks_stagecoach:replace_stagecoach", spawn_coach)
             TaskLeaveVehicle(passenger, spawn_coach, 0)
             TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id, spawn_coach)
-            
         end
     
         if passenger_onboard == false then
@@ -467,10 +466,16 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
     while true do
         Wait(10)
         if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
+            if repair_active == false then
                 RepairCoach()
+                repair_active = true
+            end
         
         elseif GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))>6 then
-                PromptDelete(RepairCoachPrompt)
+                if repair_active == true then
+                    PromptDelete(RepairCoachPrompt)
+                    repair_active = false
+                end
         end
 
         if PromptHasHoldModeCompleted(RepairCoachPrompt) then
@@ -570,6 +575,8 @@ end
 
 local RepairCoachPrompt
 local repair
+local repair_active = false
+
 
 function RepairCoach()
     Citizen.CreateThread(function()
