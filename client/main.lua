@@ -245,6 +245,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
         end
 
         if GetVehicleBodyHealth(spawn_coach) == 0 or IsVehicleDriveable(spawn_coach) == false then
+            local repair_active = false
             print('passenger_onboard', repair_active)
             TriggerEvent("parks_stagecoach:replace_stagecoach", spawn_coach, repair_active)
             TaskLeaveVehicle(passenger, spawn_coach, 0)
@@ -579,7 +580,7 @@ end
 
 local RepairCoachPrompt
 local repair
-repair_active = false
+
 
 
 function RepairCoach()
