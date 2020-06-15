@@ -471,7 +471,7 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
 
     local RepairCoachPrompt
     local repair
-    
+
     function RepairCoach()
         Citizen.CreateThread(function()
             local str = 'Repair Stagecoach'
@@ -506,7 +506,21 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
         end
 
         if PromptHasHoldModeCompleted(RepairCoachPrompt) then
-            print('Successful Repair')
+            local repaired_wagon = GetClosestRoad(GetEntityCoords(spawn_coach), 1.0, 1, false)
+            print('repaired_wagon', repaired_wagon)
+            TriggerServerEvent('parks_stagecoach:loadstagecoach')
+            --[[spawn_coach = CreateVehicle(_model, repaired_wagon.x, repaired_wagon.y, Crepaired_wagon.z, repaired_wagon.h, true, false)
+            SetVehicleOnGroundProperly(spawn_coach)
+            SetModelAsNoLongerNeeded(_model)
+            local player = PlayerPedId()
+            DoScreenFadeOut(500)
+            Wait(500)
+            SetPedIntoVehicle(player, spawn_coach, -1)
+            Wait(500)
+            DoScreenFadeIn(500)
+            driving = true
+            TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
+--]]
         end 
 
     end
