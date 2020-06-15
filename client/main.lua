@@ -518,7 +518,7 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
             while not HasModelLoaded( model ) do
                 Wait(500)
             end
-
+            DeleteVehicle(spawn_coach)
             spawn_coach = CreateVehicle(model, pos.x + 3, pos.y + 3, pos.z + 3, pos_h, true, false)
             SetVehicleOnGroundProperly(spawn_coach)
             SetModelAsNoLongerNeeded(model)
