@@ -467,12 +467,14 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach)
         Wait(10)
         if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
             if repair_active == false then
+                print('repair_false')
                 RepairCoach()
                 repair_active = true
             end
         
         elseif GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))>6 then
                 if repair_active == true then
+                    print('repair_true')
                     PromptDelete(RepairCoachPrompt)
                     repair_active = false
                 end
