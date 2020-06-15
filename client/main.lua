@@ -141,6 +141,28 @@ function GetCurentTownName()
     end
 end
 
+-- Repair Stage Coach Prompt Menu
+
+local RepairCoachPrompt
+local repair
+local repair_active = false
+
+
+function RepairCoach()
+    Citizen.CreateThread(function()
+        local str = 'Repair Stagecoach'
+        RepairCoachPrompt = PromptRegisterBegin()
+        PromptSetControlAction(RepairCoachPrompt, 0xDFF812F9)
+        str = CreateVarString(10, 'LITERAL_STRING', str)
+        PromptSetText(RepairCoachPrompt, str)
+        PromptSetEnabled(RepairCoachPrompt, true)
+        PromptSetVisible(RepairCoachPrompt, true)
+        PromptSetHoldMode(RepairCoachPrompt, true)
+        PromptSetGroup(RepairCoachPrompt, repair)
+        PromptRegisterEnd(RepairCoachPrompt)
+    end)
+end
+
 -- Successful Drop Off / Pay Fare
 
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
@@ -187,7 +209,7 @@ end)
 -- PassengerOnboard
 
 RegisterNetEvent("parks_stagecoach:PassengerOnboard")
-AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route, spawn_coach)
+AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route, spawn_coach, repair_active)
  
     RemoveBlip(p1)
     ClearGpsMultiRoute()
@@ -572,28 +594,6 @@ function StageCoach()
         PromptSetHoldMode(StageCoachPrompt, true)
         PromptSetGroup(StageCoachPrompt, group)
         PromptRegisterEnd(StageCoachPrompt)
-    end)
-end
-
--- Repair Stage Coach Prompt Menu
-
-local RepairCoachPrompt
-local repair
-local repair_active = false
-
-
-function RepairCoach()
-    Citizen.CreateThread(function()
-        local str = 'Repair Stagecoach'
-        RepairCoachPrompt = PromptRegisterBegin()
-        PromptSetControlAction(RepairCoachPrompt, 0xDFF812F9)
-        str = CreateVarString(10, 'LITERAL_STRING', str)
-        PromptSetText(RepairCoachPrompt, str)
-        PromptSetEnabled(RepairCoachPrompt, true)
-        PromptSetVisible(RepairCoachPrompt, true)
-        PromptSetHoldMode(RepairCoachPrompt, true)
-        PromptSetGroup(RepairCoachPrompt, repair)
-        PromptRegisterEnd(RepairCoachPrompt)
     end)
 end
 
