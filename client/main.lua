@@ -506,8 +506,9 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
         end
 
         if PromptHasHoldModeCompleted(RepairCoachPrompt) then
-            --[[local repaired_wagon = GetClosestRoad(GetEntityCoords(spawn_coach), 1.0, 1, false)--]]
-            print('repaired_wagon', repaired_wagon)
+            local pos = GetEntityCoords(spawn_coach)
+            local pos_road = GetClosestRoad(pos.x, pos.y, pos.z, 1.0, 1, false)
+            print('pos_road', pos_road)
             TriggerServerEvent('parks_stagecoach:loadstagecoach')
             --[[spawn_coach = CreateVehicle(_model, repaired_wagon.x, repaired_wagon.y, Crepaired_wagon.z, repaired_wagon.h, true, false)
             SetVehicleOnGroundProperly(spawn_coach)
