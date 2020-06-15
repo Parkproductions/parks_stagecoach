@@ -141,28 +141,6 @@ function GetCurentTownName()
     end
 end
 
--- Repair Stage Coach Prompt Menu
-
-local RepairCoachPrompt
-local repair
-local repair_active = false
-
-
-function RepairCoach()
-    Citizen.CreateThread(function()
-        local str = 'Repair Stagecoach'
-        RepairCoachPrompt = PromptRegisterBegin()
-        PromptSetControlAction(RepairCoachPrompt, 0xDFF812F9)
-        str = CreateVarString(10, 'LITERAL_STRING', str)
-        PromptSetText(RepairCoachPrompt, str)
-        PromptSetEnabled(RepairCoachPrompt, true)
-        PromptSetVisible(RepairCoachPrompt, true)
-        PromptSetHoldMode(RepairCoachPrompt, true)
-        PromptSetGroup(RepairCoachPrompt, repair)
-        PromptRegisterEnd(RepairCoachPrompt)
-    end)
-end
-
 -- Successful Drop Off / Pay Fare
 
 RegisterNetEvent("parks_stagecoach:successful_dropoff")
@@ -594,6 +572,28 @@ function StageCoach()
         PromptSetHoldMode(StageCoachPrompt, true)
         PromptSetGroup(StageCoachPrompt, group)
         PromptRegisterEnd(StageCoachPrompt)
+    end)
+end
+
+-- Repair Stage Coach Prompt Menu
+
+local RepairCoachPrompt
+local repair
+repair_active = false
+
+
+function RepairCoach()
+    Citizen.CreateThread(function()
+        local str = 'Repair Stagecoach'
+        RepairCoachPrompt = PromptRegisterBegin()
+        PromptSetControlAction(RepairCoachPrompt, 0xDFF812F9)
+        str = CreateVarString(10, 'LITERAL_STRING', str)
+        PromptSetText(RepairCoachPrompt, str)
+        PromptSetEnabled(RepairCoachPrompt, true)
+        PromptSetVisible(RepairCoachPrompt, true)
+        PromptSetHoldMode(RepairCoachPrompt, true)
+        PromptSetGroup(RepairCoachPrompt, repair)
+        PromptRegisterEnd(RepairCoachPrompt)
     end)
 end
 
