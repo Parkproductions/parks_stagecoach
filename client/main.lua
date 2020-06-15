@@ -245,7 +245,8 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
         end
 
         if GetVehicleBodyHealth(spawn_coach) == 0 or IsVehicleDriveable(spawn_coach) == false then
-            TriggerEvent("parks_stagecoach:replace_stagecoach", spawn_coach)
+            print('passenger_onboard', repair_active)
+            TriggerEvent("parks_stagecoach:replace_stagecoach", spawn_coach, repair_active)
             TaskLeaveVehicle(passenger, spawn_coach, 0)
             TriggerEvent("parks_stagecoach:unsuccessful_dropoff", 0, npc_id, spawn_coach)
         end
@@ -463,7 +464,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:replace_stagecoach")
 AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, repair_active)
-    print(repair_active)
+    print('replace_coach', repair_active)
     while true do
         Wait(10)
         if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
