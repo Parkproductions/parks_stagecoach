@@ -232,7 +232,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
             
             local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
             TaskLeaveVehicle(passenger, spawn_coach, 0)
-            print(passenger)
+            print('passenger_ped', passenger)
             TaskGoToCoordAnyMeans(passenger, Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y +40, Config.Destination[zone_name][route].z, 1.0, 0, 0, 786603, 0xbf800000)
             npc_id = GetPedIndexFromEntityIndex(passenger)
             TriggerEvent("parks_stagecoach:successful_dropoff", fare_amount, npc_id)
