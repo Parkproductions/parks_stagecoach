@@ -182,7 +182,7 @@ Config.Destination = {
 	},
 	["HennigansStead"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -2464.3, y = -2848.31, z = 71.22},
-		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -2676.84, y = -2304.45, z = 80.75},
+		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -2970.71, y = -2276.58, z = 127.29},
 	}
 }
 
