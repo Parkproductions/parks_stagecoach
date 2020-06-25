@@ -131,6 +131,9 @@ Config.PickUp = {
 	["greatPlains"] = {
 		[1] = {name = 'Pick Up Point', model = "U_M_M_BHT_BLACKWATERHUNT", sprite = 0xDDFBA6AB, x = -832.59, y = -1395.7, z = 43.55, h = 186.92},
 		[2] = {name = 'Pick Up Point', model = "A_M_M_CARDGAMEPLAYERS_01", sprite = 0xDDFBA6AB, x = -882.54, y = -1640.79, z = 68.2, h = 62.79},
+	},
+	["HennigansStead"] = {
+		[1] = {name = 'Pick Up Point', model = "A_M_M_UniGunslinger_01", sprite = 0xDDFBA6AB, x = -2005.12, y = -2997.25, z = -5.29, h = 58.3},
 	}
 
 }
@@ -175,7 +178,9 @@ Config.Destination = {
 	["greatPlains"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -1209.75, y = -1935.53, z = 42.82},
 		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -1422.66, y = -2287.78, z = 42.84},
-	}
+	},
+	["HennigansStead"] = {
+		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -2464.3, y = -2848.31, z = 71.22},
 }
 
  
