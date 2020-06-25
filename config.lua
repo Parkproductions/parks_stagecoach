@@ -134,6 +134,7 @@ Config.PickUp = {
 	},
 	["HennigansStead"] = {
 		[1] = {name = 'Pick Up Point', model = "A_M_M_UniGunslinger_01", sprite = 0xDDFBA6AB, x = -2005.12, y = -2997.25, z = -5.29, h = 58.3},
+		[2] = {name = 'Pick Up Point', model = "", sprite = 0xDDFBA6AB, x = -2353.44, y = -2383.46, z = 62.23, h = 85.42,}
 	}
 
 }
@@ -181,6 +182,7 @@ Config.Destination = {
 	},
 	["HennigansStead"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -2464.3, y = -2848.31, z = 71.22},
+		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -2676.84, y = -2304.45, z = 80.75},
 	}
 }
 
