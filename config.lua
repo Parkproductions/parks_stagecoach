@@ -105,7 +105,7 @@ Config.PickUp = {
 		[2] = {name = 'Pick Up Point', model = "A_F_M_BTCObeseWomen_01", sprite = 0xDDFBA6AB, x = 2716.17, y = -1137.19, z = 50.24, h = 156.52},
 	},
 
-	["Rhodes"] = {
+	["Scarlett Meadows"] = {
 		[1] = {name = 'Pick Up Point', model = "A_F_M_BlWUpperClass_01", sprite = 0xDDFBA6AB, x = 1373.89, y = -1317.13, z = 77.37, h =  122.41},
 		[2] = {name = 'Pick Up Point', model = "A_M_M_RhdTownfolk_02", sprite = 0xDDFBA6AB, x = 1059.16, y = -1130.54, z = 67.55, h =  126.78},	
 	},
@@ -126,10 +126,11 @@ Config.PickUp = {
 	},
 	["bigvalley"] = {
 		[1] = {name = 'Pick Up Point', model = "U_M_M_VALBUTCHER_01", sprite = 0xDDFBA6AB, x = -1778.97, y = -439.08, z = 155.04, h = 31.37},
-		[2] = {name = 'Pick Up Point', model = "A_F_M_MIDDLETRAINPASSENGERS_01", sprite = 0xDDFBA6AB, x = -1290.26, y = 400.48, z = 95.2, h = 241.22}
+		[2] = {name = 'Pick Up Point', model = "A_F_M_MIDDLETRAINPASSENGERS_01", sprite = 0xDDFBA6AB, x = -1290.26, y = 400.48, z = 95.2, h = 241.22},
 	},
 	["greatPlains"] = {
 		[1] = {name = 'Pick Up Point', model = "U_M_M_BHT_BLACKWATERHUNT", sprite = 0xDDFBA6AB, x = -832.59, y = -1395.7, z = 43.55, h = 186.92},
+
 	}
 
 }
@@ -147,7 +148,7 @@ Config.Destination = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1396.99, y = -1161.1, z = 343.83},
 		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 908.84, y = -1797.07, z = 42.82},
 	},
-	["Rhodes"] = {
+	["Scarlett Meadows"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1738.37, y = -1373.53, z = 44.05},
 		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1847.77, y = -1409.57, z = 41.41},
 	},
@@ -169,6 +170,7 @@ Config.Destination = {
 	["bigvalley"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -346.61, y = 766.38, z = 116.17},
 		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -1719.67, y = -67.46, z = 176.84},
+
 	},
 	["greatPlains"] = {
 		[1] = {name = 'Desination',  sprite = 0xDDFBA6AB, x = -1209.75, y = -1935.53, z = 42.82},
