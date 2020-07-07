@@ -102,6 +102,7 @@ Config.PickUp = {
 	},
 	["Cumberland"] = {
 		[1] = {name = 'Pick Up Point', model = "A_M_O_SDUpperClass_01", sprite = 0xDDFBA6AB, x = 570.62, y = 1687.6, z = 186.46, h = 60.43},
+		[2] = {name = 'Pick Up Point', model = "A_F_M_LowerSDTownfolk_03", sprite = 0xDDFBA6AB, x = -71.13, y = 1232.9, z = 170.05, h = 108.54},
 	},
 	["Saint Denis"] = {
 		[1] = {name = 'Pick Up Point', model = "A_F_M_RhdProstitute_01", sprite = 0xDDFBA6AB, x = 2503.32, y = -1185.51, z = 49.22, h = 80.69},
@@ -153,6 +154,7 @@ Config.Destination = {
 	},
 	["Cumberland"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 498.4, y = 586.89, z = 108.94},
+		[2] = {name = 'Destination', sprite = 0xDDFBA6AB, x = -194.99, y = 637.28, z = 113.1},
 	},
 	["Saint Denis"] = {
 		[1] = {name = 'Destination', sprite = 0xDDFBA6AB, x = 1396.99, y = -1161.1, z = 343.83},
