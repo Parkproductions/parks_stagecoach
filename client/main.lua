@@ -52,18 +52,20 @@ RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
 
     DeleteEntity(npc)
-    local model = GetHashKey( "S_M_M_TrainStationWorker_01" )
-    local coord = GetEntityCoords(PlayerPedId())
-    RequestModel( model )
+    if not DoesEntityExist(npc) then
+    
+        local model = GetHashKey( "S_M_M_TrainStationWorker_01" )
+        local coord = GetEntityCoords(PlayerPedId())
+        RequestModel( model )
 
         while not HasModelLoaded( model ) do
             Wait(500)
         end
                 
-    npc = CreatePed( model, zone.x, zone.y, zone.z, zone.h, 1, 1 )
-   
-    Citizen.InvokeNative( 0x283978A15512B2FE , npc, true )
+        npc = CreatePed( model, zone.x, zone.y, zone.z, zone.h, 1, 1 )
+        Citizen.InvokeNative( 0x283978A15512B2FE , npc, true )
 
+    end
 end)
 
 -- Get District Hash
