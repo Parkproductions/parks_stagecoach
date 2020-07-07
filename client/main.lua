@@ -316,12 +316,13 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                     while not HasModelLoaded( model ) do
                         Wait(500)
                     end
-                
+            if not DoesEntityExist(passenger) then
                 passenger = CreatePed( model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, 1, 1)
                 print(passenger)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger, true )
                 passenger_despawned = false
                 Wait(10)
+            end
                 
             end
         if passenger_despawned == false then
