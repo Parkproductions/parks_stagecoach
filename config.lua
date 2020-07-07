@@ -101,7 +101,7 @@ Config.PickUp = {
 		[2] = {name = 'Pick Up Point', model = "CS_braithwaitemaid", sprite = 0xDDFBA6AB, x = 1896.25, y = -1335.6, z= 42.75, h = 303.37},
 	},
 	["Cumberland"] = {
-		[1] = {name = 'Pick Up Point', model = "", sprite = 0xDDFBA6AB, x = 570.62, y = 1687.6, z = 186.46, h = 60.43},
+		[1] = {name = 'Pick Up Point', model = "A_M_O_SDUpperClass_01", sprite = 0xDDFBA6AB, x = 570.62, y = 1687.6, z = 186.46, h = 60.43},
 	},
 	["Saint Denis"] = {
 		[1] = {name = 'Pick Up Point', model = "A_F_M_RhdProstitute_01", sprite = 0xDDFBA6AB, x = 2503.32, y = -1185.51, z = 49.22, h = 80.69},
