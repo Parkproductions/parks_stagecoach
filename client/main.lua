@@ -768,8 +768,11 @@ Citizen.CreateThread(function()
 
     while true do
         Citizen.Wait(10)
-        local player_wagon = GetVehiclePedIsIn(player, true)
-        print('player_wagon', player_wagon)
+            local player_wagon = GetVehiclePedIsIn(player, true)
+            
+        
+
+
         if IsControlJustReleased(0, keys['O']) then
             if active == false then
                 OpenDrivingStatusMenu()
