@@ -763,11 +763,12 @@ end)
 Citizen.CreateThread(function()
     local active = false
     local player = PlayerPedId()
-    local player_wagon = GetVehiclePedIsIn(player, true)
+    
 
 
     while true do
         Citizen.Wait(10)
+        local player_wagon = GetVehiclePedIsIn(player, true)
         print('player_wagon', player_wagon)
         if IsControlJustReleased(0, keys['O']) then
             if active == false then
