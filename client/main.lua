@@ -757,6 +757,32 @@ RegisterNetEvent("drivingtrue")
 AddEventHandler("drivingtrue", function()
     driving = true
 end)
+
+function GetPlayersInVehicle()
+
+  local players = GetActivePlayers()
+  local ply = PlayerPedId()
+  local returnablePlayers = {}
+  local playerVehicle = GetVehiclePedIsIn(ply)
+
+    
+
+
+  for index,value in ipairs(players) do
+    
+    local target = GetPlayerPed(value)
+    
+    if(target ~= ply) then
+      local vehicle = GetVehiclePedIsIn(target)
+
+      if playerVehicle == vehicle then
+        table.insert(returnablePlayers, value)
+      end
+    end
+  end
+
+  return returnablePlayers
+end
     
 -- Check For Button Press Menu Open
 
@@ -867,7 +893,8 @@ end)
 
 -- Command to check who is in vehicle
 
-RegisterCommand("invehicle", function()
+
+--[[RegisterCommand("invehicle", function()
 function GetPlayersInVehicle()
 
   local players = GetActivePlayers()
@@ -901,5 +928,5 @@ function GetPlayersInVehicle()
     print(i,v)
   end
   
-end)
+end)--]]
 
