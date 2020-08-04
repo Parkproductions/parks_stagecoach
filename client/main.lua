@@ -789,6 +789,7 @@ end
 Citizen.CreateThread(function()
     local active = false
     local player = PlayerPedId()
+    local get_player_passenger_coords = false
     
     while true do
         Citizen.Wait(10)
@@ -798,7 +799,7 @@ Citizen.CreateThread(function()
         if(invehicle[1] == 1) and get_player_passenger_coords == false then
             passenger_coords = GetEntityCoords(PlayerPedId())
             print(passenger_coords)
-            local get_player_passenger_coords = true
+            get_player_passenger_coords = true
         end
 
 
