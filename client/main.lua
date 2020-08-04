@@ -46,6 +46,31 @@ Citizen.CreateThread(function()
     end  
 end)
 
+-- Spawn Buy Stage Coach NPC Location Trigger
+
+Citizen.CreateThread(function()
+    
+    local npc_spawned = { ["Saint Denis"] = false, ["Rhodes"] = false, ["Annesburg"] = false, ["Vanhorn"] = false, ["Valentine"] = false, ["Strawberry"] = false, ["Blackwater"] = false}
+    local player = PlayerPedId()
+
+    --[[while true do
+    Wait(10)--]]
+    
+        for _, zone in pairs(Config.Marker) do
+           --[[ if npc_spawned[zone.name] == false and not DoesEntityExist(npc) then
+                if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then--]]
+                    TriggerEvent("parks_stagecoach:CreateNPC", zone)
+                    npc_spawned[zone.name] = true                   
+                --[[end
+            end--]]
+        end
+        --[[if npc_spawned == true then
+            break
+        end--]]
+    --[[end--]]
+
+end)  
+
 -- Generate Job Giver NPC's
 
 RegisterNetEvent("parks_stagecoach:CreateNPC")
@@ -360,32 +385,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
         end
     end
     
-end)
-
--- Spawn Buy Stage Coach NPC Location Trigger
-
-Citizen.CreateThread(function()
-    
-    local npc_spawned = { ["Saint Denis"] = false, ["Rhodes"] = false, ["Annesburg"] = false, ["Vanhorn"] = false, ["Valentine"] = false, ["Strawberry"] = false, ["Blackwater"] = false}
-    local player = PlayerPedId()
-
-    while true do
-    Wait(10)
-    
-        for _, zone in pairs(Config.Marker) do
-            if npc_spawned[zone.name] == false then
-                if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then
-                    TriggerEvent("parks_stagecoach:CreateNPC", zone)
-                    npc_spawned[zone.name] = true                   
-                end
-            end
-        end
-        if npc_spawned == true then
-            break
-        end
-    end
-
-end)              
+end)            
 
 -- Destroy Cams
 
