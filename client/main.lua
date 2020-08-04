@@ -49,26 +49,10 @@ end)
 -- Spawn Buy Stage Coach NPC Location Trigger
 
 Citizen.CreateThread(function()
-    
-    local npc_spawned = { ["Saint Denis"] = false, ["Rhodes"] = false, ["Annesburg"] = false, ["Vanhorn"] = false, ["Valentine"] = false, ["Strawberry"] = false, ["Blackwater"] = false}
-    local player = PlayerPedId()
-
-    --[[while true do
-    Wait(10)--]]
-    
-        for _, zone in pairs(Config.Marker) do
-           --[[ if npc_spawned[zone.name] == false and not DoesEntityExist(npc) then
-                if GetDistanceBetweenCoords(zone.x, zone.y, zone.z,GetEntityCoords(PlayerPedId()),false)<500 then--]]
-                    TriggerEvent("parks_stagecoach:CreateNPC", zone)
-                    npc_spawned[zone.name] = true                   
-                --[[end
-            end--]]
-        end
-        --[[if npc_spawned == true then
-            break
-        end--]]
-    --[[end--]]
-
+    for _, zone in pairs(Config.Marker) do
+        TriggerEvent("parks_stagecoach:CreateNPC", zone)
+        npc_spawned[zone.name] = true                   
+    end
 end)  
 
 -- Generate Job Giver NPC's
@@ -778,10 +762,14 @@ end)
 
 Citizen.CreateThread(function()
     local active = false
-    while true do
+    local player = PlayerPedId()
+    local player_wagon = GetVehiclePedIsIn(player, true)
 
+
+    while true do
+        Citizen.Wait(10)
+        print('player_wagon', player_wagon)
         if IsControlJustReleased(0, keys['O']) then
-            print('O Key')
             if active == false then
                 OpenDrivingStatusMenu()
                 active = true
@@ -790,7 +778,7 @@ Citizen.CreateThread(function()
                     active = false
             end
         end
-        Citizen.Wait(0)
+        
     end
 end)
 
