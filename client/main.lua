@@ -891,12 +891,14 @@ function GetPlayersInVehicle()
   return returnablePlayers
   end
 
+  print(returnablePlayers)
+--[[
   invehicle = GetPlayersInVehicle()
   
 
   for i, v in ipairs(invehicle) do
     print(i,v)
-  end
+  end--]]
   
 end)
 
