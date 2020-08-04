@@ -888,10 +888,12 @@ function GetPlayersInVehicle()
     end
   end
 
+  print(returnablePlayers)
   return returnablePlayers
+  
   end
 
-  print(returnablePlayers)
+
 --[[
   invehicle = GetPlayersInVehicle()
   
