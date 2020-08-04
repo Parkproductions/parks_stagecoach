@@ -769,8 +769,11 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10)
             local player_wagon = GetVehiclePedIsIn(player, true)
-            
-        
+            local invehicle = GetPlayersInVehicle()
+
+        if(invehicle[1] == 1) then
+            print('player in vehicle')
+        end
 
 
         if IsControlJustReleased(0, keys['O']) then
@@ -888,19 +891,15 @@ function GetPlayersInVehicle()
     end
   end
 
-  print(returnablePlayers)
   return returnablePlayers
-  
   end
 
-
---[[
   invehicle = GetPlayersInVehicle()
   
 
   for i, v in ipairs(invehicle) do
     print(i,v)
-  end--]]
+  end
   
 end)
 
