@@ -795,7 +795,7 @@ Citizen.CreateThread(function()
             local player_wagon = GetVehiclePedIsIn(player, true)
             local invehicle = GetPlayersInVehicle()
 
-        if(invehicle[1] == 1) and not get_player_passenger_coords then
+        if(invehicle[1] == 1) and get_player_passenger_coords == false then
             passenger_coords = GetEntityCoords(PlayerPedId())
             print(passenger_coords)
             local get_player_passenger_coords = true
