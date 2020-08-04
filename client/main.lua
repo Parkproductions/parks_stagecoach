@@ -784,21 +784,21 @@ function GetPlayersInVehicle()
   return returnablePlayers
 end
     
--- Check For Button Press Menu Open
+-- Check For Button Press Menu Open / Is a Player in Vehicle
 
 Citizen.CreateThread(function()
     local active = false
     local player = PlayerPedId()
     
-
-
     while true do
         Citizen.Wait(10)
             local player_wagon = GetVehiclePedIsIn(player, true)
             local invehicle = GetPlayersInVehicle()
 
-        if(invehicle[1] == 1) then
-            print('player in vehicle')
+        if(invehicle[1] == 1) and not get_player_passenger_coords then
+            passenger_coords = GetEntityCoords(PlayerPedId()),false)
+            print(passenger_coords)
+            local get_player_passenger_coords = true
         end
 
 
@@ -891,42 +891,4 @@ intown = GetCurentTownName()
 print(intown)
 end)
 
--- Command to check who is in vehicle
-
-
---[[RegisterCommand("invehicle", function()
-function GetPlayersInVehicle()
-
-  local players = GetActivePlayers()
-  local ply = PlayerPedId()
-  local returnablePlayers = {}
-  local playerVehicle = GetVehiclePedIsIn(ply)
-
-    
-
-
-  for index,value in ipairs(players) do
-    
-    local target = GetPlayerPed(value)
-    
-    if(target ~= ply) then
-      local vehicle = GetVehiclePedIsIn(target)
-
-      if playerVehicle == vehicle then
-        table.insert(returnablePlayers, value)
-      end
-    end
-  end
-
-  return returnablePlayers
-  end
-
-  invehicle = GetPlayersInVehicle()
-  
-
-  for i, v in ipairs(invehicle) do
-    print(i,v)
-  end
-  
-end)--]]
 
