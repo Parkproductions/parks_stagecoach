@@ -765,7 +765,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle, drive
             
             print('vehicel', vehicle)
             Citizen.Wait(1000)
-            TriggerServerEvent("parks_stagecoach:pay_fare", driver, fare_amount)
+            TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
             break
             
         end
