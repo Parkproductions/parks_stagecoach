@@ -779,7 +779,7 @@ function GetPlayersInVehicle()
         if(target ~= ply) then
             local vehicle = GetVehiclePedIsIn(target, false)
             
-            if playerVehicle == vehicle then
+            if playerVehicle ~= nil and playerVehicle == vehicle then
                 table.insert(returnablePlayers, value)
             end
         end
