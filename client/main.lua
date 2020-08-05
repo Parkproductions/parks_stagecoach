@@ -761,8 +761,9 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
             fare_amount = tonumber(fare_amount)
         end
 
-    end)
+    end
     print('fare_amount') 
+    end)
 end
 
 -- Check if players are in vehicle
