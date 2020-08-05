@@ -809,7 +809,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10)
         local invehicle = GetPlayersInVehicle()
-        for i,v in pairs(invehicle) do
+        for i,v in ipairs(invehicle) do
             print(i, v)
             print('this')
         end
