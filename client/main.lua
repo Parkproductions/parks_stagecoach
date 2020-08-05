@@ -785,8 +785,6 @@ function GetPlayersInVehicle()
 
     for index,value in ipairs(players) do
         local target = GetPlayerPed(value)
-        print('target', target)
-        print('ply', ply)
         if(target ~= ply) then
             local vehicle = GetVehiclePedIsIn(target, false)
             
@@ -795,9 +793,7 @@ function GetPlayersInVehicle()
             end
         end
     end
-    for a,b in ipairs(returnablePlayers) do
-    print('a', a, 'b', b)
-    end
+    
     return returnablePlayers
 
 end
@@ -817,12 +813,6 @@ Citizen.CreateThread(function()
         if vehicle then
             local invehicle = GetPlayersInVehicle()
             
-            print(vehicle)
-            for i,v in ipairs(invehicle) do
-                print(i, v)
-                print('this')
-            end
-            
             if(invehicle[1] == 1) and get_player_passenger_coords == false then
                 passenger_pickup_coords = GetEntityCoords(PlayerPedId())
                 player_onboard = true
@@ -830,9 +820,8 @@ Citizen.CreateThread(function()
                 get_player_passenger_coords = true
             
             elseif invehicle[1] == nil and fare_amount > 1 then
-                player_onboard = false
---[[                print('invehicle[1]', player_onboard)
---]]                get_player_passenger_coords = false
+                player_onboard = false              
+                get_player_passenger_coords = false
             end
     
                 if IsControlJustReleased(0, keys['O']) then
