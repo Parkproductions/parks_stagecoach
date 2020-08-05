@@ -801,7 +801,7 @@ Citizen.CreateThread(function()
             passenger_pickup_coords = GetEntityCoords(PlayerPedId())
             fare_amount = CalculateFare(passenger_pickup_coords)
             print('passenger_onboard_fare', fare_amount)
-            get_player_passenger_coords = true
+            --[[get_player_passenger_coords = true--]]
         end
         if invehicle[1] == nil and fare_amount > 1.0 then
             print('fare_complete', fare_amount)
