@@ -765,7 +765,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
             fare_amount = (distance / 1609.34) * 50
             fare_amount = string.format("%.2f", fare_amount)
             fare_amount = tonumber(fare_amount)
-            --[[print('CalculateFare', fare_amount)--]]
+            print('CalculateFare', fare_amount)
         end
         if player_onboard == false then
             break
