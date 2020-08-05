@@ -747,7 +747,7 @@ AddEventHandler("drivingtrue", function()
 end)
 
 -- Calculate Fare Amount
-function CalculateFare(passenger_pickup_coords, player_onboard)
+function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
     Citizen.CreateThread( function()
     
     while true do
@@ -759,6 +759,9 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
             fare_amount = (distance / 1609.34) * 50
             fare_amount = string.format("%.2f", fare_amount)
             fare_amount = tonumber(fare_amount)
+        elseif invehicle == nil then
+            print('broke loop')
+            break
         end
         print('fare_amount')
     end
@@ -806,11 +809,11 @@ Citizen.CreateThread(function(fare_amount)
             if invehicle and get_player_passenger_coords == false then
                 passenger_pickup_coords = GetEntityCoords(PlayerPedId())
                 player_onboard = true
-                CalculateFare(passenger_pickup_coords, player_onboard)
+                CalculateFare(passenger_pickup_coords, player_onboard, invehicle)
                 get_player_passenger_coords = true
             
             elseif not invehicle and fare_amount > 1 then
-                print('Loop player_oboard', player_onboard)
+                print('not invehicle and fare > 1', fare_amount)
                 player_onboard = false              
                 get_player_passenger_coords = false
             end
