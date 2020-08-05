@@ -753,6 +753,9 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
     while true do
         Citizen.Wait(10)
         local invehicle = GetPlayersInVehicle()
+        local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+        local driver = GetPedInVehicleSeat(vehicle, 0)
+        
         if invehicle then
             current = GetEntityCoords(PlayerPedId())
             distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
@@ -761,9 +764,9 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
             fare_amount = tonumber(fare_amount)
             print('CalculateFare Loop Running')
         elseif invehicle == nil then
-            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+            
             print('vehicel', vehicle)
-            local driver = GetPedInVehicleSeat(vehicle, 0)
+            
             TriggerServerEvent("parks_stagecoach:pay_fare", driver, fare_amount)
             print('broke loop')
             break
