@@ -747,31 +747,27 @@ AddEventHandler("drivingtrue", function()
 end)
 
 -- Calculate Fare Amount
+
 function CalculateFare(passenger_pickup_coords, player_onboard, invheicle, driver)
     Citizen.CreateThread( function()
-    
-    while true do
-        Citizen.Wait(10)
-        local invehicle = GetPlayersInVehicle()
-        local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-        if invehicle then
-            current = GetEntityCoords(PlayerPedId())
-            distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
-            fare_amount = (distance / 1609.34) * 50
-            fare_amount = string.format("%.2f", fare_amount)
-            fare_amount = tonumber(fare_amount)
-            print('CalculateFare Loop Running')
-        elseif invehicle == nil then
+        while true do
+            Citizen.Wait(10)
+            local invehicle = GetPlayersInVehicle()
+            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
             
-            print('vehicel', vehicle)
-            Citizen.Wait(1000)
-            TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
-            break
-            
+            if invehicle then
+                current = GetEntityCoords(PlayerPedId())
+                distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
+                fare_amount = (distance / 1609.34) * 50
+                fare_amount = string.format("%.2f", fare_amount)
+                fare_amount = tonumber(fare_amount)
+                
+            elseif invehicle == nil then
+                Citizen.Wait(1000)
+                TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
+                break
+            end
         end
-       
-    end
-     
     end)
 end
 
@@ -824,16 +820,18 @@ end
 Citizen.CreateThread(function(fare_amount)
     local active = false
     local player = PlayerPedId()
+    local target = GetPlayerPed(player)
     local get_player_passenger_coords = false
     fare_amount = 0
     
     while true do
         Citizen.Wait(10)
         vehicle = GetVehiclePedIsIn(player)
+        
 
-        if vehicle then
+        if vehicle and GetPedInVehicleSeat(vehicle, -1) == target then
             local invehicle = GetPlayersInVehicle()
-            local driver = GetDriverInVehicle()
+
             if invehicle and get_player_passenger_coords == false then
                 passenger_pickup_coords = GetEntityCoords(PlayerPedId())
                 player_onboard = true
@@ -844,21 +842,18 @@ Citizen.CreateThread(function(fare_amount)
                 player_onboard = false              
                 get_player_passenger_coords = false
             end
-    
-                if IsControlJustReleased(0, keys['O']) then
-                    if active == false then
-                        OpenDrivingStatusMenu()
-                        active = true
-                    elseif active == true then
-                        WarMenu.CloseMenu()
-                        active = false
-                    end
-            end
         end
 
+        if IsControlJustReleased(0, keys['O']) then
+            if active == false then
+                OpenDrivingStatusMenu()
+                active = true
+            elseif active == true then
+                WarMenu.CloseMenu()
+                active = false
+            end
+        end
     end
-
-
 end)
 
 -- Set Vehicle Body Health 
