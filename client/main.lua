@@ -750,7 +750,7 @@ end)
 function CalculateFare(passenger_pickup_coords, player_onboard)
     Citizen.CreateThread( function()
     if player_onboard == false and fare_amount > 0 then
-            print('player_onboard', player_onboard)
+            print('false player_onboard', player_onboard)
             TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
             fare_amount = 0
     end
@@ -759,7 +759,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
         Citizen.Wait(10)
 
         if player_onboard == true then
-            print('player_onboard', player_onboard)
+            print('CaclulateFare player_onboard', player_onboard)
             current = GetEntityCoords(PlayerPedId())
             distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
             fare_amount = (distance / 1609.34) * 50
@@ -822,6 +822,7 @@ Citizen.CreateThread(function()
         elseif invehicle[1] == nil and fare_amount > 1 then
             print('fare_amount', fare_amount)
             player_onboard = false
+            print('invehicle[1]', player_onboard)
             get_player_passenger_coords = false
         end
 
