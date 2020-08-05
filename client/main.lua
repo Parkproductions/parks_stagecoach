@@ -793,7 +793,7 @@ Citizen.CreateThread(function()
     local active = false
     local player = PlayerPedId()
     local get_player_passenger_coords = false
-    
+    fare_amount = 0
     while true do
         Citizen.Wait(10)
         local invehicle = GetPlayersInVehicle()
@@ -802,10 +802,8 @@ Citizen.CreateThread(function()
             CalculateFare(passenger_pickup_coords)
             print('passenger_onboard_fare_triggered')
             get_player_passenger_coords = true
-        end
-        if invehicle[1] == nil and fare_amount > 1.0 then
+        elseif invehicle[1] == nil and fare_amount > 1 then
             print('fare_complete', fare_amount)
-            fare_amount = 0.0
         end
         if IsControlJustReleased(0, keys['O']) then
             if active == false then
