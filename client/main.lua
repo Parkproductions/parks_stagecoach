@@ -804,13 +804,13 @@ Citizen.CreateThread(function(fare_amount)
         if vehicle then
             local invehicle = GetPlayersInVehicle()
             print('invehicle', invehicle)
-            if(invehicle[1] == 1) and get_player_passenger_coords == false then
+            if invehicle and get_player_passenger_coords == false then
                 passenger_pickup_coords = GetEntityCoords(PlayerPedId())
                 player_onboard = true
                 CalculateFare(passenger_pickup_coords, player_onboard)
                 get_player_passenger_coords = true
             
-            elseif invehicle[1] == nil and fare_amount > 1 then
+            elseif not invehicle and fare_amount > 1 then
                 print('Loop player_oboard', player_onboard)
                 player_onboard = false              
                 get_player_passenger_coords = false
