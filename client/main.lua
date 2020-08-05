@@ -766,10 +766,10 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
         elseif invehicle == nil then
             
             print('vehicel', vehicle)
-            
+            Citizen.Wait(1000)
             TriggerServerEvent("parks_stagecoach:pay_fare", driver, fare_amount)
-            print('broke loop')
             break
+            
         end
        
     end
