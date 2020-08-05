@@ -59,7 +59,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
-    
+
     if not DoesEntityExist(npc) then
     
         local model = GetHashKey( "S_M_M_TrainStationWorker_01" )
@@ -747,9 +747,10 @@ AddEventHandler("drivingtrue", function()
 end)
 
 -- Calculate Fare Amount
-function CalculateFare(passenger_pickup_coords)
+function CalculateFare(passenger_pickup_coords, player_onboard)
     Citizen.CreateThread( function()
     while true do
+        if player_onboard == true then
         Citizen.Wait(10)
         current = GetEntityCoords(PlayerPedId())
         distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
@@ -757,6 +758,9 @@ function CalculateFare(passenger_pickup_coords)
         fare_amount = string.format("%.2f", fare_amount)
         fare_amount = tonumber(fare_amount)
         print(fare_amount)
+        elseif player_onboard == false and passenger_pickup_coords == nil then
+        TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
+        end
         
     end
     end) 
@@ -798,11 +802,15 @@ Citizen.CreateThread(function()
         local invehicle = GetPlayersInVehicle()
         if(invehicle[1] == 1) and get_player_passenger_coords == false then
             passenger_pickup_coords = GetEntityCoords(PlayerPedId())
-            CalculateFare(passenger_pickup_coords)
+            player_onboard = true
+            CalculateFare(passenger_pickup_coords, player_onboard)
             print('passenger_onboard_fare_triggered')
             get_player_passenger_coords = true
+            
         elseif invehicle[1] == nil and fare_amount > 1 then
             print('fare_complete', fare_amount)
+            player_onboard = false
+            CalculateFare(passenger_pickup_coords, player_onboard)
         end
         if IsControlJustReleased(0, keys['O']) then
             if active == false then
