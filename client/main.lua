@@ -755,7 +755,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
         local invehicle = GetPlayersInVehicle()
         local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
         local driver = GetPedInVehicleSeat(vehicle, 0)
-        
+        print('driver', driver)
         if invehicle then
             current = GetEntityCoords(PlayerPedId())
             distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
