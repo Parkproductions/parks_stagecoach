@@ -759,11 +759,12 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
             fare_amount = (distance / 1609.34) * 50
             fare_amount = string.format("%.2f", fare_amount)
             fare_amount = tonumber(fare_amount)
+            print('CalculateFare Loop Running')
         elseif invehicle == nil then
             print('broke loop')
             break
         end
-        print('fare_amount')
+       
     end
      
     end)
