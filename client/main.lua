@@ -754,7 +754,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
         Citizen.Wait(10)
         local invehicle = GetPlayersInVehicle()
         local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-        local driver = GetPedInVehicleSeat(vehicle, 0)
+        local driver = GetPedInVehicleSeat(vehicle, -1)
         print('driver', driver)
         if invehicle then
             current = GetEntityCoords(PlayerPedId())
