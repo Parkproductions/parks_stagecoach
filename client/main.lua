@@ -752,7 +752,6 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
     if player_onboard == false and fare_amount > 0 then
             print('player_onboard', player_onboard)
             TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
-            fare_amount = 0
     end
     
     while true do
@@ -765,6 +764,8 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
             fare_amount = string.format("%.2f", fare_amount)
             fare_amount = tonumber(fare_amount)
             print('CalculateFare', fare_amount)
+        elseif player_onboard == false then
+            break
         end
     end
     end) 
@@ -816,7 +817,6 @@ Citizen.CreateThread(function()
             player_onboard = false
             CalculateFare(passenger_pickup_coords, player_onboard)
             get_player_passenger_coords = false
-            local fare_amount = 0
         end
 
         if IsControlJustReleased(0, keys['O']) then
