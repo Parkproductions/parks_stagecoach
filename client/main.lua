@@ -761,7 +761,9 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
             fare_amount = tonumber(fare_amount)
             print('CalculateFare Loop Running')
         elseif invehicle == nil then
-            TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
+            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+            local driver = GetPedInVehicleSeat(vehicle)
+            TriggerServerEvent("parks_stagecoach:pay_fare", driver, fare_amount)
             print('broke loop')
             break
         end
