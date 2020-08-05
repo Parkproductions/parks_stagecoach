@@ -820,18 +820,16 @@ end
 Citizen.CreateThread(function(fare_amount)
     local active = false
     local player = PlayerPedId()
-    local target = GetPlayerPed(player)
     local get_player_passenger_coords = false
     fare_amount = 0
     
-    print('player', player, 'target', target)
     while true do
         Citizen.Wait(10)
         vehicle = GetVehiclePedIsIn(player)
         driver = GetPedInVehicleSeat(vehicle, -1)
-        print('vehicle', vehicle, 'driver', driver, 'target', target)
-        
-        if vehicle and driver == target then
+        print('player', player, 'vehicle', vehicle, 'driver', driver)
+
+        if vehicle and driver == player then
             local invehicle = GetPlayersInVehicle()
 
             if invehicle and get_player_passenger_coords == false then
