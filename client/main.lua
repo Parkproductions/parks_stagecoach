@@ -809,6 +809,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10)
         local invehicle = GetPlayersInVehicle()
+        print('invehicle', invehicle)
         
         if(invehicle[1] == 1) and get_player_passenger_coords == false then
             passenger_pickup_coords = GetEntityCoords(PlayerPedId())
