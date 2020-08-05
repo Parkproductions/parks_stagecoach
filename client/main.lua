@@ -752,6 +752,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
     while true do
         Citizen.Wait(10)
         if player_onboard == true then
+        print('player_onboard', player_onboard)
         current = GetEntityCoords(PlayerPedId())
         distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
         fare_amount = (distance / 1609.34) * 50
@@ -759,6 +760,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
         fare_amount = tonumber(fare_amount)
         print(fare_amount)
         elseif player_onboard == false then
+        print('player_onboard', player_onboard)
         TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
         end
         
