@@ -761,6 +761,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
             fare_amount = tonumber(fare_amount)
             print('CalculateFare Loop Running')
         elseif invehicle == nil then
+            TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
             print('broke loop')
             break
         end
@@ -806,7 +807,7 @@ Citizen.CreateThread(function(fare_amount)
 
         if vehicle then
             local invehicle = GetPlayersInVehicle()
-            print('invehicle', invehicle)
+            
             if invehicle and get_player_passenger_coords == false then
                 passenger_pickup_coords = GetEntityCoords(PlayerPedId())
                 player_onboard = true
@@ -814,7 +815,6 @@ Citizen.CreateThread(function(fare_amount)
                 get_player_passenger_coords = true
             
             elseif not invehicle and fare_amount > 1 then
-                print('not invehicle and fare > 1', fare_amount)
                 player_onboard = false              
                 get_player_passenger_coords = false
             end
