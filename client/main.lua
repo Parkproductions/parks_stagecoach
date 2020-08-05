@@ -758,6 +758,7 @@ function CalculateFare(passenger_pickup_coords)
         fare_amount = string.format("%.2f", fare_amount)
         fare_amount = tonumber(fare_amount)
         print(fare_amount)
+        return(fare_amount)
     end
     end) 
 end
@@ -792,13 +793,18 @@ Citizen.CreateThread(function()
     local active = false
     local player = PlayerPedId()
     local get_player_passenger_coords = false
+    local fare_amount = 0
     while true do
         Citizen.Wait(10)
         local invehicle = GetPlayersInVehicle()
         if(invehicle[1] == 1) and get_player_passenger_coords == false then
             passenger_pickup_coords = GetEntityCoords(PlayerPedId())
-            CalculateFare(passenger_pickup_coords)
+            fare_amount = CalculateFare(passenger_pickup_coords)
+            print('passenger_onboard_fare', fare_amount)
             get_player_passenger_coords = true
+        end
+        if invehicle[1] == nil and fare_amount > 1.0 then
+            print('fare_complete', fare_amount)
         end
         if IsControlJustReleased(0, keys['O']) then
             if active == false then
