@@ -817,6 +817,7 @@ Citizen.CreateThread(function()
             print('fare_complete', fare_amount)
             player_onboard = false
             CalculateFare(passenger_pickup_coords, player_onboard)
+            get_player_passenger_coords = false
         end
         if IsControlJustReleased(0, keys['O']) then
             if active == false then
