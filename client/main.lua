@@ -822,7 +822,6 @@ Citizen.CreateThread(function()
         elseif invehicle[1] == nil and fare_amount > 1 then
             print('fare_amount', fare_amount)
             player_onboard = false
-            CalculateFare(passenger_pickup_coords, player_onboard)
             get_player_passenger_coords = false
         end
 
