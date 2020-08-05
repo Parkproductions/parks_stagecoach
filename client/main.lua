@@ -51,7 +51,7 @@ end)
 Citizen.CreateThread(function()
     for _, zone in pairs(Config.Marker) do
         TriggerEvent("parks_stagecoach:CreateNPC", zone)
-        npc_spawned[zone.name] = true                   
+        --[[npc_spawned[zone.name] = true --]]                  
     end
 end)  
 
@@ -750,8 +750,8 @@ end)
 function CalculateFare(passenger_pickup_coords, player_onboard)
     Citizen.CreateThread( function()
     while true do
-        if player_onboard == true then
         Citizen.Wait(10)
+        if player_onboard == true then
         current = GetEntityCoords(PlayerPedId())
         distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
         fare_amount = (distance / 1609.34) * 50
