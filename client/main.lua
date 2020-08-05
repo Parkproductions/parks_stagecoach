@@ -809,38 +809,46 @@ Citizen.CreateThread(function()
     local player = PlayerPedId()
     local get_player_passenger_coords = false
     fare_amount = 0
+    
     while true do
         Citizen.Wait(10)
         vehicle = GetVehiclePedIsIn(player)
-        if vehicle then do 
-                local invehicle = GetPlayersInVehicle()
-                
-                print(vehicle)
-                
-                
-                if(invehicle[1] == 1) and get_player_passenger_coords == false then
-                    passenger_pickup_coords = GetEntityCoords(PlayerPedId())
-                    player_onboard = true
-                    CalculateFare(passenger_pickup_coords, player_onboard)
-                    get_player_passenger_coords = true
-                
-                elseif invehicle[1] == nil and fare_amount > 1 then
-                    player_onboard = false
-    --[[                print('invehicle[1]', player_onboard)
-    --]]                get_player_passenger_coords = false
-                end
+
+        if vehicle then
+            local invehicle = GetPlayersInVehicle()
+            
+            print(vehicle)
+            for i,v in ipairs(invehicle) do
+                print(i, v)
+                print('this')
+            end
+            
+            if(invehicle[1] == 1) and get_player_passenger_coords == false then
+                passenger_pickup_coords = GetEntityCoords(PlayerPedId())
+                player_onboard = true
+                CalculateFare(passenger_pickup_coords, player_onboard)
+                get_player_passenger_coords = true
+            
+            elseif invehicle[1] == nil and fare_amount > 1 then
+                player_onboard = false
+--[[                print('invehicle[1]', player_onboard)
+--]]                get_player_passenger_coords = false
+            end
     
-            if IsControlJustReleased(0, keys['O']) then
-                if active == false then
-                    OpenDrivingStatusMenu()
-                    active = true
-                elseif active == true then
-                    WarMenu.CloseMenu()
-                    active = false
-                end
+                if IsControlJustReleased(0, keys['O']) then
+                    if active == false then
+                        OpenDrivingStatusMenu()
+                        active = true
+                    elseif active == true then
+                        WarMenu.CloseMenu()
+                        active = false
+                    end
             end
         end
+
     end
+
+
 end)
 
 -- Set Vehicle Body Health 
