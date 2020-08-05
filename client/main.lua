@@ -749,11 +749,6 @@ end)
 -- Calculate Fare Amount
 function CalculateFare(passenger_pickup_coords, player_onboard)
     Citizen.CreateThread( function()
-    if player_onboard == false and fare_amount > 0 then
-            print('false player_onboard', player_onboard)
-            TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
-            fare_amount = 0
-    end
     
     while true do
         Citizen.Wait(10)
@@ -764,14 +759,10 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
             fare_amount = (distance / 1609.34) * 50
             fare_amount = string.format("%.2f", fare_amount)
             fare_amount = tonumber(fare_amount)
-            print('CalculateFare', fare_amount)
-            print('CalculateFare', player_onboard)
-        elseif player_onboard == false then
-            break
         end
 
-    end
-    end) 
+    end)
+    print('fare_amount') 
 end
 
 -- Check if players are in vehicle
@@ -799,7 +790,7 @@ end
     
 -- Check For Button Press Menu Open / Is a Player in Vehicle
 
-Citizen.CreateThread(function()
+Citizen.CreateThread(function(fare_amount)
     local active = false
     local player = PlayerPedId()
     local get_player_passenger_coords = false
@@ -820,7 +811,6 @@ Citizen.CreateThread(function()
             
             elseif invehicle[1] == nil and fare_amount > 1 then
                 print('Loop player_oboard', player_onboard)
-                CalculateFare(passenger_pickup_coords, player_onboard)
                 player_onboard = false              
                 get_player_passenger_coords = false
             end
