@@ -764,7 +764,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
             fare_amount = (distance / 1609.34) * 50
             fare_amount = string.format("%.2f", fare_amount)
             fare_amount = tonumber(fare_amount)
-            print(fare_amount)
+            print('CalculateFare', fare_amount)
         end
     end
     end) 
@@ -812,7 +812,7 @@ Citizen.CreateThread(function()
             get_player_passenger_coords = true
         
         elseif invehicle[1] == nil and fare_amount > 1 then
-            print('fare_complete', fare_amount)
+            print('fare_amount', fare_amount)
             player_onboard = false
             CalculateFare(passenger_pickup_coords, player_onboard)
             get_player_passenger_coords = false
