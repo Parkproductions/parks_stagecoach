@@ -834,7 +834,6 @@ Citizen.CreateThread(function(fare_amount)
         if vehicle then
             local invehicle = GetPlayersInVehicle()
             local driver = GetDriverInVehicle()
-            print('driver', driver)
             if invehicle and get_player_passenger_coords == false then
                 passenger_pickup_coords = GetEntityCoords(PlayerPedId())
                 player_onboard = true
