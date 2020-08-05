@@ -801,7 +801,7 @@ Citizen.CreateThread(function()
     local active = false
     local player = PlayerPedId()
     local get_player_passenger_coords = false
-
+    fare_amount = 0
     while true do
         Citizen.Wait(10)
         local invehicle = GetPlayersInVehicle()
