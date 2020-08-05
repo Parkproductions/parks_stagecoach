@@ -747,15 +747,13 @@ AddEventHandler("drivingtrue", function()
 end)
 
 -- Calculate Fare Amount
-function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
+function CalculateFare(passenger_pickup_coords, player_onboard, invheicle, driver)
     Citizen.CreateThread( function()
     
     while true do
         Citizen.Wait(10)
         local invehicle = GetPlayersInVehicle()
         local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-        local driver = GetPedInVehicleSeat(vehicle, -1)
-        print('driver', driver)
         if invehicle then
             current = GetEntityCoords(PlayerPedId())
             distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
@@ -798,6 +796,28 @@ function GetPlayersInVehicle()
     return returnablePlayers[1] --[[returnablePlayers--]]
 
 end
+
+-- Check if players are in vehicle
+
+function GetDriverInVehicle()
+    local players = GetActivePlayers()
+    local ply = PlayerPedId()
+    local returnablePlayers = {}
+    local playerVehicle = GetVehiclePedIsIn(ply, false)
+
+    for index,value in ipairs(players) do
+        local target = GetPlayerPed(value)
+        if(target == ply) then
+            local vehicle = GetVehiclePedIsIn(target, false)
+            if playerVehicle ~= 0 and playerVehicle == vehicle then
+                table.insert(returnablePlayers, value)
+            end
+        end
+    end
+    
+    return returnableDriver[1] --[[returnablePlayers--]]
+
+end
     
 -- Check For Button Press Menu Open / Is a Player in Vehicle
 
@@ -813,11 +833,12 @@ Citizen.CreateThread(function(fare_amount)
 
         if vehicle then
             local invehicle = GetPlayersInVehicle()
-            
+            local driver = GetDriverInVehicle()
+
             if invehicle and get_player_passenger_coords == false then
                 passenger_pickup_coords = GetEntityCoords(PlayerPedId())
                 player_onboard = true
-                CalculateFare(passenger_pickup_coords, player_onboard, invehicle)
+                CalculateFare(passenger_pickup_coords, player_onboard, invehicle, driver)
                 get_player_passenger_coords = true
             
             elseif invehicle == nil then
