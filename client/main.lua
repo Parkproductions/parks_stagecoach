@@ -785,7 +785,7 @@ function GetPlayersInVehicle()
         end
     end
     
-    return vehicle --[[returnablePlayers--]]
+    return returnablePlayers[1] --[[returnablePlayers--]]
 
 end
     
