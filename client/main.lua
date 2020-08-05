@@ -762,9 +762,12 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
         elseif player_onboard == false then
             print('player_onboard', player_onboard)
             TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
-            break
         end
         
+        if player_onboard == false then
+            break
+        end
+
     end
     end) 
 end
