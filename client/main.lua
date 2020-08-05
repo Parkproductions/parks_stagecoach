@@ -759,7 +759,6 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
         Citizen.Wait(10)
 
         if player_onboard == true then
-            --[[print('CaclulateFare player_onboard', player_onboard)--]]
             current = GetEntityCoords(PlayerPedId())
             distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
             fare_amount = (distance / 1609.34) * 50
@@ -820,6 +819,7 @@ Citizen.CreateThread(function()
                 get_player_passenger_coords = true
             
             elseif invehicle[1] == nil and fare_amount > 1 then
+                print('Loop player_oboard', player_onboard)
                 player_onboard = false              
                 get_player_passenger_coords = false
             end
