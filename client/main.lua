@@ -758,7 +758,7 @@ function CalculateFare(passenger_pickup_coords)
         fare_amount = string.format("%.2f", fare_amount)
         fare_amount = tonumber(fare_amount)
         print(fare_amount)
-        return(fare_amount)
+        
     end
     end) 
 end
