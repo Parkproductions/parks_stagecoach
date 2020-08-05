@@ -810,7 +810,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(10)
         local invehicle = GetPlayersInVehicle()
         vehicle = GetVehiclePedIsIn(player)
-        print('vehicle')
+        print(vehicle)
         for i,v in ipairs(invehicle) do
             print(i, v)
             print('this')
