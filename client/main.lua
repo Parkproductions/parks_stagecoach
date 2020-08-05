@@ -805,6 +805,7 @@ Citizen.CreateThread(function()
         end
         if invehicle[1] == nil and fare_amount > 1.0 then
             print('fare_complete', fare_amount)
+            fare_amount = 0.0
         end
         if IsControlJustReleased(0, keys['O']) then
             if active == false then
