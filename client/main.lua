@@ -802,7 +802,7 @@ end
 function GetDriverInVehicle()
     local players = GetActivePlayers()
     local ply = PlayerPedId()
-    local returnablePlayers = {}
+    local returnableDriver = {}
     local playerVehicle = GetVehiclePedIsIn(ply, false)
 
     for index,value in ipairs(players) do
@@ -810,7 +810,7 @@ function GetDriverInVehicle()
         if(target == ply) then
             local vehicle = GetVehiclePedIsIn(target, false)
             if playerVehicle ~= 0 and playerVehicle == vehicle then
-                table.insert(returnablePlayers, value)
+                table.insert(returnableDriver, value)
             end
         end
     end
