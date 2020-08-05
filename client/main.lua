@@ -785,7 +785,7 @@ function GetPlayersInVehicle()
         end
     end
     
-    return returnablePlayers
+    return vehicle --[[returnablePlayers--]]
 
 end
     
@@ -803,7 +803,7 @@ Citizen.CreateThread(function(fare_amount)
 
         if vehicle then
             local invehicle = GetPlayersInVehicle()
-            
+            print('invehicle', invehicle)
             if(invehicle[1] == 1) and get_player_passenger_coords == false then
                 passenger_pickup_coords = GetEntityCoords(PlayerPedId())
                 player_onboard = true
