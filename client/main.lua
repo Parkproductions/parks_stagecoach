@@ -749,6 +749,11 @@ end)
 -- Calculate Fare Amount
 function CalculateFare(passenger_pickup_coords, player_onboard)
     Citizen.CreateThread( function()
+    if player_onboard == false and fare_amount > 0 then
+            print('player_onboard', player_onboard)
+            TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
+    end
+    
     while true do
         Citizen.Wait(10)
         if player_onboard == true then
@@ -760,12 +765,6 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
             fare_amount = tonumber(fare_amount)
             print(fare_amount)
         end
-        if player_onboard == false then
-            print('player_onboard', player_onboard)
-            TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
-            break
-        end
-
     end
     end) 
 end
