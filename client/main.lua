@@ -759,12 +759,10 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
             fare_amount = string.format("%.2f", fare_amount)
             fare_amount = tonumber(fare_amount)
             print(fare_amount)
-        elseif player_onboard == false then
+        end
+        if player_onboard == false then
             print('player_onboard', player_onboard)
             TriggerServerEvent("parks_stagecoach:pay_fare", fare_amount)
-        end
-        
-        if player_onboard == false then
             break
         end
 
