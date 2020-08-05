@@ -813,10 +813,12 @@ Citizen.CreateThread(function(fare_amount)
                 player_onboard = true
                 CalculateFare(passenger_pickup_coords, player_onboard, invehicle)
                 get_player_passenger_coords = true
+                print('invehicle passenger coords', get_player_passenger_coords)
             
             elseif not invehicle and fare_amount > 1 then
                 player_onboard = false              
                 get_player_passenger_coords = false
+                print('not invehicle passenger coords', get_player_passenger_coords)
             end
     
                 if IsControlJustReleased(0, keys['O']) then
