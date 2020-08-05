@@ -752,8 +752,8 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle)
     
     while true do
         Citizen.Wait(10)
-
-        if player_onboard == true then
+        local invehicle = GetPlayersInVehicle()
+        if invehicle == true then
             current = GetEntityCoords(PlayerPedId())
             distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
             fare_amount = (distance / 1609.34) * 50
