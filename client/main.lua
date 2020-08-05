@@ -781,13 +781,13 @@ function GetPlayersInVehicle()
     local players = GetActivePlayers()
     local ply = PlayerPedId()
     local returnablePlayers = {}
-    local playerVehicle = GetVehiclePedIsIn(ply)
+    local playerVehicle = GetVehiclePedIsIn(ply, false)
 
     for index,value in ipairs(players) do
         local target = GetPlayerPed(value)
         
         if(target ~= ply) then
-            local vehicle = GetVehiclePedIsIn(target)
+            local vehicle = GetVehiclePedIsIn(target, false)
             
             if playerVehicle == vehicle then
                 table.insert(returnablePlayers, value)
