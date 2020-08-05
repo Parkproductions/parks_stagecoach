@@ -59,8 +59,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:CreateNPC")
 AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
-
-    DeleteEntity(npc)
+    
     if not DoesEntityExist(npc) then
     
         local model = GetHashKey( "S_M_M_TrainStationWorker_01" )
