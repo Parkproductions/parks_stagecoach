@@ -811,9 +811,10 @@ Citizen.CreateThread(function()
     fare_amount = 0
     while true do
         Citizen.Wait(10)
+        vehicle = GetVehiclePedIsIn(player)
         if vehicle then do 
                 local invehicle = GetPlayersInVehicle()
-                vehicle = GetVehiclePedIsIn(player)
+                
                 print(vehicle)
                 
                 
