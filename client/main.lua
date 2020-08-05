@@ -811,6 +811,7 @@ Citizen.CreateThread(function()
         local invehicle = GetPlayersInVehicle()
         for i,v in pairs(invehicle) do
             print(i, v)
+            print('this')
         end
         
         if(invehicle[1] == 1) and get_player_passenger_coords == false then
