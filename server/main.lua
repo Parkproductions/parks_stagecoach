@@ -3,7 +3,7 @@ RegisterServerEvent("parks_stagecoach:pay_fare")
 AddEventHandler("parks_stagecoach:pay_fare", function (driver, fare)
 	local _source = source
     print('driver', driver)
-    driver = GetPlayerPed(driver)
+    driver = NetworkGetPlayerIndexFromPed(driver)
     print('driver', driver)
 	TriggerEvent('redemrp:getPlayerFromId', _source, function(user)
 		user.addMoney(fare)
