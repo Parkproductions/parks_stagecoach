@@ -757,6 +757,7 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
     
     while true do
         Citizen.Wait(10)
+
         if player_onboard == true then
             print('player_onboard', player_onboard)
             current = GetEntityCoords(PlayerPedId())
@@ -765,9 +766,11 @@ function CalculateFare(passenger_pickup_coords, player_onboard)
             fare_amount = string.format("%.2f", fare_amount)
             fare_amount = tonumber(fare_amount)
             print('CalculateFare', fare_amount)
-        elseif player_onboard == false then
+        end
+        if player_onboard == false then
             break
         end
+
     end
     end) 
 end
