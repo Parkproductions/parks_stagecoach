@@ -815,7 +815,7 @@ Citizen.CreateThread(function(fare_amount)
                 get_player_passenger_coords = true
                 print('invehicle passenger coords', get_player_passenger_coords)
             
-            elseif not invehicle and fare_amount > 1 then
+            elseif invehicle == nil then
                 player_onboard = false              
                 get_player_passenger_coords = false
                 print('not invehicle passenger coords', get_player_passenger_coords)
