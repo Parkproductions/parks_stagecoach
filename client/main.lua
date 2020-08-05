@@ -748,15 +748,17 @@ AddEventHandler("drivingtrue", function()
 end)
 
 -- Calculate Fare Amount
-function CalculateFare(passenger_coords)
+function CalculateFare(passenger_pickup_coords)
+    Citizen.CreateThread( function()
     while true do
         current = GetEntityCoords(PlayerPedId())
-        distance = GetDistanceBetweenCoords(passenger_coords.x, passenger_coords.y, passenger_coords.z, current, false)
+        distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
         fare_amount = (distance / 1609.34) * 50
         fare_amount = string.format("%.2f", fare_amount)
         fare_amount = tonumber(fare_amount)
         print(fare_amount)
     end
+    end) 
 end
 
 -- Check if players are in vehicle
@@ -794,7 +796,7 @@ Citizen.CreateThread(function()
         local invehicle = GetPlayersInVehicle()
         if(invehicle[1] == 1) and get_player_passenger_coords == false then
             passenger_pickup_coords = GetEntityCoords(PlayerPedId())
-            CalculateFare(passenger_coords)
+            CalculateFare(passenger_pickup_coords)
             get_player_passenger_coords = true
         end
         if IsControlJustReleased(0, keys['O']) then
