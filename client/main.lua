@@ -281,12 +281,7 @@ end)
 
 RegisterNetEvent("parks_stagecoach:StartCoachJob")
 AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coach, driving)
-    
-    -- Set driving status and select route 
-    --[[TriggerEvent('redem_roleplay:NotifyTop', "1st Coach Driven", 8000)--]]
-    --[[TriggerEvent('redem_roleplay:NotifyLeft', "first text", "second text", "tick", 8000)--]]
-   
-    
+       
     TriggerEvent("drivingtrue")
     zone_name = GetDistrictHash()
     local passenger_despawned = true
@@ -364,11 +359,9 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
         end
 
         if passenger_onboard == true then
-            
             break
         end
     end
-    
 end)            
 
 -- Destroy Cams
@@ -403,6 +396,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     spawn_coach = CreateVehicle(_model, Config.StageCoachSpawn[zone_name].x, Config.StageCoachSpawn[zone_name].y, Config.StageCoachSpawn[zone_name].z, Config.StageCoachSpawn[zone_name].h, true, false)
     SetVehicleOnGroundProperly(spawn_coach)
     SetModelAsNoLongerNeeded(_model)
+    
     local player = PlayerPedId()
     DoScreenFadeOut(500)
 
@@ -429,6 +423,8 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
 
 end)
+
+-- Stop Driving Menu Event
 
 RegisterNetEvent("parks_stagecoach:stop_driving")
 AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
@@ -474,7 +470,6 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
         end)
     end
 
-
     while true do
         Wait(10)
         if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
@@ -495,31 +490,31 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
         if PromptHasHoldModeCompleted(RepairCoachPrompt) then
             local pos = GetEntityCoords(PlayerPedId())
             local pos_h = GetEntityHeading(PlayerPedId())
-            --[[local pos_road = GetClosestRoad(pos.x, pos.y, pos.z, 1.0, 1, v3.0, v3.0, 0, 0, 0.0 false)--]]
-            --[[print('pos_road', pos_road)--]]
-            --[[TriggerServerEvent('parks_stagecoach:loadstagecoach')--]]
             
+            -- THIS NEEDS TO BE CHANGED TO PLAYERS COACH MODEL AT TIME OF REPAIR
             local model = GetHashKey("COACH4")
             RequestModel( model )
 
             while not HasModelLoaded( model ) do
                 Wait(500)
             end
+
             DeleteVehicle(spawn_coach)
+            
             spawn_coach = CreateVehicle(model, pos.x + 3, pos.y + 3, pos.z + 3, pos_h, true, false)
             SetVehicleOnGroundProperly(spawn_coach)
             SetModelAsNoLongerNeeded(model)
+            
             local player = PlayerPedId()
             DoScreenFadeOut(500)
             Wait(500)
             SetPedIntoVehicle(player, spawn_coach, -1)
             Wait(500)
             DoScreenFadeIn(500)
+            
             driving = true
             TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
-
         end 
-
     end
 end)
 
@@ -638,8 +633,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-
-
 -- Warmenu Stop Driving Options
 
 Citizen.CreateThread(function()
@@ -718,14 +711,11 @@ RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 Citizen.CreateThread( function()
-   
     WarMenu.CreateMenu('ListStagecoaches', 'Coaches')
     WarMenu.OpenMenu('ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
-            
             for key, value in pairs(HasStagecoaches) do 
-                 print(value['name'])
                 if WarMenu.Button(value['name']) then
                     TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
                     WarMenu.CloseMenu()
@@ -743,11 +733,10 @@ end)
 -- Warmenu Driving Status Menu Options Switch
 
 function OpenDrivingStatusMenu()
-   
     if driving == true then
-    WarMenu.OpenMenu('DrivingStatus')
+        WarMenu.OpenMenu('DrivingStatus')
     else
-    WarMenu.OpenMenu('DrivingStatusFalse')
+        WarMenu.OpenMenu('DrivingStatusFalse')
     end    
 end
 
@@ -758,30 +747,40 @@ AddEventHandler("drivingtrue", function()
     driving = true
 end)
 
-function GetPlayersInVehicle()
-
-  local players = GetActivePlayers()
-  local ply = PlayerPedId()
-  local returnablePlayers = {}
-  local playerVehicle = GetVehiclePedIsIn(ply)
-
-    
-
-
-  for index,value in ipairs(players) do
-    
-    local target = GetPlayerPed(value)
-    
-    if(target ~= ply) then
-      local vehicle = GetVehiclePedIsIn(target)
-
-      if playerVehicle == vehicle then
-        table.insert(returnablePlayers, value)
-      end
+-- Calculate Fare Amount
+function CalculateFare(passenger_coords)
+    while true do
+        current = GetEntityCoords(PlayerPedId())
+        distance = GetDistanceBetweenCoords(passenger_coords.x, passenger_coords.y, passenger_coords.z, current, false)
+        fare_amount = (distance / 1609.34) * 50
+        fare_amount = string.format("%.2f", fare_amount)
+        fare_amount = tonumber(fare_amount)
+        print(fare_amount)
     end
-  end
+end
 
-  return returnablePlayers
+-- Check if players are in vehicle
+
+function GetPlayersInVehicle()
+    local players = GetActivePlayers()
+    local ply = PlayerPedId()
+    local returnablePlayers = {}
+    local playerVehicle = GetVehiclePedIsIn(ply)
+
+    for index,value in ipairs(players) do
+        local target = GetPlayerPed(value)
+        
+        if(target ~= ply) then
+            local vehicle = GetVehiclePedIsIn(target)
+            
+            if playerVehicle == vehicle then
+                table.insert(returnablePlayers, value)
+            end
+        end
+    end
+
+    return returnablePlayers
+
 end
     
 -- Check For Button Press Menu Open / Is a Player in Vehicle
@@ -790,29 +789,23 @@ Citizen.CreateThread(function()
     local active = false
     local player = PlayerPedId()
     local get_player_passenger_coords = false
-    
     while true do
         Citizen.Wait(10)
-            local player_wagon = GetVehiclePedIsIn(player, true)
-            local invehicle = GetPlayersInVehicle()
-
+        local invehicle = GetPlayersInVehicle()
         if(invehicle[1] == 1) and get_player_passenger_coords == false then
-            passenger_coords = GetEntityCoords(PlayerPedId())
-            print(passenger_coords)
+            passenger_pickup_coords = GetEntityCoords(PlayerPedId())
+            CalculateFare(passenger_coords)
             get_player_passenger_coords = true
         end
-
-
         if IsControlJustReleased(0, keys['O']) then
             if active == false then
                 OpenDrivingStatusMenu()
                 active = true
             elseif active == true then
-                    WarMenu.CloseMenu()
-                    active = false
+                WarMenu.CloseMenu()
+                active = false
             end
         end
-        
     end
 end)
 
