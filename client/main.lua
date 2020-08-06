@@ -711,15 +711,15 @@ AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 Citizen.CreateThread( function()
     WarMenu.CreateMenu('ListStagecoaches', 'Coaches')
-    WarMenu.OpenMenu('ListStagecoaches')
+    --[[WarMenu.OpenMenu('ListStagecoaches')--]]
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
             for key, value in pairs(HasStagecoaches) do 
                 if WarMenu.Button(value['name']) then
                     TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
                     WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
+                    --[[Wait(600)
+                    WarMenu.Display()--]]
                 end
             end
             WarMenu.Display()
@@ -728,6 +728,22 @@ Citizen.CreateThread( function()
     until false
 end)    
 end)
+
+--[[Citizen.CreateThread( function()
+    WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
+    repeat
+        if WarMenu.IsMenuOpened('Stagecoach') then
+            for i = 1, #Coaches do
+                if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
+                    TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
+                    WarMenu.CloseMenu()
+                end
+            end
+            WarMenu.Display()
+        end
+        Citizen.Wait(0)
+    until false
+end)--]]
 
 -- Warmenu Driving Status Menu Options Switch
 
@@ -792,32 +808,11 @@ function GetPlayersInVehicle()
     return returnablePlayers[1] --[[returnablePlayers--]]
 
 end
-
--- Check if players are in vehicle
-
-function GetDriverInVehicle()
-    local players = GetActivePlayers()
-    local ply = PlayerPedId()
-    local returnableDriver = {}
-    local playerVehicle = GetVehiclePedIsIn(ply, false)
-
-    for index,value in ipairs(players) do
-        local target = GetPlayerPed(value)
-        if(target == ply) then
-            local vehicle = GetVehiclePedIsIn(target, false)
-            if playerVehicle ~= 0 and playerVehicle == vehicle then
-                table.insert(returnableDriver, value)
-            end
-        end
-    end
-    
-    return returnableDriver[1] --[[returnablePlayers--]]
-
-end
     
 -- Check For Button Press Menu Open / Is a Player in Vehicle
 
 Citizen.CreateThread(function(fare_amount)
+    
     local active = false
     local player = PlayerPedId()
     local get_player_passenger_coords = false
@@ -825,11 +820,12 @@ Citizen.CreateThread(function(fare_amount)
     
     while true do
         Citizen.Wait(10)
+        
         vehicle = GetVehiclePedIsIn(player)
         driver = GetPedInVehicleSeat(vehicle, -1)
-        print('player', player, 'vehicle', vehicle, 'driver', driver)
 
         if vehicle and driver == player then
+            
             local invehicle = GetPlayersInVehicle()
 
             if invehicle and get_player_passenger_coords == false then
