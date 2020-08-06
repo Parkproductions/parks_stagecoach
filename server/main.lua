@@ -70,7 +70,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
 
     --[[TriggerClientEvent('elrp:spawnHorse', _src, _model, true)--]]
    
-	TriggerClientEvent("parks_stagecoach:SpawnWagon", _src, _model)
+	
 
     --[[if _resul ~= true then--]]
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model, ['name'] = _name }
@@ -78,6 +78,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You got a new Stagecoach !' )--]]
         TriggerClientEvent('redem_roleplay:NotifyLeft', _src, 'You got a new Stagecoach !', _name,  "generic_textures", "tick", tonumber(2000))
         print('New Stagecoach')
+        TriggerClientEvent("parks_stagecoach:SpawnWagon", _src, _model)
     --[[else
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model, ['name'] = _name }
         MySQL.Async.execute(" UPDATE stagecoaches SET stagecoach = @stagecoach, name = @name WHERE identifier = @identifier AND charid = @charid ", Parameters)
