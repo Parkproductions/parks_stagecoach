@@ -729,8 +729,10 @@ function CalculateFare(passenger_pickup_coords, player_onboard, invheicle, drive
                 current = GetEntityCoords(PlayerPedId())
                 distance = GetDistanceBetweenCoords(passenger_pickup_coords.x, passenger_pickup_coords.y, passenger_pickup_coords.z, current, false)
                 fare_amount = (distance / 1609.34) * 50
-                fare_amount = string.format("%.2f", fare_amount)
+                fare_amount = string.format("%.0f", fare_amount)
                 fare_amount = tonumber(fare_amount)
+                Wait(100)
+                TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)
                 
             elseif invehicle == nil then
                 Citizen.Wait(1000)
