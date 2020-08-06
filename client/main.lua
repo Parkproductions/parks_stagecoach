@@ -711,7 +711,7 @@ AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 Citizen.CreateThread( function()
     WarMenu.CreateMenu('ListStagecoaches', 'Coaches')
-    --[[WarMenu.OpenMenu('ListStagecoaches')--]]
+    WarMenu.OpenMenu('ListStagecoaches')
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
             for key, value in pairs(HasStagecoaches) do 
