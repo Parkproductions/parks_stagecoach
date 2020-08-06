@@ -15,5 +15,3 @@ server_scripts {
 	'@mysql-async/lib/MySQL.lua',
 }
 
-
-ui_page 'html/ui.html'

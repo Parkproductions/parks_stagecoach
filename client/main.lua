@@ -1,39 +1,6 @@
-local coach = false
 local driving = false
-local pressTime = 0
-local pressLeft = 0
-local recentlySpawned = 0
 local keys = { ['O'] = 0xF1301666, ['G'] = 0x5415BE48 }
-
--- Sidebar Notification
-
-function DisplayLeftNotification(title, subTitle, iconDict, icon, duration)
-  
-    --[[struct1 = new DataView(new ArrayBuffer(4 * 4));
-    struct1.setInt32(0, duration, true);--]]
-  
-    struct1 = duration
-
-    local string1 = CreateVarString(10, "LITERAL_STRING", title, Citizen.ResultAsLong())
-    local string2 = CreateVarString(10, "LITERAL_STRING", subTitle, Citizen.ResultAsLong())
-
-    --[[string1 = CreateVarString(10, "LITERAL_STRING", title);
-    string2 = CreateVarString(10, "LITERAL_STRING", subTitle);--]]
-    struct2 =  GetHashKey(iconDict)
-
---[[    struct2 = new DataView(new ArrayBuffer(48));
-    struct2.setBigInt64(8, BigInt(string1), true);
-    struct2.setBigInt64(16, BigInt(string2), true);
-    struct2.setBigInt64(32, BigInt(GetHashKey(iconDict)), true);
-    struct2.setBigInt64(40, BigInt(GetHashKey(icon)), true);--]]
-    print(struct1, struct2)
-    Citizen.InvokeNative(0x26E87218390E6729, struct1, struct2, 1, 1);
-
-    
-
-end
-
-    
+   
 -- Create Wagon Wheel Map Marker
 
 Citizen.CreateThread(function()
@@ -491,7 +458,7 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
             -- THIS NEEDS TO BE CHANGED TO PLAYERS COACH MODEL AT TIME OF REPAIR
 
             local model = GetHashKey("WAGON06X")
-            
+
             RequestModel( model )
 
             while not HasModelLoaded( model ) do
@@ -846,74 +813,6 @@ RegisterCommand("killvehicle", function()
     SetVehicleBodyHealth(spawn_coach, 0.0)
 end)
 
--- Command to check current town /intown
 
-RegisterCommand("intown", function()
-function GetCurentTownName()
-    local pedCoords = GetEntityCoords(PlayerPedId())
-    local town_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,1)
-    --[[print(town_hash)--]]
-    if town_hash == GetHashKey("Annesburg") then
-        return "Annesburg"
-    elseif town_hash == GetHashKey("roanoke") then
-        return "Roanoke Ridge"
-    elseif town_hash == GetHashKey("RioBravo") then
-        return "Rio Bravo"
-    elseif town_hash == GetHashKey("Annesburg") then
-        return "Annesburg"
-    elseif town_hash == GetHashKey("Armadillo") then
-        return "Armadillo"
-    elseif town_hash == GetHashKey("Blackwater") then
-        return "Blackwater"
-    elseif town_hash == GetHashKey("BeechersHope") then
-        return "BeechersHope"
-    elseif town_hash == GetHashKey("Braithwaite") then
-        return "Braithwaite"
-    elseif town_hash == GetHashKey("Butcher") then
-        return "Butcher"
-    elseif town_hash == GetHashKey("Caliga") then
-        return "Caliga"
-    elseif town_hash == GetHashKey("cornwall") then
-        return "Cornwall"
-    elseif town_hash == GetHashKey("Emerald") then
-        return "Emerald"
-    elseif town_hash == GetHashKey("lagras") then
-        return "lagras"
-    elseif town_hash == GetHashKey("Manzanita") then
-        return "Manzanita"
-    elseif town_hash == GetHashKey("Rhodes") then
-        return "Rhodes"
-    elseif town_hash == GetHashKey("Siska") then
-        return "Siska"
-    elseif town_hash == GetHashKey("StDenis") then
-        return "Saint Denis"
-    elseif town_hash == GetHashKey("Strawberry") then
-        return "Strawberry"
-    elseif town_hash == GetHashKey("Tumbleweed") then
-        return "Tumbleweed"
-    elseif town_hash == GetHashKey("valentine") then
-        return "Valentine"
-    elseif town_hash == GetHashKey("VANHORN") then
-        return "Vanhorn"
-    elseif town_hash == GetHashKey("Wallace") then
-        return "Wallace"
-    elseif town_hash == GetHashKey("wapiti") then
-        return "Wapiti"
-    elseif town_hash == GetHashKey("AguasdulcesFarm") then
-        return "Aguasdulces Farm"
-    elseif town_hash == GetHashKey("AguasdulcesRuins") then
-        return "Aguasdulces Ruins"
-    elseif town_hash == GetHashKey("AguasdulcesVilla") then
-        return "Aguasdulces Villa"
-    elseif town_hash == GetHashKey("Manicato") then
-        return "Manicato"
-    else
-        return town_hash
-    end
-end
-
-intown = GetCurentTownName()
-print(intown)
-end)
 
 
