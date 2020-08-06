@@ -698,46 +698,13 @@ Citizen.CreateThread(function(HasStagecoaches)
     end
 end)
 
---[[-- List Coaches Menu Function
-
-function OpenListStageCoachMenu(HasStagecoaches)    
-    WarMenu.OpenMenu('ListStagecoaches')
-end
-
 -- List Coaches Menu Event
-
-RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
-AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
-
-Citizen.CreateThread( function()
-    WarMenu.CreateMenu('ListStagecoaches', 'Coaches')
-    WarMenu.OpenMenu('ListStagecoaches')
-    while true do
-        Citizen.Wait(0)
-        if WarMenu.IsMenuOpened('ListStagecoaches') then
-            WarMenu.Display()
-            for key, value in pairs(HasStagecoaches) do 
-                if WarMenu.Button(value['name']) then
-                    TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
-                    WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
-                end
-            end
-            WarMenu.Display()
-        end
-    end
-end)    
-end)
---]]
 
 local Stagecoaches = {}
 
 function OpenListStageCoachMenu(HasStagecoaches)    
     WarMenu.OpenMenu('ListStagecoaches')
 end
-
--- List Coaches Menu Event
 
 RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
 AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
@@ -763,7 +730,6 @@ Citizen.CreateThread( function()
         Citizen.Wait(0)
     end
 end) 
-
 
 -- Warmenu Driving Status Menu Options Switch
 
@@ -825,7 +791,7 @@ function GetPlayersInVehicle()
         end
     end
     
-    return returnablePlayers[1] --[[returnablePlayers--]]
+    return returnablePlayers[1] 
 
 end
     
@@ -869,6 +835,7 @@ Citizen.CreateThread(function(fare_amount)
                 active = false
             end
         end
+        
     end
 end)
 
