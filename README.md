@@ -10,12 +10,13 @@
 [redemrp_notification](https://github.com/Ktos93/redemrp_notification/)
 
 ## 2. Installation
+- Clone/Extract parks_stagecoach into *your server*/server-data/resources/ 
 - Insert the stagecoaches.sql file into your database.
 - Add ```ensure parks_stagecoach``` in server.cfg
 
 ## 3. How to use
-- Go to Wagon Wheel on map for NPC that Sells Stage Coaches
-- Buy a Coach
+- Go to Wagon Wheel on map for NPC that Sells Stage Coaches.
+- Buy a Coach.
 - Press [O] to open driving menu.
 - Press Del+E to get into a wagon as a passenger.
 
