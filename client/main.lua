@@ -225,7 +225,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
         local disctrict_hash = Citizen.InvokeNative(0x43AD8FC02B429D33, pedCoords ,10)
 
         fare_amount = (distance / 1609.34) * 50
-        fare_amount = string.format("%.2f", fare_amount)
+        fare_amount = string.format("%.0f", fare_amount)
         fare_amount = tonumber(fare_amount)
         Wait(100)
 
