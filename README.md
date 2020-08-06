@@ -13,8 +13,8 @@
 - Add ```ensure parks_stagecoach``` in server.cfg
 
 ## 3. How to use
-Go to Wagon Wheel on map for NPC that Sells Stage Coaches
-Buy a Coach
-Press [O] to open driving menu.
+- Go to Wagon Wheel on map for NPC that Sells Stage Coaches
+- Buy a Coach
+- Press [O] to open driving menu.
 
 Join discord to get support! - https://discord.gg/XrUvdm
