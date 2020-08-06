@@ -76,7 +76,7 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model, ['name'] = _name }
         MySQL.Async.execute("INSERT INTO stagecoaches ( `identifier`, `charid`, `stagecoach`, `name` ) VALUES ( @identifier, @charid, @stagecoach, @name )", Parameters)
         --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You got a new Stagecoach !' )--]]
-        TriggerClientEvent('redem_roleplay:NotifyLeft', _src, 'You got a new Stagecoach !', _name,  "generic_textures", "tick", tonumber(1000))
+        TriggerClientEvent('redem_roleplay:NotifyLeft', _src, 'You got a new Stagecoach !', _name,  "generic_textures", "tick", tonumber(2000))
         print('New Stagecoach')
     --[[else
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model, ['name'] = _name }
