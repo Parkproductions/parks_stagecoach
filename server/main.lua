@@ -64,19 +64,12 @@ AddEventHandler("parks_stagecoach:buy_stagecoach", function ( args )
 
 	TriggerEvent('redemrp:getPlayerFromId', _src, function(user)
         user.removeMoney(_price)
-    end)
-
-    --[[TriggerClientEvent("parks_stagecoach:SpawnWagon", _source, stagecoach_cost)--]]
-
-    --[[TriggerClientEvent('elrp:spawnHorse', _src, _model, true)--]]
-   
-	
+    end)	
 
     --[[if _resul ~= true then--]]
         local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['stagecoach'] = _model, ['name'] = _name }
         MySQL.Async.execute("INSERT INTO stagecoaches ( `identifier`, `charid`, `stagecoach`, `name` ) VALUES ( @identifier, @charid, @stagecoach, @name )", Parameters)
-        --[[TriggerClientEvent( 'UI:DrawNotification', _src, 'You got a new Stagecoach !' )--]]
-        TriggerClientEvent('redem_roleplay:NotifyLeft', _src, 'You got a new Stagecoach !', _name,  "generic_textures", "tick", tonumber(2000))
+        TriggerClientEvent('redem_roleplay:NotifyLeft', _src, 'You got a new Stagecoach !', _name,  "generic_textures", "tick", tonumber(3000))
         print('New Stagecoach')
         TriggerClientEvent("parks_stagecoach:SpawnWagon", _src, _model)
     --[[else
