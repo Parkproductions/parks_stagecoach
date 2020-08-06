@@ -731,6 +731,8 @@ end)
 end)
 --]]
 
+local Stagecoaches = {}
+
 function OpenListStageCoachMenu(HasStagecoaches)    
     WarMenu.OpenMenu('ListStagecoaches')
 end
