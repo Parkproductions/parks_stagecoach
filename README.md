@@ -16,5 +16,6 @@
 - Go to Wagon Wheel on map for NPC that Sells Stage Coaches
 - Buy a Coach
 - Press [O] to open driving menu.
+- Press Del+E to get into a wagon as a passenger.
 
 Join discord to get support! - https://discord.gg/XrUvdm
