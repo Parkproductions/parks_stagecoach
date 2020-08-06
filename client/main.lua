@@ -490,9 +490,8 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
             
             -- THIS NEEDS TO BE CHANGED TO PLAYERS COACH MODEL AT TIME OF REPAIR
 
-            --[[local model = GetHashKey("COACH4")--]]
-            local model = GetEntityModel(spawn_coach)
-            print('spawn_coach', spawn_coach, 'model', model)
+            local model = GetHashKey("WAGON06X")
+            
             RequestModel( model )
 
             while not HasModelLoaded( model ) do
