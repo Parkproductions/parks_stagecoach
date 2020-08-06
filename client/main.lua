@@ -396,6 +396,9 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     local player = PlayerPedId()
     local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
     zone_name = GetCurentTownName()
+
+    local coach_blip = GetBlipFromEntity(player)
+    RemoveBlip(coach_blip)
     
     TaskLeaveVehicle(passenger, spawn_coach, 0)
     RemoveBlip(p1)
