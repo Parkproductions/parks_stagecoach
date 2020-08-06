@@ -698,7 +698,7 @@ Citizen.CreateThread(function(HasStagecoaches)
     end
 end)
 
--- List Coaches Menu Function
+--[[-- List Coaches Menu Function
 
 function OpenListStageCoachMenu(HasStagecoaches)    
     WarMenu.OpenMenu('ListStagecoaches')
@@ -711,7 +711,7 @@ AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 Citizen.CreateThread( function()
     WarMenu.CreateMenu('ListStagecoaches', 'Coaches')
-    --[[WarMenu.OpenMenu('ListStagecoaches')--]]
+    WarMenu.OpenMenu('ListStagecoaches')
     while true do
         Citizen.Wait(0)
         if WarMenu.IsMenuOpened('ListStagecoaches') then
@@ -719,7 +719,7 @@ Citizen.CreateThread( function()
             for key, value in pairs(HasStagecoaches) do 
                 if WarMenu.Button(value['name']) then
                     TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
-                    --[[WarMenu.CloseMenu()--]]
+                    WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
                 end
@@ -729,26 +729,39 @@ Citizen.CreateThread( function()
     end
 end)    
 end)
+--]]
 
---[[Citizen.CreateThread(function()
-    WarMenu.CreateMenu('DrivingStatusFalse', 'Coach Menu')
-    while true do
-        Citizen.Wait(0)
-        if WarMenu.IsMenuOpened('DrivingStatusFalse') then
-            WarMenu.Display()
-            if WarMenu.Button("Start Driving") then
-                    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, true)
+function OpenListStageCoachMenu(HasStagecoaches)    
+    WarMenu.OpenMenu('ListStagecoaches')
+end
+
+-- List Coaches Menu Event
+
+RegisterNetEvent("parks_stagecoach:LoadCoachesMenu")
+AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
+   Stagecoaches = HasStagecoaches
+   WarMenu.OpenMenu('ListStagecoaches')
+end)
+
+Citizen.CreateThread( function()
+    WarMenu.CreateMenu('ListStagecoaches', 'Coaches')
+    WarMenu.SetSubTitle('ListStagecoaches', 'Coache list')
+    while true do 
+        if WarMenu.IsMenuOpened('ListStagecoaches') then
+            for k, v in pairs(Stagecoaches) do 
+                if WarMenu.Button(v['name'], 'Subtext', 'Description') then
+                    TriggerEvent('parks_stagecoach:SpawnWagon', v['stagecoach'])
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
-            elseif WarMenu.Button("Exit") then
-                    WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()
+                end
             end
+            WarMenu.Display()
         end
+        Citizen.Wait(0)
     end
-end)--]]
+end) 
+
 
 -- Warmenu Driving Status Menu Options Switch
 
