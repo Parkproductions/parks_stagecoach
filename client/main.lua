@@ -718,8 +718,8 @@ Citizen.CreateThread( function()
                 if WarMenu.MenuButton(value['name'], 'Subtext', 'Description') then
                     TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
                     --[[WarMenu.CloseMenu()
-                    Wait(600)
-                    WarMenu.Display()--]]
+                    Wait(600)--]]
+                    WarMenu.Display()
                 end
             end
             WarMenu.Display()
