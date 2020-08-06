@@ -711,38 +711,43 @@ AddEventHandler("parks_stagecoach:LoadCoachesMenu", function (HasStagecoaches)
 
 Citizen.CreateThread( function()
     WarMenu.CreateMenu('ListStagecoaches', 'Coaches')
-    WarMenu.OpenMenu('ListStagecoaches')
-    repeat
+    --[[WarMenu.OpenMenu('ListStagecoaches')--]]
+    while true do
+        Citizen.Wait(0)
         if WarMenu.IsMenuOpened('ListStagecoaches') then
+            WarMenu.Display()
             for key, value in pairs(HasStagecoaches) do 
-                if WarMenu.MenuButton(value['name'], 'Subtext', 'Description') then
+                if WarMenu.Button(value['name']) then
                     TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
-                    --[[WarMenu.CloseMenu()
-                    Wait(600)--]]
+                    WarMenu.CloseMenu()
+                    Wait(600)
                     WarMenu.Display()
                 end
             end
-            WarMenu.Display()
+            --[[WarMenu.Display()--]]
         end
-        Citizen.Wait(0)
-    until false
+    end
 end)    
 end)
 
---[[Citizen.CreateThread( function()
-    WarMenu.CreateMenu('Stagecoach', 'Stagecoach')
-    repeat
-        if WarMenu.IsMenuOpened('Stagecoach') then
-            for i = 1, #Coaches do
-                if WarMenu.Button(Coaches[i]['Text'], Coaches[i]['SubText'], Coaches[i]['Desc']) then
-                    TriggerServerEvent('parks_stagecoach:buy_stagecoach', Coaches[i]['Param'])
-                    WarMenu.CloseMenu()
-                end
-            end
-            WarMenu.Display()
-        end
+--[[Citizen.CreateThread(function()
+    WarMenu.CreateMenu('DrivingStatusFalse', 'Coach Menu')
+    while true do
         Citizen.Wait(0)
-    until false
+        if WarMenu.IsMenuOpened('DrivingStatusFalse') then
+            WarMenu.Display()
+            if WarMenu.Button("Start Driving") then
+                    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, true)
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
+            elseif WarMenu.Button("Exit") then
+                    WarMenu.CloseMenu()
+                    Wait(600)
+                    WarMenu.Display()
+            end
+        end
+    end
 end)--]]
 
 -- Warmenu Driving Status Menu Options Switch
