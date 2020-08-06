@@ -715,11 +715,11 @@ Citizen.CreateThread( function()
     repeat
         if WarMenu.IsMenuOpened('ListStagecoaches') then
             for key, value in pairs(HasStagecoaches) do 
-                if WarMenu.Button(value['name'], 'Subtext', 'Description') then
+                if WarMenu.MenuButton(value['name'], 'Subtext', 'Description') then
                     TriggerEvent('parks_stagecoach:SpawnWagon', value['stagecoach'])
                     WarMenu.CloseMenu()
-                    --[[Wait(600)
-                    WarMenu.Display()--]]
+                    Wait(600)
+                    WarMenu.Display()
                 end
             end
             WarMenu.Display()
