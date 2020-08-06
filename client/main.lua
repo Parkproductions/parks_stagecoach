@@ -232,8 +232,6 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
         town_name = GetCurentTownName()
         district_hash = GetDistrictHash()
         
-       
-        --[[print('Town', town_name, 'District', district_hash)--]]
         TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)
         --[[TriggerEvent('redem_roleplay:Tip', town_name .. " " .. district_hash, 2000)--]]
         
@@ -491,7 +489,9 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
             local pos_h = GetEntityHeading(PlayerPedId())
             
             -- THIS NEEDS TO BE CHANGED TO PLAYERS COACH MODEL AT TIME OF REPAIR
-            local model = GetHashKey("COACH4")
+
+            --[[local model = GetHashKey("COACH4")--]]
+            local model = GetEntityModel(spawn_coach)
             RequestModel( model )
 
             while not HasModelLoaded( model ) do
