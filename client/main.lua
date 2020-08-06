@@ -724,7 +724,7 @@ Citizen.CreateThread( function()
                     WarMenu.Display()
                 end
             end
-            --[[WarMenu.Display()--]]
+            WarMenu.Display()
         end
     end
 end)    
