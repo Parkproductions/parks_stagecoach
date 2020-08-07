@@ -395,7 +395,10 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     
     local player = PlayerPedId()
     local spawn_coach = GetVehiclePedIsIn(PlayerPedId(),false)
-    zone_name = GetCurentTownName()
+    zone_name = GetDistrictHash()
+
+    local coach_blip = GetBlipFromEntity(player)
+    RemoveBlip(coach_blip)
     
     TaskLeaveVehicle(passenger, spawn_coach, 0)
     RemoveBlip(p1)
@@ -438,14 +441,12 @@ AddEventHandler("parks_stagecoach:replace_stagecoach", function (spawn_coach, re
         Wait(10)
         if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))<5 then
             if repair_active == false then
-                print('repair_false')
                 RepairCoach()
                 repair_active = true
             end
         
         elseif GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(spawn_coach))>6 then
                 if repair_active == true then
-                    print('repair_true')
                     PromptDelete(RepairCoachPrompt)
                     repair_active = false
                 end
