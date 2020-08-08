@@ -37,7 +37,7 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
             Wait(500)
         end
                 
-        npc = CreatePed( model, zone.x, zone.y, zone.z, zone.h, 1, 1 )
+        npc = CreatePed( model, zone.x, zone.y, zone.z, zone.h,  false, true)
         Citizen.InvokeNative( 0x283978A15512B2FE , npc, true )
 
     end
@@ -285,7 +285,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                         Wait(500)
                     end
             if not DoesEntityExist(passenger) then
-                passenger = CreatePed(model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, 1, false)
+                passenger = CreatePed(model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, false, true)
                 print(passenger)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger, true )
                 passenger_despawned = false
