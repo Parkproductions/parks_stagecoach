@@ -768,8 +768,7 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('DrivingStatusFalse') then
             WarMenu.Display()
             if WarMenu.Button("Start Driving") then
-                    TriggerServerEvent("")
-                    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, true)
+                    TriggerServerEvent("parks_stagecoach:StartCoachJobServer", zone_name, spawn_coach, true)
                     WarMenu.CloseMenu()
                     Wait(600)
                     WarMenu.Display()
