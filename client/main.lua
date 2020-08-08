@@ -37,7 +37,7 @@ AddEventHandler("parks_stagecoach:CreateNPC", function (zone)
             Wait(500)
         end
                 
-        npc = CreatePed( model, zone.x, zone.y, zone.z, zone.h,  false, true)
+        npc = CreatePed( model, zone.x, zone.y, zone.z, zone.h,  true, true)
         Citizen.InvokeNative( 0x283978A15512B2FE , npc, true )
 
     end
@@ -285,7 +285,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                         Wait(500)
                     end
             if not DoesEntityExist(passenger) then
-                passenger = CreatePed(model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, false, true)
+                passenger = CreatePed(model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, true, true)
                 print(passenger)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger, true )
                 passenger_despawned = false
@@ -362,6 +362,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
     SetModelAsNoLongerNeeded(_model)
     
     local player = PlayerPedId()
+
     DoScreenFadeOut(500)
 
     cam_a = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
@@ -384,7 +385,7 @@ AddEventHandler("parks_stagecoach:SpawnWagon", function (_model)
 
     EndStageCoachCam()
     driving = true
-    TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, driving)
+    TriggerServerEvent("parks_stagecoach:StartCoachJobServer", zone_name, spawn_coach, driving)
 
 end)
 
@@ -767,6 +768,7 @@ Citizen.CreateThread(function()
         if WarMenu.IsMenuOpened('DrivingStatusFalse') then
             WarMenu.Display()
             if WarMenu.Button("Start Driving") then
+                    TriggerServerEvent("")
                     TriggerEvent("parks_stagecoach:StartCoachJob", zone_name, spawn_coach, true)
                     WarMenu.CloseMenu()
                     Wait(600)

@@ -101,3 +101,9 @@ AddEventHandler("parks_stagecoach:loadstagecoach", function ( )
     end
     
 end )
+
+RegisterServerEvent("parks_stagecoach:StartCoachJobServer")
+AddEventHandler("parks_stagecoach:StartCoachJobServer", function (zone_name, spawn_coach, driving)
+    local _src = source
+    TriggerClientEvent("parks_stagecoach:StartCoachJob", _src, zone_name, spawn_coach, driving)
+end)
