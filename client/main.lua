@@ -199,8 +199,8 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
         town_name = GetCurentTownName()
         district_hash = GetDistrictHash()
         
-        --[[TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)--]]
-        TriggerEvent('redem_roleplay:Tip', town_name .. " " .. district_hash, 2000)
+        TriggerEvent('redem_roleplay:Tip', "$" .. fare_amount, 2000)
+        --[[TriggerEvent('redem_roleplay:Tip', town_name .. " " .. district_hash, 2000)--]]
         
 
         if GetDistanceBetweenCoords(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z, GetEntityCoords(passenger),false)<5 and passenger_onboard ~= false then
@@ -285,7 +285,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
                         Wait(500)
                     end
             if not DoesEntityExist(passenger) then
-                passenger = CreatePed( model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, 1, 1)
+                passenger = CreatePed(model, Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z, Config.PickUp[zone_name][route].h, 1, false)
                 print(passenger)
                 Citizen.InvokeNative( 0x283978A15512B2FE , passenger, true )
                 passenger_despawned = false
@@ -406,8 +406,8 @@ AddEventHandler("parks_stagecoach:stop_driving", function (spawn_coach)
     passenger_spawned = false
     driving = false
     TaskGoToCoordAnyMeans(passenger, Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y +40, Config.Destination[zone_name][route].z, 1.0, 0, 0, 786603, 0xbf800000)
-    Wait(30000)
-    DeleteEntity(npc_id)
+    Wait(5000)
+    DeleteEntity(passenger)
 
 end)
 
@@ -488,10 +488,11 @@ end)
 -- COACHES ARRAY DATA
 
 local Coaches = {
+    
     {
-        ['Text'] = "Borrow Coach - $0.",
+        ['Text'] = "Basic Wagon - $0.",
         ['SubText'] = "",
-        ['Desc'] = "It's for a reason.",
+        ['Desc'] = "It's free for a reason.",
         ['Param'] = {
             ['Name'] = "Borrowed Coach",
             ['Price'] = 0,
@@ -511,6 +512,50 @@ local Coaches = {
         }
     },
     {
+        ['Text'] = "Rough Davis Coach - $120.",
+        ['SubText'] = "",
+        ['Desc'] = "She's pretty tired looking.",
+        ['Param'] = {
+            ['Name'] = "Rough Davis Coach",
+            ['Price'] = 120,
+            ['Model'] = "STAGECOACH003X",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Large Rustic Wagon - $150.",
+        ['SubText'] = "",
+        ['Desc'] = "It has a cover and lots of space.",
+        ['Param'] = {
+            ['Name'] = "Large Rustic Wagon",
+            ['Price'] = 150,
+            ['Model'] = "WAGON02X",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Medium Workers Wagon - $200.",
+        ['SubText'] = "",
+        ['Desc'] = "It's free for a reason.",
+        ['Param'] = {
+            ['Name'] = "Medium Workers Wagon",
+            ['Price'] = 200,
+            ['Model'] = "WAGON05X",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Large Open Passenger Wagon - $450.",
+        ['SubText'] = "",
+        ['Desc'] = "It's free for a reason.",
+        ['Param'] = {
+            ['Name'] = "Large Open Passenger",
+            ['Price'] = 450,
+            ['Model'] = "WAGON03X",
+            ['Level'] = 0
+        }
+    },
+    {
         ['Text'] = "Fancy Small Coach - $500",
         ['SubText'] = "",
         ['Desc'] = "The nicest small coach we sell.",
@@ -521,6 +566,95 @@ local Coaches = {
             ['Level'] = 0
         }
     },
+        {
+        ['Text'] = "Fancy Open Coach - $550.",
+        ['SubText'] = "",
+        ['Desc'] = "",
+        ['Param'] = {
+            ['Name'] = "Fancy Open Coach",
+            ['Price'] = 550,
+            ['Model'] = "COACH6",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Boles Overland Medium Coach - $600.",
+        ['SubText'] = "",
+        ['Desc'] = "It's free for a reason.",
+        ['Param'] = {
+            ['Name'] = "STAGECOACH001X",
+            ['Price'] = 600,
+            ['Model'] = "STAGECOACH001X",
+            ['Level'] = 0
+        }
+    },
+     {
+        ['Text'] = "Davis Overland Large Coach - $600.",
+        ['SubText'] = "",
+        ['Desc'] = "",
+        ['Param'] = {
+            ['Name'] = "Davis Overland",
+            ['Price'] = 600,
+            ['Model'] = "COACH2",
+            ['Level'] = 0
+        }
+    },
+        {
+        ['Text'] = "Davis Medium Coach - $625.",
+        ['SubText'] = "",
+        ['Desc'] = "",
+        ['Param'] = {
+            ['Name'] = "Davis Medium",
+            ['Price'] = 625,
+            ['Model'] = "STAGECOACH002X",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Solid Roof Davis Medium Coach - $625.",
+        ['SubText'] = "",
+        ['Desc'] = "It's free for a reason.",
+        ['Param'] = {
+            ['Name'] = "Solid Roof Davis",
+            ['Price'] = 625,
+            ['Model'] = "STAGECOACH005X",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Fancy Medium Coach - $650.",
+        ['SubText'] = "",
+        ['Desc'] = "The nicest medium coach we sell.",
+        ['Param'] = {
+            ['Name'] = "Fancy Medium Coach",
+            ['Price'] = 650,
+            ['Model'] = "COACH3",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Large Davis Coach - $700.",
+        ['SubText'] = "",
+        ['Desc'] = "It's free for a reason.",
+        ['Param'] = {
+            ['Name'] = "Large Davis Coach",
+            ['Price'] = 700,
+            ['Model'] = "STAGECOACH006X",
+            ['Level'] = 0
+        }
+    },
+    {
+        ['Text'] = "Large Armoured Boles Coach - $1000.",
+        ['SubText'] = "",
+        ['Desc'] = "Noone is shooting out the windows.",
+        ['Param'] = {
+            ['Name'] = "Large Armoured Boles",
+            ['Price'] = 1000,
+            ['Model'] = "STAGECOACH004X",
+            ['Level'] = 0
+        }
+    },
+   
 }
 
 -- Warmenu List of Coaches to Buy with Server Event Params, saves to DB
