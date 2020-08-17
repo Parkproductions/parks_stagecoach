@@ -169,7 +169,7 @@ AddEventHandler("parks_stagecoach:PassengerOnboard", function (zone_name, route,
     RemoveBlip(p1)
     ClearGpsMultiRoute()
 
-    StartGpsMultiRoute(5, true, true)
+    StartGpsMultiRoute(GetHashKey("COLOR_YELLOW"), true, true)
     AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x + 5, Config.PickUp[zone_name][route].y + 5, Config.PickUp[zone_name][route].z)
     AddPointToGpsMultiRoute(Config.Destination[zone_name][route].x, Config.Destination[zone_name][route].y, Config.Destination[zone_name][route].z)
     SetGpsMultiRouteRender(true)
@@ -262,7 +262,7 @@ AddEventHandler("parks_stagecoach:StartCoachJob", function (zone_name, spawn_coa
     
     -- Set GPS route positions
 
-    StartGpsMultiRoute(012, false, true)
+    StartGpsMultiRoute(GetHashKey("COLOR_YELLOW"), true, true)
     AddPointToGpsMultiRoute(player_loc)
     AddPointToGpsMultiRoute(Config.PickUp[zone_name][route].x, Config.PickUp[zone_name][route].y, Config.PickUp[zone_name][route].z)
     SetGpsMultiRouteRender(true)
